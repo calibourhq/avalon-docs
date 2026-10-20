@@ -1,0 +1,73 @@
+type: object
+properties:
+  active:
+    type: boolean
+  cpu_sockets:
+    type: integer
+  created_at:
+    type: string
+  drive_bays:
+    type: array
+    items:
+      $ref: ./dedicated.Bay.yaml
+  height_u:
+    description: |-
+      HeightU is the chassis mounting height in rack units. It is what a rack
+      placement reserves, so a 2U box cannot be booked into a single slot.
+    type: integer
+  id:
+    type: string
+  kvm_console_mode:
+    description: |-
+      KVMConsoleMode is how the kiosk browser presents this chassis type's
+      vendor console. Empty uses DefaultConsoleMode. Setting it here is the
+      normal way to configure it: whether a vendor console needs popups is a
+      property of the BMC generation, which is what a platform describes.
+    allOf:
+      - $ref: ./dedicated.ConsoleMode.yaml
+  max_module_gb:
+    description: |-
+      MaxModuleGB is the largest DIMM the board accepts (0 = any). Bigger
+      catalog modules are left out when working out how much RAM fits.
+    type: integer
+  memory_per_socket:
+    description: |-
+      MemoryPerSocket means the DIMM slots are split evenly across the CPU
+      sockets, so a dual-socket board with one CPU only offers half of them.
+    type: boolean
+  memory_slots:
+    description: DIMM slots, 0 = unbounded
+    type: integer
+  name:
+    type: string
+  node_grid:
+    description: |-
+      NodeGrid is where each node sits in the chassis face, for drawing it in a
+      rack elevation; unset uses AutoNodeGrid. See NodeLayout.
+    allOf:
+      - $ref: ./dedicated.NodeGrid.yaml
+  nodes_per_chassis:
+    description: |-
+      NodesPerChassis is how many independent machines share one chassis: 1 for
+      an ordinary server, 4 for a 2U four-node twin. Each node is its own
+      inventory record with its own BMC and its own customer; what they share is
+      the sheet metal, and therefore the units it covers.
+
+      It is what lets several machines be mounted at the same unit without
+      overlapping: on a multi-node chassis a placement names a node slot as well
+      as a unit, and the slot is what has to be free.
+    type: integer
+  notes:
+    type: string
+  pcie_slots:
+    type: array
+    items:
+      $ref: ./dedicated.PCIeSlot.yaml
+  ram_type:
+    description: one of RAMTypes ("" = any)
+    type: string
+  updated_at:
+    type: string
+  vendor:
+    description: one of PlatformVendors
+    type: string

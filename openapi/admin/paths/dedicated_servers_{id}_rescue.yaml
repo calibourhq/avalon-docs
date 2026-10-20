@@ -1,0 +1,64 @@
+get:
+  operationId: get-a-servers-rescue-session-admin
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated-admin
+  summary: Get a server's rescue session (admin)
+  parameters:
+    - description: server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.rescueSessionView.yaml
+post:
+  operationId: start-a-rescue-boot-on-a-server-admin
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated-admin
+  summary: Start a rescue boot on a server (admin)
+  parameters:
+    - description: server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.rescueSessionView.yaml
+delete:
+  operationId: end-a-servers-rescue-session-admin
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated-admin
+  summary: End a server's rescue session (admin)
+  parameters:
+    - description: server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: reboot back to disk
+      name: reboot
+      in: query
+      schema:
+        type: boolean
+  responses:
+    '204':
+      description: No Content

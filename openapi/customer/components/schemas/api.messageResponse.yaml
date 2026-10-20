@@ -1,0 +1,32 @@
+type: object
+properties:
+  attachments:
+    description: Preloaded attachment metadata (the blob itself is never loaded here).
+    type: array
+    items:
+      $ref: ./support.SupportAttachment.yaml
+  author_id:
+    type: string
+  author_name:
+    type: string
+  author_type:
+    description: user, admin, system
+    type: string
+  body:
+    type: string
+  body_html:
+    description: |-
+      BodyHTML is the sanitized HTML rendering of Body, produced at write time
+      by AddMessage using the policy appropriate for AuthorType (customers are
+      limited to bold/italic/code). It is what the UIs display.
+    type: string
+  created_at:
+    type: string
+  id:
+    type: string
+  is_internal:
+    type: boolean
+  ticket_id:
+    type: string
+  updated_at:
+    type: string

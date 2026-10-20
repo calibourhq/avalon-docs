@@ -1,0 +1,21 @@
+get:
+  operationId: get-dedicated-rack-elevation
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Get dedicated rack elevation
+  parameters:
+    - description: rack id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.RackLayout.yaml

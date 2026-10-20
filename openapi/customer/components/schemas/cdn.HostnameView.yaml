@@ -1,0 +1,86 @@
+type: object
+properties:
+  attack_enabled:
+    description: |-
+      Attack and timeout settings are the zone's, copied in so the detail page
+      can render one form. Nil where the zone leaves the edge default in place.
+    type: boolean
+  attack_floor_rps:
+    type: number
+  attack_score_enter:
+    type: integer
+  attack_score_exit:
+    type: integer
+  balancing:
+    description: |-
+      Balancing is the pool's selection mode, always spelled out (never empty)
+      so the editor can preselect it without knowing the default.
+    type: string
+  cert:
+    $ref: ./cdn.CDNCertificate.yaml
+  cert_provider:
+    type: string
+  created_at:
+    type: string
+  dns_routed:
+    description: |-
+      DNSRouted says whether a record currently points this hostname at the
+      edge. Meaningless for external hostnames, which route via the customer's
+      own CNAME.
+    type: boolean
+  dns_zone_id:
+    type: string
+  enabled:
+    type: boolean
+  host_header_override:
+    type: string
+  hostname:
+    type: string
+  id:
+    type: string
+  lua_a_record_id:
+    type: integer
+  lua_aaaa_record_id:
+    type: integer
+  max_origins:
+    description: |-
+      MaxOrigins is the zone's plan cap, carried here so the origin editor can
+      decide whether to offer the pool controls at all without a second fetch.
+    type: integer
+  origin_insecure_tls:
+    type: boolean
+  origin_scheme:
+    type: string
+  origin_server:
+    type: string
+  rules:
+    type: array
+    items:
+      $ref: ./cdn.CDNRule.yaml
+  timeout_connect:
+    type: integer
+  timeout_min_upload_rate:
+    type: integer
+  timeout_read:
+    type: integer
+  timeout_stream_activity:
+    type: integer
+  timeout_upstream:
+    type: integer
+  timeout_write:
+    type: integer
+  updated_at:
+    type: string
+  upstreams:
+    description: |-
+      Upstreams is the hostname's origin pool; the Origin* fields above mirror
+      its first entry, so a client that reads only those sees the primary.
+    type: array
+    items:
+      $ref: ./cdn.CDNUpstream.yaml
+  zone_id:
+    description: |-
+      ZoneID is the owning CDN zone; DNSZoneID is the DNS zone the LUA records
+      live in. Both keys match the ones CDNHostname marshals, so a hostname
+      means the same thing whichever endpoint returned it.
+    type: string

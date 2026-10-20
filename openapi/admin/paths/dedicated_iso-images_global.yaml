@@ -1,0 +1,32 @@
+get:
+  operationId: list-global-dedicated-server-iso-images
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: List global dedicated-server ISO images
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/dedicated.DedicatedISOImage.yaml
+post:
+  operationId: add-a-global-dedicated-server-iso-image
+  security:
+    - BearerAuth: []
+  description: >-
+    Registers an ISO offered to every customer's console sessions. Never swept by the retention worker.
+  tags:
+    - dedicated
+  summary: Add a global dedicated-server ISO image
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.DedicatedISOImage.yaml

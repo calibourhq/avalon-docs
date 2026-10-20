@@ -1,0 +1,63 @@
+get:
+  operationId: list-support-tickets
+  security:
+    - BearerAuth: []
+  description: Lists the support tickets of the active organisation.
+  tags:
+    - support
+  summary: List support tickets
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/api.customerTicket.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: create-support-ticket
+  security:
+    - BearerAuth: []
+  description: >-
+    Opens a support ticket for the active organisation with subject, priority, body and department_id (a public department). Only priorities from /support/ticket-options are accepted. Also accepts multipart/form-data with the same fields as form values plus up to 3 attachments (5 MB each) under "files".
+  tags:
+    - support
+  summary: Create support ticket
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.customerTicket.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

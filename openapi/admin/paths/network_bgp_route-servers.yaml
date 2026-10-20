@@ -1,0 +1,63 @@
+get:
+  operationId: list-route-servers
+  security:
+    - BearerAuth: []
+  description: List all configured BGP route servers.
+  tags:
+    - network-bgp
+  summary: List route servers
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/bgp.RouteServer.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: create-route-server
+  security:
+    - BearerAuth: []
+  description: >-
+    Create a new BGP route server. A region is required; the server only serves BGP resources in that region.
+  tags:
+    - network-bgp
+  summary: Create route server
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/bgp.RouteServer.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

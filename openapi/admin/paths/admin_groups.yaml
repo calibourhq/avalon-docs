@@ -1,0 +1,68 @@
+get:
+  operationId: list-admin-groups
+  security:
+    - BearerAuth: []
+  description: List all admin permission groups with their member counts.
+  tags:
+    - admin-groups
+  summary: List admin groups
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/admins.GroupWithCount.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: create-admin-group
+  security:
+    - BearerAuth: []
+  description: Create a new admin permission group.
+  tags:
+    - admin-groups
+  summary: Create admin group
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/admins.AdminGroup.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

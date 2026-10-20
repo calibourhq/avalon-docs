@@ -1,0 +1,90 @@
+type: object
+required:
+  - country
+properties:
+  address:
+    type: string
+    maxLength: 255
+  address2:
+    type: string
+    maxLength: 255
+  billing_email:
+    description: >-
+      BillingEmail is an optional external address (e.g. accounting@) that
+      receives
+
+      billing-category notifications in addition to the org's billing contacts.
+    type: string
+    maxLength: 255
+  charge_vat:
+    type: boolean
+  city:
+    type: string
+    maxLength: 100
+  company_name:
+    type: string
+    maxLength: 255
+  country:
+    type: string
+  created_at:
+    type: string
+  customer_id:
+    type: integer
+  deleted:
+    description: |-
+      Deleted marks an org whose owning account deleted itself. The row is kept
+      so invoices, payments and the audit log keep resolving to a customer, but
+      deleted orgs are hidden from customer lists, search and pickers. Plain
+      *time.Time on purpose: gorm.DeletedAt would silently filter every query.
+    type: boolean
+  deleted_at:
+    type: string
+  first_name:
+    type: string
+    maxLength: 100
+  id:
+    type: string
+  inactive_since:
+    description: |-
+      InactiveSince marks a dormant customer: no live service, no transaction in
+      the threshold window and every owner account itself inactive. Set and
+      cleared by the inactivity sweep (and cleared immediately when an owner
+      logs in); purely informational for now so a later phase can build on
+      "inactive since" (e.g. auto-deletion).
+    type: string
+  last_name:
+    type: string
+    maxLength: 100
+  postal_code:
+    type: string
+    maxLength: 20
+  registration:
+    type: string
+    maxLength: 100
+  updated_at:
+    type: string
+  users:
+    type: array
+    items:
+      $ref: ./users.User.yaml
+  vat_checked_at:
+    type: string
+  vat_consultation_id:
+    description: VIES proof of the check
+    type: string
+  vat_name_match:
+    description: vatid.NameMatch
+    type: string
+  vat_number:
+    type: string
+    maxLength: 100
+  vat_registered_address:
+    type: string
+  vat_registered_name:
+    type: string
+  vat_status:
+    description: |-
+      VAT number verification against the EU VIES register, refreshed whenever
+      the number, country or name changes. VatStatus is empty while there is
+      no number; see the VatStatus constants.
+    type: string

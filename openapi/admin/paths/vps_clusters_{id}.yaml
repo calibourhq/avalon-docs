@@ -1,0 +1,116 @@
+get:
+  operationId: get-vps-cluster
+  security:
+    - BearerAuth: []
+  description: Get a single VPS cluster by ID.
+  tags:
+    - vps
+  summary: Get VPS cluster
+  parameters:
+    - description: cluster id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/vps.VPSCluster.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+put:
+  operationId: update-vps-cluster
+  security:
+    - BearerAuth: []
+  description: Update fields on an existing VPS cluster.
+  tags:
+    - vps
+  summary: Update VPS cluster
+  parameters:
+    - description: cluster id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/vps.VPSCluster.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+delete:
+  operationId: delete-vps-cluster
+  security:
+    - BearerAuth: []
+  description: Delete a VPS cluster by ID.
+  tags:
+    - vps
+  summary: Delete VPS cluster
+  parameters:
+    - description: cluster id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content
+    '400':
+      description: Bad Request
+      content:
+        '*/*':
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        '*/*':
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        '*/*':
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

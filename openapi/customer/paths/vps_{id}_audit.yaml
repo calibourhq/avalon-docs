@@ -1,0 +1,59 @@
+get:
+  operationId: get-vps-audit-log
+  security:
+    - BearerAuth: []
+  description: Returns the audit history for a single VPS server.
+  tags:
+    - vps
+  summary: Get VPS audit log
+  parameters:
+    - description: vps id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: filter by actor id
+      name: actor_id
+      in: query
+      schema:
+        type: string
+    - description: start time (RFC3339)
+      name: from
+      in: query
+      schema:
+        type: string
+    - description: end time (RFC3339)
+      name: to
+      in: query
+      schema:
+        type: string
+    - description: page number
+      name: page
+      in: query
+      schema:
+        type: integer
+    - description: page size
+      name: page_size
+      in: query
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/audit.ListResult.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

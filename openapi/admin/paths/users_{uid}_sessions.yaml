@@ -1,0 +1,68 @@
+get:
+  operationId: list-a-customers-sessions
+  security:
+    - BearerAuth: []
+  description: >-
+    Lists the live sessions of a customer account (admin only). Tokens are stored hashed and never returned.
+  tags:
+    - customer-accounts
+  summary: List a customer's sessions
+  parameters:
+    - description: Account (user) ID
+      name: uid
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/api.AdminUserSession.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+delete:
+  operationId: revoke-a-customers-sessions
+  security:
+    - BearerAuth: []
+  description: >-
+    Signs a customer account out everywhere by deleting all of its sessions (admin only).
+  tags:
+    - customer-accounts
+  summary: Revoke a customer's sessions
+  parameters:
+    - description: Account (user) ID
+      name: uid
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

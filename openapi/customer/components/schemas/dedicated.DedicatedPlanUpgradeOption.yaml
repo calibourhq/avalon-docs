@@ -1,0 +1,52 @@
+type: object
+properties:
+  bays:
+    description: |-
+      Bays is how many drives a bays option can take: the platform's bays of
+      its type with every CPU fitted. Derived on read.
+    type: integer
+  choices:
+    type: array
+    items:
+      $ref: ./dedicated.DedicatedPlanUpgradeChoice.yaml
+  created_at:
+    type: string
+  disabled:
+    description: |-
+      Disabled takes the option off sale for now (out of stock, say): hidden
+      from customers and refused on orders, kept for when it comes back.
+    type: boolean
+  group_id:
+    type: string
+  group_name:
+    description: >-
+      GroupName names the option group a shared option comes from. Derived on
+      read.
+    type: string
+  id:
+    type: string
+  included_label:
+    description: |-
+      IncludedLabel names what the base build has of this kind ("64 GB"), the
+      "keep it" entry of a replace option. Derived on read.
+    type: string
+  kind:
+    $ref: ./dedicated.ComponentKind.yaml
+  label:
+    type: string
+  max_qty:
+    description: add mode only
+    type: integer
+  min_qty:
+    description: add mode only
+    type: integer
+  mode:
+    $ref: ./dedicated.UpgradeMode.yaml
+  plan_id:
+    type: string
+  required:
+    type: boolean
+  sort_order:
+    type: integer
+  updated_at:
+    type: string

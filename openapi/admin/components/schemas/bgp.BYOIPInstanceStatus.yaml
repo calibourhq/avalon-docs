@@ -1,0 +1,9 @@
+type: string
+enum:
+  - pending
+  - active
+  - error
+x-enum-varnames:
+  - BYOIPInstancePending
+  - BYOIPInstanceActive
+  - BYOIPInstanceError

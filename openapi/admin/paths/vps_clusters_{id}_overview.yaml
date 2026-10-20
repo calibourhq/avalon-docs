@@ -1,0 +1,40 @@
+get:
+  operationId: get-vps-cluster-overview
+  security:
+    - BearerAuth: []
+  description: 'Return live cluster insights: node usage, guests, storage and totals.'
+  tags:
+    - vps
+  summary: Get VPS cluster overview
+  parameters:
+    - description: cluster id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.clusterOverviewResponse.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

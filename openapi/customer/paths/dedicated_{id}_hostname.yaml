@@ -1,0 +1,21 @@
+put:
+  operationId: update-dedicated-server-hostname
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Update dedicated server hostname
+  parameters:
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.DedicatedService.yaml

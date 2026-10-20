@@ -1,0 +1,46 @@
+get:
+  operationId: get-bucket-traffic
+  security:
+    - BearerAuth: []
+  description: >-
+    Returns a bucket's metered bandwidth and operations over a period, summed across nodes.
+  tags:
+    - s3
+  summary: Get bucket traffic
+  parameters:
+    - description: bucket id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: 24h, 7d, 30d or 12m
+      name: period
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/s3.MetricsSummary.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

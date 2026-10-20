@@ -1,0 +1,16 @@
+type: object
+properties:
+  extra:
+    description: per-type payload, e.g. {"service_type":"vps"}
+    type: object
+    additionalProperties: {}
+  id:
+    type: string
+  org_id:
+    type: string
+  subtitle:
+    type: string
+  title:
+    type: string
+  type:
+    type: string

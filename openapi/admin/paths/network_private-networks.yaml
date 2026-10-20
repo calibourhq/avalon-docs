@@ -1,0 +1,88 @@
+get:
+  operationId: list-private-networks
+  security:
+    - BearerAuth: []
+  description: >-
+    Lists the private networks of the caller's active org, optionally filtered by region and kind.
+
+    lists all orgs; org_id filters by org.
+  tags:
+    - network-private
+  summary: List private networks
+  parameters:
+    - description: filter by org
+      name: org_id
+      in: query
+      schema:
+        type: string
+    - description: filter by region
+      name: region_id
+      in: query
+      schema:
+        type: string
+    - description: filter by kind (vps|dedicated)
+      name: kind
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/api.netOut.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: create-a-private-network
+  security:
+    - BearerAuth: []
+  description: >-
+    Create a private network for an organisation within a region. kind is "vps" (Proxmox SDN VNet, default) or "dedicated" (802.1Q VLAN for dedicated servers).
+  tags:
+    - network-private
+  summary: Create a private network
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.netOut.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

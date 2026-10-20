@@ -1,0 +1,37 @@
+type: object
+properties:
+  acked_at:
+    description: |-
+      AckedAt marks the issue as handled. A later occurrence clears it again, so
+      a problem that returns after being dismissed is surfaced anew.
+    type: string
+  acked_by:
+    type: string
+  caller:
+    type: string
+  code:
+    type: string
+  fingerprint:
+    type: string
+  first_seen:
+    type: string
+  last_message:
+    type: string
+  last_node:
+    description: |-
+      LastNode names the instance behind the most recent occurrence. Issues
+      aggregate across the cluster, so this is resolved when the issue is read
+      or notified rather than stored.
+    type: string
+  last_seen:
+    type: string
+  level:
+    type: string
+  notified_at:
+    description: NotifiedAt is when admins were last told about this issue.
+    type: string
+  occurrences:
+    description: |-
+      Occurrences counts every occurrence ever seen, including ones the write
+      cap kept out of log_events and ones whose events have since been pruned.
+    type: integer

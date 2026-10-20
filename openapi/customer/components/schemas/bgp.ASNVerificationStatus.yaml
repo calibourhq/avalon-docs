@@ -1,0 +1,28 @@
+type: string
+enum:
+  - pending
+  - approved
+  - denied
+  - expired
+  - rejected
+  - cancelled
+x-enum-comments:
+  ASNVerifyApproved: by the contact or an admin
+  ASNVerifyCancelled: the ASN was deleted while pending
+  ASNVerifyDenied: by the contact
+  ASNVerifyExpired: contact did not answer in time
+  ASNVerifyRejected: by an admin
+x-enum-descriptions:
+  - ''
+  - by the contact or an admin
+  - by the contact
+  - contact did not answer in time
+  - by an admin
+  - the ASN was deleted while pending
+x-enum-varnames:
+  - ASNVerifyPending
+  - ASNVerifyApproved
+  - ASNVerifyDenied
+  - ASNVerifyExpired
+  - ASNVerifyRejected
+  - ASNVerifyCancelled

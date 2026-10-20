@@ -1,0 +1,28 @@
+type: string
+enum:
+  - awaiting_stock
+  - pending
+  - provisioning
+  - active
+  - suspended
+  - terminated
+  - error
+x-enum-comments:
+  ServiceStatusPending: server claimed + subscription created; awaiting power-on / prepaid payment
+  ServiceStatusProvisioning: worker powering on
+x-enum-descriptions:
+  - ''
+  - server claimed + subscription created; awaiting power-on / prepaid payment
+  - worker powering on
+  - ''
+  - ''
+  - ''
+  - ''
+x-enum-varnames:
+  - ServiceAwaitingStock
+  - ServiceStatusPending
+  - ServiceStatusProvisioning
+  - ServiceStatusActive
+  - ServiceStatusSuspended
+  - ServiceStatusTerminated
+  - ServiceStatusError

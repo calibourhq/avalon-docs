@@ -1,0 +1,75 @@
+post:
+  operationId: upload-donation-page-avatar
+  security:
+    - BearerAuth: []
+  description: Processes and stores an avatar for the caller org's page.
+  tags:
+    - donations
+  summary: Upload donation page avatar
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          type: object
+          properties:
+            avatar:
+              description: avatar image file
+              type: string
+              format: binary
+          required:
+            - avatar
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+delete:
+  operationId: delete-donation-page-avatar
+  security:
+    - BearerAuth: []
+  description: Removes the avatar from the caller org's page.
+  tags:
+    - donations
+  summary: Delete donation page avatar
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

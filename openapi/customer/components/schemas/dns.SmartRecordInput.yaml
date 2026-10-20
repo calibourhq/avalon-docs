@@ -1,0 +1,26 @@
+type: object
+required:
+  - mode
+  - record_type
+properties:
+  check_expected:
+    type: string
+  check_port:
+    type: integer
+  check_type:
+    $ref: ./dns.SmartCheckType.yaml
+  check_url:
+    type: string
+  mode:
+    $ref: ./dns.SmartRecordMode.yaml
+  name:
+    description: empty means the zone apex ("@")
+    type: string
+  record_type:
+    $ref: ./dns.SmartRecordType.yaml
+  targets:
+    type: array
+    items:
+      $ref: ./dns.SmartTarget.yaml
+  ttl:
+    type: integer

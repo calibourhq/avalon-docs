@@ -1,0 +1,16 @@
+type: object
+properties:
+  default_length:
+    type: integer
+  family:
+    type: integer
+  max_length:
+    type: integer
+  parent_length:
+    type: integer
+  prefix:
+    type: string
+  prefix_id:
+    type: string
+  suggested:
+    type: string

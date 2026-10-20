@@ -1,0 +1,20 @@
+extends:
+  - recommended
+
+apis:
+  customer:
+    root: openapi/customer/openapi.yaml
+  admin:
+    root: openapi/admin/openapi.yaml
+
+rules:
+  # Examples use api.example.com since every install has its own API host.
+  no-server-example.com: off
+  info-license: off
+  # /vps/{id}/start next to /vps/first-boot-done etc. is fine, the router
+  # matches literal segments first.
+  no-ambiguous-paths: off
+  # Error responses share one format, documented on the Errors page.
+  operation-4xx-response: off
+  # The console proxy answers 101 and then speaks WebSocket.
+  operation-2xx-response: off

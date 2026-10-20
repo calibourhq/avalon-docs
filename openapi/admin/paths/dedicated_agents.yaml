@@ -1,0 +1,30 @@
+get:
+  operationId: list-dedicated-agents
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: List dedicated agents
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/dedicated.DedicatedAgent.yaml
+post:
+  operationId: create-dedicated-agent
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Create dedicated agent
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.DedicatedAgent.yaml

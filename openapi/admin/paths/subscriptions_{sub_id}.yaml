@@ -1,0 +1,40 @@
+put:
+  operationId: update-subscription-admin
+  security:
+    - BearerAuth: []
+  description: Updates admin-editable subscription fields.
+  tags:
+    - subscriptions
+  summary: Update subscription (admin)
+  parameters:
+    - description: subscription id
+      name: sub_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/billing.Subscription.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

@@ -1,0 +1,106 @@
+put:
+  operationId: upsert-a-notification-translation
+  security:
+    - BearerAuth: []
+  description: Create or update a template translation for the given language.
+  tags:
+    - notifications
+  summary: Upsert a notification translation
+  parameters:
+    - description: template slug
+      name: slug
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: language code
+      name: lang
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/notifications.NotificationTemplate.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+delete:
+  operationId: delete-a-notification-translation
+  security:
+    - BearerAuth: []
+  description: >-
+    Delete a template translation for the given language; English cannot be removed.
+  tags:
+    - notifications
+  summary: Delete a notification translation
+  parameters:
+    - description: template slug
+      name: slug
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: language code
+      name: lang
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

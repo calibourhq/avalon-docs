@@ -1,0 +1,40 @@
+post:
+  security: []
+  operationId: initiate-a-donation-payment
+  description: Creates a pending donation and starts gateway checkout.
+  tags:
+    - donations
+  summary: Initiate a donation payment
+  parameters:
+    - description: donation page slug
+      name: slug
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

@@ -1,0 +1,28 @@
+get:
+  operationId: get-monthly-service-costs
+  security:
+    - BearerAuth: []
+  description: Returns the caller org's estimated recurring monthly cost.
+  tags:
+    - donations
+  summary: Get monthly service costs
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

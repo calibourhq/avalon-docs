@@ -1,0 +1,11 @@
+type: object
+properties:
+  detail:
+    description: filled by Localize
+    type: string
+  level:
+    description: danger | warn | info
+    type: string
+  title:
+    description: filled by Localize
+    type: string

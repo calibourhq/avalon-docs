@@ -1,0 +1,36 @@
+post:
+  operationId: reorder-firewall-rules
+  security:
+    - BearerAuth: []
+  description: Reorder the rules of a firewall.
+  tags:
+    - network-firewall
+  summary: Reorder firewall rules
+  parameters:
+    - description: firewall id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

@@ -1,0 +1,51 @@
+post:
+  operationId: start-a-dns-plan-change
+  security:
+    - BearerAuth: []
+  description: >-
+    Begins an upgrade/downgrade for the zone, returning the updated zone and any proration invoice.
+
+    billing_mode overrides how the change is billed.
+  tags:
+    - dns
+  summary: Start a DNS plan change
+  parameters:
+    - description: zone id
+      name: zone_id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/api.dnsPlanChangeBody.yaml
+    description: Target plan
+    required: true
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

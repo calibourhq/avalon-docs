@@ -1,0 +1,13 @@
+type: object
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  nodes:
+    description: VPS clusters only
+    type: array
+    items:
+      type: string
+  region_id:
+    type: string

@@ -1,0 +1,9 @@
+type: string
+enum:
+  - geo
+  - failover
+  - geo_failover
+x-enum-varnames:
+  - SmartRecordModeGeo
+  - SmartRecordModeFailover
+  - SmartRecordModeGeoFailover

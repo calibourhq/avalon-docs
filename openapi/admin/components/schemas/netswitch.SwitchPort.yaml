@@ -1,0 +1,135 @@
+type: object
+properties:
+  acl_disabled:
+    description: |-
+      ACLDisabled takes a customer port out of every hardware ACL rule
+      (anti-spoofing, DHCP/RA guard, SMTP block, ARP policing). Rate and
+      storm limits still apply. An operator escape hatch for boxes that
+      route, host VMs with their own prefixes, or are being debugged.
+    type: boolean
+  created_at:
+    type: string
+  default_name:
+    type: string
+  description:
+    type: string
+  egress_rate_mbps:
+    type: integer
+  enabled:
+    description: admin shutdown
+    type: boolean
+  id:
+    type: string
+  index:
+    type: integer
+  ingress_rate_mbps:
+    description: Rate / storm control
+    type: integer
+  last_push_at:
+    type: string
+  last_stats_at:
+    type: string
+  limit_broadcasts:
+    type: boolean
+  limit_unknown_multicasts:
+    type: boolean
+  limit_unknown_unicasts:
+    type: boolean
+  link_up:
+    description: Live (written by probe / apply report / metrics collector)
+    type: boolean
+  mac_check:
+    $ref: ./netswitch.MACCheck.yaml
+  mac_seen_on:
+    type: string
+  name:
+    type: string
+  observed_at:
+    type: string
+  observed_disabled:
+    type: boolean
+  observed_frame_types:
+    type: string
+  observed_in_bridge:
+    type: boolean
+  observed_macs:
+    description: |-
+      ObservedMACs are the addresses the switch's forwarding table last had
+      learned on this port (see IngestMACTable); always empty on an uplink,
+      which carries the whole fabric. They exist to confirm that the server
+      patched here is the one actually plugged in.
+    type: array
+    items:
+      type: string
+  observed_macs_at:
+    type: string
+  observed_pvid:
+    description: |-
+      Observed (what the device last reported; never an input to the
+      compiler, only shown so drift from the desired state is visible)
+      Explicit column names: GORM's namer would otherwise render these as
+      observed_pv_id / observed_tagged_vla_ns, the way it did for the
+      desired-state columns above.
+    type: integer
+  observed_tagged_vlans:
+    type: array
+    items:
+      type: integer
+  org_id:
+    type: string
+  present:
+    type: boolean
+  private_vlans:
+    type: array
+    items:
+      type: integer
+  push_pending:
+    description: |-
+      PushPending marks an infrastructure port whose stored settings the
+      operator has asked to be written to the device. The next sync compiles
+      that one port into the desired state, applies it and clears the flag;
+      outside of that window an infrastructure port is absent from the
+      desired state entirely, so nothing about it is ever reasserted.
+    type: boolean
+  pvid:
+    description: VLAN
+    type: integer
+  role:
+    $ref: ./netswitch.PortRole.yaml
+  rx_bps:
+    description: from the server, rolling over the last interval
+    type: integer
+  server_id:
+    description: |-
+      ServerID is the dedicated server patched into this port (a server may
+      own several ports). Only meaningful with Role == customer.
+    type: string
+  server_name:
+    description: Derived (not stored)
+    type: string
+  service_hostname:
+    type: string
+  service_id:
+    type: string
+  speed_mbps:
+    type: integer
+  storm_rate_percent:
+    description: 0 = off
+    type: integer
+  switch_id:
+    type: string
+  tagged_vlans:
+    description: |-
+      TaggedVLANs are the admin's extra tagged VLANs; 3000-4000 is reserved
+      for private networks. On a customer port these are desired state and
+      the reconciler writes the membership. On an uplink or infrastructure
+      port they are descriptive only - adopted from the device so the trunk
+      is on record - because Avalon does not drive those ports' membership.
+    type: array
+    items:
+      type: integer
+  tx_bps:
+    description: to the server
+    type: integer
+  updated_at:
+    type: string

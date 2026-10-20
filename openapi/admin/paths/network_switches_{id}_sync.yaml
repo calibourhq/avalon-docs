@@ -1,0 +1,23 @@
+post:
+  operationId: queue-a-switch-sync-admin
+  security:
+    - BearerAuth: []
+  tags:
+    - network-switches
+  summary: Queue a switch sync (admin)
+  parameters:
+    - description: switch id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '202':
+      description: Accepted
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties:
+              type: string

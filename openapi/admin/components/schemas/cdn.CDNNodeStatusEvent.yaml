@@ -1,0 +1,22 @@
+type: object
+properties:
+  created_at:
+    type: string
+  detail:
+    description: |-
+      Detail is the probe error that drove a downward transition; empty on
+      recovery.
+    type: string
+  from_status:
+    type: string
+  id:
+    type: string
+  node_id:
+    type: string
+  scope:
+    description: 'Scope is which status field transitioned: node (overall), ipv4, ipv6.'
+    type: string
+  to_status:
+    type: string
+  updated_at:
+    type: string

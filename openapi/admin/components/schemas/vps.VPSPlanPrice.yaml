@@ -1,0 +1,21 @@
+type: object
+properties:
+  created_at:
+    type: string
+  cycle:
+    type: string
+  id:
+    type: string
+  ipv4_price:
+    description: EUR surcharge per cycle
+    type: number
+  ipv6_price:
+    description: EUR surcharge per cycle
+    type: number
+  plan_id:
+    type: string
+  price:
+    description: EUR (base)
+    type: number
+  updated_at:
+    type: string

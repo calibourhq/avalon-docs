@@ -1,0 +1,34 @@
+post:
+  operationId: enable-a-storage-node
+  security:
+    - BearerAuth: []
+  description: Resumes metering traffic from a node (admin only).
+  tags:
+    - s3-nodes
+  summary: Enable a storage node
+  parameters:
+    - description: node id
+      name: node_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/s3.Node.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

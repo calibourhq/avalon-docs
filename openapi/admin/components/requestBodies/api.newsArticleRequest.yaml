@@ -1,0 +1,6 @@
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/api.newsArticleRequest.yaml
+description: Article payload
+required: true

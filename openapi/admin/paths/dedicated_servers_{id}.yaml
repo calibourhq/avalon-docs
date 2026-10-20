@@ -1,0 +1,59 @@
+get:
+  operationId: get-dedicated-server-inventory
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Get dedicated server (inventory)
+  parameters:
+    - description: server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.DedicatedServer.yaml
+put:
+  operationId: update-dedicated-server-inventory
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Update dedicated server (inventory)
+  parameters:
+    - description: server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.DedicatedServer.yaml
+delete:
+  operationId: delete-dedicated-server-inventory
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Delete dedicated server (inventory)
+  parameters:
+    - description: server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content

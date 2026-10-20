@@ -1,0 +1,23 @@
+post:
+  operationId: cancel-a-service-at-period-end-admin
+  security:
+    - BearerAuth: []
+  tags:
+    - admin
+  summary: Cancel a service at period end (admin)
+  parameters:
+    - description: service type
+      name: type
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content

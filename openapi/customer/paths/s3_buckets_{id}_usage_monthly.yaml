@@ -1,0 +1,48 @@
+get:
+  operationId: get-bucket-monthly-usage
+  security:
+    - BearerAuth: []
+  description: >-
+    Returns a bucket's per-calendar-month bandwidth and operation totals, newest first.
+  tags:
+    - s3
+  summary: Get bucket monthly usage
+  parameters:
+    - description: bucket id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: how many months to return (default 12)
+      name: months
+      in: query
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/s3.MetricsMonthly.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

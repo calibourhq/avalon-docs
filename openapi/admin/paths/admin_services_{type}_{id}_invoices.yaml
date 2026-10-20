@@ -1,0 +1,33 @@
+get:
+  operationId: service-invoices-admin
+  security:
+    - BearerAuth: []
+  description: >-
+    Every invoice, proforma and credit note that billed the service, newest first.
+  tags:
+    - admin
+  summary: Service invoices (admin)
+  parameters:
+    - description: service type
+      name: type
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties:
+              type: array
+              items:
+                $ref: ../components/schemas/billing.Invoice.yaml

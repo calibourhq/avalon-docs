@@ -1,0 +1,20 @@
+type: object
+properties:
+  category:
+    type: string
+  country:
+    type: string
+  documents:
+    type: integer
+  gross_cents:
+    type: integer
+  net_cents:
+    type: integer
+  rate:
+    type: number
+  report:
+    $ref: ./billing.VatReport.yaml
+  tax_cents:
+    type: integer
+  treatment:
+    type: string

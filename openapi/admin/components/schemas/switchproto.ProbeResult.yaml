@@ -1,0 +1,28 @@
+type: object
+properties:
+  bridge_name:
+    type: string
+  capabilities:
+    type: array
+    items:
+      $ref: ./switchproto.Capability.yaml
+  cert_fingerprint:
+    type: string
+  identity:
+    type: string
+  model:
+    type: string
+  ports:
+    type: array
+    items:
+      $ref: ./switchproto.PortInfo.yaml
+  switch_chip:
+    type: string
+  version:
+    type: string
+  vlan_filtering:
+    type: boolean
+  warnings:
+    type: array
+    items:
+      type: string

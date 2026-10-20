@@ -1,0 +1,96 @@
+get:
+  operationId: list-org-api-keys
+  security:
+    - BearerAuth: []
+  description: >-
+    Returns all API keys for an org (never the tokens), decorated with creator names. Requires the org admin permission. API key sessions are rejected.
+  tags:
+    - api-keys
+  summary: List org API keys
+  parameters:
+    - description: org id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/apikeys.APIKeyWithCreator.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: create-org-api-key
+  security:
+    - BearerAuth: []
+  description: >-
+    Mints a new API key for an org. The plaintext token is returned exactly once and cannot be recovered later. Scopes must be within the creator's own permissions.
+  tags:
+    - api-keys
+  summary: Create org API key
+  parameters:
+    - description: org id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/api.CreateAPIKeyRequest.yaml
+    description: Key definition
+    required: true
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              key:
+                $ref: ../components/schemas/apikeys.APIKey.yaml
+              token:
+                type: string
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

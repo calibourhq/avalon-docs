@@ -1,0 +1,89 @@
+delete:
+  operationId: detach-downstream-as-set-admin
+  security:
+    - BearerAuth: []
+  description: Detach an AS-SET from a BGP ASN and drop the prefixes it imported.
+  tags:
+    - network-bgp
+  summary: Detach downstream AS-SET (admin)
+  parameters:
+    - description: asn id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: as-set id
+      name: as_set_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+patch:
+  operationId: update-downstream-as-set-limits-admin
+  security:
+    - BearerAuth: []
+  description: >-
+    Change the ASN and prefix limits on an attached AS-SET and re-run the import.
+  tags:
+    - network-bgp
+  summary: Update downstream AS-SET limits (admin)
+  parameters:
+    - description: asn id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: as-set id
+      name: as_set_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/bgp.DownstreamASSet.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

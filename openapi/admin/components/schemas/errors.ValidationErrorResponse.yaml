@@ -1,0 +1,16 @@
+type: object
+properties:
+  code:
+    allOf:
+      - $ref: ./errors.ErrorCode.yaml
+    example: VALIDATION_ERROR
+  fields:
+    type: object
+    additionalProperties:
+      type: string
+    example:
+      email: invalid email format
+      password: password too short
+  message:
+    type: string
+    example: Validation failed

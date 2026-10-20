@@ -1,0 +1,9 @@
+type: string
+enum:
+  - pending
+  - sent
+  - failed
+x-enum-varnames:
+  - StatusPending
+  - StatusSent
+  - StatusFailed

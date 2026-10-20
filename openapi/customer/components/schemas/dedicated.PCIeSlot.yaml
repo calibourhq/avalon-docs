@@ -1,0 +1,25 @@
+type: object
+properties:
+  count:
+    type: integer
+  double_width:
+    description: can seat a 2-slot GPU
+    type: boolean
+  low_profile:
+    description: |-
+      LowProfile means these slots only take low-profile cards (a 1U chassis
+      or a half-height riser). False = full height, takes either.
+    type: boolean
+  max_power_w:
+    description: |-
+      MaxPowerW is the most a card in one of these slots may draw, slot power
+      plus any auxiliary cables (75 for a bare x16 slot). 0 = not limited.
+    type: integer
+  socket:
+    description: |-
+      Socket is the CPU these slots hang off; they only work when that many
+      CPUs are installed. 0 = always usable.
+    type: integer
+  type:
+    description: one of PCIeSlotTypes
+    type: string

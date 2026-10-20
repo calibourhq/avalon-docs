@@ -1,0 +1,23 @@
+get:
+  operationId: permission-scope-catalog
+  security:
+    - BearerAuth: []
+  description: >-
+    Returns the customer permission scope catalog (services with tiered scopes and sensitive flags) plus the editor presets. Drives the member/invite permission editors so the UI cannot drift from the backend.
+  tags:
+    - orgs
+  summary: Permission scope catalog
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

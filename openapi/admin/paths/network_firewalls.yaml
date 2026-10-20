@@ -1,0 +1,37 @@
+get:
+  operationId: list-firewalls
+  security:
+    - BearerAuth: []
+  description: |-
+    List the firewalls of the active organisation.
+    lists every org's firewalls, or one org's with org_id.
+  tags:
+    - network-firewall
+  summary: List firewalls
+  parameters:
+    - description: filter by org
+      name: org_id
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/firewall.Firewall.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

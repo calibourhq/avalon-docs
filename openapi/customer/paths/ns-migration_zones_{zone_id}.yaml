@@ -1,0 +1,78 @@
+get:
+  operationId: nameserver-migration-status-for-a-zone
+  security:
+    - BearerAuth: []
+  description: >-
+    Reports whether a DNS zone still answers on the previous nameserver addresses, and whether the migration can be completed automatically.
+  tags:
+    - dns
+  summary: Nameserver migration status for a zone
+  parameters:
+    - description: zone id
+      name: zone_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: migrate-a-zone-onto-the-current-nameservers
+  security:
+    - BearerAuth: []
+  description: >-
+    Rewrites the zone's SOA nameserver and apex NS records, and repoints the registry delegation when the domain is registered with us.
+  tags:
+    - dns
+  summary: Migrate a zone onto the current nameservers
+  parameters:
+    - description: zone id
+      name: zone_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

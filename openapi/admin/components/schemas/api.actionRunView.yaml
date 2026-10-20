@@ -1,0 +1,77 @@
+type: object
+properties:
+  boot_session:
+    description: |-
+      BootSession is the rescue panel's own view, so one poll paints both
+      timelines: until the machine is up there is no action progress to draw,
+      and the boot phases are the only thing there is to show.
+    allOf:
+      - $ref: ./api.rescueSessionView.yaml
+  created_at:
+    type: string
+  definition_id:
+    type: string
+  definition_key:
+    type: string
+  definition_name:
+    type: string
+  ended_at:
+    type: string
+  exit_code:
+    type: integer
+  expires_at:
+    type: string
+  has_log:
+    type: boolean
+  id:
+    type: string
+  inputs:
+    type: array
+    items:
+      $ref: ./dedicated.ActionInput.yaml
+  log_bytes:
+    type: integer
+  log_visible:
+    description: |-
+      LogVisible says whether this viewer may fetch the log at all, so the page
+      knows whether to offer the link.
+    type: boolean
+  message:
+    type: string
+  on_success:
+    type: string
+  org_id:
+    type: string
+  percent:
+    type: integer
+  progress_at:
+    type: string
+  progress_message:
+    type: string
+  running_at:
+    type: string
+  secret_keys:
+    type: array
+    items:
+      type: string
+  server_id:
+    type: string
+  started_at:
+    type: string
+  status:
+    type: string
+  step_index:
+    type: integer
+  step_key:
+    type: string
+  steps:
+    description: |-
+      Steps is the run's own snapshot, not the definition's, so a timeline
+      drawn for a run from last month is the timeline that run actually had.
+    type: array
+    items:
+      $ref: ./dedicated.ActionStep.yaml
+  values:
+    type: object
+    additionalProperties:
+      type: string

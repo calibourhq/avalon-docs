@@ -1,0 +1,52 @@
+post:
+  operationId: open-a-dedicated-server-console-session
+  security:
+    - BearerAuth: []
+  description: >-
+    Asks the datacenter agent to acquire the server's physical console. Returns a session id to poll; the console is not usable until its status is "ready".
+
+    Only for active services; an organisation has a limited number of concurrent consoles.
+
+    also opens on suspended services.
+  tags:
+    - dedicated
+  summary: Open a dedicated server console session
+  parameters:
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

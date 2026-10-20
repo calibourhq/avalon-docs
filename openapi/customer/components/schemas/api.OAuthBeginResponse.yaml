@@ -1,0 +1,4 @@
+type: object
+properties:
+  authorize_url:
+    type: string

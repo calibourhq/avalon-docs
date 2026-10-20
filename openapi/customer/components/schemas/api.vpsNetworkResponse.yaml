@@ -1,0 +1,31 @@
+type: object
+properties:
+  anti_spoofing_disabled:
+    description: |-
+      AntiSpoofingDisabled mirrors the admin-only enforcement override so the
+      admin network tab can render the toggle without a second fetch.
+    type: boolean
+  ipv4:
+    type: array
+    items:
+      $ref: ./api.networkInterfaceInfo.yaml
+  ipv4_enabled:
+    type: boolean
+  ipv6:
+    type: array
+    items:
+      $ref: ./api.networkInterfaceInfo.yaml
+  ipv6_enabled:
+    type: boolean
+  primary_interface:
+    type: string
+  primary_private_network_id:
+    type: string
+  primary_private_network_name:
+    type: string
+  private_config:
+    $ref: ./api.privateIPConfigIn.yaml
+  routed_prefixes:
+    type: array
+    items:
+      $ref: ./api.routedPrefixInfo.yaml

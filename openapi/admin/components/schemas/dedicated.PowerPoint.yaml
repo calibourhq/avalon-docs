@@ -1,0 +1,19 @@
+type: object
+properties:
+  avg_watts:
+    type: number
+  has_data:
+    description: |-
+      HasData distinguishes a bucket nobody polled from one that genuinely read
+      0 W, so a chart can leave a gap rather than draw a floor.
+    type: boolean
+  max_watts:
+    type: integer
+  min_watts:
+    type: integer
+  on_ratio:
+    type: number
+  time:
+    type: string
+  watt_hours:
+    type: number

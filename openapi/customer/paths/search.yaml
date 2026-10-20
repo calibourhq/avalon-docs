@@ -1,0 +1,57 @@
+get:
+  operationId: global-search
+  security:
+    - BearerAuth: []
+  description: >-
+    Searches every entity type the caller may read, in one call. Results are limited to the active organisation and to the entity types the caller's org permissions grant. Types the caller cannot read are silently omitted: the endpoint filters, it never rejects. Results carry machine type slugs and ids only: display labels, icons and URLs belong to the client.
+  tags:
+    - search
+  summary: Global search
+  parameters:
+    - description: search query, minimum 2 characters
+      name: q
+      in: query
+      required: true
+      schema:
+        type: string
+    - description: org to search; must equal the active org
+      name: org_id
+      in: query
+      schema:
+        type: string
+    - description: comma-separated type slugs to restrict the search to
+      name: types
+      in: query
+      schema:
+        type: string
+    - description: >-
+        rows per type for the full results page: up to 25, or 100 with a single type in ?types=. Setting it also returns every type with hits instead of the top 8
+      name: limit
+      in: query
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/search.Response.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

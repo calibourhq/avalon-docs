@@ -1,0 +1,22 @@
+type: object
+properties:
+  channel:
+    type: string
+  closed_at:
+    type: string
+  created_at:
+    type: string
+  id:
+    type: string
+  last_reply_at:
+    type: string
+  priority:
+    type: string
+  status:
+    type: string
+  subject:
+    type: string
+  ticket_number:
+    type: string
+  updated_at:
+    type: string

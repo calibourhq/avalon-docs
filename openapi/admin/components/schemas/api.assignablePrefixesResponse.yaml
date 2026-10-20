@@ -1,0 +1,21 @@
+type: object
+properties:
+  ipv4:
+    type: array
+    items:
+      $ref: ./api.assignablePrefix.yaml
+  ipv6:
+    type: array
+    items:
+      $ref: ./api.assignablePrefix.yaml
+  routable:
+    description: |-
+      Routable lists existing IPAM prefixes that can be attached whole, for
+      space that is deliberately not part of the pool.
+    type: array
+    items:
+      $ref: ./api.routablePrefix.yaml
+  routed:
+    type: array
+    items:
+      $ref: ./api.routedContainer.yaml

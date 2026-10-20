@@ -1,0 +1,90 @@
+put:
+  operationId: update-a-firewall-rule
+  security:
+    - BearerAuth: []
+  description: Update an existing firewall rule.
+  tags:
+    - network-firewall
+  summary: Update a firewall rule
+  parameters:
+    - description: firewall id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: rule id
+      name: rule_id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    $ref: ../components/requestBodies/api.firewallRuleRequest.yaml
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/firewall.FirewallRule.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+delete:
+  operationId: delete-a-firewall-rule
+  security:
+    - BearerAuth: []
+  description: Delete a rule from a firewall.
+  tags:
+    - network-firewall
+  summary: Delete a firewall rule
+  parameters:
+    - description: firewall id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: rule id
+      name: rule_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

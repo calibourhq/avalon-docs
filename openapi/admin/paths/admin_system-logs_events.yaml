@@ -1,0 +1,75 @@
+get:
+  operationId: list-persisted-log-events
+  security:
+    - BearerAuth: []
+  description: Returns the stored error stream, newest first.
+  tags:
+    - system-logs
+  summary: List persisted log events
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/eventlog.ListResult.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+delete:
+  operationId: clear-stored-log-events
+  security:
+    - BearerAuth: []
+  description: >-
+    Deletes the events matching the filter. With no filter the whole log goes, and the recorded problems with it.
+  tags:
+    - system-logs
+  summary: Clear stored log events
+  parameters:
+    - description: level
+      name: level
+      in: query
+      schema:
+        type: string
+    - description: error code
+      name: code
+      in: query
+      schema:
+        type: string
+    - description: node
+      name: node
+      in: query
+      schema:
+        type: string
+    - description: issue fingerprint
+      name: fingerprint
+      in: query
+      schema:
+        type: string
+    - description: RFC3339 lower bound
+      name: from
+      in: query
+      schema:
+        type: string
+    - description: RFC3339 upper bound
+      name: to
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

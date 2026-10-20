@@ -1,0 +1,51 @@
+type: object
+required:
+  - captcha_id
+  - captcha_val
+  - country
+  - email
+  - first_name
+  - last_name
+  - password
+properties:
+  address:
+    type: string
+    maxLength: 255
+  address2:
+    type: string
+    maxLength: 255
+  billing_email:
+    type: string
+    maxLength: 255
+  captcha_id:
+    type: string
+  captcha_val:
+    type: string
+  city:
+    type: string
+    maxLength: 100
+  company_name:
+    type: string
+    maxLength: 255
+  country:
+    type: string
+  email:
+    type: string
+  first_name:
+    type: string
+    maxLength: 100
+  last_name:
+    type: string
+    maxLength: 100
+  password:
+    type: string
+    minLength: 8
+  postal_code:
+    type: string
+    maxLength: 20
+  registration:
+    type: string
+    maxLength: 100
+  vat_number:
+    type: string
+    maxLength: 100

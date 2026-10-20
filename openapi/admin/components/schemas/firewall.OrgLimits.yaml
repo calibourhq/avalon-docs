@@ -1,0 +1,28 @@
+type: object
+properties:
+  created_at:
+    type: string
+  id:
+    type: string
+  max_cdn_zones:
+    type: integer
+  max_dedicated_isos:
+    type: integer
+  max_dns_zones:
+    type: integer
+  max_email:
+    type: integer
+  max_hosting:
+    type: integer
+  max_iso_images:
+    type: integer
+  max_s3_buckets:
+    type: integer
+  max_vps:
+    type: integer
+  org_id:
+    type: string
+  port25_allowed:
+    type: boolean
+  updated_at:
+    type: string

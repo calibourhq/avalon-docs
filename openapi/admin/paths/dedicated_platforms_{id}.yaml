@@ -1,0 +1,59 @@
+get:
+  operationId: get-dedicated-platform
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Get dedicated platform
+  parameters:
+    - description: platform id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.Platform.yaml
+put:
+  operationId: update-dedicated-platform
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Update dedicated platform
+  parameters:
+    - description: platform id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.Platform.yaml
+delete:
+  operationId: delete-dedicated-platform
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Delete dedicated platform
+  parameters:
+    - description: platform id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content

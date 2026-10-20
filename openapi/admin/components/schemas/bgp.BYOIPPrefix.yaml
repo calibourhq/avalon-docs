@@ -1,0 +1,41 @@
+type: object
+required:
+  - prefix
+properties:
+  admin_notes:
+    type: string
+  created_at:
+    type: string
+  dest_id:
+    type: string
+  dest_type:
+    description: none|vps
+    type: string
+  id:
+    type: string
+  instances:
+    type: array
+    items:
+      $ref: ./bgp.BYOIPInstance.yaml
+  next_hop:
+    type: string
+  org_asn:
+    $ref: ./bgp.OrgASN.yaml
+  org_asn_id:
+    description: nil = BYOIP; set = BYOAS
+    type: string
+  org_id:
+    type: string
+  prefix:
+    type: string
+    maxLength: 50
+  region_id:
+    type: string
+  status:
+    $ref: ./bgp.BYOIPStatus.yaml
+  sub_prefixes:
+    type: array
+    items:
+      $ref: ./bgp.BYOIPSubPrefix.yaml
+  updated_at:
+    type: string

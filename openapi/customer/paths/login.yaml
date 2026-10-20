@@ -1,0 +1,26 @@
+post:
+  security: []
+  operationId: login-as-a-user
+  tags:
+    - auth
+  summary: Login as a user
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/api.LoginRequest.yaml
+    description: Login Request
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.LoginResponse.yaml
+    '202':
+      description: second factor required
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.TwoFAChallengeResponse.yaml

@@ -1,0 +1,69 @@
+type: object
+required:
+  - email
+  - first_name
+  - preferred_language
+properties:
+  auth_source:
+    description: >-
+      AuthSource is "local" (native email/password) or "oauth" (external IdP
+      such
+
+      as Keycloak). An "oauth" user has no password and must migrate to "local"
+
+      by setting one before they can use the account.
+    type: string
+  blocked_at:
+    description: |-
+      BlockedAt is set while the account may not sign in: every sign-in path
+      refuses it and the session middleware rejects any session it still
+      holds (see Block). BlockedReason is the staff note; the customer only
+      learns that the account is blocked.
+    type: string
+  blocked_reason:
+    type: string
+  created_at:
+    type: string
+  email:
+    type: string
+    maxLength: 255
+  email_verified:
+    type: boolean
+  first_name:
+    type: string
+    maxLength: 100
+  id:
+    type: string
+  inactive_since:
+    description: |-
+      InactiveSince is set by the inactivity sweep once the account has not
+      logged in for the threshold period, and cleared again on login. It is a
+      bookkeeping mark, not a block: inactive accounts can still log in. The
+      timestamp records when dormancy was detected so a later phase can act on
+      "inactive for X" (e.g. auto-deletion).
+    type: string
+  last_login:
+    type: string
+  last_name:
+    type: string
+    maxLength: 100
+  preferred_language:
+    type: string
+    maxLength: 10
+  preferred_theme:
+    description: |-
+      PreferredTheme is the UI color mode: "system" (follow the browser
+      preference), "light" or "dark".
+    type: string
+    enum:
+      - system
+      - light
+      - dark
+  telegram_chat_id:
+    type: integer
+  telegram_first_name:
+    type: string
+  telegram_username:
+    type: string
+  updated_at:
+    type: string

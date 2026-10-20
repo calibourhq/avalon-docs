@@ -1,0 +1,41 @@
+post:
+  operationId: top-up-org-credit
+  security:
+    - BearerAuth: []
+  description: >-
+    Creates a draft credit top-up receipt to pay through any invoice payment route. An unpaid top-up of the same amount is returned instead of a new one.
+  tags:
+    - billing
+  summary: Top up org credit
+  parameters:
+    - description: org id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/billing.Invoice.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

@@ -1,0 +1,44 @@
+get:
+  operationId: get-a-servers-current-action-run-admin
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated-admin
+  summary: Get a server's current action run (admin)
+  parameters:
+    - description: server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+delete:
+  operationId: cancel-a-servers-current-action-run-admin
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated-admin
+  summary: Cancel a server's current action run (admin)
+  parameters:
+    - description: server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: reboot the machine back to its disk
+      name: reboot
+      in: query
+      schema:
+        type: boolean
+  responses:
+    '204':
+      description: No Content

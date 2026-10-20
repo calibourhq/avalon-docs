@@ -1,0 +1,7 @@
+type: string
+enum:
+  - in
+  - out
+x-enum-varnames:
+  - DirectionIn
+  - DirectionOut

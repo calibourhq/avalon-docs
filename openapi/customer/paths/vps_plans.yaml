@@ -1,0 +1,30 @@
+get:
+  operationId: list-vps-plans
+  security:
+    - BearerAuth: []
+  description: >-
+    Returns the active VPS plans with their name (used to order) and available_regions (region names).
+  tags:
+    - vps
+  summary: List VPS plans
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/api.vpsUserPlan.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

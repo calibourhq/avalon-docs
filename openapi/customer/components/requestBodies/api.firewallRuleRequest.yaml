@@ -1,0 +1,6 @@
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/api.firewallRuleRequest.yaml
+description: Firewall rule
+required: true

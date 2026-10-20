@@ -1,0 +1,69 @@
+get:
+  operationId: list-promo-codes
+  security:
+    - BearerAuth: []
+  description: Returns all promo codes.
+  tags:
+    - promo-codes
+  summary: List promo codes
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/billing.PromoCode.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: create-promo-code
+  security:
+    - BearerAuth: []
+  description: Creates a new promo code.
+  tags:
+    - promo-codes
+  summary: Create promo code
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/billing.PromoCodeRequest.yaml
+    description: Promo code request
+    required: true
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/billing.PromoCode.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

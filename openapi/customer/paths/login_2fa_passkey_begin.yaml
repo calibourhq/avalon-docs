@@ -1,0 +1,38 @@
+post:
+  security: []
+  operationId: begin-user-passkey-2fa
+  description: >-
+    Begin passkey assertion for a pending user 2FA login session. options holds the WebAuthn assertion options.
+  tags:
+    - two-factor
+  summary: Begin user passkey 2FA
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              challenge_id:
+                type: string
+              options:
+                type: object
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

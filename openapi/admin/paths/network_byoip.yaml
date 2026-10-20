@@ -1,0 +1,79 @@
+get:
+  operationId: list-byoip-prefixes
+  security:
+    - BearerAuth: []
+  description: |-
+    List the BYOIP (routed subnet) prefixes of the active organisation.
+    lists every org's prefixes, or one org's with org_id.
+  tags:
+    - network-bgp
+  summary: List BYOIP prefixes
+  parameters:
+    - description: filter by org
+      name: org_id
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/bgp.BYOIPPrefix.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: create-byoip-prefix
+  security:
+    - BearerAuth: []
+  description: >-
+    Submit a routed subnet (BYOIP) for announcement. It goes live at once when covered by the given active ASN's prefixes, otherwise it waits for review.
+
+    the subnet is active at once.
+  tags:
+    - network-bgp
+  summary: Create BYOIP prefix
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/bgp.BYOIPPrefix.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

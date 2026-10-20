@@ -1,0 +1,17 @@
+type: object
+required:
+  - plan
+properties:
+  billing_mode:
+    description: >-
+      BillingMode is an admin-only override for how the change is billed
+      ("charge", "no_charge",
+
+      "none"). It is ignored for customer sessions, which always use the default
+      proration behaviour.
+    type: string
+  include_disk:
+    type: boolean
+  plan:
+    description: Plan is the target plan's name, e.g. "vps-m".
+    type: string

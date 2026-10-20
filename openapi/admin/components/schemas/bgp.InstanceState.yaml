@@ -1,0 +1,8 @@
+type: object
+properties:
+  last_error:
+    type: string
+  status:
+    type: string
+  synced_at:
+    type: string

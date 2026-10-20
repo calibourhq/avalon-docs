@@ -1,0 +1,38 @@
+get:
+  operationId: list-network-switches-admin
+  security:
+    - BearerAuth: []
+  tags:
+    - network-switches
+  summary: List network switches (admin)
+  parameters:
+    - description: filter by region
+      name: region_id
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/netswitch.Switch.yaml
+post:
+  operationId: create-network-switch-admin
+  security:
+    - BearerAuth: []
+  description: >-
+    Probes the device through its agent before saving; discovered ports are stored.
+  tags:
+    - network-switches
+  summary: Create network switch (admin)
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/netswitch.Switch.yaml

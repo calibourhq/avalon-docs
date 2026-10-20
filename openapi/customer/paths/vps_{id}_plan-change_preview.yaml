@@ -1,0 +1,42 @@
+post:
+  operationId: preview-a-vps-plan-change
+  security:
+    - BearerAuth: []
+  description: Returns the proration preview for a single prospective plan change.
+  tags:
+    - vps
+  summary: Preview a VPS plan change
+  parameters:
+    - description: id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    $ref: ../components/requestBodies/api.planChangeBody.yaml
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/vps.PlanChangePreviewResult.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

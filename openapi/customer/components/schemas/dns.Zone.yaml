@@ -1,0 +1,103 @@
+type: object
+properties:
+  billing_cycle:
+    type: string
+  cancelled_at:
+    type: string
+  created_at:
+    type: string
+  dnssec_enabled:
+    type: boolean
+  domain_auto_created:
+    type: boolean
+  domain_id:
+    description: >-
+      DomainID links the zone to a registrar domain (internal/domains) it is
+      bundled
+
+      with. IncludedWithDomain marks freeness granted BY that domain: it stays
+      false
+
+      when the subscription already cost nothing at link time (an admin gift) or
+      when the
+
+      zone's own plan outranks the included one, so losing the domain never
+      revokes
+
+      admin-granted freeness or touches a paid zone. DomainAutoCreated records
+      that
+
+      the zone was created for the domain order itself: a failed registration
+      deletes
+
+      such a zone, while a merely-linked pre-existing zone is only unlinked.
+    type: string
+  domain_name:
+    description: linked registrar domain, for display
+    type: string
+  expires_at:
+    type: string
+  id:
+    type: string
+  included_with_domain:
+    type: boolean
+  invoice_id:
+    type: string
+  name:
+    type: string
+  org_id:
+    description: >-
+      OrgID is nil for unowned (admin-managed, unbilled) zones, e.g.
+      infrastructure
+
+      reverse zones. Unowned zones are invisible to customers and never billed.
+    type: string
+  pdns_id:
+    type: integer
+  pending_plan_id:
+    description: >-
+      PendingPlanID/PlanChangeInvoiceID track a payment-gated plan upgrade
+      awaiting its proration
+
+      proforma. Set by StartPlanChange and cleared by OnInvoicePaidPlanChange
+      (paid) or
+
+      CancelPlanChange (voided). Nil whenever there is no plan change in flight.
+    type: string
+  pending_plan_name:
+    type: string
+  plan_change_invoice_id:
+    type: string
+  plan_change_proration_cents:
+    type: integer
+  plan_id:
+    type: string
+  plan_name:
+    description: >-
+      Transient, populated by GetDNSZone for the detail view - not stored
+      columns.
+    type: string
+  price_cents:
+    description: subscription's live per-cycle price (billing source of truth)
+    type: integer
+  renews_at:
+    type: string
+  soa_nameserver:
+    type: string
+  status:
+    $ref: ./dns.ZoneStatus.yaml
+  subscription_exempt_from_automation:
+    description: >-
+      SubscriptionExemptFromAutomation excludes the zone from
+      auto-suspension/termination and dunning.
+    type: boolean
+  subscription_id:
+    type: string
+  suspended_at:
+    type: string
+  suspended_reason:
+    type: string
+  updated_at:
+    type: string
+  zone_type:
+    $ref: ./dns.ZoneType.yaml

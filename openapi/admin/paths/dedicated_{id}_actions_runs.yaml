@@ -1,0 +1,35 @@
+get:
+  operationId: list-a-servers-action-history
+  security:
+    - BearerAuth: []
+  description: |-
+    Returns {runs, total, page, page_size} for this service's runs.
+    sees the machine's whole history.
+  tags:
+    - dedicated
+  summary: List a server's action history
+  parameters:
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: page number
+      name: page
+      in: query
+      schema:
+        type: integer
+    - description: page size (max 100)
+      name: page_size
+      in: query
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true

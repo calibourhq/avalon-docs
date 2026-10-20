@@ -1,0 +1,39 @@
+type: object
+properties:
+  actual_count:
+    type: integer
+  counts:
+    $ref: ./bgp.DriftCounts.yaml
+  desired_count:
+    type: integer
+  entries:
+    type: array
+    items:
+      $ref: ./bgp.StateEntry.yaml
+  fetch_error:
+    description: >-
+      FetchError is set when the actual side could not be read. Entries then
+      carry
+
+      the desired side only and their state is meaningless, so the UI must say
+
+      "unknown" rather than "missing".
+    type: string
+  kind:
+    type: string
+  last_synced_at:
+    type: string
+  push_error:
+    type: string
+  push_status:
+    description: >-
+      PushStatus is the aggregate of this server's instance rows for the
+      resource
+
+      type: active when every row is active, error when any failed, pending when
+
+      some are still awaiting their first successful push, none when there are
+      no
+
+      rows at all.
+    type: string

@@ -1,0 +1,26 @@
+type: object
+properties:
+  created_at:
+    type: string
+  email:
+    type: string
+  expires_at:
+    type: string
+  id:
+    type: string
+  invited_by:
+    type: string
+  invited_by_id:
+    type: string
+  org_id:
+    type: string
+  org_name:
+    type: string
+  permissions:
+    type: array
+    items:
+      $ref: ./orgs.Permission.yaml
+  status:
+    type: string
+  token:
+    type: string

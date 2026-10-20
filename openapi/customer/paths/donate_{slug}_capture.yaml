@@ -1,0 +1,40 @@
+post:
+  security: []
+  operationId: capture-a-donation
+  description: Confirms a Stripe/PayPal donation after the donor returns; HMAC-secured.
+  tags:
+    - donations
+  summary: Capture a donation
+  parameters:
+    - description: donation page slug
+      name: slug
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

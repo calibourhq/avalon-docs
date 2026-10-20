@@ -1,0 +1,18 @@
+type: object
+properties:
+  company_name:
+    type: string
+  first_name:
+    type: string
+  id:
+    type: string
+  is_active:
+    type: boolean
+  is_owner:
+    type: boolean
+  last_name:
+    type: string
+  permissions:
+    type: array
+    items:
+      $ref: ./orgs.Permission.yaml

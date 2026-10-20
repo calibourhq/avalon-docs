@@ -1,0 +1,41 @@
+type: object
+properties:
+  credit_held_cents:
+    type: integer
+  credit_notes:
+    type: integer
+  from:
+    type: string
+  gross_cents:
+    type: integer
+  invoices:
+    type: integer
+  net_cents:
+    type: integer
+  open_items_cents:
+    type: integer
+  open_items_count:
+    type: integer
+  receipts:
+    type: integer
+  received_cents:
+    type: integer
+  refunded_cents:
+    type: integer
+  tax_cents:
+    type: integer
+  to:
+    type: string
+  vat:
+    type: array
+    items:
+      $ref: ./billing.VatSummaryRow.yaml
+  warnings:
+    description: >-
+      Warnings name configuration gaps that make the files less useful than they
+      could be,
+
+      as message codes the UI translates.
+    type: array
+    items:
+      type: string

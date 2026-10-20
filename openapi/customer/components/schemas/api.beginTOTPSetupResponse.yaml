@@ -1,0 +1,6 @@
+type: object
+properties:
+  provisioning_uri:
+    type: string
+  secret:
+    type: string

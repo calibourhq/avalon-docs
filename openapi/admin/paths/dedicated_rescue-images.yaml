@@ -1,0 +1,16 @@
+post:
+  operationId: add-a-rescue-image
+  security:
+    - BearerAuth: []
+  description: >-
+    Adds a rescue image. A live image (style "live") is downloaded, unpacked into its kernel, initrd and filesystem, and distributed to every boot-capable agent. A chained image (style "chain") is only a URL - netboot.xyz by default - which the booting server fetches for itself, so nothing is downloaded or distributed.
+  tags:
+    - dedicated-admin
+  summary: Add a rescue image
+  responses:
+    '202':
+      description: Accepted
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.DedicatedISOImage.yaml

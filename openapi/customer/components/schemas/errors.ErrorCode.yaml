@@ -1,0 +1,2751 @@
+type: string
+enum:
+  - INTERNAL_ERROR
+  - VALIDATION_ERROR
+  - NOT_FOUND
+  - ALREADY_EXISTS
+  - UNAUTHORIZED
+  - LIMIT_EXCEEDED
+  - RATE_LIMIT_EXCEEDED
+  - INVALID_ID
+  - INVALID_REQUEST_BODY
+  - INSUFFICIENT_PERMISSIONS
+  - SESSION_INVALID
+  - STAFF_ACCESS_REQUIRED
+  - SLA_POLICY_NOT_FOUND
+  - ESCALATION_RULE_NOT_FOUND
+  - AUTO_TAG_NOT_FOUND
+  - DEPARTMENT_NOT_FOUND
+  - TICKET_NOT_FOUND
+  - SUPPORT_PRIORITY_NOT_ALLOWED
+  - SUPPORT_PRIORITIES_EMPTY
+  - SUPPORT_DEFAULT_PRIORITY_NOT_ALLOWED
+  - SUPPORT_ATTACHMENT_NOT_FOUND
+  - SUPPORT_ATTACHMENT_TOO_LARGE
+  - SUPPORT_ATTACHMENT_LIMIT
+  - SUPPORT_TICKET_CLOSED
+  - SUPPORT_DEPARTMENT_NAME_TAKEN
+  - ABUSE_REPORT_NOT_FOUND
+  - ABUSE_CATEGORY_NOT_FOUND
+  - ABUSE_CATEGORY_SYSTEM
+  - ABUSE_CATEGORY_IN_USE
+  - ABUSE_SENDER_EXISTS
+  - ABUSE_SERVICE_NOT_FOUND
+  - ABUSE_REPORT_INFORMATIONAL
+  - ABUSE_REPORT_NOT_INFORMATIONAL
+  - TAX_RATE_NOT_FOUND
+  - REGION_NOT_FOUND
+  - REGION_IN_USE
+  - PLAN_NOT_IN_REGION
+  - ADMIN_GROUP_NOT_FOUND
+  - SYSTEM_GROUP_PROTECTED
+  - GROUP_HAS_MEMBERS
+  - LAST_SYSTEM_ADMIN
+  - FEATURE_DISABLED
+  - DASHBOARD_WIDGET_NOT_FOUND
+  - VPS_NOT_FOUND
+  - VPS_CLUSTER_NOT_FOUND
+  - VPS_PLAN_NOT_FOUND
+  - VPS_ALREADY_RUNNING
+  - VPS_ALREADY_STOPPED
+  - VPS_NOT_STOPPED
+  - VPS_IP_POOL_EXHAUSTED
+  - VPS_NO_CLUSTER_FOR_REGION
+  - VPS_PROXMOX_CONNECTION_FAILED
+  - VPS_VMID_ALLOCATION_FAILED
+  - VPS_NO_IP_FAMILY_SELECTED
+  - VPS_IP_FAMILY_UNAVAILABLE
+  - VPS_PRIMARY_INTERFACE_INVALID
+  - VPS_PRIVATE_NETWORK_REQUIRED
+  - VPS_NO_NODE_CAPACITY
+  - VPS_VM_NOT_FOUND
+  - VPS_ROOT_PASSWORD_UNAVAILABLE
+  - VPS_ROOT_PASSWORD_NOT_READY
+  - VPS_ALREADY_MANAGED
+  - VPS_PLAN_CHANGE_NOT_FOUND
+  - VPS_PLAN_CHANGE_IN_PROGRESS
+  - VPS_PLAN_CHANGE_SAME_PLAN
+  - VPS_PLAN_CHANGE_UNAVAILABLE
+  - VPS_PLAN_CHANGE_NOT_ACTIVE
+  - VPS_LOCKED
+  - VPS_DISK_SHRINK_NOT_ALLOWED
+  - VPS_PLAN_REGION_UNAVAILABLE
+  - VPS_CLUSTER_UNREACHABLE
+  - VPS_BACKUP_LIMIT_REACHED
+  - VPS_BACKUP_NOT_FOUND
+  - VPS_BACKUP_NOT_USER_CREATED
+  - VPS_BACKUPS_DISABLED
+  - ISO_NOT_FOUND
+  - ISO_INVALID_URL
+  - ISO_TOO_LARGE
+  - ISO_NOT_ISO
+  - ISO_NO_ACTIVE_VPS
+  - ISO_NOT_READY
+  - ISO_DOWNLOAD_FAILED
+  - ISO_IN_USE
+  - VPS_NOT_PROVISIONED
+  - VPS_NOT_EPHEMERAL
+  - VPS_HOURLY_CANNOT_CANCEL
+  - VPS_OS_CHANGE_NOT_ALLOWED
+  - VPS_ADOPT_TEMPLATE
+  - VPS_FIRST_BOOT_NEEDS_PUBLIC
+  - VPS_FIRST_BOOT_SCRIPT_TOO_BIG
+  - VPS_FIRST_BOOT_SCRIPT_MISSING
+  - VPS_FIRST_BOOT_NOT_EXPECTED
+  - VPS_EPHEMERAL_MAX_AGE_WITHOUT_EPHEMERAL
+  - VPS_EPHEMERAL_HOURLY_ONLY
+  - VPS_EPHEMERAL_MAX_AGE_RANGE
+  - VPS_EPHEMERAL_MAX_AGE_PASSED
+  - VPS_CLUSTER_REGION_TAKEN
+  - VPS_OS_FAMILY_NOT_FOUND
+  - VPS_OS_VERSION_NOT_FOUND
+  - VPS_OS_ICON_TOO_LARGE
+  - VPS_OS_ICON_INVALID
+  - VPS_ADDRESS_FAMILY_MISMATCH
+  - VPS_PREFIX_NOT_IN_POOL
+  - VPS_NO_ROUTED_POOL
+  - VPS_ADDRESS_NOT_ASSIGNED
+  - VPS_SUBNET_NOT_ASSIGNED
+  - VPS_CONSOLE_TOKEN_INVALID
+  - VPS_CONSOLE_UPGRADE_REQUIRED
+  - VPS_CONSOLE_ORIGIN_DENIED
+  - CATEGORY_NOT_FOUND
+  - CATEGORY_WRONG_PRODUCT
+  - CATEGORY_BUILTIN
+  - CATEGORY_HAS_PLANS
+  - CATEGORY_HAS_NODES
+  - ISO_GLOBAL_PROTECTED
+  - VPS_PLAN_CHANGE_APPLY_FAILED
+  - S3_CONNECTION_FAILED
+  - S3_NOT_FOUND
+  - S3_PLAN_NOT_FOUND
+  - S3_KEY_NOT_FOUND
+  - S3_BUCKET_NAME_TAKEN
+  - S3_BUCKET_NAME_INVALID
+  - S3_QUOTA_EXCEEDED
+  - S3_NO_BUCKET_FOR_KEY
+  - S3_KEY_LIMIT_REACHED
+  - S3_ALREADY_IMPORTED
+  - S3_NODE_NOT_FOUND
+  - S3_OBJECT_NOT_FOUND
+  - S3_OBJECT_KEY_INVALID
+  - S3_FOLDER_NOT_EMPTY
+  - S3_PLAN_CHANGE_NOT_FOUND
+  - S3_PLAN_CHANGE_IN_PROGRESS
+  - S3_PLAN_CHANGE_SAME_PLAN
+  - S3_PLAN_CHANGE_UNAVAILABLE
+  - S3_PLAN_CHANGE_NOT_ACTIVE
+  - S3_PLAN_CHANGE_USAGE_TOO_HIGH
+  - FROXLOR_UNAVAILABLE
+  - HOSTING_NOT_FOUND
+  - HOSTING_PLAN_NOT_FOUND
+  - HOSTING_SERVER_NOT_FOUND
+  - HOSTING_NO_SERVER_REGION
+  - HOSTING_NAME_TAKEN
+  - HOSTING_LIMIT_REACHED
+  - HOSTING_RESOURCE_NOT_FOUND
+  - HOSTING_INVALID_INPUT
+  - HOSTING_NOT_ACTIVE
+  - HOSTING_PATH_TRAVERSAL
+  - HOSTING_WEAK_PASSWORD
+  - HOSTING_DOMAIN_INVALID
+  - HOSTING_LETSENCRYPT_REJECTED
+  - HOSTING_PLAN_CHANGE_NOT_FOUND
+  - HOSTING_PLAN_CHANGE_IN_PROGRESS
+  - HOSTING_PLAN_CHANGE_SAME_PLAN
+  - HOSTING_PLAN_CHANGE_UNAVAILABLE
+  - HOSTING_PLAN_CHANGE_NOT_ACTIVE
+  - HOSTING_PLAN_CHANGE_USAGE_TOO_HIGH
+  - EMAIL_UNAVAILABLE
+  - EMAIL_NOT_FOUND
+  - EMAIL_PLAN_NOT_FOUND
+  - EMAIL_DOMAIN_INVALID
+  - EMAIL_DOMAIN_TAKEN
+  - EMAIL_NAME_TAKEN
+  - EMAIL_QUOTA_EXCEEDED
+  - EMAIL_LIMIT_REACHED
+  - EMAIL_MAILBOX_NOT_FOUND
+  - EMAIL_RESOURCE_NOT_FOUND
+  - EMAIL_INVALID_INPUT
+  - EMAIL_WEAK_PASSWORD
+  - EMAIL_NOT_ACTIVE
+  - EMAIL_DNS_NO_ZONE
+  - EMAIL_DNS_PLAN_CHANGED
+  - EMAIL_PLAN_CHANGE_NOT_FOUND
+  - EMAIL_PLAN_CHANGE_IN_PROGRESS
+  - EMAIL_PLAN_CHANGE_SAME_PLAN
+  - EMAIL_PLAN_CHANGE_UNAVAILABLE
+  - EMAIL_PLAN_CHANGE_NOT_ACTIVE
+  - EMAIL_PLAN_CHANGE_USAGE_TOO_HIGH
+  - S3_UPLOAD_TOO_LARGE
+  - S3_UPLOAD_TOO_MANY_FILES
+  - S3_GRANT_NO_PERMISSION
+  - HOSTING_SERVER_IN_USE
+  - HOSTING_DOMAIN_ALIAS_SELF
+  - MAINTENANCE_NOT_FOUND
+  - MAINTENANCE_RECIPIENTS_CHANGED
+  - MAINTENANCE_NOT_PUBLISHED
+  - MAINTENANCE_NO_RECIPIENTS
+  - MAINTENANCE_TARGET_REGION_REQUIRED
+  - MAINTENANCE_TARGET_PRODUCT_REQUIRED
+  - MAINTENANCE_TARGET_SWITCH_REQUIRED
+  - MAINTENANCE_TARGET_NODE_REQUIRED
+  - MAINTENANCE_TARGET_RACK_REQUIRED
+  - MAINTENANCE_TARGET_SERVICE_REQUIRED
+  - MAINTENANCE_TARGET_PRODUCT_NOT_REGIONAL
+  - MAINTENANCE_TARGET_KIND_INVALID
+  - NEWS_ARTICLE_NOT_FOUND
+  - NEWS_IMAGE_NOT_FOUND
+  - NEWS_IMAGE_UNREADABLE
+  - NOTIFICATION_TEMPLATE_NOT_FOUND
+  - NOTIFICATION_TEMPLATE_SYSTEM
+  - NOTIFICATION_ENGLISH_REQUIRED
+  - NOTIFICATION_NOT_FAILED
+  - S3_BUCKET_DELETE_FAILED
+  - HOSTING_TEARDOWN_FAILED
+  - HOSTING_PLAN_CHANGE_APPLY_FAILED
+  - EMAIL_TEARDOWN_FAILED
+  - EMAIL_PLAN_CHANGE_APPLY_FAILED
+  - S3_NODE_UNREACHABLE
+  - S3_NODE_UNHEALTHY
+  - ORG_TRANSFER_TO_SELF
+  - BGP_ROUTE_SERVER_UNREACHABLE
+  - BGP_AS_SET_IMPORT_FAILED
+  - BILLING_PAYMENT_DECLINED
+  - BILLING_PAYMENT_FAILED
+  - EMAIL_ALREADY_REGISTERED
+  - INVALID_CAPTCHA
+  - REGISTRATION_DISABLED
+  - EMAIL_NOT_VERIFIED
+  - SERVICE_SUSPENDED
+  - SERVICE_NOT_ACTIVE
+  - INVALID_TOKEN
+  - INVITE_EXPIRED
+  - INVITE_ALREADY_USED
+  - OAUTH_ERROR
+  - PASSWORD_SETUP_REQUIRED
+  - PASSWORD_INCORRECT
+  - ACCOUNT_DELETION_BLOCKED
+  - TWO_FA_INVALID_CODE
+  - TWO_FA_CODE_EXPIRED
+  - TWO_FA_TOO_MANY_ATTEMPTS
+  - TWO_FA_OTP_RATE_LIMIT
+  - TWO_FA_ALREADY_ENABLED
+  - TWO_FA_NOT_ENABLED
+  - AUTH_INVALID_CREDENTIALS
+  - AUTH_ACCOUNT_NOT_FOUND
+  - AUTH_ACCOUNT_BLOCKED
+  - AUTH_CUSTOMER_SESSION_REQUIRED
+  - AUTH_LOGIN_LINK_INVALID
+  - AUTH_MIGRATION_NOT_PENDING
+  - TWO_FA_SESSION_INVALID
+  - TWO_FA_OTP_UNAVAILABLE
+  - TWO_FA_TELEGRAM_NOT_LINKED
+  - TWO_FA_TELEGRAM_UNAVAILABLE
+  - PASSKEY_NOT_FOUND
+  - PASSKEY_REGISTRATION_FAILED
+  - PASSKEY_LOGIN_FAILED
+  - API_KEY_INVALID
+  - API_KEY_EXPIRED
+  - API_KEY_NOT_FOUND
+  - API_KEY_NOT_ALLOWED
+  - API_KEY_WRONG_ORG
+  - SSH_KEY_NOT_FOUND
+  - ORG_NOT_FOUND
+  - ORG_CONTACT_REQUIRED
+  - VAT_CHECK_UNAVAILABLE
+  - PERMISSION_UNKNOWN
+  - ORG_CUSTOMER_NUMBER_TAKEN
+  - ORG_NO_ACTIVE
+  - ORG_NOT_SELECTED
+  - ORG_NOT_MEMBER
+  - ORG_MEMBER_NOT_FOUND
+  - ORG_ALREADY_MEMBER
+  - ORG_INVITE_PENDING
+  - ORG_INVITE_WRONG_EMAIL
+  - ORG_OWNER_ONLY
+  - ORG_OWNER_NOT_EDITABLE
+  - ORG_OWNER_NOT_REMOVABLE
+  - ORG_TRANSFER_NOT_FOR_STAFF
+  - ORG_TRANSFER_SOURCE_ADMIN_REQUIRED
+  - ORG_TRANSFER_TARGET_PERMISSION_REQUIRED
+  - USER_NOT_FOUND
+  - USER_NO_LOCAL_PASSWORD
+  - USER_EMAIL_ALREADY_VERIFIED
+  - USER_NO_ORG
+  - USER_ORG_REQUIRED
+  - ACCOUNT_DELETION_STAFF
+  - TELEGRAM_ALREADY_LINKED
+  - ADMIN_NOT_FOUND
+  - ADMIN_ACCOUNT_TAKEN
+  - ADMIN_GROUP_NAME_TAKEN
+  - ADMIN_NO_GROUP
+  - ADMIN_DELETE_SELF
+  - ADMIN_DELETE_LAST
+  - SEARCH_QUERY_TOO_SHORT
+  - SYSTEM_LOG_ISSUE_NOT_FOUND
+  - BGP_ROUTE_SERVER_NOT_FOUND
+  - BGP_SESSION_NOT_FOUND
+  - BGP_SESSION_NOT_ACTIVE
+  - BGP_ASN_NOT_FOUND
+  - BGP_ASN_NOT_ACTIVE
+  - BGP_ASN_ALREADY_PENDING
+  - BGP_ASN_ALREADY_REGISTERED
+  - BGP_ASN_CONTACT_INVALID
+  - BGP_ASN_VERIFY_LIMIT
+  - BGP_ASN_VERIFICATION_INVALID
+  - BGP_DUPLICATE_SESSION
+  - BGP_SERVICE_HAS_NO_IPS
+  - BGP_SERVICE_NOT_FOUND
+  - BGP_BYOIP_NOT_FOUND
+  - BGP_BYOIP_CONFLICT
+  - BGP_SUB_PREFIX_OUTSIDE_PARENT
+  - BGP_SUB_PREFIX_OVERLAP
+  - BGP_SUB_PREFIX_NOT_FOUND
+  - BGP_FLOATING_ROUTE_NOT_FOUND
+  - BGP_AUTOBIRD_ERROR
+  - BGP_MANUAL_PREFIX_ONLY
+  - PRIVATE_NETWORK_NOT_FOUND
+  - PRIVATE_NETWORK_ID_CONFLICT
+  - PRIVATE_NETWORK_IDS_EXHAUSTED
+  - PRIVATE_NETWORK_ALREADY_ATTACHED
+  - PRIVATE_NETWORK_NOT_ATTACHED
+  - PRIVATE_NETWORK_NIC_SLOTS_FULL
+  - PRIVATE_NETWORK_HAS_ATTACHMENTS
+  - PRIVATE_NETWORK_SDN_NOT_ENABLED
+  - PRIVATE_NETWORK_NO_VPS_IN_REGION
+  - PRIVATE_NETWORK_REGION_MISMATCH
+  - PRIVATE_NETWORK_LIMIT_REACHED
+  - PRIVATE_NETWORK_NO_DEDICATED_IN_REGION
+  - PRIVATE_NETWORK_NO_SWITCH_IN_REGION
+  - PRIVATE_NETWORK_KIND_MISMATCH
+  - PRIVATE_NETWORK_INVALID_KIND
+  - IPAM_PREFIX_NOT_FOUND
+  - IPAM_ADDRESS_NOT_FOUND
+  - IPAM_PREFIX_OVERLAP
+  - IPAM_PREFIX_NOT_EMPTY
+  - IPAM_MODE_MISMATCH
+  - IPAM_ADDRESS_OUT_OF_RANGE
+  - IPAM_ADDRESS_IN_USE
+  - IPAM_NO_REVERSE_ZONE
+  - IPAM_INVALID_PTR
+  - IPAM_RDNS_ERROR
+  - IPAM_POOL_EXHAUSTED
+  - IPAM_INVALID_CIDR
+  - IPAM_GATEWAY_OUT_OF_PREFIX
+  - IPAM_PREFIX_OUTSIDE_PARENT
+  - IPAM_ADDRESS_RESERVED
+  - IPAM_SUBNET_LENGTH_INVALID
+  - IPAM_MODE_CHANGE_NOT_EMPTY
+  - IPAM_RANGE_TOO_LARGE
+  - IPAM_PREFIX_IN_USE
+  - IPAM_PREFIX_NOT_ROUTABLE
+  - IPAM_PREFIX_ORG_MISMATCH
+  - FIREWALL_NOT_FOUND
+  - FIREWALL_RULE_NOT_FOUND
+  - FIREWALL_IN_USE
+  - FIREWALL_SYNC_FAILED
+  - FIREWALL_DIRECTION_INVALID
+  - FIREWALL_ACTION_INVALID
+  - FIREWALL_PROTOCOL_INVALID
+  - FIREWALL_SOURCE_INVALID
+  - FIREWALL_PORT_INVALID
+  - FIREWALL_PORTS_NOT_ALLOWED
+  - FIREWALL_FAMILY_MISMATCH
+  - FIREWALL_RULE_DUPLICATE
+  - FIREWALL_RULE_CONFLICT
+  - FIREWALL_OUT_ACCEPT_NOT_ALLOWED
+  - FIREWALL_IP_LIST_NOT_FOUND
+  - FIREWALL_IP_LIST_INVALID
+  - FIREWALL_IP_LIST_TOO_MANY
+  - FIREWALL_IP_LIST_FETCH_FAILED
+  - FIREWALL_ORG_MISMATCH
+  - FIREWALL_IP_LIST_NO_SOURCE
+  - PRIVATE_NETWORK_ORG_MISMATCH
+  - BGP_ROUTE_SERVER_NAME_TAKEN
+  - BGP_ASN_PREFIX_EXISTS
+  - BGP_AS_SET_ALREADY_ATTACHED
+  - BGP_FLOATING_ROUTE_MANAGED
+  - BGP_AS_SET_LIMIT_ASNS
+  - BGP_AS_SET_LIMIT_PREFIXES
+  - BGP_AS_SET_RIPE_UNREACHABLE
+  - BGP_AS_SET_RIPE_REJECTED
+  - BGP_AS_SET_RIPE_REJECTED_NO_TEXT
+  - BGP_AS_SET_RIPE_BAD_RESPONSE
+  - BGP_AS_SET_RIPE_OBJECT_MISSING
+  - BGP_AS_SET_SYNC_FAILED
+  - IPAM_PREFIX_EXISTS
+  - IPAM_ADDRESS_EXISTS
+  - BGP_AS_SET_WARN_LOOKUP_CAP
+  - BGP_AS_SET_WARN_MEMBER_CAP
+  - BGP_AS_SET_WARN_NESTED_UNREADABLE
+  - BGP_AS_SET_WARN_MBRS_BY_REF
+  - BGP_AS_SET_WARN_UNRECOGNISED
+  - BGP_AS_SET_WARN_DEPTH_CUT_OFF
+  - BGP_AS_SET_WARN_ROUTES_FAILED
+  - BGP_AS_SET_WARN_UNAUTHORIZED
+  - BGP_AS_SET_WARN_AUT_NUM_FAILED
+  - BGP_AS_SET_WARN_MORE
+  - BGP_AS_SET_WARN_LEGACY
+  - BGP_ROUTE_SERVER_PUSH_FAILED
+  - BGP_RS_KIND_SESSIONS
+  - BGP_RS_KIND_FLOATING
+  - BGP_RS_KIND_BYO
+  - BGP_RS_NO_REGION
+  - BGP_RS_NO_REGION_DETAIL
+  - BGP_RS_DISABLED
+  - BGP_RS_DISABLED_DETAIL
+  - BGP_RS_UNREACHABLE
+  - BGP_RS_UNREACHABLE_DETAIL
+  - BGP_RS_NO_LOCAL_ADDRESSES
+  - BGP_RS_NO_LOCAL_ADDRESSES_DETAIL
+  - BGP_RS_FETCH_FAILED
+  - BGP_RS_AUTOBIRD_ERROR
+  - BGP_RS_MISSING
+  - BGP_RS_MISSING_DETAIL
+  - BGP_RS_MISMATCH
+  - BGP_RS_MISMATCH_DETAIL
+  - BGP_RS_UNMANAGED
+  - BGP_RS_UNMANAGED_DETAIL
+  - BGP_RS_PUSH_FAILED
+  - BGP_RS_COVERAGE_GAPS
+  - BGP_RS_COVERAGE_GAPS_DETAIL
+  - BGP_RS_EXCLUDED
+  - BGP_RS_EXCLUDED_DETAIL
+  - BGP_RS_UPSTREAM_UNMANAGED
+  - BGP_RS_UPSTREAM_UNMANAGED_DETAIL
+  - BGP_RS_EXCLUDED_ORPHANED
+  - BGP_RS_EXCLUDED_DELETING
+  - BGP_RS_EXCLUDED_ASN_GONE
+  - BGP_RS_EXCLUDED_NO_NEXT_HOP
+  - BGP_RS_EXCLUDED_PENDING_APPROVAL
+  - BGP_RS_EXCLUDED_REJECTED
+  - BGP_RS_EXCLUDED_NOT_ACTIVE
+  - BGP_RS_GAP_SESSION
+  - BGP_RS_GAP_ROUTE
+  - DEDICATED_SERVER_NOT_FOUND
+  - DEDICATED_SERVICE_NOT_FOUND
+  - DEDICATED_PLAN_NOT_FOUND
+  - DEDICATED_AGENT_NOT_FOUND
+  - DEDICATED_POOL_NOT_CONFIGURED
+  - DEDICATED_OUT_OF_STOCK
+  - DEDICATED_NOT_AWAITING_STOCK
+  - DEDICATED_SERVER_NOT_FREE
+  - DEDICATED_INVALID_BILLING_CYCLE
+  - DEDICATED_INVALID_POWER_OP
+  - DEDICATED_AGENT_UNAVAILABLE
+  - DEDICATED_AGENT_UNREACHABLE
+  - DEDICATED_NO_AGENT
+  - DEDICATED_LOCKED
+  - DEDICATED_COMPONENT_NOT_FOUND
+  - DEDICATED_PLATFORM_NOT_FOUND
+  - DEDICATED_RACK_NOT_FOUND
+  - DEDICATED_RACK_OCCUPIED
+  - DEDICATED_RACK_DOES_NOT_FIT
+  - DEDICATED_RACK_WRONG_REGION
+  - DEDICATED_RACK_UNIT_WITHOUT_RACK
+  - DEDICATED_RACK_RANGE_CONFLICT
+  - DEDICATED_RACK_IN_USE
+  - DEDICATED_RACK_DEVICE_NOT_FOUND
+  - DEDICATED_RACK_DEVICE_DOES_NOT_FIT
+  - DEDICATED_RACK_DEVICE_RANGE_CONFLICT
+  - DEDICATED_RACK_UNIT_TAKEN
+  - DEDICATED_NODE_SLOT_REQUIRED
+  - DEDICATED_NODE_SLOT_INVALID
+  - DEDICATED_NODE_SLOT_TAKEN
+  - DEDICATED_NODES_IN_USE
+  - DEDICATED_CONFIG_INVALID
+  - DEDICATED_UPGRADE_NOT_ALLOWED
+  - DEDICATED_IN_USE
+  - DEDICATED_COMPONENT_IN_USE
+  - DEDICATED_RESCUE_ACTIVE
+  - DEDICATED_RESCUE_NOT_FOUND
+  - DEDICATED_RESCUE_IMAGE_IN_USE
+  - DEDICATED_BOOT_NETWORK_INVALID
+  - DEDICATED_ACTION_NOT_FOUND
+  - DEDICATED_ACTION_RUN_NOT_FOUND
+  - DEDICATED_ACTION_ACTIVE
+  - DEDICATED_ACTION_IN_USE
+  - DEDICATED_CONSOLE_UNAVAILABLE
+  - DEDICATED_CONSOLE_BUSY
+  - DEDICATED_CONSOLE_FAILED
+  - DEDICATED_CONSOLE_DRIVER_UNKNOWN
+  - DEDICATED_CONSOLE_NOT_FOUND
+  - DEDICATED_ISO_NO_SERVICE
+  - SWITCH_NOT_FOUND
+  - SWITCH_PORT_NOT_FOUND
+  - SWITCH_DRIVER_UNSUPPORTED
+  - SWITCH_UNREACHABLE
+  - SWITCH_AGENT_NO_SUPPORT
+  - SWITCH_SYNC_FAILED
+  - SWITCH_ACL_BUDGET_EXCEEDED
+  - SWITCH_PORT_IN_USE
+  - SWITCH_PORT_WRONG_REGION
+  - SWITCH_PORT_NOT_CUSTOMER
+  - SWITCH_IN_USE
+  - SWITCH_BRIDGE_INVALID
+  - SWITCH_LOCKED
+  - DEDICATED_SERVER_NAME_TAKEN
+  - DEDICATED_SERVER_ASSIGNED
+  - DEDICATED_AGENT_HAS_SERVERS
+  - DEDICATED_PLATFORM_NAME_TAKEN
+  - DEDICATED_RACK_NAME_TAKEN
+  - DEDICATED_PLAN_HAS_SERVICES
+  - DEDICATED_OPTION_GROUP_NOT_FOUND
+  - DEDICATED_SERVICE_NO_PLAN
+  - DEDICATED_NO_ACTIVE_SERVER
+  - DEDICATED_SERVER_WRONG_PLATFORM
+  - DEDICATED_SERVER_CONFIG_MISMATCH
+  - DEDICATED_IP_NOT_ASSIGNED
+  - DEDICATED_SUBNET_NOT_ASSIGNED
+  - DEDICATED_PREFIX_NOT_IN_POOL
+  - DEDICATED_NO_ROUTED_POOL
+  - DEDICATED_CONSOLE_NOT_YOURS
+  - DEDICATED_ISO_GLOBAL_NOT_DELETABLE
+  - DEDICATED_ISO_NOT_GLOBAL
+  - DEDICATED_MEDIA_LINK_INVALID
+  - DEDICATED_RESCUE_NO_AGENT
+  - DEDICATED_RESCUE_AGENT_MISSING
+  - DEDICATED_RESCUE_AGENT_DISABLED
+  - DEDICATED_RESCUE_AGENT_NO_PXE
+  - DEDICATED_RESCUE_NO_MAC
+  - DEDICATED_RESCUE_NO_IPV4
+  - DEDICATED_RESCUE_NETWORK_UNREADABLE
+  - DEDICATED_RESCUE_BOOT_NETWORKS_UNREADABLE
+  - DEDICATED_RESCUE_NO_BOOT_NETWORKS
+  - DEDICATED_RESCUE_NO_IMAGE
+  - DEDICATED_RESCUE_IMAGE_NOT_ON_AGENT
+  - DEDICATED_RESCUE_IMAGE_UNAVAILABLE
+  - DEDICATED_RESCUE_ARM_FAILED
+  - DEDICATED_RESCUE_SCRIPT_TOO_LARGE
+  - DEDICATED_RESCUE_CHAIN_NO_SCRIPT
+  - DEDICATED_ACTION_NOT_CHOSEN
+  - DEDICATED_ACTION_DISABLED
+  - DEDICATED_ACTION_NO_SCRIPT
+  - DEDICATED_ACTION_NO_IMAGE
+  - DEDICATED_ACTION_IMAGE_IS_MENU
+  - DEDICATED_ACTION_ALREADY_RUNNING
+  - DEDICATED_ACTION_RESCUE_ACTIVE
+  - DEDICATED_ACTION_KEY_TAKEN
+  - DEDICATED_ACTION_TOO_MANY_INPUTS
+  - DEDICATED_ACTION_INPUT_KEY_INVALID
+  - DEDICATED_ACTION_INPUT_KEY_DUPLICATE
+  - DEDICATED_ACTION_INPUT_LABEL_REQUIRED
+  - DEDICATED_ACTION_INPUT_TYPE_INVALID
+  - DEDICATED_ACTION_INPUT_NO_CHOICES
+  - DEDICATED_ACTION_INPUT_CHOICE_EMPTY
+  - DEDICATED_ACTION_INPUT_CHOICE_DUPLICATE
+  - DEDICATED_ACTION_INPUT_RANGE_INVALID
+  - DEDICATED_ACTION_INPUT_MAX_LENGTH_INVALID
+  - DEDICATED_ACTION_INPUT_PATTERN_NOT_TEXT
+  - DEDICATED_ACTION_INPUT_PATTERN_TOO_LONG
+  - DEDICATED_ACTION_INPUT_PATTERN_INVALID
+  - DEDICATED_ACTION_INPUT_DEFAULT_INVALID
+  - DEDICATED_ACTION_TOO_MANY_STEPS
+  - DEDICATED_ACTION_STEP_KEY_INVALID
+  - DEDICATED_ACTION_STEP_KEY_DUPLICATE
+  - DEDICATED_ACTION_TAG_INVALID
+  - DEDICATED_ACTION_VALUE_UNKNOWN
+  - DEDICATED_ACTION_VALUE_REQUIRED
+  - DEDICATED_ACTION_VALUE_NOT_BOOL
+  - DEDICATED_ACTION_VALUE_NOT_NUMBER
+  - DEDICATED_ACTION_VALUE_TOO_SMALL
+  - DEDICATED_ACTION_VALUE_TOO_LARGE
+  - DEDICATED_ACTION_VALUE_NOT_A_CHOICE
+  - DEDICATED_ACTION_VALUE_TOO_LONG
+  - DEDICATED_ACTION_VALUE_NOT_TEXT
+  - DEDICATED_ACTION_VALUE_MULTILINE
+  - DEDICATED_ACTION_VALUE_UNCHECKABLE
+  - DEDICATED_ACTION_VALUE_FORMAT
+  - DEDICATED_ACTION_VALUE_TYPE_UNKNOWN
+  - DEDICATED_FIT_RAM_TYPE
+  - DEDICATED_FIT_DRIVE_BAYS
+  - DEDICATED_FIT_DRIVES_SHARED
+  - DEDICATED_FIT_DIMM_SLOTS
+  - DEDICATED_FIT_RAM_MAX
+  - DEDICATED_FIT_RAM_MODULES
+  - DEDICATED_FIT_CPU_SOCKETS
+  - DEDICATED_FIT_CPU_MIXED
+  - DEDICATED_FIT_PCIE_SLOTS
+  - DEDICATED_FIT_PCIE_SEATS
+  - DEDICATED_FIT_CARD_DOUBLE_WIDTH
+  - DEDICATED_FIT_CARD_FULL_HEIGHT
+  - DEDICATED_FIT_CARD_DOUBLE_FULL
+  - DEDICATED_FIT_CARD_POWER
+  - DEDICATED_FIT_UPLINK_NIC
+  - DEDICATED_PLAN_BASE_SPEC_BY_SIZE
+  - DEDICATED_PLAN_BASE_PART_REQUIRED
+  - DEDICATED_PLAN_BASE_RAM_SIZE
+  - DEDICATED_PLAN_BASE_RAM_TWICE
+  - DEDICATED_PLAN_BASE_DRIVE_INCOMPLETE
+  - DEDICATED_PLAN_BASE_DRIVE_MEDIA
+  - DEDICATED_PLAN_BAYS_TWICE
+  - DEDICATED_PLAN_BAYS_SWAPPED
+  - DEDICATED_PLAN_BAYS_NOT_DRIVES
+  - DEDICATED_PLAN_BAYS_MIXED
+  - DEDICATED_PLAN_BAYS_DRIVE_TWICE
+  - DEDICATED_PLAN_BAYS_MISSING_INCLUDED
+  - DEDICATED_PLAN_RAM_NOT_REPLACE
+  - DEDICATED_PLAN_RANGE_NOT_UPLINK
+  - DEDICATED_PLAN_RANGE_COUNT
+  - DEDICATED_PLAN_RANGE_INVALID
+  - DEDICATED_PLAN_RANGE_LIMITS
+  - DEDICATED_PLAN_RANGE_STEPS
+  - DEDICATED_PLAN_OPTION_NOT_REPLACE
+  - DEDICATED_PLAN_OPTION_KIND_INVALID
+  - DEDICATED_PLAN_BANDWIDTH_REQUIRED
+  - DEDICATED_PLAN_UPLINK_REQUIRED
+  - DEDICATED_PLAN_RAM_BY_SIZE
+  - DEDICATED_PLAN_DRIVE_INCOMPLETE
+  - DEDICATED_PLAN_DRIVE_MEDIA
+  - DEDICATED_PLAN_PART_REQUIRED
+  - DEDICATED_PLAN_UPLINK_TOO_FAST
+  - DEDICATED_PLAN_GROUP_MISSING
+  - SWITCH_STATE_PREVIEW_FAILED
+  - SWITCH_NAME_TAKEN
+  - SWITCH_AGENT_WRONG_REGION
+  - SWITCH_PASSWORD_REENTRY
+  - SWITCH_PORT_SERVER_NEEDS_CUSTOMER
+  - SWITCH_PORT_RESERVED_ROLE
+  - SWITCH_SYNC_NOT_RECORDED
+  - SWITCH_RULES_REJECTED
+  - SWITCH_WARN_SERVER_OTHER_REGION
+  - SWITCH_WARN_SERVER_GONE
+  - SWITCH_WARN_ROUTEROS_TOO_OLD
+  - SWITCH_WARN_ACL_DISABLED
+  - SWITCH_WARN_NO_NIC_MAC
+  - SWITCH_WARN_BAD_NIC_MAC
+  - SWITCH_WARN_BAD_APPROVED_SOURCE
+  - SWITCH_WARN_NO_ADDRESSES
+  - SWITCH_WARN_DEVICE
+  - SWITCH_WARN_RULE_REJECTED
+  - SWITCH_WARN_LEGACY
+  - DEDICATED_HOURLY_NO_UPGRADES
+  - DEDICATED_PROVISION_NO_SERVER
+  - DEDICATED_PROVISION_FAILED
+  - DEDICATED_POWER_ON_RETRYING
+  - INVOICE_NOT_FOUND
+  - INVOICE_NOT_EDITABLE
+  - INVOICE_ALREADY_PAID
+  - INVOICE_VOID_DRAFT
+  - INVOICE_VOID_PAID
+  - INVOICE_VOID_CLOSED
+  - INVOICE_CONVERT_INVALID
+  - PAYMENT_METHOD_NOT_FOUND
+  - STRIPE_ERROR
+  - CRYPTO_AMOUNT_TOO_LOW
+  - CRYPTO_MIN_PAYMENT
+  - NO_PDF_FOR_DRAFT
+  - PROMO_CODE_NOT_FOUND
+  - PROMO_CODE_ALREADY_APPLIED
+  - PROMO_CODE_EXISTS
+  - INSUFFICIENT_CREDIT
+  - REFUND_NOT_ALLOWED
+  - REFUND_EXCEEDS_TOTAL
+  - REFUND_GATEWAY_ERROR
+  - SUBSCRIPTION_PRICE_INVALID
+  - BILLING_UBL_NOT_FOR_PROFORMA
+  - BILLING_ACCOUNTING_FILE_UNKNOWN
+  - BILLING_UBL_SELLER_INCOMPLETE
+  - BILLING_UBL_SELLER_INCOMPLETE_CUSTOMER
+  - BILLING_UBL_BUYER_INCOMPLETE
+  - BILLING_INVOICE_NOT_PAYABLE
+  - BILLING_INVOICE_NOTHING_DUE
+  - BILLING_TOP_UP_FROM_CREDIT
+  - BILLING_INVOICE_ITEM_NOT_FOUND
+  - BILLING_PAYMENT_NOT_FOUND
+  - BILLING_CARD_SETUP_INCOMPLETE
+  - BILLING_TAX_RATE_EXISTS
+  - BILLING_TOO_MANY_PAYMENT_STARTS
+  - PROMO_CODE_NOT_YET_VALID
+  - PROMO_CODE_EXPIRED
+  - PROMO_CODE_USED_UP
+  - PROMO_CODE_WRONG_PRODUCT
+  - PROMO_CODE_WRONG_PLAN
+  - PROMO_CODE_WRONG_CYCLE
+  - PROMO_CODE_NO_MATCHING_ITEMS
+  - BILLING_SUBSCRIPTION_NOT_FOUND
+  - BILLING_SUBSCRIPTION_NOT_ACTIVE
+  - BILLING_HOURLY_NO_PERIOD_END
+  - BILLING_NOT_AWAITING_PROVISION
+  - BILLING_SERVICE_NO_SUBSCRIPTION
+  - BILLING_SERVICE_TYPE_UNKNOWN
+  - BILLING_SERVICE_NOT_FOUND
+  - BILLING_CYCLE_NOT_FIXED
+  - BILLING_PRICE_LOCKED
+  - BILLING_ITEM_NOT_FOUND
+  - BILLING_ITEM_NEXT_DUE_WITH_BILL_NOW
+  - BILLING_TRANSFER_SAME_ORG
+  - BILLING_TRANSFER_TARGET_NOT_FOUND
+  - BILLING_TRANSFER_UNOWNED
+  - BILLING_TRANSFER_TERMINATED
+  - BILLING_TRANSFER_UNPAID_INVOICES
+  - BILLING_TRANSFER_TARGET_NO_CREDIT
+  - CUSTOMER_GROUP_NOT_FOUND
+  - DONATION_PAGE_NOT_FOUND
+  - DONATION_NOT_FOUND
+  - DONATION_PAGE_EXISTS
+  - DONATIONS_UNAVAILABLE
+  - DONATION_LINK_INVALID
+  - DONATION_AMOUNT_INVALID
+  - DONATION_BELOW_METHOD_MIN
+  - DONATION_MESSAGE_TOO_LONG
+  - DONATION_METHOD_UNSUPPORTED
+  - DONATION_CURRENCY_REQUIRED
+  - DONATION_RECIPIENT_FULL
+  - DONATION_AVATAR_TOO_LARGE
+  - DONATION_AVATAR_UNREADABLE
+  - BILLING_PROVISION_FAILED
+  - ZONE_NOT_FOUND
+  - RECORD_NOT_FOUND
+  - SYSTEM_RECORD_PROTECTED
+  - CNAME_EXCLUSIVE_CONFLICT
+  - DNS_RECORD_CONFLICT
+  - CDN_ORIGIN_INVALID
+  - DNS_APEX_NS_PROTECTED
+  - CDN_ORIGIN_RESERVED
+  - CDN_ORIGIN_PORT_INVALID
+  - CDN_ORIGIN_DUPLICATE
+  - CDN_ORIGIN_SCHEME_INVALID
+  - CDN_ORIGIN_WEIGHT_INVALID
+  - CDN_ORIGIN_NONE
+  - CDN_HOSTNAME_INVALID
+  - CDN_HOSTNAME_OUT_OF_ZONE
+  - CDN_RULE_LIMIT
+  - CDN_GROUP_LIMIT
+  - CDN_CONDITION_LIMIT
+  - CDN_CONDITION_VALUE_LEN
+  - CDN_CONDITION_VALUE_REQUIRED
+  - CDN_SELECTOR_INVALID
+  - CDN_MATCH_TYPE_INVALID
+  - CDN_GROUP_MATCH_INVALID
+  - CDN_DEFAULT_SELECTOR_CACHE_ONLY
+  - CDN_NO_ELIGIBLE_NODES
+  - CDN_HOSTNAME_NOT_OWNED
+  - CDN_ZONE_REQUIRED
+  - CDN_HOSTNAME_LIMIT
+  - CDN_ORIGIN_LIMIT
+  - CDN_EXTERNAL_DNS_UNAVAILABLE
+  - CDN_NOT_POINTING_AT_EDGE
+  - CDN_HOSTNAME_UNVERIFIED
+  - CDN_PRESET_UNKNOWN
+  - CDN_PRESET_KEY_TAKEN
+  - CDN_RULE_MANAGED
+  - CDN_CUSTOM_RULES_NOT_ALLOWED
+  - CDN_MAIN_HOSTNAME
+  - CDN_CONDITION_IP_INVALID
+  - CDN_CONDITION_LOCATION_INVALID
+  - CDN_CONDITION_REPUTATION_INVALID
+  - CDN_CONDITION_ASN_INVALID
+  - CDN_CONDITION_REGEX_INVALID
+  - CDN_CONDITION_SEVERITY_INVALID
+  - CDN_CONDITION_METHOD_INVALID
+  - CDN_CONDITION_COOKIE_INVALID
+  - CDN_CONDITION_HEADER_INVALID
+  - CDN_ATTACK_SETTINGS_INVALID
+  - CDN_TIMEOUT_INVALID
+  - CDN_TIMEOUT_RATE_INVALID
+  - CDN_TIMEOUT_REQUIRED
+  - CDN_TIMEOUT_ADMIN_ONLY
+  - CDN_TIMEOUTS_INVALID
+  - DNS_PLAN_CHANGE_NOT_FOUND
+  - DNS_PLAN_CHANGE_IN_PROGRESS
+  - DNS_PLAN_CHANGE_SAME_PLAN
+  - DNS_PLAN_CHANGE_UNAVAILABLE
+  - DNS_PLAN_CHANGE_NOT_ACTIVE
+  - REGISTRAR_UNAVAILABLE
+  - DOMAIN_NOT_FOUND
+  - DOMAIN_NAME_INVALID
+  - DOMAIN_UNAVAILABLE
+  - DOMAIN_TAKEN
+  - DOMAIN_ALREADY_MANAGED
+  - DOMAIN_NOT_IN_ACCOUNT
+  - TLD_NOT_FOUND
+  - TLD_NOT_SUPPORTED
+  - DOMAIN_YEARS_INVALID
+  - DOMAIN_INVALID_AUTH_CODE
+  - DOMAIN_OPERATION_PENDING
+  - DOMAIN_NOT_ACTIVE
+  - DOMAIN_LOCKED
+  - DOMAIN_NAMESERVER_INVALID
+  - DOMAIN_NAMESERVER_COUNT
+  - DOMAIN_HOST_INVALID
+  - DOMAIN_HOST_NOT_FOUND
+  - CONTACT_NOT_FOUND
+  - CONTACT_NOT_IN_ACCOUNT
+  - CONTACT_REJECTED
+  - CONTACT_ALREADY_IMPORTED
+  - CONTACT_INVALID
+  - CONTACT_IN_USE
+  - DOMAIN_MARKUP_INVALID
+  - DOMAIN_DNS_NOT_AVAILABLE
+  - DNS_ZONE_CONFLICT
+  - DNS_ZONE_NO_MATCH
+  - DNS_ZONE_INCLUDED_WITH_DOMAIN
+  - DOMAIN_DNSSEC_INVALID
+  - DOMAIN_DNSSEC_NOT_AVAILABLE
+  - DOMAIN_FEATURE_NOT_SUPPORTED
+  - DOMAIN_PRIVACY_NOT_AVAILABLE
+  - DOMAIN_PRIVACY_HELD
+  - DNS_REVERSE_ZONE_UNSUPPORTED
+  - DNS_ZONE_EXISTS
+  - DNS_ZONE_HAS_SUBSCRIPTION
+  - DNS_ZONE_CYCLE_VIA_BILLING
+  - DNS_ZONE_USE_TRANSFER
+  - DNS_ZONE_NO_OWNER
+  - DNS_ZONE_INFRA_REVERSE
+  - DNS_ZONE_SOA_MISSING
+  - DNS_SMART_RECORD_NOT_FOUND
+  - DNS_PLAN_NOT_FOUND
+  - DNS_PLAN_IS_DOMAIN_PLAN
+  - CDN_ZONE_NOT_FOUND
+  - CDN_HOSTNAME_NOT_FOUND
+  - CDN_HOSTNAME_TAKEN
+  - CDN_NODE_NOT_FOUND
+  - CDN_RULE_NOT_FOUND
+  - CDN_PRESET_RULE_NOT_FOUND
+  - CDN_SUGGESTION_NOT_FOUND
+  - CDN_SUGGESTION_MANUAL
+  - CDN_CERT_PROVIDER_UNKNOWN
+  - CDN_ROUTING_MODE_UNCHANGED
+  - CDN_ROUTING_EXTERNAL
+  - CDN_LOG_LIMIT_INVALID
+  - CDN_PLAN_NOT_FOUND
+  - CDN_PLAN_IN_USE
+  - CDN_PLAN_CHANGE_SAME_PLAN
+  - CDN_PLAN_CHANGE_UNAVAILABLE
+  - CDN_PLAN_CHANGE_TOO_SMALL
+  - CDN_PLAN_CHANGE_NOT_ACTIVE
+  - CDN_PLAN_CHANGE_IN_PROGRESS
+  - CDN_PLAN_CHANGE_NOT_FOUND
+  - CDN_CERT_DNS_MISSING
+  - CDN_CERT_DNS_NOT_EDGE
+  - CDN_CERT_DNS_LOOKUP_FAILED
+  - CDN_CERT_EDGE_UNAVAILABLE
+  - CDN_CERT_CHALLENGE_FAILED
+  - CDN_CERT_ISSUANCE_FAILED
+  - DOMAIN_OPERATION_NOT_FOUND
+  - DOMAIN_SAME_OWNER
+  - DOMAIN_ZONE_UNPAID
+  - DOMAIN_NO_LINKED_ZONE
+  - DOMAIN_MARKUP_NOT_FOUND
+  - DOMAIN_DNSSEC_KEY_REQUIRED
+  - DOMAIN_DNSSEC_TOO_MANY_KEYS
+  - DOMAIN_DNSSEC_ALGORITHM_UNSUPPORTED
+  - DOMAIN_OP_FAILED
+  - DOMAIN_OP_REGISTRAR_FAILED
+  - DOMAIN_OP_REGISTRAR_FAILED_NO_TEXT
+  - DOMAIN_OP_NO_REGISTRAR_ID
+  - DOMAIN_OP_CANCELLED
+  - DOMAIN_OP_PAYMENT_EXPIRED
+  - DOMAIN_OP_STILL_PENDING
+  - DOMAIN_DNS_ZONE_UNAVAILABLE
+  - CDN_NODE_PROBE_FAILED
+x-enum-comments:
+  CodeAPIKeyNotAllowed: user-only endpoint reached with an API key
+  CodeAbuseCategoryInUse: reports still reference the category
+  CodeAbuseCategorySystem: built-in categories are disabled, never deleted
+  CodeAbuseReportInformational: informational reports are dismissed, not resolved
+  CodeAbuseReportNotInformational: only informational reports can be dismissed
+  CodeAbuseServiceNotFound: abuse policy target service does not exist
+  CodeAdminAccountTaken: username or email already used by another staff account
+  CodeAuthAccountBlocked: staff blocked the account from signing in
+  CodeAuthAccountNotFound: the session or sign-in points at an account that is gone
+  CodeAuthCustomerSessionRequired: a customer-only route reached with another session
+  CodeAuthMigrationNotPending: single sign-on account already has a password
+  CodeBGPASSetImportFailed: a downstream AS-SET could not be read; details in the log
+  CodeBGPASSetRIPERejected: Detail is RIPE's own text
+  CodeBGPASSetRIPERejectedNoText: RIPE sent no explanation
+  CodeBGPASSetSyncFailed: failed on our side before reaching RIPE
+  CodeBGPASSetWarnAutNumFailed: '{{.Count}} {{.Names}}'
+  CodeBGPASSetWarnDepthCutOff: '{{.Count}} {{.Depth}} {{.Names}}'
+  CodeBGPASSetWarnLegacy: notes stored as text before they were codes
+  CodeBGPASSetWarnLookupCap: '{{.Max}}'
+  CodeBGPASSetWarnMbrsByRef: '{{.Path}}'
+  CodeBGPASSetWarnMemberCap: '{{.Max}}'
+  CodeBGPASSetWarnMore: '{{.Count}} further notes not stored'
+  CodeBGPASSetWarnNestedUnreadable: '{{.Path}}'
+  CodeBGPASSetWarnRoutesFailed: '{{.ASN}}'
+  CodeBGPASSetWarnUnauthorized: '{{.Count}} {{.ASN}} {{.Names}}'
+  CodeBGPASSetWarnUnrecognised: '{{.Path}} {{.Names}}'
+  CodeBGPFloatingRouteManaged: withdrawn by its service, not by hand
+  CodeBGPRSAutobirdError: '{{.Error}} is autobird''s own text'
+  CodeBGPRSCoverageGaps: '{{.Count}}'
+  CodeBGPRSExcluded: '{{.Count}}'
+  CodeBGPRSFetchFailed: '{{.Kind}}'
+  CodeBGPRSMismatch: '{{.Kind}} {{.Count}}'
+  CodeBGPRSMissing: '{{.Kind}} {{.Count}}'
+  CodeBGPRSPushFailed: '{{.Kind}}'
+  CodeBGPRSUnmanaged: '{{.Kind}} {{.Count}}'
+  CodeBGPRSUnreachableDetail: '{{.Error}} is autobird''s own text'
+  CodeBGPRouteServerUnreachable: connection check failed; details in the log
+  CodeBillingCardSetupIncomplete: card setup return without a gateway session
+  CodeBillingCycleNotFixed: cycle change from or to hourly/one-time
+  CodeBillingHourlyNoPeriodEnd: hourly services end now, not at period end
+  CodeBillingInvoiceNotPayable: not pending or overdue
+  CodeBillingInvoiceNothingDue: nothing left to pay on it
+  CodeBillingItemNotFound: admin-defined billable item
+  CodeBillingNoSubscription: a billing action on a service without a subscription
+  CodeBillingNotAwaitingProvision: provisioning retry on a subscription that is not provisioning
+  CodeBillingPaymentDeclined: the card issuer refused it
+  CodeBillingPaymentFailed: anything else; details in the log
+  CodeBillingPriceLocked: the service's price is set by something else (domain-included DNS zone)
+  CodeBillingServiceNotFound: 'admin service endpoints: the service is gone'
+  CodeBillingServiceTypeUnknown: 'admin service endpoints: :type not known'
+  CodeBillingTaxRateExists: one tax rate per country
+  CodeBillingTopUpFromCredit: a credit top-up cannot be paid with credit
+  CodeBillingTransferTargetNoCredit: prepaid target cannot run an hourly service
+  CodeBillingUBLProforma: e-invoice export asked for a proforma
+  CodeCDNCertChallengeFailed: '{{.Hostname}}: the CA could not validate'
+  CodeCDNCertDNSLookupFailed: '{{.Hostname}}'
+  CodeCDNCertDNSMissing: '{{.Hostname}}: no A or AAAA record'
+  CodeCDNCertDNSNotEdge: '{{.Hostname}} {{.Address}}: resolves away from the edge'
+  CodeCDNCertEdgeUnavailable: the edge could not serve the challenge
+  CodeCDNCertIssuanceFailed: anything else; also old free-text rows
+  CodeCDNCertProviderUnknown: '{{.Name}}: not in the configured ACME providers'
+  CodeCDNHostnameTaken: already served by a CDN site
+  CodeCDNLogLimitInvalid: '{{.Max}}'
+  CodeCDNPlanChangeTooSmall: the site already uses more than the plan allows
+  CodeCDNRoutingExternal: the hostname resolves through the customer's own DNS
+  CodeCDNRoutingModeUnchanged: convert to the mode the hostname already uses
+  CodeCDNSuggestionManual: the suggestion has no automatic action
+  CodeContactAlreadyImported: 'admin import: handle already linked to a local contact profile'
+  CodeContactInUse: contact profile referenced by a domain
+  CodeContactInvalid: WHOIS contact field validation failed
+  CodeContactNotFound: WHOIS contact profile not found
+  CodeContactNotInAccount: 'admin import: contact handle not present in our Netim reseller account'
+  CodeContactRejected: >-
+    Netim rejected the contact data (400); the registrar's reason is passed
+    through
+  CodeDNSPlanIsDomainPlan: 'delete refused: the plan is the zone included with domains'
+  CodeDNSReverseZoneUnsupported: smart/CDN records on an in-addr.arpa / ip6.arpa zone
+  CodeDNSZoneConflict: a DNS zone with this name is held by another account
+  CodeDNSZoneCycleViaBilling: 'admin: billing cycle edited on the zone while a subscription owns it'
+  CodeDNSZoneExists: a zone with this name is already hosted
+  CodeDNSZoneHasSubscription: 'admin: owner removed while a subscription is attached'
+  CodeDNSZoneIncludedWithDomain: >-
+    the zone is free because its domain includes it; the domain owns that, not
+    the price field
+  CodeDNSZoneInfraReverse: the zone serves rDNS for network infrastructure
+  CodeDNSZoneNoMatch: 'admin zone match: no zone with the domain''s name exists'
+  CodeDNSZoneNoOwner: 'admin: a price set on a zone that nobody owns'
+  CodeDNSZoneSOAMissing: the PowerDNS zone has no SOA record
+  CodeDNSZoneUseTransfer: 'admin: owner changed to another org outside the transfer flow'
+  CodeDomainAlreadyManaged: we already hold this domain for an org
+  CodeDomainDNSNotAvailable: hosted nameservers requested but no zone is included
+  CodeDomainDNSSECAlgorithmUnsupported: '{{.Algorithm}}'
+  CodeDomainDNSSECInvalid: manually entered DS record failed validation
+  CodeDomainDNSSECNotAvailable: hosted DNS selected but no signed zone to take the DS set from
+  CodeDomainDNSSECTooManyKeys: '{{.Max}}'
+  CodeDomainDNSZoneUnavailable: the included zone could not be created
+  CodeDomainFeatureUnsupported: >-
+    the TLD does not support this option (whois privacy / DNSSEC / registrar
+    lock)
+  CodeDomainHostInvalid: glue-record host/IP invalid
+  CodeDomainHostNotFound: glue record not found
+  CodeDomainInvalidAuthCode: bad EPP/transfer auth code
+  CodeDomainLocked: a concurrent async op holds the resource lock
+  CodeDomainNameInvalid: not a syntactically valid domain name
+  CodeDomainNameserverCount: wrong number of nameservers for the TLD
+  CodeDomainNameserverInvalid: nameserver host not a valid FQDN
+  CodeDomainNotActive: operation not allowed in current status
+  CodeDomainNotFound: domain service instance not found
+  CodeDomainNotInAccount: 'admin import: domain not present in our Netim reseller account'
+  CodeDomainOpFailed: no reason of its own; see the log
+  CodeDomainOpRegistrarFailed: '{{.Detail}} is the registrar''s own text'
+  CodeDomainOperationPending: a Netim operation is still in flight
+  CodeDomainPrivacyHeld: action blocked while the privacy service holds the domain
+  CodeDomainPrivacyNotAvailable: privacy-holder service not offered (TLD gated or no default system contact)
+  CodeDomainTaken: already registered (by us or elsewhere)
+  CodeDomainUnavailable: not available for registration
+  CodeDomainYearsInvalid: duration outside the TLD's min/max
+  CodeDomainZoneUnpaid: 'owner change: the linked zone has unpaid invoices'
+  CodeDonationAmountInvalid: carries {{.Max}}
+  CodeDonationBelowMethodMin: carries {{.Min}}
+  CodeDonationCurrencyRequired: crypto donation without a coin
+  CodeDonationLinkInvalid: capture/status token does not verify
+  CodeDonationMessageTooLong: carries {{.Max}}
+  CodeDonationRecipientFull: recipient's credit is at its cap
+  CodeDonationsUnavailable: feature off or no gateway configured
+  CodeEmailDNSNoZone: 'auto-configure: org owns no active zone covering the domain'
+  CodeEmailDNSPlanChanged: 'auto-configure: zone changed between preview and apply'
+  CodeEmailDomainTaken: already hosted (by us) for another subscription
+  CodeEmailInvalidInput: field-scoped validation failure
+  CodeEmailLimitReached: plan mailbox/alias/list cap reached
+  CodeEmailMailboxNotFound: mailbox not found in this domain
+  CodeEmailNameTaken: mailbox/alias/list address already in use
+  CodeEmailNotActive: subscription not active for this operation
+  CodeEmailNotFound: email subscription not found
+  CodeEmailQuotaExceeded: plan storage pool exceeded
+  CodeEmailResourceNotFound: alias/list/app password not found
+  CodeEmailUnavailable: transport/5xx/auth/unknown backend error (masked)
+  CodeFroxlorUnavailable: transport/5xx/unknown backend error (masked)
+  CodeHostingDomainAliasSelf: a domain set as an alias of itself
+  CodeHostingInvalidInput: field-scoped validation failure
+  CodeHostingLERejected: panel LE/DNS pre-check failed
+  CodeHostingLimitReached: plan resource cap reached
+  CodeHostingNameTaken: resource name already in use (domain, db, …)
+  CodeHostingNoServerRegion: no active server in the region
+  CodeHostingNotActive: account not active for this operation
+  CodeHostingNotFound: hosting account not found
+  CodeHostingPlanNotFound: hosting plan not found
+  CodeHostingResourceNotFound: domain/email/ftp/db not found in Froxlor
+  CodeHostingServerInUse: server still has live accounts
+  CodeHostingServerNotFound: froxlor server (node) not found
+  CodeInsufficientPermissions: signed in, but not allowed to do this
+  CodeInvalidID: an id in the URL is not a well-formed id
+  CodeInvalidRequestBody: the body did not decode
+  CodeMaintenanceNoRecipients: notify with nobody affected
+  CodeMaintenanceNotPublished: notify before publishing
+  CodeMaintenanceRecipientsChanged: recipients differ from the reviewed preview
+  CodeMaintenanceTargetProductRegional: product cannot be narrowed to a region
+  CodeMarkupInvalid: markup percentage out of range
+  CodeNewsImageUnreadable: not a decodable image, or over the size limit
+  CodeNotificationEnglishRequired: the English translation cannot be removed
+  CodeNotificationNotFailed: only failed deliveries can be dismissed
+  CodeNotificationTemplateSystem: system templates cannot be deleted
+  CodeOrgContactRequired: neither first and last name nor company name
+  CodeOrgCustomerNumberTaken: unique customer_id clash
+  CodeOrgMemberNotFound: the target account is not a member
+  CodeOrgNoActive: the session has no organisation selected
+  CodeOrgNotMember: the caller is not a member
+  CodeOrgNotSelected: the resource belongs to an org other than the active one
+  CodeOrgPermissionUnknown: a scope outside the catalog
+  CodePromoCodeNoMatchingItems: none of a draft invoice's lines qualify
+  CodeRegistrarUnavailable: transport/5xx/auth error against Netim (masked)
+  CodeS3GrantNoPermission: a key grant with neither read, write nor owner
+  CodeS3NodeUnhealthy: '{{.Status}}: HTTP status of the health check'
+  CodeS3UploadTooLarge: request or single file over the upload limit
+  CodeS3UploadTooManyFiles: carries {{.Max}}
+  CodeSearchQueryTooShort: carries {{.Min}}
+  CodeServiceNotActive: customer change refused before activation or after termination
+  CodeServiceSuspended: customer change refused while the service is suspended
+  CodeSessionInvalid: no usable session; sign in again
+  CodeStaffOnly: a staff endpoint reached without a staff session
+  CodeSupportDepartmentNameTaken: department names are unique
+  CodeSupportTicketClosed: a customer reply to a closed ticket
+  CodeSwitchRulesRejected: '{{.Count}} {{.Rules}}: accepted but marked invalid by the device'
+  CodeSwitchStatePreviewFailed: the desired-state preview could not be compiled
+  CodeSwitchSyncNotRecorded: applied, but the result could not be saved
+  CodeSwitchWarnACLDisabled: '{{.Port}}'
+  CodeSwitchWarnBadApprovedSource: '{{.Port}} {{.Value}}'
+  CodeSwitchWarnBadNICMAC: '{{.Port}} {{.MAC}}'
+  CodeSwitchWarnDevice: '{{.Detail}} is the device''s own text'
+  CodeSwitchWarnLegacy: notes stored as text before they were codes
+  CodeSwitchWarnNoAddresses: '{{.Port}}'
+  CodeSwitchWarnNoNICMAC: '{{.Port}}'
+  CodeSwitchWarnRouterOSTooOld: '{{.Version}}'
+  CodeSwitchWarnRuleRejected: '{{.Rule}}'
+  CodeSwitchWarnServerGone: '{{.Port}}'
+  CodeSwitchWarnServerOtherRegion: '{{.Server}}'
+  CodeTLDNotFound: extension not in the synced catalog
+  CodeTLDNotSupported: extension not sellable / disabled
+  CodeTwoFAOTPUnavailable: the account has a stronger factor; no codes by email/Telegram
+  CodeTwoFASessionInvalid: the pending sign-in does not fit this step
+  CodeTwoFATelegramUnavailable: no Telegram bot configured
+  CodeUserNoLocalPassword: signs in through single sign-on
+  CodeUserOrgRequired: member of several orgs; the caller must pick one
+  CodeVPSAdoptTemplate: a Proxmox template cannot be adopted as a server
+  CodeVPSClusterUnreachable: the server's region cannot be reached right now
+  CodeVPSConsoleTokenInvalid: missing, used or expired one-time token
+  CodeVPSEphemeralMaxAgeRange: carries {{.Min}} and {{.Max}} (minutes)
+  CodeVPSFirstBootNeedsPublic: first-boot script on a private-primary server
+  CodeVPSFirstBootNotExpected: guest done report no install is waiting for
+  CodeVPSFirstBootScriptMissing: guest fetch with no script waiting for it
+  CodeVPSFirstBootScriptTooBig: carries {{.MaxKB}}
+  CodeVPSHourlyCannotCancel: hourly servers are terminated, not cancelled at renewal
+  CodeVPSNotEphemeral: ephemeral setting changed on a regular server
+  CodeVPSNotProvisioned: no VM yet, or already terminated
+  CodeVPSOSChangeNotAllowed: OS swapped on a server that is past its order
+  CodeVPSOSIconTooLarge: carries {{.MaxMB}}
+  CodeVatCheckUnavailable: VIES could not answer; the VAT number was not saved
+x-enum-descriptions:
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - an id in the URL is not a well-formed id
+  - the body did not decode
+  - signed in, but not allowed to do this
+  - no usable session; sign in again
+  - a staff endpoint reached without a staff session
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - a customer reply to a closed ticket
+  - department names are unique
+  - ''
+  - ''
+  - built-in categories are disabled, never deleted
+  - reports still reference the category
+  - ''
+  - abuse policy target service does not exist
+  - informational reports are dismissed, not resolved
+  - only informational reports can be dismissed
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - the server's region cannot be reached right now
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - no VM yet, or already terminated
+  - ephemeral setting changed on a regular server
+  - hourly servers are terminated, not cancelled at renewal
+  - OS swapped on a server that is past its order
+  - a Proxmox template cannot be adopted as a server
+  - first-boot script on a private-primary server
+  - carries {{.MaxKB}}
+  - guest fetch with no script waiting for it
+  - guest done report no install is waiting for
+  - ''
+  - ''
+  - carries {{.Min}} and {{.Max}} (minutes)
+  - ''
+  - ''
+  - ''
+  - ''
+  - carries {{.MaxMB}}
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - missing, used or expired one-time token
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - transport/5xx/unknown backend error (masked)
+  - hosting account not found
+  - hosting plan not found
+  - froxlor server (node) not found
+  - no active server in the region
+  - resource name already in use (domain, db, …)
+  - plan resource cap reached
+  - domain/email/ftp/db not found in Froxlor
+  - field-scoped validation failure
+  - account not active for this operation
+  - ''
+  - ''
+  - ''
+  - panel LE/DNS pre-check failed
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - transport/5xx/auth/unknown backend error (masked)
+  - email subscription not found
+  - ''
+  - ''
+  - already hosted (by us) for another subscription
+  - mailbox/alias/list address already in use
+  - plan storage pool exceeded
+  - plan mailbox/alias/list cap reached
+  - mailbox not found in this domain
+  - alias/list/app password not found
+  - field-scoped validation failure
+  - ''
+  - subscription not active for this operation
+  - 'auto-configure: org owns no active zone covering the domain'
+  - 'auto-configure: zone changed between preview and apply'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - request or single file over the upload limit
+  - carries {{.Max}}
+  - a key grant with neither read, write nor owner
+  - server still has live accounts
+  - a domain set as an alias of itself
+  - ''
+  - recipients differ from the reviewed preview
+  - notify before publishing
+  - notify with nobody affected
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - product cannot be narrowed to a region
+  - ''
+  - ''
+  - ''
+  - not a decodable image, or over the size limit
+  - ''
+  - system templates cannot be deleted
+  - the English translation cannot be removed
+  - only failed deliveries can be dismissed
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - '{{.Status}}: HTTP status of the health check'
+  - ''
+  - connection check failed; details in the log
+  - a downstream AS-SET could not be read; details in the log
+  - the card issuer refused it
+  - anything else; details in the log
+  - ''
+  - ''
+  - ''
+  - ''
+  - customer change refused while the service is suspended
+  - customer change refused before activation or after termination
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - the session or sign-in points at an account that is gone
+  - staff blocked the account from signing in
+  - a customer-only route reached with another session
+  - ''
+  - single sign-on account already has a password
+  - the pending sign-in does not fit this step
+  - the account has a stronger factor; no codes by email/Telegram
+  - ''
+  - no Telegram bot configured
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - user-only endpoint reached with an API key
+  - ''
+  - ''
+  - ''
+  - neither first and last name nor company name
+  - VIES could not answer; the VAT number was not saved
+  - a scope outside the catalog
+  - unique customer_id clash
+  - the session has no organisation selected
+  - the resource belongs to an org other than the active one
+  - the caller is not a member
+  - the target account is not a member
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - signs in through single sign-on
+  - ''
+  - ''
+  - member of several orgs; the caller must pick one
+  - ''
+  - ''
+  - ''
+  - username or email already used by another staff account
+  - ''
+  - ''
+  - ''
+  - ''
+  - carries {{.Min}}
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - withdrawn by its service, not by hand
+  - ''
+  - ''
+  - ''
+  - Detail is RIPE's own text
+  - RIPE sent no explanation
+  - ''
+  - ''
+  - failed on our side before reaching RIPE
+  - ''
+  - ''
+  - '{{.Max}}'
+  - '{{.Max}}'
+  - '{{.Path}}'
+  - '{{.Path}}'
+  - '{{.Path}} {{.Names}}'
+  - '{{.Count}} {{.Depth}} {{.Names}}'
+  - '{{.ASN}}'
+  - '{{.Count}} {{.ASN}} {{.Names}}'
+  - '{{.Count}} {{.Names}}'
+  - '{{.Count}} further notes not stored'
+  - notes stored as text before they were codes
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - '{{.Error}} is autobird''s own text'
+  - ''
+  - ''
+  - '{{.Kind}}'
+  - '{{.Error}} is autobird''s own text'
+  - '{{.Kind}} {{.Count}}'
+  - ''
+  - '{{.Kind}} {{.Count}}'
+  - ''
+  - '{{.Kind}} {{.Count}}'
+  - ''
+  - '{{.Kind}}'
+  - '{{.Count}}'
+  - ''
+  - '{{.Count}}'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - the desired-state preview could not be compiled
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - applied, but the result could not be saved
+  - '{{.Count}} {{.Rules}}: accepted but marked invalid by the device'
+  - '{{.Server}}'
+  - '{{.Port}}'
+  - '{{.Version}}'
+  - '{{.Port}}'
+  - '{{.Port}}'
+  - '{{.Port}} {{.MAC}}'
+  - '{{.Port}} {{.Value}}'
+  - '{{.Port}}'
+  - '{{.Detail}} is the device''s own text'
+  - '{{.Rule}}'
+  - notes stored as text before they were codes
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - e-invoice export asked for a proforma
+  - ''
+  - ''
+  - ''
+  - ''
+  - not pending or overdue
+  - nothing left to pay on it
+  - a credit top-up cannot be paid with credit
+  - ''
+  - ''
+  - card setup return without a gateway session
+  - one tax rate per country
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - none of a draft invoice's lines qualify
+  - ''
+  - ''
+  - hourly services end now, not at period end
+  - provisioning retry on a subscription that is not provisioning
+  - a billing action on a service without a subscription
+  - 'admin service endpoints: :type not known'
+  - 'admin service endpoints: the service is gone'
+  - cycle change from or to hourly/one-time
+  - the service's price is set by something else (domain-included DNS zone)
+  - admin-defined billable item
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - prepaid target cannot run an hourly service
+  - ''
+  - ''
+  - ''
+  - ''
+  - feature off or no gateway configured
+  - capture/status token does not verify
+  - carries {{.Max}}
+  - carries {{.Min}}
+  - carries {{.Max}}
+  - ''
+  - crypto donation without a coin
+  - recipient's credit is at its cap
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - transport/5xx/auth error against Netim (masked)
+  - domain service instance not found
+  - not a syntactically valid domain name
+  - not available for registration
+  - already registered (by us or elsewhere)
+  - we already hold this domain for an org
+  - 'admin import: domain not present in our Netim reseller account'
+  - extension not in the synced catalog
+  - extension not sellable / disabled
+  - duration outside the TLD's min/max
+  - bad EPP/transfer auth code
+  - a Netim operation is still in flight
+  - operation not allowed in current status
+  - a concurrent async op holds the resource lock
+  - nameserver host not a valid FQDN
+  - wrong number of nameservers for the TLD
+  - glue-record host/IP invalid
+  - glue record not found
+  - WHOIS contact profile not found
+  - 'admin import: contact handle not present in our Netim reseller account'
+  - >-
+    Netim rejected the contact data (400); the registrar's reason is passed
+    through
+  - 'admin import: handle already linked to a local contact profile'
+  - WHOIS contact field validation failed
+  - contact profile referenced by a domain
+  - markup percentage out of range
+  - hosted nameservers requested but no zone is included
+  - a DNS zone with this name is held by another account
+  - 'admin zone match: no zone with the domain''s name exists'
+  - >-
+    the zone is free because its domain includes it; the domain owns that, not
+    the price field
+  - manually entered DS record failed validation
+  - hosted DNS selected but no signed zone to take the DS set from
+  - >-
+    the TLD does not support this option (whois privacy / DNSSEC / registrar
+    lock)
+  - privacy-holder service not offered (TLD gated or no default system contact)
+  - action blocked while the privacy service holds the domain
+  - smart/CDN records on an in-addr.arpa / ip6.arpa zone
+  - a zone with this name is already hosted
+  - 'admin: owner removed while a subscription is attached'
+  - 'admin: billing cycle edited on the zone while a subscription owns it'
+  - 'admin: owner changed to another org outside the transfer flow'
+  - 'admin: a price set on a zone that nobody owns'
+  - the zone serves rDNS for network infrastructure
+  - the PowerDNS zone has no SOA record
+  - ''
+  - ''
+  - 'delete refused: the plan is the zone included with domains'
+  - ''
+  - ''
+  - already served by a CDN site
+  - ''
+  - ''
+  - ''
+  - ''
+  - the suggestion has no automatic action
+  - '{{.Name}}: not in the configured ACME providers'
+  - convert to the mode the hostname already uses
+  - the hostname resolves through the customer's own DNS
+  - '{{.Max}}'
+  - ''
+  - ''
+  - ''
+  - ''
+  - the site already uses more than the plan allows
+  - ''
+  - ''
+  - ''
+  - '{{.Hostname}}: no A or AAAA record'
+  - '{{.Hostname}} {{.Address}}: resolves away from the edge'
+  - '{{.Hostname}}'
+  - the edge could not serve the challenge
+  - '{{.Hostname}}: the CA could not validate'
+  - anything else; also old free-text rows
+  - ''
+  - ''
+  - 'owner change: the linked zone has unpaid invoices'
+  - ''
+  - ''
+  - ''
+  - '{{.Max}}'
+  - '{{.Algorithm}}'
+  - no reason of its own; see the log
+  - '{{.Detail}} is the registrar''s own text'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - the included zone could not be created
+  - ''
+x-enum-varnames:
+  - CodeInternal
+  - CodeValidation
+  - CodeNotFound
+  - CodeAlreadyExists
+  - CodeUnauthorized
+  - CodeLimitExceeded
+  - CodeRateLimited
+  - CodeInvalidID
+  - CodeInvalidRequestBody
+  - CodeInsufficientPermissions
+  - CodeSessionInvalid
+  - CodeStaffOnly
+  - CodeSLAPolicyNotFound
+  - CodeEscalationRuleNotFound
+  - CodeAutoTagNotFound
+  - CodeDepartmentNotFound
+  - CodeTicketNotFound
+  - CodeSupportPriorityNotAllowed
+  - CodeSupportPrioritiesEmpty
+  - CodeSupportDefaultPriorityNotAllowed
+  - CodeSupportAttachmentNotFound
+  - CodeSupportAttachmentTooLarge
+  - CodeSupportAttachmentLimit
+  - CodeSupportTicketClosed
+  - CodeSupportDepartmentNameTaken
+  - CodeAbuseReportNotFound
+  - CodeAbuseCategoryNotFound
+  - CodeAbuseCategorySystem
+  - CodeAbuseCategoryInUse
+  - CodeAbuseSenderExists
+  - CodeAbuseServiceNotFound
+  - CodeAbuseReportInformational
+  - CodeAbuseReportNotInformational
+  - CodeTaxRateNotFound
+  - CodeRegionNotFound
+  - CodeRegionInUse
+  - CodePlanNotInRegion
+  - CodeAdminGroupNotFound
+  - CodeSystemGroupProtected
+  - CodeGroupHasMembers
+  - CodeLastSystemAdmin
+  - CodeFeatureDisabled
+  - CodeDashboardWidgetNotFound
+  - CodeVPSNotFound
+  - CodeVPSClusterNotFound
+  - CodeVPSPlanNotFound
+  - CodeVPSAlreadyRunning
+  - CodeVPSAlreadyStopped
+  - CodeVPSNotStopped
+  - CodeVPSIPPoolExhausted
+  - CodeVPSNoClusterForRegion
+  - CodeVPSProxmoxConnectionFailed
+  - CodeVPSVMIDAllocationFailed
+  - CodeVPSNoIPFamilySelected
+  - CodeVPSIPFamilyUnavailable
+  - CodeVPSPrimaryInterfaceInvalid
+  - CodeVPSPrivateNetworkRequired
+  - CodeVPSNoNodeCapacity
+  - CodeVPSVMNotFound
+  - CodeVPSRootPasswordUnavailable
+  - CodeVPSRootPasswordNotReady
+  - CodeVPSAlreadyManaged
+  - CodeVPSPlanChangeNotFound
+  - CodeVPSPlanChangeInProgress
+  - CodeVPSPlanChangeSamePlan
+  - CodeVPSPlanChangePlanUnavailable
+  - CodeVPSPlanChangeNotActive
+  - CodeVPSLocked
+  - CodeVPSDiskShrinkNotAllowed
+  - CodeVPSPlanRegionUnavailable
+  - CodeVPSClusterUnreachable
+  - CodeVPSBackupLimitReached
+  - CodeVPSBackupNotFound
+  - CodeVPSBackupNotUserCreated
+  - CodeVPSBackupsDisabled
+  - CodeISONotFound
+  - CodeISOInvalidURL
+  - CodeISOTooLarge
+  - CodeISONotISO
+  - CodeISONoActiveVPS
+  - CodeISONotReady
+  - CodeISODownloadFailed
+  - CodeISOInUse
+  - CodeVPSNotProvisioned
+  - CodeVPSNotEphemeral
+  - CodeVPSHourlyCannotCancel
+  - CodeVPSOSChangeNotAllowed
+  - CodeVPSAdoptTemplate
+  - CodeVPSFirstBootNeedsPublic
+  - CodeVPSFirstBootScriptTooBig
+  - CodeVPSFirstBootScriptMissing
+  - CodeVPSFirstBootNotExpected
+  - CodeVPSEphemeralMaxAgeWithout
+  - CodeVPSEphemeralHourlyOnly
+  - CodeVPSEphemeralMaxAgeRange
+  - CodeVPSEphemeralMaxAgePassed
+  - CodeVPSClusterRegionTaken
+  - CodeVPSOSFamilyNotFound
+  - CodeVPSOSVersionNotFound
+  - CodeVPSOSIconTooLarge
+  - CodeVPSOSIconInvalid
+  - CodeVPSAddressFamilyMismatch
+  - CodeVPSPrefixNotInPool
+  - CodeVPSNoRoutedPool
+  - CodeVPSAddressNotAssigned
+  - CodeVPSSubnetNotAssigned
+  - CodeVPSConsoleTokenInvalid
+  - CodeVPSConsoleUpgradeRequired
+  - CodeVPSConsoleOriginDenied
+  - CodeCategoryNotFound
+  - CodeCategoryWrongProduct
+  - CodeCategoryBuiltin
+  - CodeCategoryHasPlans
+  - CodeCategoryHasNodes
+  - CodeISOGlobalProtected
+  - CodeVPSPlanChangeApplyFailed
+  - CodeS3ConnectionFailed
+  - CodeS3NotFound
+  - CodeS3PlanNotFound
+  - CodeS3KeyNotFound
+  - CodeS3BucketNameTaken
+  - CodeS3BucketNameInvalid
+  - CodeS3QuotaExceeded
+  - CodeS3NoBucketForKey
+  - CodeS3KeyLimitReached
+  - CodeS3AlreadyImported
+  - CodeS3NodeNotFound
+  - CodeS3ObjectNotFound
+  - CodeS3ObjectKeyInvalid
+  - CodeS3FolderNotEmpty
+  - CodeS3PlanChangeNotFound
+  - CodeS3PlanChangeInProgress
+  - CodeS3PlanChangeSamePlan
+  - CodeS3PlanChangePlanUnavailable
+  - CodeS3PlanChangeNotActive
+  - CodeS3PlanChangeUsageTooHigh
+  - CodeFroxlorUnavailable
+  - CodeHostingNotFound
+  - CodeHostingPlanNotFound
+  - CodeHostingServerNotFound
+  - CodeHostingNoServerRegion
+  - CodeHostingNameTaken
+  - CodeHostingLimitReached
+  - CodeHostingResourceNotFound
+  - CodeHostingInvalidInput
+  - CodeHostingNotActive
+  - CodeHostingPathTraversal
+  - CodeHostingWeakPassword
+  - CodeHostingDomainInvalid
+  - CodeHostingLERejected
+  - CodeHostingPlanChangeNotFound
+  - CodeHostingPlanChangeInProgress
+  - CodeHostingPlanChangeSamePlan
+  - CodeHostingPlanChangePlanUnavailable
+  - CodeHostingPlanChangeNotActive
+  - CodeHostingPlanChangeUsageTooHigh
+  - CodeEmailUnavailable
+  - CodeEmailNotFound
+  - CodeEmailPlanNotFound
+  - CodeEmailDomainInvalid
+  - CodeEmailDomainTaken
+  - CodeEmailNameTaken
+  - CodeEmailQuotaExceeded
+  - CodeEmailLimitReached
+  - CodeEmailMailboxNotFound
+  - CodeEmailResourceNotFound
+  - CodeEmailInvalidInput
+  - CodeEmailWeakPassword
+  - CodeEmailNotActive
+  - CodeEmailDNSNoZone
+  - CodeEmailDNSPlanChanged
+  - CodeEmailPlanChangeNotFound
+  - CodeEmailPlanChangeInProgress
+  - CodeEmailPlanChangeSamePlan
+  - CodeEmailPlanChangePlanUnavailable
+  - CodeEmailPlanChangeNotActive
+  - CodeEmailPlanChangeUsageTooHigh
+  - CodeS3UploadTooLarge
+  - CodeS3UploadTooManyFiles
+  - CodeS3GrantNoPermission
+  - CodeHostingServerInUse
+  - CodeHostingDomainAliasSelf
+  - CodeMaintenanceNotFound
+  - CodeMaintenanceRecipientsChanged
+  - CodeMaintenanceNotPublished
+  - CodeMaintenanceNoRecipients
+  - CodeMaintenanceTargetRegion
+  - CodeMaintenanceTargetProduct
+  - CodeMaintenanceTargetSwitch
+  - CodeMaintenanceTargetNode
+  - CodeMaintenanceTargetRack
+  - CodeMaintenanceTargetService
+  - CodeMaintenanceTargetProductRegional
+  - CodeMaintenanceTargetKindInvalid
+  - CodeNewsArticleNotFound
+  - CodeNewsImageNotFound
+  - CodeNewsImageUnreadable
+  - CodeNotificationTemplateNotFound
+  - CodeNotificationTemplateSystem
+  - CodeNotificationEnglishRequired
+  - CodeNotificationNotFailed
+  - CodeS3BucketDeleteFailed
+  - CodeHostingTeardownFailed
+  - CodeHostingPlanChangeApplyFailed
+  - CodeEmailTeardownFailed
+  - CodeEmailPlanChangeApplyFailed
+  - CodeS3NodeUnreachable
+  - CodeS3NodeUnhealthy
+  - CodeOrgTransferToSelf
+  - CodeBGPRouteServerUnreachable
+  - CodeBGPASSetImportFailed
+  - CodeBillingPaymentDeclined
+  - CodeBillingPaymentFailed
+  - CodeEmailAlreadyRegistered
+  - CodeInvalidCaptcha
+  - CodeRegistrationDisabled
+  - CodeEmailNotVerified
+  - CodeServiceSuspended
+  - CodeServiceNotActive
+  - CodeInvalidToken
+  - CodeInviteExpired
+  - CodeInviteAlreadyUsed
+  - CodeOAuthError
+  - CodePasswordSetupRequired
+  - CodePasswordIncorrect
+  - CodeAccountDeletionBlocked
+  - CodeTwoFAInvalidCode
+  - CodeTwoFACodeExpired
+  - CodeTwoFATooManyAttempts
+  - CodeTwoFAOTPRateLimit
+  - CodeTwoFAAlreadyEnabled
+  - CodeTwoFANotEnabled
+  - CodeAuthInvalidCredentials
+  - CodeAuthAccountNotFound
+  - CodeAuthAccountBlocked
+  - CodeAuthCustomerSessionRequired
+  - CodeAuthLoginLinkInvalid
+  - CodeAuthMigrationNotPending
+  - CodeTwoFASessionInvalid
+  - CodeTwoFAOTPUnavailable
+  - CodeTwoFATelegramNotLinked
+  - CodeTwoFATelegramUnavailable
+  - CodePasskeyNotFound
+  - CodePasskeyRegistrationFailed
+  - CodePasskeyLoginFailed
+  - CodeAPIKeyInvalid
+  - CodeAPIKeyExpired
+  - CodeAPIKeyNotFound
+  - CodeAPIKeyNotAllowed
+  - CodeAPIKeyWrongOrg
+  - CodeSSHKeyNotFound
+  - CodeOrgNotFound
+  - CodeOrgContactRequired
+  - CodeVatCheckUnavailable
+  - CodeOrgPermissionUnknown
+  - CodeOrgCustomerNumberTaken
+  - CodeOrgNoActive
+  - CodeOrgNotSelected
+  - CodeOrgNotMember
+  - CodeOrgMemberNotFound
+  - CodeOrgAlreadyMember
+  - CodeOrgInvitePending
+  - CodeOrgInviteWrongEmail
+  - CodeOrgOwnerOnly
+  - CodeOrgOwnerNotEditable
+  - CodeOrgOwnerNotRemovable
+  - CodeOrgTransferNotForStaff
+  - CodeOrgTransferSourceAdmin
+  - CodeOrgTransferTargetMissing
+  - CodeUserNotFound
+  - CodeUserNoLocalPassword
+  - CodeUserEmailAlreadyVerified
+  - CodeUserNoOrg
+  - CodeUserOrgRequired
+  - CodeAccountDeletionStaff
+  - CodeTelegramAlreadyLinked
+  - CodeAdminNotFound
+  - CodeAdminAccountTaken
+  - CodeAdminGroupNameTaken
+  - CodeAdminNoGroup
+  - CodeAdminDeleteSelf
+  - CodeAdminDeleteLast
+  - CodeSearchQueryTooShort
+  - CodeSystemLogIssueNotFound
+  - CodeBGPRouteServerNotFound
+  - CodeBGPSessionNotFound
+  - CodeBGPSessionNotActive
+  - CodeBGPASNNotFound
+  - CodeBGPASNNotActive
+  - CodeBGPASNAlreadyPending
+  - CodeBGPASNAlreadyRegistered
+  - CodeBGPASNContactInvalid
+  - CodeBGPASNVerifyLimit
+  - CodeBGPASNVerificationInvalid
+  - CodeBGPDuplicateSession
+  - CodeBGPServiceHasNoIPs
+  - CodeBGPServiceNotFound
+  - CodeBGPBYOIPNotFound
+  - CodeBGPBYOIPConflict
+  - CodeBGPSubPrefixOutsideParent
+  - CodeBGPSubPrefixOverlap
+  - CodeBGPSubPrefixNotFound
+  - CodeBGPFloatingRouteNotFound
+  - CodeBGPAutobirdError
+  - CodeBGPManualPrefixOnly
+  - CodePrivateNetworkNotFound
+  - CodePrivateNetworkIDConflict
+  - CodePrivateNetworkIDsExhausted
+  - CodePrivateNetworkAlreadyAttached
+  - CodePrivateNetworkNotAttached
+  - CodePrivateNetworkNICSlotsFull
+  - CodePrivateNetworkHasAttachments
+  - CodePrivateNetworkSDNNotEnabled
+  - CodePrivateNetworkNoVPSInRegion
+  - CodePrivateNetworkRegionMismatch
+  - CodePrivateNetworkLimitReached
+  - CodePrivateNetworkNoDedicatedInRegion
+  - CodePrivateNetworkNoSwitchInRegion
+  - CodePrivateNetworkKindMismatch
+  - CodePrivateNetworkInvalidKind
+  - CodeIPAMPrefixNotFound
+  - CodeIPAMAddressNotFound
+  - CodeIPAMPrefixOverlap
+  - CodeIPAMPrefixNotEmpty
+  - CodeIPAMModeMismatch
+  - CodeIPAMAddressOutOfRange
+  - CodeIPAMAddressInUse
+  - CodeIPAMNoReverseZone
+  - CodeIPAMInvalidPTR
+  - CodeIPAMRDNSError
+  - CodeIPAMPoolExhausted
+  - CodeIPAMInvalidCIDR
+  - CodeIPAMGatewayOutOfPrefix
+  - CodeIPAMPrefixOutsideParent
+  - CodeIPAMAddressReserved
+  - CodeIPAMSubnetLengthInvalid
+  - CodeIPAMModeChangeNotEmpty
+  - CodeIPAMRangeTooLarge
+  - CodeIPAMPrefixInUse
+  - CodeIPAMPrefixNotRoutable
+  - CodeIPAMPrefixOrgMismatch
+  - CodeFirewallNotFound
+  - CodeFirewallRuleNotFound
+  - CodeFirewallInUse
+  - CodeFirewallSyncFailed
+  - CodeFirewallDirectionInvalid
+  - CodeFirewallActionInvalid
+  - CodeFirewallProtocolInvalid
+  - CodeFirewallSourceInvalid
+  - CodeFirewallPortInvalid
+  - CodeFirewallPortsNotAllowed
+  - CodeFirewallFamilyMismatch
+  - CodeFirewallRuleDuplicate
+  - CodeFirewallRuleConflict
+  - CodeFirewallOutAcceptNotAllowed
+  - CodeFirewallIPListNotFound
+  - CodeFirewallIPListInvalid
+  - CodeFirewallIPListTooMany
+  - CodeFirewallIPListFetchFailed
+  - CodeFirewallOrgMismatch
+  - CodeFirewallIPListNoSource
+  - CodePrivateNetworkOrgMismatch
+  - CodeBGPRouteServerNameTaken
+  - CodeBGPASNPrefixExists
+  - CodeBGPASSetAlreadyAttached
+  - CodeBGPFloatingRouteManaged
+  - CodeBGPASSetLimitASNs
+  - CodeBGPASSetLimitPrefixes
+  - CodeBGPASSetRIPEUnreachable
+  - CodeBGPASSetRIPERejected
+  - CodeBGPASSetRIPERejectedNoText
+  - CodeBGPASSetRIPEBadResponse
+  - CodeBGPASSetRIPEObjectMissing
+  - CodeBGPASSetSyncFailed
+  - CodeIPAMPrefixExists
+  - CodeIPAMAddressExists
+  - CodeBGPASSetWarnLookupCap
+  - CodeBGPASSetWarnMemberCap
+  - CodeBGPASSetWarnNestedUnreadable
+  - CodeBGPASSetWarnMbrsByRef
+  - CodeBGPASSetWarnUnrecognised
+  - CodeBGPASSetWarnDepthCutOff
+  - CodeBGPASSetWarnRoutesFailed
+  - CodeBGPASSetWarnUnauthorized
+  - CodeBGPASSetWarnAutNumFailed
+  - CodeBGPASSetWarnMore
+  - CodeBGPASSetWarnLegacy
+  - CodeBGPRouteServerPushFailed
+  - CodeBGPRSKindSessions
+  - CodeBGPRSKindFloating
+  - CodeBGPRSKindBYO
+  - CodeBGPRSNoRegion
+  - CodeBGPRSNoRegionDetail
+  - CodeBGPRSDisabled
+  - CodeBGPRSDisabledDetail
+  - CodeBGPRSUnreachable
+  - CodeBGPRSUnreachableDetail
+  - CodeBGPRSNoLocalAddresses
+  - CodeBGPRSNoLocalAddressesDetail
+  - CodeBGPRSFetchFailed
+  - CodeBGPRSAutobirdError
+  - CodeBGPRSMissing
+  - CodeBGPRSMissingDetail
+  - CodeBGPRSMismatch
+  - CodeBGPRSMismatchDetail
+  - CodeBGPRSUnmanaged
+  - CodeBGPRSUnmanagedDetail
+  - CodeBGPRSPushFailed
+  - CodeBGPRSCoverageGaps
+  - CodeBGPRSCoverageGapsDetail
+  - CodeBGPRSExcluded
+  - CodeBGPRSExcludedDetail
+  - CodeBGPRSUpstreamUnmanaged
+  - CodeBGPRSUpstreamUnmanagedDetail
+  - CodeBGPRSExcludedOrphaned
+  - CodeBGPRSExcludedDeleting
+  - CodeBGPRSExcludedASNGone
+  - CodeBGPRSExcludedNoNextHop
+  - CodeBGPRSExcludedPendingApproval
+  - CodeBGPRSExcludedRejected
+  - CodeBGPRSExcludedNotActive
+  - CodeBGPRSGapSession
+  - CodeBGPRSGapRoute
+  - CodeDedicatedServerNotFound
+  - CodeDedicatedServiceNotFound
+  - CodeDedicatedPlanNotFound
+  - CodeDedicatedAgentNotFound
+  - CodeDedicatedPoolNotConfigured
+  - CodeDedicatedOutOfStock
+  - CodeDedicatedNotAwaitingStock
+  - CodeDedicatedServerNotFree
+  - CodeDedicatedInvalidBillCycle
+  - CodeDedicatedInvalidPowerOp
+  - CodeDedicatedAgentUnavailable
+  - CodeDedicatedAgentUnreachable
+  - CodeDedicatedNoAgent
+  - CodeDedicatedLocked
+  - CodeDedicatedComponentNotFound
+  - CodeDedicatedPlatformNotFound
+  - CodeDedicatedRackNotFound
+  - CodeDedicatedRackOccupied
+  - CodeDedicatedRackDoesNotFit
+  - CodeDedicatedRackWrongRegion
+  - CodeDedicatedRackUnitNoRack
+  - CodeDedicatedRackRangeConflict
+  - CodeDedicatedRackInUse
+  - CodeDedicatedRackDeviceNotFound
+  - CodeDedicatedRackDeviceDoesNotFit
+  - CodeDedicatedRackDeviceConflict
+  - CodeDedicatedRackUnitTaken
+  - CodeDedicatedNodeSlotRequired
+  - CodeDedicatedNodeSlotInvalid
+  - CodeDedicatedNodeSlotTaken
+  - CodeDedicatedNodesInUse
+  - CodeDedicatedConfigInvalid
+  - CodeDedicatedUpgradeNotAllowed
+  - CodeDedicatedInUse
+  - CodeDedicatedComponentInUse
+  - CodeDedicatedRescueActive
+  - CodeDedicatedRescueNotFound
+  - CodeDedicatedRescueImageInUse
+  - CodeDedicatedBootNetworkInvalid
+  - CodeDedicatedActionNotFound
+  - CodeDedicatedActionRunNotFound
+  - CodeDedicatedActionActive
+  - CodeDedicatedActionInUse
+  - CodeDedicatedConsoleUnavailable
+  - CodeDedicatedConsoleBusy
+  - CodeDedicatedConsoleFailed
+  - CodeDedicatedConsoleDriverUnknown
+  - CodeDedicatedConsoleNotFound
+  - CodeDedicatedISONoService
+  - CodeSwitchNotFound
+  - CodeSwitchPortNotFound
+  - CodeSwitchDriverUnsupported
+  - CodeSwitchUnreachable
+  - CodeSwitchAgentNoSupport
+  - CodeSwitchSyncFailed
+  - CodeSwitchACLBudgetExceeded
+  - CodeSwitchPortInUse
+  - CodeSwitchPortWrongRegion
+  - CodeSwitchPortNotCustomer
+  - CodeSwitchInUse
+  - CodeSwitchBridgeInvalid
+  - CodeSwitchLocked
+  - CodeDedicatedServerNameTaken
+  - CodeDedicatedServerAssigned
+  - CodeDedicatedAgentHasServers
+  - CodeDedicatedPlatformNameTaken
+  - CodeDedicatedRackNameTaken
+  - CodeDedicatedPlanHasServices
+  - CodeDedicatedOptionGroupNotFound
+  - CodeDedicatedServiceNoPlan
+  - CodeDedicatedNoActiveServer
+  - CodeDedicatedServerWrongPlatform
+  - CodeDedicatedServerConfigMismatch
+  - CodeDedicatedIPNotAssigned
+  - CodeDedicatedSubnetNotAssigned
+  - CodeDedicatedPrefixNotInPool
+  - CodeDedicatedNoRoutedPool
+  - CodeDedicatedConsoleNotYours
+  - CodeDedicatedISOGlobalNotDeletable
+  - CodeDedicatedISONotGlobal
+  - CodeDedicatedMediaLinkInvalid
+  - CodeDedicatedRescueNoAgent
+  - CodeDedicatedRescueAgentMissing
+  - CodeDedicatedRescueAgentDisabled
+  - CodeDedicatedRescueAgentNoPXE
+  - CodeDedicatedRescueNoMAC
+  - CodeDedicatedRescueNoIPv4
+  - CodeDedicatedRescueNetworkUnreadable
+  - CodeDedicatedRescueBootNetsUnreadable
+  - CodeDedicatedRescueNoBootNetworks
+  - CodeDedicatedRescueNoImage
+  - CodeDedicatedRescueImageNotOnAgent
+  - CodeDedicatedRescueImageUnavailable
+  - CodeDedicatedRescueArmFailed
+  - CodeDedicatedRescueScriptTooLarge
+  - CodeDedicatedRescueChainNoScript
+  - CodeDedicatedActionNotChosen
+  - CodeDedicatedActionDisabled
+  - CodeDedicatedActionNoScript
+  - CodeDedicatedActionNoImage
+  - CodeDedicatedActionImageIsMenu
+  - CodeDedicatedActionAlreadyRunning
+  - CodeDedicatedActionRescueActive
+  - CodeDedicatedActionKeyTaken
+  - CodeDedicatedActionTooManyInputs
+  - CodeDedicatedActionInputKeyInvalid
+  - CodeDedicatedActionInputKeyDuplicate
+  - CodeDedicatedActionInputLabelRequired
+  - CodeDedicatedActionInputTypeInvalid
+  - CodeDedicatedActionInputNoChoices
+  - CodeDedicatedActionInputChoiceEmpty
+  - CodeDedicatedActionInputChoiceDuplicate
+  - CodeDedicatedActionInputRangeInvalid
+  - CodeDedicatedActionInputMaxLenInvalid
+  - CodeDedicatedActionInputPatternNotText
+  - CodeDedicatedActionInputPatternTooLong
+  - CodeDedicatedActionInputPatternInvalid
+  - CodeDedicatedActionInputDefaultInvalid
+  - CodeDedicatedActionTooManySteps
+  - CodeDedicatedActionStepKeyInvalid
+  - CodeDedicatedActionStepKeyDuplicate
+  - CodeDedicatedActionTagInvalid
+  - CodeDedicatedActionValueUnknown
+  - CodeDedicatedActionValueRequired
+  - CodeDedicatedActionValueNotBool
+  - CodeDedicatedActionValueNotNumber
+  - CodeDedicatedActionValueTooSmall
+  - CodeDedicatedActionValueTooLarge
+  - CodeDedicatedActionValueNotAChoice
+  - CodeDedicatedActionValueTooLong
+  - CodeDedicatedActionValueNotText
+  - CodeDedicatedActionValueMultiline
+  - CodeDedicatedActionValueUncheckable
+  - CodeDedicatedActionValueFormat
+  - CodeDedicatedActionValueTypeUnknown
+  - CodeDedicatedFitRAMType
+  - CodeDedicatedFitDriveBays
+  - CodeDedicatedFitDrivesShared
+  - CodeDedicatedFitDIMMSlots
+  - CodeDedicatedFitRAMMax
+  - CodeDedicatedFitRAMModules
+  - CodeDedicatedFitCPUSockets
+  - CodeDedicatedFitCPUMixed
+  - CodeDedicatedFitPCIeSlots
+  - CodeDedicatedFitPCIeSeats
+  - CodeDedicatedFitCardDoubleWidth
+  - CodeDedicatedFitCardFullHeight
+  - CodeDedicatedFitCardDoubleFull
+  - CodeDedicatedFitCardPower
+  - CodeDedicatedFitUplinkNIC
+  - CodeDedicatedPlanBaseSpecBySize
+  - CodeDedicatedPlanBasePartRequired
+  - CodeDedicatedPlanBaseRAMSize
+  - CodeDedicatedPlanBaseRAMTwice
+  - CodeDedicatedPlanBaseDriveIncomplete
+  - CodeDedicatedPlanBaseDriveMedia
+  - CodeDedicatedPlanBaysTwice
+  - CodeDedicatedPlanBaysSwapped
+  - CodeDedicatedPlanBaysNotDrives
+  - CodeDedicatedPlanBaysMixed
+  - CodeDedicatedPlanBaysDriveTwice
+  - CodeDedicatedPlanBaysMissingBase
+  - CodeDedicatedPlanRAMNotReplace
+  - CodeDedicatedPlanRangeNotUplink
+  - CodeDedicatedPlanRangeCount
+  - CodeDedicatedPlanRangeInvalid
+  - CodeDedicatedPlanRangeLimits
+  - CodeDedicatedPlanRangeSteps
+  - CodeDedicatedPlanOptionNotReplace
+  - CodeDedicatedPlanOptionKindInvalid
+  - CodeDedicatedPlanBandwidthRequired
+  - CodeDedicatedPlanUplinkRequired
+  - CodeDedicatedPlanRAMBySize
+  - CodeDedicatedPlanDriveIncomplete
+  - CodeDedicatedPlanDriveMedia
+  - CodeDedicatedPlanPartRequired
+  - CodeDedicatedPlanUplinkTooFast
+  - CodeDedicatedPlanGroupMissing
+  - CodeSwitchStatePreviewFailed
+  - CodeSwitchNameTaken
+  - CodeSwitchAgentWrongRegion
+  - CodeSwitchPasswordReentry
+  - CodeSwitchPortServerNeedsCustomer
+  - CodeSwitchPortReservedRole
+  - CodeSwitchSyncNotRecorded
+  - CodeSwitchRulesRejected
+  - CodeSwitchWarnServerOtherRegion
+  - CodeSwitchWarnServerGone
+  - CodeSwitchWarnRouterOSTooOld
+  - CodeSwitchWarnACLDisabled
+  - CodeSwitchWarnNoNICMAC
+  - CodeSwitchWarnBadNICMAC
+  - CodeSwitchWarnBadApprovedSource
+  - CodeSwitchWarnNoAddresses
+  - CodeSwitchWarnDevice
+  - CodeSwitchWarnRuleRejected
+  - CodeSwitchWarnLegacy
+  - CodeDedicatedHourlyNoUpgrades
+  - CodeDedicatedProvisionNoServer
+  - CodeDedicatedProvisionFailed
+  - CodeDedicatedPowerOnRetrying
+  - CodeInvoiceNotFound
+  - CodeInvoiceNotEditable
+  - CodeInvoiceAlreadyPaid
+  - CodeInvoiceVoidDraft
+  - CodeInvoiceVoidPaid
+  - CodeInvoiceVoidClosed
+  - CodeInvoiceConvertInvalid
+  - CodePaymentMethodNotFound
+  - CodeStripeError
+  - CodeCryptoAmountTooLow
+  - CodeCryptoMinPayment
+  - CodeNoPdfForDraft
+  - CodePromoCodeNotFound
+  - CodePromoCodeAlreadyApplied
+  - CodePromoCodeExists
+  - CodeInsufficientCredit
+  - CodeRefundNotAllowed
+  - CodeRefundExceedsTotal
+  - CodeRefundGatewayError
+  - CodeSubPriceInvalid
+  - CodeBillingUBLProforma
+  - CodeBillingAccountingFileUnknown
+  - CodeBillingUBLSellerIncomplete
+  - CodeBillingUBLSellerIncompleteCustomer
+  - CodeBillingUBLBuyerIncomplete
+  - CodeBillingInvoiceNotPayable
+  - CodeBillingInvoiceNothingDue
+  - CodeBillingTopUpFromCredit
+  - CodeBillingInvoiceItemNotFound
+  - CodeBillingPaymentNotFound
+  - CodeBillingCardSetupIncomplete
+  - CodeBillingTaxRateExists
+  - CodeBillingTooManyPaymentStarts
+  - CodePromoCodeNotYetValid
+  - CodePromoCodeExpired
+  - CodePromoCodeUsedUp
+  - CodePromoCodeWrongProduct
+  - CodePromoCodeWrongPlan
+  - CodePromoCodeWrongCycle
+  - CodePromoCodeNoMatchingItems
+  - CodeBillingSubscriptionNotFound
+  - CodeBillingSubscriptionNotActive
+  - CodeBillingHourlyNoPeriodEnd
+  - CodeBillingNotAwaitingProvision
+  - CodeBillingNoSubscription
+  - CodeBillingServiceTypeUnknown
+  - CodeBillingServiceNotFound
+  - CodeBillingCycleNotFixed
+  - CodeBillingPriceLocked
+  - CodeBillingItemNotFound
+  - CodeBillingItemNextDueWithBillNow
+  - CodeBillingTransferSameOrg
+  - CodeBillingTransferTargetNotFound
+  - CodeBillingTransferUnowned
+  - CodeBillingTransferTerminated
+  - CodeBillingTransferUnpaid
+  - CodeBillingTransferTargetNoCredit
+  - CodeCustomerGroupNotFound
+  - CodeDonationPageNotFound
+  - CodeDonationNotFound
+  - CodeDonationPageExists
+  - CodeDonationsUnavailable
+  - CodeDonationLinkInvalid
+  - CodeDonationAmountInvalid
+  - CodeDonationBelowMethodMin
+  - CodeDonationMessageTooLong
+  - CodeDonationMethodUnsupported
+  - CodeDonationCurrencyRequired
+  - CodeDonationRecipientFull
+  - CodeDonationAvatarTooLarge
+  - CodeDonationAvatarUnreadable
+  - CodeBillingProvisionFailed
+  - CodeZoneNotFound
+  - CodeRecordNotFound
+  - CodeSystemRecord
+  - CodeCNAMEExclusive
+  - CodeRecordConflict
+  - CodeOriginInvalid
+  - CodeApexNSProtected
+  - CodeOriginReserved
+  - CodeOriginPortInvalid
+  - CodeOriginDuplicate
+  - CodeOriginSchemeInvalid
+  - CodeOriginWeightInvalid
+  - CodeOriginNone
+  - CodeCDNHostnameInvalid
+  - CodeCDNHostnameOutOfZone
+  - CodeCDNRuleLimit
+  - CodeCDNGroupLimit
+  - CodeCDNConditionLimit
+  - CodeCDNConditionValueLen
+  - CodeCDNConditionValueRequired
+  - CodeCDNSelectorInvalid
+  - CodeCDNMatchTypeInvalid
+  - CodeCDNGroupMatchInvalid
+  - CodeCDNDefaultSelectorCacheOnly
+  - CodeCDNNoEligibleNodes
+  - CodeCDNHostnameNotOwned
+  - CodeCDNZoneRequired
+  - CodeCDNHostnameLimit
+  - CodeCDNOriginLimit
+  - CodeCDNExternalDNSUnavailable
+  - CodeCDNNotPointingAtEdge
+  - CodeCDNHostnameUnverified
+  - CodeCDNPresetUnknown
+  - CodeCDNPresetKeyTaken
+  - CodeCDNRuleManaged
+  - CodeCDNCustomRulesNotAllowed
+  - CodeCDNMainHostname
+  - CodeCDNConditionIPInvalid
+  - CodeCDNConditionLocationInvalid
+  - CodeCDNConditionReputationInvalid
+  - CodeCDNConditionASNInvalid
+  - CodeCDNConditionRegexInvalid
+  - CodeCDNConditionSeverityInvalid
+  - CodeCDNConditionMethodInvalid
+  - CodeCDNConditionCookieInvalid
+  - CodeCDNConditionHeaderInvalid
+  - CodeCDNAttackSettingsInvalid
+  - CodeCDNTimeoutInvalid
+  - CodeCDNTimeoutRateInvalid
+  - CodeCDNTimeoutRequired
+  - CodeCDNTimeoutAdminOnly
+  - CodeCDNTimeoutsInvalid
+  - CodeDNSPlanChangeNotFound
+  - CodeDNSPlanChangeInProgress
+  - CodeDNSPlanChangeSamePlan
+  - CodeDNSPlanChangePlanUnavailable
+  - CodeDNSPlanChangeNotActive
+  - CodeRegistrarUnavailable
+  - CodeDomainNotFound
+  - CodeDomainNameInvalid
+  - CodeDomainUnavailable
+  - CodeDomainTaken
+  - CodeDomainAlreadyManaged
+  - CodeDomainNotInAccount
+  - CodeTLDNotFound
+  - CodeTLDNotSupported
+  - CodeDomainYearsInvalid
+  - CodeDomainInvalidAuthCode
+  - CodeDomainOperationPending
+  - CodeDomainNotActive
+  - CodeDomainLocked
+  - CodeDomainNameserverInvalid
+  - CodeDomainNameserverCount
+  - CodeDomainHostInvalid
+  - CodeDomainHostNotFound
+  - CodeContactNotFound
+  - CodeContactNotInAccount
+  - CodeContactRejected
+  - CodeContactAlreadyImported
+  - CodeContactInvalid
+  - CodeContactInUse
+  - CodeMarkupInvalid
+  - CodeDomainDNSNotAvailable
+  - CodeDNSZoneConflict
+  - CodeDNSZoneNoMatch
+  - CodeDNSZoneIncludedWithDomain
+  - CodeDomainDNSSECInvalid
+  - CodeDomainDNSSECNotAvailable
+  - CodeDomainFeatureUnsupported
+  - CodeDomainPrivacyNotAvailable
+  - CodeDomainPrivacyHeld
+  - CodeDNSReverseZoneUnsupported
+  - CodeDNSZoneExists
+  - CodeDNSZoneHasSubscription
+  - CodeDNSZoneCycleViaBilling
+  - CodeDNSZoneUseTransfer
+  - CodeDNSZoneNoOwner
+  - CodeDNSZoneInfraReverse
+  - CodeDNSZoneSOAMissing
+  - CodeDNSSmartRecordNotFound
+  - CodeDNSPlanNotFound
+  - CodeDNSPlanIsDomainPlan
+  - CodeCDNZoneNotFound
+  - CodeCDNHostnameNotFound
+  - CodeCDNHostnameTaken
+  - CodeCDNNodeNotFound
+  - CodeCDNRuleNotFound
+  - CodeCDNPresetRuleNotFound
+  - CodeCDNSuggestionNotFound
+  - CodeCDNSuggestionManual
+  - CodeCDNCertProviderUnknown
+  - CodeCDNRoutingModeUnchanged
+  - CodeCDNRoutingExternal
+  - CodeCDNLogLimitInvalid
+  - CodeCDNPlanNotFound
+  - CodeCDNPlanInUse
+  - CodeCDNPlanChangeSamePlan
+  - CodeCDNPlanChangePlanUnavailable
+  - CodeCDNPlanChangeTooSmall
+  - CodeCDNPlanChangeNotActive
+  - CodeCDNPlanChangeInProgress
+  - CodeCDNPlanChangeNotFound
+  - CodeCDNCertDNSMissing
+  - CodeCDNCertDNSNotEdge
+  - CodeCDNCertDNSLookupFailed
+  - CodeCDNCertEdgeUnavailable
+  - CodeCDNCertChallengeFailed
+  - CodeCDNCertIssuanceFailed
+  - CodeDomainOperationNotFound
+  - CodeDomainSameOwner
+  - CodeDomainZoneUnpaid
+  - CodeDomainNoLinkedZone
+  - CodeDomainMarkupNotFound
+  - CodeDomainDNSSECKeyRequired
+  - CodeDomainDNSSECTooManyKeys
+  - CodeDomainDNSSECAlgorithmUnsupported
+  - CodeDomainOpFailed
+  - CodeDomainOpRegistrarFailed
+  - CodeDomainOpRegistrarFailedNoText
+  - CodeDomainOpNoRegistrarID
+  - CodeDomainOpCancelled
+  - CodeDomainOpPaymentExpired
+  - CodeDomainOpStillPending
+  - CodeDomainDNSZoneUnavailable
+  - CodeCDNNodeProbeFailed

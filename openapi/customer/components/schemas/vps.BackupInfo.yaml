@@ -1,0 +1,13 @@
+type: object
+properties:
+  created_at:
+    type: string
+  notes:
+    type: string
+  size:
+    type: integer
+  user_created:
+    description: true = protected (user-initiated)
+    type: boolean
+  volid:
+    type: string

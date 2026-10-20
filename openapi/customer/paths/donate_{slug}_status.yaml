@@ -1,0 +1,53 @@
+get:
+  security: []
+  operationId: get-donation-payment-status
+  description: >-
+    Returns the live status of a donation for the donor's progress display; HMAC-secured.
+  tags:
+    - donations
+  summary: Get donation payment status
+  parameters:
+    - description: donation page slug
+      name: slug
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: donation id
+      name: donation_id
+      in: query
+      required: true
+      schema:
+        type: string
+    - description: capture token
+      name: token
+      in: query
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

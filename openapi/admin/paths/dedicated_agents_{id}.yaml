@@ -1,0 +1,59 @@
+get:
+  operationId: get-dedicated-agent
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Get dedicated agent
+  parameters:
+    - description: agent id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.DedicatedAgent.yaml
+put:
+  operationId: update-dedicated-agent
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Update dedicated agent
+  parameters:
+    - description: agent id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.DedicatedAgent.yaml
+delete:
+  operationId: delete-dedicated-agent
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Delete dedicated agent
+  parameters:
+    - description: agent id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content

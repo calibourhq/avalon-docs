@@ -1,0 +1,46 @@
+get:
+  operationId: get-cdn-node-metrics
+  security:
+    - BearerAuth: []
+  description: Returns aggregated traffic metrics for a single edge node (admin only).
+  tags:
+    - cdn-nodes
+  summary: Get CDN node metrics
+  parameters:
+    - description: node id
+      name: node_id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: aggregation period
+      name: period
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

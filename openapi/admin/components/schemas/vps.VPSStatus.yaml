@@ -1,0 +1,15 @@
+type: string
+enum:
+  - pending
+  - provisioning
+  - active
+  - suspended
+  - terminated
+  - error
+x-enum-varnames:
+  - VPSStatusPending
+  - VPSStatusProvisioning
+  - VPSStatusActive
+  - VPSStatusSuspended
+  - VPSStatusTerminated
+  - VPSStatusError

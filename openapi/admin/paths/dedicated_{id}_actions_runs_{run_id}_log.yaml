@@ -1,0 +1,36 @@
+get:
+  operationId: get-an-action-runs-captured-output
+  security:
+    - BearerAuth: []
+  description: |-
+    Available only when the action exposes its log.
+    always available.
+  tags:
+    - dedicated
+  summary: Get an action run's captured output
+  parameters:
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: run id
+      name: run_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        text/plain:
+          schema:
+            type: string
+    '404':
+      description: Not Found
+      content:
+        text/plain:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

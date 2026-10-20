@@ -1,0 +1,59 @@
+get:
+  operationId: get-dedicated-rack
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Get dedicated rack
+  parameters:
+    - description: rack id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.Rack.yaml
+put:
+  operationId: update-dedicated-rack
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Update dedicated rack
+  parameters:
+    - description: rack id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.Rack.yaml
+delete:
+  operationId: delete-dedicated-rack
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Delete dedicated rack
+  parameters:
+    - description: rack id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content

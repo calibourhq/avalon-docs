@@ -1,0 +1,12 @@
+type: object
+properties:
+  content:
+    type: string
+  publish_at:
+    type: string
+  published:
+    type: boolean
+  summary:
+    type: string
+  title:
+    type: string

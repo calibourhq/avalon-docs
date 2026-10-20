@@ -1,0 +1,48 @@
+put:
+  operationId: update-vps-private-network-config
+  security:
+    - BearerAuth: []
+  description: >-
+    Edits the manual network hints for a server whose primary interface is a private network. They are applied at the next install.
+  tags:
+    - vps
+  summary: Update VPS private network config
+  parameters:
+    - description: server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/api.privateIPConfigIn.yaml
+    description: Private IP config
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/vps.VPSServer.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

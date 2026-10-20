@@ -1,0 +1,34 @@
+post:
+  operationId: test-vps-cluster-credentials
+  security:
+    - BearerAuth: []
+  description: Test connection credentials without persisting a cluster.
+  tags:
+    - vps
+  summary: Test VPS cluster credentials
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

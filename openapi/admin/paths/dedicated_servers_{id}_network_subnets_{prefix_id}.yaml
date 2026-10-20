@@ -1,0 +1,23 @@
+delete:
+  operationId: remove-a-routed-subnet-from-an-inventory-server-admin
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Remove a routed subnet from an inventory server (admin)
+  parameters:
+    - description: server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: prefix id
+      name: prefix_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content

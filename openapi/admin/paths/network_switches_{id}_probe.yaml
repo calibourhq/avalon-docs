@@ -1,0 +1,22 @@
+post:
+  operationId: probe-network-switch-admin
+  security:
+    - BearerAuth: []
+  description: Re-discovers ports and capabilities through the agent.
+  tags:
+    - network-switches
+  summary: Probe network switch (admin)
+  parameters:
+    - description: switch id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/switchproto.ProbeResult.yaml

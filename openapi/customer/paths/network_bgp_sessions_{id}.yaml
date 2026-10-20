@@ -1,0 +1,116 @@
+get:
+  operationId: get-bgp-session
+  security:
+    - BearerAuth: []
+  description: Get a single BGP session by id.
+  tags:
+    - network-bgp
+  summary: Get BGP session
+  parameters:
+    - description: session id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/bgp.BGPSession.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+delete:
+  operationId: delete-bgp-session
+  security:
+    - BearerAuth: []
+  description: Delete a BGP session (async teardown).
+  tags:
+    - network-bgp
+  summary: Delete BGP session
+  parameters:
+    - description: session id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '202':
+      description: Accepted
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+patch:
+  operationId: update-bgp-session
+  security:
+    - BearerAuth: []
+  description: Update settings (full table, BFD) on an active BGP session.
+  tags:
+    - network-bgp
+  summary: Update BGP session
+  parameters:
+    - description: session id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/bgp.BGPSession.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

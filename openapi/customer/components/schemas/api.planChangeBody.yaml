@@ -1,0 +1,9 @@
+type: object
+required:
+  - plan
+properties:
+  include_disk:
+    type: boolean
+  plan:
+    description: Plan is the target plan's name, e.g. "vps-m".
+    type: string

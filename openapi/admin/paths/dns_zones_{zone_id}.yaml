@@ -1,0 +1,40 @@
+put:
+  operationId: update-a-dns-zone
+  security:
+    - BearerAuth: []
+  description: Updates a zone. Every field, the SOA nameserver included, is admin-only.
+  tags:
+    - dns
+  summary: Update a DNS zone
+  parameters:
+    - description: zone id
+      name: zone_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dns.Zone.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

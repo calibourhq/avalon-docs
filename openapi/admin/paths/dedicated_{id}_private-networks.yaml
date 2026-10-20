@@ -1,0 +1,69 @@
+post:
+  operationId: attach-a-private-network-to-a-dedicated-server
+  security:
+    - BearerAuth: []
+  description: >-
+    Make the dedicated service's switch port a tagged member of a VLAN private network. The switch is reconciled asynchronously.
+
+    A server can be in at most 5 private networks.
+
+    the limit does not apply.
+  tags:
+    - dedicated
+  summary: Attach a private network to a dedicated server
+  parameters:
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.dedicatedNetItem.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

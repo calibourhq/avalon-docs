@@ -1,0 +1,99 @@
+get:
+  operationId: list-ipam-prefixes
+  security:
+    - BearerAuth: []
+  description: List IPAM prefixes with optional filters.
+  tags:
+    - network-ipam
+  summary: List IPAM prefixes
+  parameters:
+    - description: filter by address family (4 or 6)
+      name: family
+      in: query
+      schema:
+        type: string
+    - description: filter by prefix mode
+      name: mode
+      in: query
+      schema:
+        type: string
+    - description: filter by status
+      name: status
+      in: query
+      schema:
+        type: string
+    - description: filter by org
+      name: org_id
+      in: query
+      schema:
+        type: string
+    - description: filter by parent prefix
+      name: parent_id
+      in: query
+      schema:
+        type: string
+    - description: only top-level prefixes
+      name: top_level
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: create-an-ipam-prefix
+  security:
+    - BearerAuth: []
+  description: Create a new IPAM prefix.
+  tags:
+    - network-ipam
+  summary: Create an IPAM prefix
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

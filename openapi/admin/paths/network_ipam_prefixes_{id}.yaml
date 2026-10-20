@@ -1,0 +1,118 @@
+get:
+  operationId: get-an-ipam-prefix
+  security:
+    - BearerAuth: []
+  description: Get a single IPAM prefix by id.
+  tags:
+    - network-ipam
+  summary: Get an IPAM prefix
+  parameters:
+    - description: prefix id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+put:
+  operationId: update-an-ipam-prefix
+  security:
+    - BearerAuth: []
+  description: Update an existing IPAM prefix.
+  tags:
+    - network-ipam
+  summary: Update an IPAM prefix
+  parameters:
+    - description: prefix id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+delete:
+  operationId: delete-an-ipam-prefix
+  security:
+    - BearerAuth: []
+  description: Delete an IPAM prefix by id.
+  tags:
+    - network-ipam
+  summary: Delete an IPAM prefix
+  parameters:
+    - description: prefix id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content
+    '400':
+      description: Bad Request
+      content:
+        '*/*':
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        '*/*':
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        '*/*':
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

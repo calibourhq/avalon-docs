@@ -1,0 +1,6 @@
+type: object
+properties:
+  image_id:
+    type: string
+  post_boot_script:
+    type: string

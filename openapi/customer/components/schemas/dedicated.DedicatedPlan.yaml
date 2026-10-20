@@ -1,0 +1,92 @@
+type: object
+properties:
+  active:
+    type: boolean
+  allow_backorder:
+    description: |-
+      AllowBackorder controls out-of-stock behaviour: false = ordering is
+      hard-blocked when no matching server is available; true = the order is
+      accepted as a backorder (awaiting_stock) for an admin to fulfil later.
+    type: boolean
+  backorder_lead_days:
+    description: |-
+      BackorderLeadDays is the advertised delivery time for a backorder, in
+      days (0 = not stated). It is a promise shown to the customer, not a timer.
+    type: integer
+  bandwidth_exceeded_action:
+    type: string
+  bandwidth_tb:
+    description: 0 = unlimited
+    type: integer
+  base_components:
+    type: array
+    items:
+      $ref: ./dedicated.ConfigItem.yaml
+  category_id:
+    description: |-
+      CategoryID is the product line the plan is listed under ("General
+      purpose", "Storage", "High bandwidth"). For dedicated it only groups the
+      catalogue; stock is still matched by plan and hardware.
+    type: string
+  cpu_cores:
+    type: integer
+  cpu_count:
+    description: derived from the base build; 0 = not stated
+    type: integer
+  cpu_model:
+    description: Advertised specs
+    type: string
+  cpu_threads:
+    type: integer
+  created_at:
+    type: string
+  display_name:
+    type: string
+  groups:
+    description: |-
+      Groups are the option groups the plan offers next to its own options,
+      each placed among them by its SortOrder.
+    type: array
+    items:
+      $ref: ./dedicated.PlanGroupRef.yaml
+  id:
+    type: string
+  name:
+    type: string
+  platform_id:
+    description: >-
+      PlatformID + BaseComponents describe the structured build behind this
+      plan.
+
+      Nil PlatformID = a legacy plan without a configurator: it orders on the
+
+      advertised free-text specs and plan_id-equality matching (unchanged).
+    type: string
+  platform_name:
+    description: Derived (not stored)
+    type: string
+  prices:
+    type: array
+    items:
+      $ref: ./dedicated.DedicatedPlanPrice.yaml
+  ram_gb:
+    type: integer
+  region_ids:
+    description: RegionIDs limits where the plan can be ordered; empty = every region.
+    type: array
+    items:
+      type: string
+  setup_fee_cents:
+    type: integer
+  sort_order:
+    type: integer
+  storage_description:
+    type: string
+  updated_at:
+    type: string
+  upgrade_options:
+    type: array
+    items:
+      $ref: ./dedicated.DedicatedPlanUpgradeOption.yaml
+  uplink_speed_mbps:
+    type: integer

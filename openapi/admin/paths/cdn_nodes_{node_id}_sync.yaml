@@ -1,0 +1,36 @@
+post:
+  operationId: sync-a-cdn-node
+  security:
+    - BearerAuth: []
+  description: Pushes a full zone and certificate sync to a single edge node (admin only).
+  tags:
+    - cdn-nodes
+  summary: Sync a CDN node
+  parameters:
+    - description: node id
+      name: node_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content
+    '400':
+      description: Bad Request
+      content:
+        '*/*':
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        '*/*':
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        '*/*':
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

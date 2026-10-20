@@ -1,0 +1,68 @@
+get:
+  operationId: get-instance-settings
+  security:
+    - BearerAuth: []
+  description: Returns the instance-wide settings.
+  tags:
+    - settings
+  summary: Get instance settings
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.InstanceSettingsResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+put:
+  operationId: update-instance-settings
+  security:
+    - BearerAuth: []
+  description: >-
+    Updates the instance-wide settings. Only the fields present in the body are changed.
+  tags:
+    - settings
+  summary: Update instance settings
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/api.SettingsRequest.yaml
+    description: Settings
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/settings.Settings.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

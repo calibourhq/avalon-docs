@@ -1,0 +1,16 @@
+get:
+  operationId: list-dedicated-network-pools
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: List dedicated network pools
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/dedicated.DedicatedNetworkPool.yaml

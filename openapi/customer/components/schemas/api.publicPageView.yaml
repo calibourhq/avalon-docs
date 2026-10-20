@@ -1,0 +1,16 @@
+type: object
+properties:
+  description:
+    type: string
+  has_avatar:
+    type: boolean
+  max_donation:
+    type: integer
+  month_received:
+    type: integer
+  monthly_goal:
+    type: integer
+  recipient_name:
+    type: string
+  slug:
+    type: string

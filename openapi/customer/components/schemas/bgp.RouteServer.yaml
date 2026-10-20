@@ -1,0 +1,25 @@
+type: object
+required:
+  - api_url
+  - name
+properties:
+  active:
+    type: boolean
+  api_url:
+    type: string
+    maxLength: 500
+  created_at:
+    type: string
+  id:
+    type: string
+  ipv4:
+    type: string
+  ipv6:
+    type: string
+  name:
+    type: string
+    maxLength: 100
+  region_id:
+    type: string
+  updated_at:
+    type: string

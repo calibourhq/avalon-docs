@@ -1,0 +1,46 @@
+post:
+  operationId: confirm-telegram-link
+  security:
+    - BearerAuth: []
+  description: >-
+    Confirm linking a Telegram account for the current account, using the token the bot sent.
+  tags:
+    - self
+  summary: Confirm Telegram link
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/api.confirmTelegramReq.yaml
+    description: Link token
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              telegram_first_name:
+                type: string
+              telegram_username:
+                type: string
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

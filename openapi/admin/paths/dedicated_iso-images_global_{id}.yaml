@@ -1,0 +1,17 @@
+delete:
+  operationId: delete-a-global-dedicated-server-iso-image
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Delete a global dedicated-server ISO image
+  parameters:
+    - description: ISO image id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content

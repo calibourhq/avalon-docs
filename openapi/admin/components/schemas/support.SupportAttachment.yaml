@@ -1,0 +1,18 @@
+type: object
+properties:
+  created_at:
+    type: string
+  filename:
+    type: string
+  id:
+    type: string
+  message_id:
+    type: string
+  mime:
+    type: string
+  size:
+    type: integer
+  ticket_id:
+    type: string
+  updated_at:
+    type: string

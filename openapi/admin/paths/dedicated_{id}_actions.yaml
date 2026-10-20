@@ -1,0 +1,30 @@
+get:
+  operationId: list-the-actions-available-for-a-server
+  security:
+    - BearerAuth: []
+  description: |-
+    Returns {actions, available, unavailable_reason}.
+    also lists staff-audience actions, with their admin fields.
+  tags:
+    - dedicated
+  summary: List the actions available for a server
+  parameters:
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: only actions carrying this tag
+      name: tag
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true

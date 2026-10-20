@@ -1,0 +1,31 @@
+type: object
+required:
+  - action
+  - direction
+properties:
+  action:
+    type: string
+  comment:
+    type: string
+    maxLength: 255
+  dest_ports:
+    type: array
+    items:
+      type: string
+  direction:
+    type: string
+  enabled:
+    type: boolean
+  protocol:
+    type: string
+  source_lists:
+    description: |-
+      SourceLists are ids of global IP lists the rule matches on, in addition
+      to Sources. See firewall.FirewallRule.SourceLists.
+    type: array
+    items:
+      type: string
+  sources:
+    type: array
+    items:
+      type: string

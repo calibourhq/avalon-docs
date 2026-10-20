@@ -1,0 +1,88 @@
+get:
+  operationId: list-transactions
+  security:
+    - BearerAuth: []
+  description: >-
+    Lists payments, refunds and donations of the caller's active org, newest first, one page at a time.
+
+    totals aggregates every match (not just the page): succeeded money in and out, and failures.
+  tags:
+    - billing
+  summary: List transactions
+  parameters:
+    - description: payment, refund or donation
+      name: kind
+      in: query
+      schema:
+        type: string
+    - description: filter by gateway
+      name: gateway
+      in: query
+      schema:
+        type: string
+    - description: filter by status
+      name: status
+      in: query
+      schema:
+        type: string
+    - description: from date (YYYY-MM-DD)
+      name: date_from
+      in: query
+      schema:
+        type: string
+    - description: to date (YYYY-MM-DD, inclusive)
+      name: date_to
+      in: query
+      schema:
+        type: string
+    - description: search gateway reference, invoice number or amount
+      name: q
+      in: query
+      schema:
+        type: string
+    - description: created_at, kind, gateway, status, amount or invoice
+      name: sort
+      in: query
+      schema:
+        type: string
+    - description: asc or desc (default desc)
+      name: dir
+      in: query
+      schema:
+        type: string
+    - description: page number (1-based)
+      name: page
+      in: query
+      schema:
+        type: integer
+    - description: rows per page (default 50, max 200)
+      name: page_size
+      in: query
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

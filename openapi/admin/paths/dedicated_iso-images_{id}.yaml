@@ -1,0 +1,25 @@
+get:
+  operationId: get-a-dedicated-server-iso-image
+  security:
+    - BearerAuth: []
+  description: >-
+    Returns one of the organisation's images, or a global one with its source details omitted.
+
+    global images include their source details.
+  tags:
+    - dedicated
+  summary: Get a dedicated-server ISO image
+  parameters:
+    - description: ISO image id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.DedicatedISOImage.yaml

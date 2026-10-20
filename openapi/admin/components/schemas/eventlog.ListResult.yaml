@@ -1,0 +1,8 @@
+type: object
+properties:
+  entries:
+    type: array
+    items:
+      $ref: ./eventlog.Event.yaml
+  total:
+    type: integer

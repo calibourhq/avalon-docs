@@ -1,0 +1,71 @@
+type: object
+properties:
+  active:
+    type: boolean
+  bandwidth_exceeded_action:
+    type: string
+  bandwidth_exceeded_speed_mbps:
+    type: integer
+  bandwidth_tb:
+    type: integer
+  bios_type:
+    type: string
+  category_id:
+    type: string
+  cpu:
+    type: integer
+  cpu_limit:
+    type: integer
+  disk_bus:
+    type: string
+  disk_gb:
+    type: integer
+  display_name:
+    type: string
+  iops_rd:
+    type: integer
+  iops_rd_max:
+    type: integer
+  iops_rd_max_length:
+    type: integer
+  iops_wr:
+    type: integer
+  iops_wr_max:
+    type: integer
+  iops_wr_max_length:
+    type: integer
+  max_user_backups:
+    type: integer
+  mbps_rd:
+    type: integer
+  mbps_rd_max:
+    type: integer
+  mbps_rd_max_length:
+    type: integer
+  mbps_wr:
+    type: integer
+  mbps_wr_max:
+    type: integer
+  mbps_wr_max_length:
+    type: integer
+  name:
+    description: |-
+      Name is derived from the display name when blank on create, and kept when
+      blank on update.
+    type: string
+  network_speed_mbps:
+    type: integer
+  nic_model:
+    type: string
+  prices:
+    type: array
+    items:
+      $ref: ./vps.PlanPriceInput.yaml
+  ram:
+    type: integer
+  region_ids:
+    type: array
+    items:
+      type: string
+  sort_order:
+    type: integer

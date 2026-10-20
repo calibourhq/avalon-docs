@@ -1,0 +1,35 @@
+type: object
+properties:
+  billing_cycle:
+    $ref: ./billing.BillingCycle.yaml
+  created_at:
+    type: string
+  description:
+    type: string
+  id:
+    type: string
+  invoice_id:
+    type: string
+  is_setup_fee:
+    type: boolean
+  period_end:
+    type: string
+  period_start:
+    type: string
+  quantity:
+    type: integer
+  sort_order:
+    type: integer
+  subscription_id:
+    description: >-
+      SubscriptionID links this line item to the subscription it bills, so a
+      paid or
+
+      overdue invoice can target the exact service to (un)suspend.
+    type: string
+  total:
+    type: integer
+  unit_price:
+    type: integer
+  updated_at:
+    type: string

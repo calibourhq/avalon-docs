@@ -1,0 +1,28 @@
+get:
+  operationId: dedicated-service-monthly-traffic
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Dedicated service monthly traffic
+  parameters:
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: number of months (default 12)
+      name: months
+      in: query
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/netswitch.MonthlyUsage.yaml

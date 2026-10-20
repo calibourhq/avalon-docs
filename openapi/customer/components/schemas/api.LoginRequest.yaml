@@ -1,0 +1,12 @@
+type: object
+required:
+  - email
+  - password
+properties:
+  email:
+    type: string
+  org_id:
+    description: Optional for users, not used for admins
+    type: string
+  password:
+    type: string

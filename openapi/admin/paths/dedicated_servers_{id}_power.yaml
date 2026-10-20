@@ -1,0 +1,22 @@
+post:
+  operationId: power-action-on-inventory-server-admin
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Power action on inventory server (admin)
+  parameters:
+    - description: server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true

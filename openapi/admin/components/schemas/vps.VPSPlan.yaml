@@ -1,0 +1,93 @@
+type: object
+properties:
+  active:
+    type: boolean
+  bandwidth_exceeded_action:
+    description: limit | shutdown
+    type: string
+  bandwidth_exceeded_speed_mbps:
+    description: Mbit/s (megabits)
+    type: integer
+  bandwidth_tb:
+    description: 0 = unlimited
+    type: integer
+  bios_type:
+    description: >-
+      Default hardware (snapshotted onto the server at order time; reset on
+      reinstall)
+    type: string
+  category_id:
+    description: |-
+      CategoryID is the product line the plan belongs to ("General purpose",
+      "High frequency"). It also decides placement: the plan's guests only go
+      on hypervisor nodes of that category (see VPSNodeCategory).
+    type: string
+  cpu:
+    type: integer
+  cpu_limit:
+    description: 0 = no limit; otherwise % e.g. 50
+    type: integer
+  created_at:
+    type: string
+  disk_bus:
+    description: virtio | ide
+    type: string
+  disk_gb:
+    type: integer
+  display_name:
+    type: string
+  id:
+    type: string
+  iops_rd:
+    type: integer
+  iops_rd_max:
+    type: integer
+  iops_rd_max_length:
+    type: integer
+  iops_wr:
+    type: integer
+  iops_wr_max:
+    type: integer
+  iops_wr_max_length:
+    type: integer
+  max_user_backups:
+    description: >-
+      Max number of user-created (protected) backups per VPS. 0 = user backups
+      disabled.
+    type: integer
+  mbps_rd:
+    type: integer
+  mbps_rd_max:
+    type: integer
+  mbps_rd_max_length:
+    type: integer
+  mbps_wr:
+    type: integer
+  mbps_wr_max:
+    type: integer
+  mbps_wr_max_length:
+    type: integer
+  name:
+    type: string
+  network_speed_mbps:
+    description: Mbit/s (megabits); 0 = unlimited
+    type: integer
+  nic_model:
+    description: virtio | e1000
+    type: string
+  prices:
+    type: array
+    items:
+      $ref: ./vps.VPSPlanPrice.yaml
+  ram:
+    description: MB
+    type: integer
+  region_ids:
+    description: RegionIDs limits where the plan can be ordered; empty = every region.
+    type: array
+    items:
+      type: string
+  sort_order:
+    type: integer
+  updated_at:
+    type: string

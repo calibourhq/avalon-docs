@@ -1,0 +1,29 @@
+type: object
+properties:
+  attachment_count:
+    description: 'Computed (not stored): number of services this firewall is attached to.'
+    type: integer
+  created_at:
+    type: string
+  description:
+    type: string
+  id:
+    type: string
+  name:
+    type: string
+  org_id:
+    type: string
+  policy_in:
+    description: |-
+      Default policy applied when no user rule matches a direction. The
+      mandatory anti-abuse rules sit above these and cannot be overridden.
+    allOf:
+      - $ref: ./firewall.Policy.yaml
+  policy_out:
+    $ref: ./firewall.Policy.yaml
+  rules:
+    type: array
+    items:
+      $ref: ./firewall.FirewallRule.yaml
+  updated_at:
+    type: string

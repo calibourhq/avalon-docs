@@ -1,0 +1,122 @@
+get:
+  operationId: get-byoip-prefix
+  security:
+    - BearerAuth: []
+  description: Get a single BYOIP prefix by id.
+  tags:
+    - network-bgp
+  summary: Get BYOIP prefix
+  parameters:
+    - description: byoip prefix id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/bgp.BYOIPPrefix.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+delete:
+  operationId: delete-byoip-prefix
+  security:
+    - BearerAuth: []
+  description: Delete a BYOIP prefix (async withdrawal).
+  tags:
+    - network-bgp
+  summary: Delete BYOIP prefix
+  parameters:
+    - description: byoip prefix id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '202':
+      description: Accepted
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+patch:
+  operationId: update-byoip-prefix
+  security:
+    - BearerAuth: []
+  description: Update the destination of an active BYOIP prefix.
+  tags:
+    - network-bgp
+  summary: Update BYOIP prefix
+  parameters:
+    - description: byoip prefix id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/bgp.BYOIPPrefix.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

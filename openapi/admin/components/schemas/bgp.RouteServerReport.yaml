@@ -1,0 +1,34 @@
+type: object
+properties:
+  bird_status:
+    type: string
+  byo:
+    $ref: ./bgp.ResourceReport.yaml
+  checked_at:
+    type: string
+  coverage_gaps:
+    type: array
+    items:
+      $ref: ./bgp.CoverageGap.yaml
+  deep:
+    type: boolean
+  excluded:
+    type: array
+    items:
+      $ref: ./bgp.ExcludedItem.yaml
+  floating:
+    $ref: ./bgp.ResourceReport.yaml
+  reach_error:
+    type: string
+  reachable:
+    type: boolean
+  region_display_name:
+    type: string
+  route_server:
+    $ref: ./bgp.RouteServer.yaml
+  sessions:
+    $ref: ./bgp.ResourceReport.yaml
+  warnings:
+    type: array
+    items:
+      $ref: ./bgp.Warning.yaml

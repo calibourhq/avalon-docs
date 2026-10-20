@@ -1,0 +1,29 @@
+get:
+  operationId: list-floating-routes
+  security:
+    - BearerAuth: []
+  description: List the floating routes of the active organisation.
+  tags:
+    - network-bgp
+  summary: List floating routes
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/bgp.FloatingRoute.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

@@ -1,0 +1,42 @@
+delete:
+  operationId: remove-manual-asn-prefix-admin
+  security:
+    - BearerAuth: []
+  description: Remove a manual prefix from a BGP ASN and trigger reconcile.
+  tags:
+    - network-bgp
+  summary: Remove manual ASN prefix (admin)
+  parameters:
+    - description: asn id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: prefix id
+      name: prefix_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

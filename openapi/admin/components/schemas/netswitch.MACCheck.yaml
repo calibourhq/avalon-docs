@@ -1,0 +1,7 @@
+type: string
+enum:
+  - match
+  - elsewhere
+x-enum-varnames:
+  - MACCheckMatch
+  - MACCheckElsewhere

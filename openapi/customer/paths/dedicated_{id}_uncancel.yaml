@@ -1,0 +1,22 @@
+post:
+  operationId: undo-a-pending-cancellation-for-a-dedicated-server
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Undo a pending cancellation for a dedicated server
+  parameters:
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true

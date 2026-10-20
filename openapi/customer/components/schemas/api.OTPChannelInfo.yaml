@@ -1,0 +1,6 @@
+type: object
+properties:
+  channel:
+    type: string
+  masked:
+    type: string

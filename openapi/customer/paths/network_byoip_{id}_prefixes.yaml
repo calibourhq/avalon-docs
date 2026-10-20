@@ -1,0 +1,88 @@
+get:
+  operationId: list-sub-prefixes
+  security:
+    - BearerAuth: []
+  description: List sub-prefixes of a BYOIP routed subnet.
+  tags:
+    - network-bgp
+  summary: List sub-prefixes
+  parameters:
+    - description: byoip prefix id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/bgp.BYOIPSubPrefix.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: create-sub-prefix
+  security:
+    - BearerAuth: []
+  description: Create a more-specific sub-prefix of a BYOIP routed subnet.
+  tags:
+    - network-bgp
+  summary: Create sub-prefix
+  parameters:
+    - description: byoip prefix id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/bgp.BYOIPSubPrefix.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

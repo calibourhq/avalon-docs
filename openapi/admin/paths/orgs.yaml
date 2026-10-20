@@ -1,0 +1,73 @@
+get:
+  operationId: list-organisations
+  security:
+    - BearerAuth: []
+  description: |-
+    Returns the current user's orgs, with the active one flagged.
+    returns every org as AdminOrgListItem.
+  tags:
+    - orgs
+  summary: List organisations
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/api.UserOrgListItem.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: create-an-organisation
+  security:
+    - BearerAuth: []
+  description: >-
+    Creates a new organisation with the caller as owner. New orgs are always charged VAT.
+
+    The fields listed in customer_fields.required of GET /public/settings must be filled in.
+
+    A VAT number is verified with VIES as on update (409 VAT_CHECK_UNAVAILABLE while VIES is unreachable).
+
+    no owner is added and charge_vat may be set.
+  tags:
+    - orgs
+  summary: Create an organisation
+  requestBody:
+    $ref: ../components/requestBodies/api.OrgRequest.yaml
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/orgs.Org.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

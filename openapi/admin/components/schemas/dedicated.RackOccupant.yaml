@@ -1,0 +1,23 @@
+type: object
+properties:
+  face:
+    $ref: ./dedicated.RackFace.yaml
+  height_u:
+    type: integer
+  node_grid:
+    description: |-
+      NodeGrid is where each node sits in the chassis face, already resolved
+      (never unset), so an elevation draws it without knowing the default.
+    allOf:
+      - $ref: ./dedicated.NodeGrid.yaml
+  nodes:
+    type: array
+    items:
+      $ref: ./dedicated.RackNode.yaml
+  nodes_per_chassis:
+    type: integer
+  platform_name:
+    type: string
+  position:
+    description: lowest unit occupied; 0 when unknown
+    type: integer

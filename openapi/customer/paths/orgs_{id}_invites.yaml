@@ -1,0 +1,49 @@
+post:
+  operationId: invite-a-user-to-an-organisation
+  security:
+    - BearerAuth: []
+  description: >-
+    Sends an email invitation to join the org. Requires the org admin permission. API key sessions are rejected.
+  tags:
+    - orgs
+  summary: Invite a user to an organisation
+  parameters:
+    - description: organisation id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/api.InviteRequest.yaml
+    description: Invite details
+    required: true
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

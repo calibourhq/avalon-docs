@@ -1,0 +1,8 @@
+type: object
+properties:
+  entries:
+    type: array
+    items:
+      $ref: ./audit.AuditLog.yaml
+  total:
+    type: integer

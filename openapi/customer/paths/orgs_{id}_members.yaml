@@ -1,0 +1,49 @@
+get:
+  operationId: list-organisation-members
+  security:
+    - BearerAuth: []
+  description: Lists members and pending invites. Membership required.
+  tags:
+    - orgs
+  summary: List organisation members
+  parameters:
+    - description: organisation id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              invites:
+                type: array
+                items:
+                  $ref: ../components/schemas/orgs.OrgInviteDetail.yaml
+              members:
+                type: array
+                items:
+                  $ref: ../components/schemas/orgs.OrgUserDetail.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

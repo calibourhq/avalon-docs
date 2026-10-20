@@ -1,0 +1,32 @@
+type: object
+properties:
+  bfd:
+    type: boolean
+  created_at:
+    type: string
+  full_table:
+    type: boolean
+  id:
+    type: string
+  instances:
+    type: array
+    items:
+      $ref: ./bgp.BGPSessionInstance.yaml
+  last_error:
+    type: string
+  org_asn:
+    $ref: ./bgp.OrgASN.yaml
+  org_asn_id:
+    type: string
+  org_id:
+    type: string
+  region_id:
+    type: string
+  service_id:
+    type: string
+  service_type:
+    type: string
+  status:
+    $ref: ./bgp.BGPSessionStatus.yaml
+  updated_at:
+    type: string

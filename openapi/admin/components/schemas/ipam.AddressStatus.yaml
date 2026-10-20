@@ -1,0 +1,19 @@
+type: string
+enum:
+  - available
+  - reserved
+  - assigned
+  - deprecated
+x-enum-comments:
+  AddressStatusAssigned: in use by a service
+  AddressStatusReserved: network/gateway/broadcast or manual hold
+x-enum-descriptions:
+  - ''
+  - network/gateway/broadcast or manual hold
+  - in use by a service
+  - ''
+x-enum-varnames:
+  - AddressStatusAvailable
+  - AddressStatusReserved
+  - AddressStatusAssigned
+  - AddressStatusDeprecated

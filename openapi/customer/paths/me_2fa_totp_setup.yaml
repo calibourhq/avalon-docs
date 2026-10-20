@@ -1,0 +1,33 @@
+post:
+  operationId: begin-totp-setup
+  security:
+    - BearerAuth: []
+  description: Generate a TOTP secret and provisioning URI for the authenticated account.
+  tags:
+    - two-factor
+  summary: Begin TOTP setup
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.beginTOTPSetupResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

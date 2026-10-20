@@ -1,0 +1,78 @@
+get:
+  operationId: list-audit-logs
+  security:
+    - BearerAuth: []
+  description: List platform-wide audit log entries with optional filters and pagination.
+  tags:
+    - audit
+  summary: List audit logs
+  parameters:
+    - description: filter by actor type
+      name: actor_type
+      in: query
+      schema:
+        type: string
+    - description: filter by actor id
+      name: actor_id
+      in: query
+      schema:
+        type: string
+    - description: filter by action
+      name: action
+      in: query
+      schema:
+        type: string
+    - description: filter by org
+      name: org_id
+      in: query
+      schema:
+        type: string
+    - description: filter by resource type
+      name: resource_type
+      in: query
+      schema:
+        type: string
+    - description: filter by resource id
+      name: resource_id
+      in: query
+      schema:
+        type: string
+    - description: start time (RFC3339)
+      name: from
+      in: query
+      schema:
+        type: string
+    - description: end time (RFC3339)
+      name: to
+      in: query
+      schema:
+        type: string
+    - description: page number
+      name: page
+      in: query
+      schema:
+        type: integer
+    - description: page size
+      name: page_size
+      in: query
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/audit.ListResult.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

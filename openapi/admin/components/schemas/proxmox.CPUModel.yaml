@@ -1,0 +1,8 @@
+type: object
+properties:
+  custom:
+    type: boolean
+  name:
+    type: string
+  vendor:
+    type: string

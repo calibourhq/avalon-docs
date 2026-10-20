@@ -1,0 +1,68 @@
+get:
+  operationId: list-cdn-nodes
+  security:
+    - BearerAuth: []
+  description: Lists all edge nodes (admin only).
+  tags:
+    - cdn-nodes
+  summary: List CDN nodes
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: create-a-cdn-node
+  security:
+    - BearerAuth: []
+  description: Registers a new edge node (admin only).
+  tags:
+    - cdn-nodes
+  summary: Create a CDN node
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/cdn.CDNNode.yaml
+    description: CDN node
+    required: true
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/cdn.CDNNode.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

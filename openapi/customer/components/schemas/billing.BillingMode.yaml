@@ -1,0 +1,7 @@
+type: string
+enum:
+  - postpaid
+  - prepaid
+x-enum-varnames:
+  - BillingModePostpaid
+  - BillingModePrepaid

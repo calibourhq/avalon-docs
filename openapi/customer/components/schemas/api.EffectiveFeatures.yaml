@@ -1,0 +1,26 @@
+type: object
+properties:
+  bgp:
+    type: boolean
+  cdn:
+    type: boolean
+  dedicated_servers:
+    type: boolean
+  dns:
+    type: boolean
+  domains:
+    type: boolean
+  donations:
+    type: boolean
+  email:
+    type: boolean
+  private_networks:
+    type: boolean
+  s3:
+    type: boolean
+  support:
+    type: boolean
+  vps:
+    type: boolean
+  webhosting:
+    type: boolean

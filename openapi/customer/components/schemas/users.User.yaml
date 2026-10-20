@@ -1,0 +1,52 @@
+type: object
+required:
+  - email
+  - first_name
+  - preferred_language
+properties:
+  auth_source:
+    description: >-
+      AuthSource is "local" (native email/password) or "oauth" (external IdP
+      such
+
+      as Keycloak). An "oauth" user has no password and must migrate to "local"
+
+      by setting one before they can use the account.
+    type: string
+  created_at:
+    type: string
+  email:
+    type: string
+    maxLength: 255
+  email_verified:
+    type: boolean
+  first_name:
+    type: string
+    maxLength: 100
+  id:
+    type: string
+  last_login:
+    type: string
+  last_name:
+    type: string
+    maxLength: 100
+  preferred_language:
+    type: string
+    maxLength: 10
+  preferred_theme:
+    description: |-
+      PreferredTheme is the UI color mode: "system" (follow the browser
+      preference), "light" or "dark".
+    type: string
+    enum:
+      - system
+      - light
+      - dark
+  telegram_chat_id:
+    type: integer
+  telegram_first_name:
+    type: string
+  telegram_username:
+    type: string
+  updated_at:
+    type: string

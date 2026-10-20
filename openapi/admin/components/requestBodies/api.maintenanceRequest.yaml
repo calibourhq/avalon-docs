@@ -1,0 +1,6 @@
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/api.maintenanceRequest.yaml
+description: Maintenance payload
+required: true

@@ -1,0 +1,18 @@
+type: object
+properties:
+  active:
+    type: boolean
+  created_at:
+    type: string
+  display_name:
+    type: string
+  icon:
+    type: array
+    items:
+      type: integer
+  id:
+    type: string
+  name:
+    type: string
+  updated_at:
+    type: string

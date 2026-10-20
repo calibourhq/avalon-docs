@@ -1,0 +1,36 @@
+get:
+  operationId: list-dedicated-racks
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: List dedicated racks
+  parameters:
+    - description: region id
+      name: region_id
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/dedicated.Rack.yaml
+post:
+  operationId: create-dedicated-rack
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Create dedicated rack
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.Rack.yaml

@@ -1,0 +1,11 @@
+type: object
+properties:
+  id:
+    type: string
+  label:
+    type: string
+  org_id:
+    type: string
+  type:
+    description: bgp_session | floating_route | routed_subnet
+    type: string

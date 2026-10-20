@@ -1,0 +1,23 @@
+post:
+  operationId: probe-a-servers-bmc-for-console-support-admin
+  security:
+    - BearerAuth: []
+  description: >-
+    Read-only fingerprint of the BMC: vendor, firmware and which console technologies answer.
+  tags:
+    - dedicated
+  summary: Probe a server's BMC for console support (admin)
+  parameters:
+    - description: server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/agentproto.BMCProbeResult.yaml

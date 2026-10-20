@@ -1,0 +1,41 @@
+post:
+  operationId: reset-cdn-node-fingerprint
+  security:
+    - BearerAuth: []
+  description: >-
+    Clears a node's pinned TLS certificate fingerprint, forcing it to be re-established on the next connection (admin only).
+  tags:
+    - cdn-nodes
+  summary: Reset CDN node fingerprint
+  parameters:
+    - description: node id
+      name: node_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/cdn.CDNNode.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

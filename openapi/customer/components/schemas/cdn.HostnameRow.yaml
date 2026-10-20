@@ -1,0 +1,17 @@
+type: object
+properties:
+  cert:
+    $ref: ./cdn.CDNCertificate.yaml
+  hostname:
+    type: string
+  id:
+    type: string
+  origin_scheme:
+    type: string
+  origin_server:
+    type: string
+  zone_id:
+    description: |-
+      ZoneID is the owning CDN zone, so the records table can link straight
+      into the CDN product without a second request per row.
+    type: string

@@ -1,0 +1,41 @@
+get:
+  operationId: get-invoice-ubl
+  security:
+    - BearerAuth: []
+  description: >-
+    Generates and streams a Peppol BIS Billing 3.0 (UBL 2.1) XML document for an invoice. The document also meets the XRechnung 3.0 rules.
+  tags:
+    - invoices
+  summary: Get invoice UBL
+  parameters:
+    - description: invoice id
+      name: inv_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: UBL XML
+      content:
+        application/xml:
+          schema:
+            type: string
+    '400':
+      description: Bad Request
+      content:
+        application/xml:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/xml:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/xml:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

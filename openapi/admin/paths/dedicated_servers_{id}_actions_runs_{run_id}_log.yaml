@@ -1,0 +1,27 @@
+get:
+  operationId: get-an-action-runs-captured-output-admin
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated-admin
+  summary: Get an action run's captured output (admin)
+  parameters:
+    - description: server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: run id
+      name: run_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        text/plain:
+          schema:
+            type: string

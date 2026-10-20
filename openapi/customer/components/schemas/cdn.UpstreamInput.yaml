@@ -1,0 +1,12 @@
+type: object
+properties:
+  host_header_override:
+    type: string
+  insecure_tls:
+    type: boolean
+  scheme:
+    type: string
+  server:
+    type: string
+  weight:
+    type: integer

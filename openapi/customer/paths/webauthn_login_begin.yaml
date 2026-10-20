@@ -1,0 +1,26 @@
+post:
+  security: []
+  operationId: begin-user-passkey-login
+  description: >-
+    Starts a discoverable passkey login ceremony for user accounts. options holds the WebAuthn assertion options.
+  tags:
+    - passkeys
+  summary: Begin user passkey login
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              challenge_id:
+                type: string
+              options:
+                type: object
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

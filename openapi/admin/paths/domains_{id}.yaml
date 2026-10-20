@@ -1,0 +1,42 @@
+delete:
+  operationId: delete-a-domain
+  security:
+    - BearerAuth: []
+  description: >-
+    Deletes the domain at the registrar and removes our record of it. A domain the registrar reports as missing is removed here anyway, so a stale row can always be cleared. The linked DNS zone stays with the customer and is detached.
+  tags:
+    - domains
+  summary: Delete a domain
+  parameters:
+    - description: domain id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        '*/*':
+          schema:
+            type: object
+            additionalProperties: true
+    '401':
+      description: Unauthorized
+      content:
+        '*/*':
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        '*/*':
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '502':
+      description: Bad Gateway
+      content:
+        '*/*':
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

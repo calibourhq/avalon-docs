@@ -1,0 +1,23 @@
+get:
+  operationId: list-distinct-problems
+  security:
+    - BearerAuth: []
+  description: Returns one entry per distinct problem, most recently seen first.
+  tags:
+    - system-logs
+  summary: List distinct problems
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/eventlog.Issue.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

@@ -1,0 +1,22 @@
+get:
+  operationId: compiled-switch-state-preview-admin
+  security:
+    - BearerAuth: []
+  tags:
+    - network-switches
+  summary: Compiled switch state preview (admin)
+  parameters:
+    - description: switch id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true

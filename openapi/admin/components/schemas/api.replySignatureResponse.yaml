@@ -1,0 +1,6 @@
+type: object
+properties:
+  signature:
+    type: string
+  signature_html:
+    type: string

@@ -1,0 +1,58 @@
+type: object
+properties:
+  attempts:
+    type: integer
+  channel:
+    $ref: ./notifications.Channel.yaml
+  created_at:
+    type: string
+  dismissed_at:
+    description: |-
+      DismissedAt marks a failed delivery as handled so it stops driving the
+      dashboard alert. It is per row rather than per problem: the failure is
+      already final (attempts ran out), so a fresh failure is a fresh row and
+      raises the alert again on its own.
+    type: string
+  dismissed_by:
+    type: string
+  id:
+    type: string
+  last_error:
+    type: string
+  org_id:
+    type: string
+  priority:
+    description: |-
+      Priority orders dispatch: higher first, then oldest first. Time-critical
+      mail (2FA codes) must not queue behind a bulk invoice run.
+    type: integer
+  recipient_addr:
+    type: string
+  recipient_name:
+    type: string
+  sent_at:
+    type: string
+  status:
+    $ref: ./notifications.Status.yaml
+  subject:
+    type: string
+  telegram_msg_id:
+    type: integer
+  template_slug:
+    type: string
+  updated_at:
+    type: string
+  user_id:
+    description: >-
+      UserID/OrgID link a delivery to its recipient user and the org context it
+      was
+
+      sent for, so the admin customer page can list an org's notifications. Nil
+      on
+
+      rows created before these columns existed and on raw-address sends;
+      org-scoped
+
+      queries additionally fall back to matching RecipientAddr against org
+      emails.
+    type: string

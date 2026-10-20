@@ -1,0 +1,21 @@
+type: object
+properties:
+  devices:
+    description: |-
+      Devices are the non-machines in the cabinet - switches, PDUs, patch
+      panels. They are kept apart from the occupants rather than faked into one
+      because they have none of what an occupant carries (no platform, no nodes,
+      no inventory status), and an elevation draws them differently.
+    type: array
+    items:
+      $ref: ./dedicated.RackDevice.yaml
+  occupants:
+    type: array
+    items:
+      $ref: ./dedicated.RackOccupant.yaml
+  rack:
+    $ref: ./dedicated.Rack.yaml
+  unpositioned:
+    type: array
+    items:
+      $ref: ./dedicated.RackOccupant.yaml

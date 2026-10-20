@@ -1,0 +1,28 @@
+get:
+  operationId: get-2fa-status
+  security:
+    - BearerAuth: []
+  description: >-
+    Return the second factors set up on the authenticated account and how many recovery codes are left.
+  tags:
+    - two-factor
+  summary: Get 2FA status
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.twoFAStatusResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

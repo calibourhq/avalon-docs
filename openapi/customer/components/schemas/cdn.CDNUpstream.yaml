@@ -1,0 +1,38 @@
+type: object
+properties:
+  cdn_record_id:
+    description: |-
+      The owning table is still named cdn_records, so cdn_record_id is the FK
+      name every other child of it uses. The index is named explicitly because
+      GORM derives index names from the Go field name, which makes a later
+      rename silently rename the index (see schema_indexes_test.go).
+    type: string
+  created_at:
+    type: string
+  host_header_override:
+    type: string
+  id:
+    type: string
+  insecure_tls:
+    type: boolean
+  scheme:
+    type: string
+  server:
+    description: host or host:port
+    type: string
+  sort_order:
+    type: integer
+  updated_at:
+    type: string
+  weight:
+    description: |-
+      Weight is 0 for a lone upstream, which is what the edge has always been
+      sent and what keeps single-origin payloads byte-identical. In a pool of
+      two or more, 0 is normalised away: the edge reads weight <= 0 as 1, so a
+      pool mixing 0 and 100 would split 1:100. See normaliseWeights.
+    type: integer
+  zone_id:
+    description: |-
+      ZoneID is denormalised so the plan-change fit check can count a zone's
+      upstreams without joining through every hostname.
+    type: string

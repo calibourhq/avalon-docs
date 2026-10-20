@@ -1,0 +1,14 @@
+type: object
+properties:
+  otp_channels:
+    type: array
+    items:
+      $ref: ./api.OTPChannelInfo.yaml
+  passkey_required:
+    type: boolean
+  pending_token:
+    type: string
+  recovery_available:
+    type: boolean
+  totp_available:
+    type: boolean

@@ -1,0 +1,22 @@
+type: string
+enum:
+  - unknown
+  - pending
+  - syncing
+  - in_sync
+  - error
+x-enum-comments:
+  SyncPending: task queued
+  SyncUnknown: never synced
+x-enum-descriptions:
+  - never synced
+  - task queued
+  - ''
+  - ''
+  - ''
+x-enum-varnames:
+  - SyncUnknown
+  - SyncPending
+  - SyncRunning
+  - SyncOK
+  - SyncError

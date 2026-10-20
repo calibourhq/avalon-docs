@@ -1,0 +1,49 @@
+delete:
+  operationId: detach-a-private-network-from-a-dedicated-server
+  security:
+    - BearerAuth: []
+  description: >-
+    Remove the dedicated service's switch port from a VLAN private network. The switch is reconciled asynchronously.
+  tags:
+    - dedicated
+  summary: Detach a private network from a dedicated server
+  parameters:
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: private network id
+      name: net_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: detached
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

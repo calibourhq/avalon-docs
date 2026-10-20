@@ -1,0 +1,62 @@
+get:
+  operationId: list-global-iso-images
+  security:
+    - BearerAuth: []
+  description: Lists all admin-managed global ISO images.
+  tags:
+    - vps
+  summary: List global ISO images
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/vps.VPSISOImage.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: add-a-global-iso-image
+  security:
+    - BearerAuth: []
+  description: Registers a global ISO offered to every customer and starts the download.
+  tags:
+    - vps
+  summary: Add a global ISO image
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/vps.VPSISOImage.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

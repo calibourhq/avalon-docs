@@ -1,0 +1,116 @@
+get:
+  operationId: get-a-cdn-node
+  security:
+    - BearerAuth: []
+  description: Returns a single edge node (admin only).
+  tags:
+    - cdn-nodes
+  summary: Get a CDN node
+  parameters:
+    - description: node id
+      name: node_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/cdn.CDNNode.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+put:
+  operationId: update-a-cdn-node
+  security:
+    - BearerAuth: []
+  description: Updates an edge node (admin only).
+  tags:
+    - cdn-nodes
+  summary: Update a CDN node
+  parameters:
+    - description: node id
+      name: node_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/cdn.CDNNode.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+delete:
+  operationId: delete-a-cdn-node
+  security:
+    - BearerAuth: []
+  description: Removes an edge node (admin only).
+  tags:
+    - cdn-nodes
+  summary: Delete a CDN node
+  parameters:
+    - description: node id
+      name: node_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content
+    '400':
+      description: Bad Request
+      content:
+        '*/*':
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        '*/*':
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        '*/*':
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

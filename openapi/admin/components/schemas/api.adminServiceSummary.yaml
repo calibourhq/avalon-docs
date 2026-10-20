@@ -1,0 +1,21 @@
+type: object
+properties:
+  actions:
+    $ref: ./api.adminServiceActions.yaml
+  billed:
+    description: type is subscription-billed at all
+    type: boolean
+  label:
+    type: string
+  org_id:
+    type: string
+  org_name:
+    type: string
+  service_id:
+    type: string
+  service_type:
+    type: string
+  status:
+    type: string
+  subscription:
+    $ref: ./billing.Subscription.yaml

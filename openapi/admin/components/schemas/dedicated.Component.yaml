@@ -1,0 +1,64 @@
+type: object
+properties:
+  active:
+    type: boolean
+  capacity_gb:
+    description: Typed specs, interpreted per Kind (only the relevant ones are set).
+    type: integer
+  cores:
+    description: cpu
+    type: integer
+  created_at:
+    type: string
+  display_name:
+    type: string
+  extra_specs:
+    $ref: ./dedicated.ComponentSpecs.yaml
+  form_factor:
+    description: |-
+      Physical fit descriptors (load-bearing for the validator/matcher).
+      disk: u2-nvme | m2-nvme | sata-2.5 | sata-3.5 | sas-2.5 | sas-3.5
+      gpu:  pcie-sw | pcie-dw
+    type: string
+  full_height:
+    description: |-
+      FullHeight marks an add-in card (gpu, nic) with a full-height bracket,
+      which a low-profile slot cannot take. False = low profile, fits anywhere.
+    type: boolean
+  id:
+    type: string
+  interface:
+    description: 'disk: nvme | sata | sas'
+    type: string
+  kind:
+    $ref: ./dedicated.ComponentKind.yaml
+  max_memory_gb:
+    description: |-
+      MaxMemoryGB is how much memory one CPU can address (spec sheet), the
+      cap on a plan's RAM next to the DIMM slots. 0 = unknown, no cap.
+    type: integer
+  media:
+    description: 'disk: hdd | ssd (one of DiskMedia, "" = unknown)'
+    type: string
+  ports:
+    description: nic
+    type: integer
+  power_watts:
+    description: cpu TDP
+    type: integer
+  ram_type:
+    description: 'ram: one of RAMTypes'
+    type: string
+  slot_width:
+    description: 'gpu: PCIe slots consumed'
+    type: integer
+  speed_mbps:
+    description: nic per port, one of NICSpeedsMbps
+    type: integer
+  threads:
+    description: cpu
+    type: integer
+  updated_at:
+    type: string
+  vendor:
+    type: string

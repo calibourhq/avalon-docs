@@ -1,0 +1,44 @@
+post:
+  operationId: transfer-a-web-hosting-account-to-another-organisation
+  security:
+    - BearerAuth: []
+  description: >-
+    Moves a web hosting account and its billing subscription to another organisation.
+  tags:
+    - hosting
+  summary: Transfer a web hosting account to another organisation
+  parameters:
+    - description: hosting account id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    $ref: ../components/requestBodies/api.transferServiceRequest.yaml
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

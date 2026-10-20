@@ -1,0 +1,11 @@
+type: object
+properties:
+  inventory_status:
+    $ref: ./dedicated.InventoryStatus.yaml
+  node_slot:
+    description: 0 when the machine is the whole chassis
+    type: integer
+  server_id:
+    type: string
+  server_name:
+    type: string

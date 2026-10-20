@@ -1,0 +1,35 @@
+get:
+  operationId: get-dnssec-state
+  security:
+    - BearerAuth: []
+  description: Returns DNSSEC state for a zone.
+  tags:
+    - dns
+  summary: Get DNSSEC state
+  parameters:
+    - description: zone id
+      name: zone_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

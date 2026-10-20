@@ -1,0 +1,16 @@
+get:
+  operationId: list-rescue-images
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated-admin
+  summary: List rescue images
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/dedicated.DedicatedISOImage.yaml

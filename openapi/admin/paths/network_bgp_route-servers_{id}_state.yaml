@@ -1,0 +1,46 @@
+get:
+  operationId: route-server-state-overview
+  security:
+    - BearerAuth: []
+  description: >-
+    Full configuration overview for one route server: the desired state avalon would push, the state autobird actually holds, the drift between them, resources excluded from the push with the reason, region coverage gaps and BIRD's own status. Pass deep=1 to also pull each session's live BGP state and prefix filter off the box (two extra requests per session).
+  tags:
+    - network-bgp
+  summary: Route server state overview
+  parameters:
+    - description: route server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: also fetch live per-session BGP state
+      name: deep
+      in: query
+      schema:
+        type: boolean
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/bgp.RouteServerReport.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

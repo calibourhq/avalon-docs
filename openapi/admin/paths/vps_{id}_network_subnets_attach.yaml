@@ -1,0 +1,48 @@
+post:
+  operationId: attach-an-existing-prefix-to-a-vps-as-a-routed-subnet
+  security:
+    - BearerAuth: []
+  description: >-
+    Routes an existing, unassigned IPv6 assignment prefix from IPAM to the server, without carving it from the cluster's pool.
+  tags:
+    - vps
+  summary: Attach an existing prefix to a VPS as a routed subnet
+  parameters:
+    - description: server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

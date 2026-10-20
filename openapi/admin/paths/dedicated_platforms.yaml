@@ -1,0 +1,33 @@
+get:
+  operationId: list-dedicated-platforms-chassis
+  security:
+    - BearerAuth: []
+  description: |-
+    Lists active platforms.
+    inactive platforms are listed too.
+  tags:
+    - dedicated
+  summary: List dedicated platforms (chassis)
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/dedicated.Platform.yaml
+post:
+  operationId: create-dedicated-platform
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Create dedicated platform
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.Platform.yaml

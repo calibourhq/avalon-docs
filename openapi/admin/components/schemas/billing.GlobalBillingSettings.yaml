@@ -1,0 +1,144 @@
+type: object
+properties:
+  acct_bank_manual:
+    type: integer
+  acct_bank_nowpayments:
+    type: integer
+  acct_bank_paypal:
+    type: integer
+  acct_bank_stripe:
+    description: >-
+      Money accounts per gateway: card and wallet gateways settle to a transit
+      account,
+
+      bank transfers land on the bank account.
+    type: integer
+  acct_credit_adjustment:
+    type: integer
+  acct_credit_liability:
+    description: >-
+      Prepaid customer credit is money held for customers; adjustments by hand
+      book against
+
+      an expense account.
+    type: integer
+  acct_debtor_base:
+    description: |-
+      AcctDebtorBase plus the customer number is the customer's debtor account
+      (DATEV reserves 10000-69999 for debtors with four-digit G/L accounts).
+    type: integer
+  acct_revenue_domestic:
+    description: Revenue accounts by VAT treatment.
+    type: integer
+  acct_revenue_eu_consumer:
+    description: taxed in another EU country (OSS)
+    type: integer
+  acct_revenue_non_eu:
+    description: outside the scope of EU VAT
+    type: integer
+  acct_revenue_reverse_charge:
+    description: intra-EU B2B, customer owes the VAT
+    type: integer
+  acct_revenue_zero_rated:
+    description: untaxed for another reason
+    type: integer
+  created_at:
+    type: string
+  datev_account_length:
+    type: integer
+  datev_client_number:
+    type: integer
+  datev_consultant_number:
+    description: >-
+      DATEV header: the tax consultant's number, the client number under which
+      the operator
+
+      is kept, the month the fiscal year starts in, and the length of G/L
+      account numbers
+
+      (debtor accounts are one digit longer).
+    type: integer
+  datev_fiscal_year_start_month:
+    type: integer
+  default_billing_mode:
+    description: DefaultBillingMode is seeded into the billing settings of new accounts.
+    allOf:
+      - $ref: ./billing.BillingMode.yaml
+  default_due_days:
+    type: integer
+  default_tax_label:
+    type: string
+  default_tax_rate:
+    description: |-
+      DefaultTaxRate/Label apply to customers charged VAT whose country has no
+      tax rate of its own. DefaultDueDays seeds the due date of new accounts.
+    type: number
+  dunning_enabled:
+    type: boolean
+  e_invoice_attach:
+    type: boolean
+  e_invoice_format:
+    description: >-
+      EInvoiceFormat is the standard e-invoices are issued as unless a customer
+      overrides it;
+
+      EInvoiceAttach attaches the e-invoice to invoice emails next to the PDF.
+    allOf:
+      - $ref: ./billing.EInvoiceFormat.yaml
+  id:
+    type: string
+  invoice_lead_days:
+    description: generate renewal invoices this far ahead
+    type: integer
+  max_credit_balance:
+    description: >-
+      MaxCreditBalance is the default cap on how much credit an org may hold (in
+      cents),
+
+      used when the org has no per-org override. Defaults to €5,000. Enforced
+      when
+
+      accepting donations.
+    type: integer
+  seller_address:
+    type: string
+  seller_address2:
+    type: string
+  seller_city:
+    type: string
+  seller_contact_name:
+    description: >-
+      The seller contact is required by XRechnung (BR-DE-2); the email is also
+      the seller's
+
+      electronic address in the e-invoice.
+    type: string
+  seller_country:
+    type: string
+  seller_email:
+    type: string
+  seller_iban:
+    description: optional; omitted from UBL when empty
+    type: string
+  seller_name:
+    type: string
+  seller_phone:
+    type: string
+  seller_postal:
+    type: string
+  seller_registration:
+    description: KvK, HRB, SIREN, ...
+    type: string
+  seller_vat:
+    type: string
+  suspend_after_days:
+    description: overdue days before suspend
+    type: integer
+  terminate_after_days:
+    description: suspended days before terminate
+    type: integer
+  unpaid_order_expiry_days:
+    description: cancel unpaid prepaid orders after this many days
+    type: integer
+  updated_at:
+    type: string

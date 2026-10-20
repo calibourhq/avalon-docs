@@ -1,0 +1,42 @@
+type: object
+properties:
+  created_at:
+    type: string
+  error_message:
+    type: string
+  filename:
+    description: >-
+      Filename is the unique name of the file on Template Storage
+      (iso-<id>.iso).
+    type: string
+  global:
+    type: boolean
+  id:
+    type: string
+  last_used_at:
+    description: >-
+      LastUsedAt is set on every mount. nil = never mounted (GC falls back to
+      CreatedAt).
+    type: string
+  mounted_server_ids:
+    description: MountedServerIDs is the set of VPS IDs the file is currently attached to.
+    type: array
+    items:
+      type: string
+  name:
+    type: string
+  org_id:
+    type: string
+  size_bytes:
+    type: integer
+  source_url:
+    type: string
+  status:
+    type: string
+  storage_name:
+    description: >-
+      StorageName is the Template Storage the file lives on (shared across
+      clusters).
+    type: string
+  updated_at:
+    type: string

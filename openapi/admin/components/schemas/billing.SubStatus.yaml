@@ -1,0 +1,26 @@
+type: string
+enum:
+  - pending_payment
+  - provisioning
+  - active
+  - suspended
+  - terminated
+  - cancelled
+x-enum-comments:
+  SubStatusCancelled: user-ended, no further billing
+  SubStatusPendingPayment: prepaid order awaiting payment, not yet provisioned
+  SubStatusProvisioning: paid for (or needs no payment); the service is not created yet
+x-enum-descriptions:
+  - prepaid order awaiting payment, not yet provisioned
+  - paid for (or needs no payment); the service is not created yet
+  - ''
+  - ''
+  - ''
+  - user-ended, no further billing
+x-enum-varnames:
+  - SubStatusPendingPayment
+  - SubStatusProvisioning
+  - SubStatusActive
+  - SubStatusSuspended
+  - SubStatusTerminated
+  - SubStatusCancelled

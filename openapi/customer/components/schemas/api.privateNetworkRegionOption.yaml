@@ -1,0 +1,10 @@
+type: object
+properties:
+  kinds:
+    type: array
+    items:
+      type: string
+  region_display_name:
+    type: string
+  region_id:
+    type: string

@@ -1,0 +1,47 @@
+put:
+  operationId: set-default-payment-method
+  security:
+    - BearerAuth: []
+  description: Sets a payment method as the org's default.
+  tags:
+    - billing
+  summary: Set default payment method
+  parameters:
+    - description: org id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: payment method id
+      name: pm_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

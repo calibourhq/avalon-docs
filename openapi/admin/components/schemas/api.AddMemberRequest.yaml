@@ -1,0 +1,12 @@
+type: object
+required:
+  - email
+properties:
+  email:
+    type: string
+  is_owner:
+    type: boolean
+  permissions:
+    type: array
+    items:
+      type: string

@@ -1,0 +1,27 @@
+get:
+  operationId: dedicated-service-cpu-temperature
+  security:
+    - BearerAuth: []
+  description: One series per CPU socket for the machine behind a service.
+  tags:
+    - dedicated
+  summary: Dedicated service CPU temperature
+  parameters:
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: 24h|7d|30d
+      name: period
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.TempSummary.yaml

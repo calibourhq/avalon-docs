@@ -1,0 +1,34 @@
+get:
+  security:
+    - BearerAuth: []
+  operationId: live-per-node-origin-balancing-state-of-a-cdn-hostname
+  tags:
+    - CDN
+  summary: Live per-node origin balancing state of a CDN hostname
+  parameters:
+    - description: CDN zone ID
+      name: zone_id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: CDN hostname ID
+      name: hostname_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

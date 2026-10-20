@@ -1,0 +1,29 @@
+get:
+  operationId: get-system-capabilities
+  security:
+    - BearerAuth: []
+  description: >-
+    Returns raw system capabilities (admin only) showing which features are configured at the system level.
+  tags:
+    - settings
+  summary: Get system capabilities
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

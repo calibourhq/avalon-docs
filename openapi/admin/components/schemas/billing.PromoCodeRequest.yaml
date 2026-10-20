@@ -1,0 +1,49 @@
+type: object
+required:
+  - code
+  - name
+  - type
+properties:
+  applicable_to_billing_cycles:
+    type: array
+    items:
+      $ref: ./billing.BillingCycle.yaml
+  applicable_to_plan_ids:
+    description: >-
+      ApplicableToPlanIDs limits the code to specific plans, as
+      "<service_type>:<plan_uuid>"
+
+      composite keys (empty = all plans within the allowed service types).
+    type: array
+    items:
+      type: string
+  applicable_to_service_types:
+    description: >-
+      ApplicableToServiceTypes limits the code to the given service types (empty
+      = all).
+    type: array
+    items:
+      type: string
+  code:
+    type: string
+    maxLength: 50
+  max_uses:
+    type: integer
+    minimum: 0
+  name:
+    type: string
+    maxLength: 255
+  type:
+    enum:
+      - percent
+      - fixed
+      - override
+    allOf:
+      - $ref: ./billing.PromoCodeType.yaml
+  valid_from:
+    type: string
+  valid_until:
+    type: string
+  value:
+    type: integer
+    minimum: 0

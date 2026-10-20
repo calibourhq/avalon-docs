@@ -1,0 +1,34 @@
+post:
+  operationId: regenerate-recovery-codes
+  security:
+    - BearerAuth: []
+  description: >-
+    Replace the authenticated account's recovery codes with a fresh set. Requires a passkey or TOTP on the account.
+  tags:
+    - two-factor
+  summary: Regenerate recovery codes
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.recoveryCodesResponse.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

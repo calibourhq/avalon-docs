@@ -1,0 +1,22 @@
+get:
+  operationId: get-inventory-server-network-admin
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Get inventory server network (admin)
+  parameters:
+    - description: server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true

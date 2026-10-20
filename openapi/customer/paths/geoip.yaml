@@ -1,0 +1,23 @@
+get:
+  security: []
+  operationId: resolve-the-callers-ip
+  description: >-
+    Resolve the requesting client's IP address to country/city and ASN
+
+    details from the bundled MaxMind GeoLite2 databases. Used to preselect
+
+    the country on the registration form. Returns 204 when geo data is
+
+    unavailable (databases not loaded or the IP has no entry, e.g. a LAN address).
+  tags:
+    - geoip
+  summary: Resolve the caller's IP
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/geoip.Result.yaml
+    '204':
+      description: No geo data available for the client IP

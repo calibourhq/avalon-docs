@@ -1,0 +1,33 @@
+post:
+  security: []
+  operationId: register-a-new-user-account
+  description: Register a new user account
+  tags:
+    - users
+  summary: Register a new user account
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/api.RegistrationRequest.yaml
+    description: Registration Request
+    required: true
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.RegistrationResponse.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

@@ -1,0 +1,17 @@
+type: string
+enum:
+  - draft
+  - pending
+  - paid
+  - overdue
+  - cancelled
+  - void
+  - settled
+x-enum-varnames:
+  - InvoiceStatusDraft
+  - InvoiceStatusPending
+  - InvoiceStatusPaid
+  - InvoiceStatusOverdue
+  - InvoiceStatusCancelled
+  - InvoiceStatusVoid
+  - InvoiceStatusSettled

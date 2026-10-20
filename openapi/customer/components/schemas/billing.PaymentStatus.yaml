@@ -1,0 +1,15 @@
+type: string
+enum:
+  - pending
+  - processing
+  - succeeded
+  - failed
+  - expired
+  - requires_action
+x-enum-varnames:
+  - PaymentStatusPending
+  - PaymentStatusProcessing
+  - PaymentStatusSucceeded
+  - PaymentStatusFailed
+  - PaymentStatusExpired
+  - PaymentStatusRequiresAction

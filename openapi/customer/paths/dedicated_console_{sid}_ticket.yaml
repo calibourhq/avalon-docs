@@ -1,0 +1,24 @@
+post:
+  operationId: mint-a-one-time-console-websocket-ticket
+  security:
+    - BearerAuth: []
+  description: >-
+    Dials the datacenter agent and returns a short-lived token for GET /vnc-proxy.
+  tags:
+    - dedicated
+  summary: Mint a one-time console websocket ticket
+  parameters:
+    - description: console session id
+      name: sid
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true

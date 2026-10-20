@@ -1,0 +1,22 @@
+post:
+  operationId: attach-an-existing-prefix-to-an-inventory-server-as-a-routed-subnet-admin
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Attach an existing prefix to an inventory server as a routed subnet (admin)
+  parameters:
+    - description: server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true

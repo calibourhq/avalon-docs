@@ -1,0 +1,78 @@
+get:
+  operationId: nameserver-migration-status-for-a-registrar-domain
+  security:
+    - BearerAuth: []
+  description: >-
+    Reports whether a domain's registry delegation still points at the previous nameserver addresses.
+  tags:
+    - domains
+  summary: Nameserver migration status for a registrar domain
+  parameters:
+    - description: domain id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: migrate-a-domain-onto-the-current-nameservers
+  security:
+    - BearerAuth: []
+  description: >-
+    Repoints the registry delegation at the current nameservers, and migrates the DNS zone we host for the domain when there is one. DNSSEC is left in place: the nameserver addresses change, the signing keys do not.
+  tags:
+    - domains
+  summary: Migrate a domain onto the current nameservers
+  parameters:
+    - description: domain id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

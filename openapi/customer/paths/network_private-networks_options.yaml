@@ -1,0 +1,36 @@
+get:
+  operationId: private-network-creation-options
+  security:
+    - BearerAuth: []
+  description: >-
+    For each region, list which private network kinds (vps, dedicated) the active organisation can create. Regions with no available kind are omitted.
+  tags:
+    - network-private
+  summary: Private network creation options
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/api.privateNetworkRegionOption.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

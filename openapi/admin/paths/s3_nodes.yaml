@@ -1,0 +1,64 @@
+get:
+  operationId: list-storage-nodes
+  security:
+    - BearerAuth: []
+  description: Lists the Garage storage nodes traffic is metered from (admin only).
+  tags:
+    - s3-nodes
+  summary: List storage nodes
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/s3.Node.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: create-a-storage-node
+  security:
+    - BearerAuth: []
+  description: Registers a Garage storage node to meter traffic from (admin only).
+  tags:
+    - s3-nodes
+  summary: Create a storage node
+  requestBody:
+    $ref: ../components/requestBodies/s3.NodeInput.yaml
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/s3.Node.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

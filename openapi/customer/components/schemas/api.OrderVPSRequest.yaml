@@ -1,0 +1,48 @@
+type: object
+required:
+  - billing_cycle
+  - org_id
+  - os
+  - region
+properties:
+  billing_cycle:
+    type: string
+  ephemeral:
+    description: |-
+      Ephemeral (hourly only): the server is terminated automatically once it is
+      stopped, or when the optional max age (minutes from activation) passes.
+    type: boolean
+  ephemeral_max_age_minutes:
+    type: integer
+  hostname:
+    type: string
+    maxLength: 253
+  ipv4:
+    description: Network selection
+    type: boolean
+  ipv6:
+    description: default true
+    type: boolean
+  org_id:
+    type: string
+  os:
+    description: OS is the OS version's name, e.g. "debian-13".
+    type: string
+  plan:
+    description: >-
+      Plan is the plan's name, e.g. "vps-s". Staff may leave it empty for a
+      custom spec.
+    type: string
+  primary_private_network_id:
+    type: string
+  private_ip_config:
+    $ref: ./api.privateIPConfigIn.yaml
+  promo_code:
+    type: string
+  region:
+    description: Region is the region's name, e.g. "ams1".
+    type: string
+  ssh_key_ids:
+    type: array
+    items:
+      type: string

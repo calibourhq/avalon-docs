@@ -1,0 +1,102 @@
+put:
+  operationId: update-an-organisation-member
+  security:
+    - BearerAuth: []
+  description: >-
+    Updates a member's permissions and notification flags. Requires the org admin permission; only the owner may change the owner's record. is_owner is ignored.
+  tags:
+    - orgs
+  summary: Update an organisation member
+  parameters:
+    - description: organisation id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: member user id
+      name: uid
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/api.UpdateMemberRequest.yaml
+    description: Member update
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/orgs.OrgUser.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+delete:
+  operationId: remove-an-organisation-member
+  security:
+    - BearerAuth: []
+  description: >-
+    Removes a member. Requires the org admin permission unless removing yourself. The owner cannot be removed.
+  tags:
+    - orgs
+  summary: Remove an organisation member
+  parameters:
+    - description: organisation id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: member user id
+      name: uid
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

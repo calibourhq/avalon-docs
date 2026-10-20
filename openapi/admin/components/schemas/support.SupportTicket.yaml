@@ -1,0 +1,45 @@
+type: object
+properties:
+  assigned_admin:
+    description: Preloaded
+    allOf:
+      - $ref: ./admins.Admin.yaml
+  assigned_admin_id:
+    type: string
+  channel:
+    description: web, api
+    type: string
+  closed_at:
+    type: string
+  created_at:
+    type: string
+  department_id:
+    type: string
+  first_responded_at:
+    type: string
+  id:
+    type: string
+  last_reply_at:
+    type: string
+  opened_by_user_id:
+    type: string
+  org_id:
+    type: string
+  priority:
+    description: low, medium, high, critical
+    type: string
+  status:
+    description: see AllStatuses; change it via SetStatus
+    type: string
+  status_changed_at:
+    description: |-
+      SLA bookkeeping, maintained by SetStatus, AddMessage and the SLA worker
+      (sla.go). Written with targeted column updates only, never db.Save, so
+      a handler holding a stale copy can't wipe what the worker stamped.
+    type: string
+  subject:
+    type: string
+  ticket_number:
+    type: string
+  updated_at:
+    type: string

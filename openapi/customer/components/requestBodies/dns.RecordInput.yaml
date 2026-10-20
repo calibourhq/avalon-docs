@@ -1,0 +1,6 @@
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/dns.RecordInput.yaml
+description: DNS record
+required: true

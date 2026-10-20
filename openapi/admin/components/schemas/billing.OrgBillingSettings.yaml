@@ -1,0 +1,83 @@
+type: object
+properties:
+  billing_mode:
+    $ref: ./billing.BillingMode.yaml
+  buyer_reference:
+    type: string
+  created_at:
+    type: string
+  credit_balance:
+    type: integer
+  credit_low_threshold:
+    type: integer
+  default_due_days:
+    type: integer
+  default_payment_method_id:
+    type: string
+  default_tax_label:
+    type: string
+  default_tax_rate:
+    type: number
+  e_invoice_format:
+    description: >-
+      EInvoiceFormat overrides the global e-invoice format for this customer;
+      empty follows
+
+      it. BuyerReference is the customer's reference for its invoices (a
+      Leitweg-ID for
+
+      German public bodies, a purchase order), sent as BT-10.
+    allOf:
+      - $ref: ./billing.EInvoiceFormat.yaml
+  id:
+    type: string
+  language:
+    type: string
+  max_credit_balance:
+    description: >-
+      MaxCreditBalance caps how much credit this org may hold (in cents). 0 =
+      use the
+
+      global default (GlobalBillingSettings.MaxCreditBalance). Enforced when
+      accepting
+
+      donations to prevent unbounded balance accumulation.
+    type: integer
+  next_usage_invoice_at:
+    description: >-
+      NextUsageInvoiceAt is when the org's unbilled hourly usage is next rolled
+      into one
+
+      invoice. Hourly usage is invoiced per org, not per subscription: every
+      usage record the
+
+      org has accrued by then (from running servers and from ones already torn
+      down) lands as
+
+      a line on the same monthly invoice, so a fleet of short-lived servers
+      yields one invoice
+
+      a month rather than one per server. Set when the org's first usage
+      accrues, advanced a
+
+      month per roll-up, and cleared again once nothing is metering and nothing
+      is unbilled.
+    type: string
+  org_id:
+    type: string
+  promo_credit_balance:
+    description: >-
+      PromoCreditBalance is gifted promo credit, kept separate from
+      CreditBalance (real
+
+      prepaid money). Promo is applied to invoices as a discount, never as a
+      payment, so
+
+      no VAT is owed on money that was never received.
+    type: integer
+  stripe_customer_id:
+    type: string
+  suspension_disabled:
+    type: boolean
+  updated_at:
+    type: string

@@ -1,0 +1,45 @@
+get:
+  operationId: list-org-api-keys
+  security:
+    - BearerAuth: []
+  description: >-
+    Returns all API keys for an org (never the tokens), decorated with creator names. Requires the org admin permission. API key sessions are rejected.
+
+    requires customers:read.
+  tags:
+    - api-keys
+  summary: List org API keys
+  parameters:
+    - description: org id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/apikeys.APIKeyWithCreator.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

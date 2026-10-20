@@ -1,0 +1,36 @@
+post:
+  operationId: re-import-downstream-as-sets-admin
+  security:
+    - BearerAuth: []
+  description: >-
+    Re-walk the AS-SETs attached to a BGP ASN now instead of waiting for the next sync.
+  tags:
+    - network-bgp
+  summary: Re-import downstream AS-SETs (admin)
+  parameters:
+    - description: asn id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '202':
+      description: Accepted
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

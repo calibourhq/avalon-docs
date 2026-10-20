@@ -1,0 +1,27 @@
+get:
+  security: []
+  operationId: get-a-public-invite
+  description: Returns invite metadata by token (no auth required).
+  tags:
+    - orgs
+  summary: Get a public invite
+  parameters:
+    - description: invite token
+      name: token
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/orgs.OrgInviteDetail.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

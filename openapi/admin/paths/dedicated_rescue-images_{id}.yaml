@@ -1,0 +1,44 @@
+put:
+  operationId: update-a-rescue-image
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated-admin
+  summary: Update a rescue image
+  parameters:
+    - description: image id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.DedicatedISOImage.yaml
+delete:
+  operationId: delete-a-rescue-image
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated-admin
+  summary: Delete a rescue image
+  parameters:
+    - description: image id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

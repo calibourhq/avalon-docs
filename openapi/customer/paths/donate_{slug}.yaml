@@ -1,0 +1,33 @@
+get:
+  security: []
+  operationId: get-a-public-donation-page
+  description: Returns public info for a donation page by slug.
+  tags:
+    - donations
+  summary: Get a public donation page
+  parameters:
+    - description: donation page slug
+      name: slug
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.publicPageView.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

@@ -1,0 +1,42 @@
+post:
+  operationId: create-a-firewall-rule
+  security:
+    - BearerAuth: []
+  description: Add a rule to a firewall.
+  tags:
+    - network-firewall
+  summary: Create a firewall rule
+  parameters:
+    - description: firewall id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    $ref: ../components/requestBodies/api.firewallRuleRequest.yaml
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/firewall.FirewallRule.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

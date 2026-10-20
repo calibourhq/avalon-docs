@@ -1,0 +1,11 @@
+type: string
+enum:
+  - add
+  - replace
+  - bays
+  - range
+x-enum-varnames:
+  - UpgradeAdd
+  - UpgradeReplace
+  - UpgradeBays
+  - UpgradeRange

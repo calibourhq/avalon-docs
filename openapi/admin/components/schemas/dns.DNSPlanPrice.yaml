@@ -1,0 +1,16 @@
+type: object
+properties:
+  created_at:
+    type: string
+  cycle:
+    description: matches billing.BillingCycle values
+    type: string
+  id:
+    type: string
+  plan_id:
+    type: string
+  price:
+    description: EUR
+    type: number
+  updated_at:
+    type: string

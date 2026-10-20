@@ -1,0 +1,62 @@
+get:
+  operationId: list-vps-clusters
+  security:
+    - BearerAuth: []
+  description: List all configured Proxmox VPS clusters.
+  tags:
+    - vps
+  summary: List VPS clusters
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/vps.VPSCluster.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: create-vps-cluster
+  security:
+    - BearerAuth: []
+  description: Create a VPS cluster after verifying the Proxmox connection.
+  tags:
+    - vps
+  summary: Create VPS cluster
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/vps.VPSCluster.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

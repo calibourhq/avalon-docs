@@ -1,0 +1,41 @@
+patch:
+  operationId: patch-vps-server-specs
+  security:
+    - BearerAuth: []
+  description: >-
+    Overwrite resource specs on a VPS server; optionally propagate to the live VM.
+  tags:
+    - vps
+  summary: Patch VPS server specs
+  parameters:
+    - description: server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/vps.VPSServer.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

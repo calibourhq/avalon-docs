@@ -1,0 +1,29 @@
+get:
+  operationId: server-cpu-temperature-admin
+  security:
+    - BearerAuth: []
+  description: |-
+    One series per CPU socket for one machine in inventory, across
+    every service that has occupied it.
+  tags:
+    - dedicated
+  summary: Server CPU temperature (admin)
+  parameters:
+    - description: server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: 24h|7d|30d
+      name: period
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.TempSummary.yaml

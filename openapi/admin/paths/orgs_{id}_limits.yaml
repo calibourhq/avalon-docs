@@ -1,0 +1,83 @@
+get:
+  operationId: get-org-account-limits
+  security:
+    - BearerAuth: []
+  description: Get the effective and override account limits for an org.
+  tags:
+    - settings
+  summary: Get org account limits
+  parameters:
+    - description: org id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+put:
+  operationId: update-org-account-limits
+  security:
+    - BearerAuth: []
+  description: Replaces the org's limit overrides. A field left out inherits the default.
+  tags:
+    - settings
+  summary: Update org account limits
+  parameters:
+    - description: org id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    $ref: ../components/requestBodies/api.LimitsRequest.yaml
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/firewall.OrgLimits.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

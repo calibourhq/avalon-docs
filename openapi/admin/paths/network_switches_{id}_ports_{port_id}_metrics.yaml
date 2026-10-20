@@ -1,0 +1,32 @@
+get:
+  operationId: switch-port-traffic-metrics-admin
+  security:
+    - BearerAuth: []
+  tags:
+    - network-switches
+  summary: Switch port traffic metrics (admin)
+  parameters:
+    - description: switch id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: port id
+      name: port_id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: 24h|7d|30d|12m
+      name: period
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/netswitch.MetricsSummary.yaml

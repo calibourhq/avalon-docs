@@ -1,0 +1,33 @@
+type: object
+properties:
+  mac:
+    type: string
+  owner_server_id:
+    description: |-
+      OwnerID/OwnerName name the server whose NIC MAC this is, which is not
+      necessarily the one assigned to the port it is learned on.
+    type: string
+  owner_server_name:
+    type: string
+  port_id:
+    type: string
+  port_name:
+    type: string
+  role:
+    $ref: ./netswitch.PortRole.yaml
+  seen_at:
+    type: string
+  server_id:
+    description: the server assigned to the port
+    type: string
+  server_name:
+    type: string
+  stale:
+    description: |-
+      Stale is set when the switch has not answered a forwarding-table read
+      for longer than macFreshness: the address was there, it may not be now.
+    type: boolean
+  switch_id:
+    type: string
+  switch_name:
+    type: string

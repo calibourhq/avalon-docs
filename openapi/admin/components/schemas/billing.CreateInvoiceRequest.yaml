@@ -1,0 +1,28 @@
+type: object
+required:
+  - org_id
+  - type
+properties:
+  due_at:
+    type: string
+  is_top_up:
+    type: boolean
+  language:
+    type: string
+  notes:
+    type: string
+  org_id:
+    type: string
+  related_invoice_id:
+    type: string
+  tax_label:
+    type: string
+  tax_rate:
+    type: number
+  type:
+    enum:
+      - invoice
+      - proforma
+      - credit_note
+    allOf:
+      - $ref: ./billing.InvoiceType.yaml

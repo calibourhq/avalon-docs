@@ -1,0 +1,10 @@
+type: object
+properties:
+  in_sync:
+    type: integer
+  mismatch:
+    type: integer
+  missing:
+    type: integer
+  unexpected:
+    type: integer

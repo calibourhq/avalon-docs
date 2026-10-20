@@ -1,0 +1,9 @@
+type: object
+properties:
+  group_id:
+    type: string
+  name:
+    description: derived on read
+    type: string
+  sort_order:
+    type: integer

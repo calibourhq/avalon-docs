@@ -1,0 +1,11 @@
+type: object
+properties:
+  kind:
+    type: string
+  label:
+    type: string
+  reason:
+    description: filled by Localize
+    type: string
+  resource:
+    $ref: ./bgp.ResourceRef.yaml

@@ -1,0 +1,33 @@
+type: object
+properties:
+  created_at:
+    type: string
+  default_channels:
+    description: JSON []Channel - selected until the recipient saves a preference
+    type: string
+  excluded_channels:
+    description: JSON []Channel - never delivered on these channels
+    type: string
+  id:
+    type: string
+  is_system:
+    type: boolean
+  mandatory_channels:
+    description: JSON []Channel - always delivered on these channels
+    type: string
+  name:
+    type: string
+  slug:
+    type: string
+  target:
+    description: user, admin
+    type: string
+  translations:
+    type: array
+    items:
+      $ref: ./notifications.NotificationTemplateTranslation.yaml
+  updated_at:
+    type: string
+  variables:
+    description: JSON array of expected variable names
+    type: string

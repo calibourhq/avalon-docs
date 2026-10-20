@@ -1,0 +1,74 @@
+get:
+  operationId: get-notification-preferences
+  security:
+    - BearerAuth: []
+  description: >-
+    Return the notification preferences for the current account, one entry per template.
+  tags:
+    - self
+  summary: Get notification preferences
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/notifications.NotificationPrefView.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+put:
+  operationId: update-notification-preferences
+  security:
+    - BearerAuth: []
+  description: >-
+    Update the optional notification channels for the current account. Unknown templates and unavailable channels are ignored.
+  tags:
+    - self
+  summary: Update notification preferences
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: ../components/schemas/api.prefUpdateEntry.yaml
+    description: Channel selections
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

@@ -1,0 +1,48 @@
+post:
+  operationId: transfer-organisation-ownership
+  security:
+    - BearerAuth: []
+  description: Transfers org ownership to another member. Owner only.
+  tags:
+    - orgs
+  summary: Transfer organisation ownership
+  parameters:
+    - description: organisation id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/api.TransferOwnershipRequest.yaml
+    description: Target user
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

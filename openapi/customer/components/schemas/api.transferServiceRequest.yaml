@@ -1,0 +1,6 @@
+type: object
+required:
+  - target_org_id
+properties:
+  target_org_id:
+    type: string

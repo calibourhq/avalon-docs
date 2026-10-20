@@ -1,0 +1,51 @@
+get:
+  operationId: accounting-export-file-admin
+  security:
+    - BearerAuth: []
+  description: >-
+    One file of the accounting export for a period, or the whole bundle as a ZIP.
+  tags:
+    - billing
+  summary: Accounting export file (admin)
+  parameters:
+    - description: first day (YYYY-MM-DD)
+      name: date_from
+      in: query
+      schema:
+        type: string
+    - description: last day (YYYY-MM-DD)
+      name: date_to
+      in: query
+      schema:
+        type: string
+    - description: file name as listed by the bundle, or bundle.zip
+      name: file
+      in: query
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: the file
+      content:
+        application/octet-stream:
+          schema:
+            type: string
+    '400':
+      description: Bad Request
+      content:
+        application/octet-stream:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/octet-stream:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/octet-stream:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

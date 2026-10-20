@@ -1,0 +1,43 @@
+get:
+  operationId: list-the-actions-available-for-a-server-admin
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated-admin
+  summary: List the actions available for a server (admin)
+  parameters:
+    - description: server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+post:
+  operationId: start-an-action-on-a-server-admin
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated-admin
+  summary: Start an action on a server (admin)
+  parameters:
+    - description: server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.actionRunView.yaml

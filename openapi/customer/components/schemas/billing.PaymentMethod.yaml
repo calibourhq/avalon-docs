@@ -1,0 +1,26 @@
+type: object
+properties:
+  card_brand:
+    type: string
+  card_exp_month:
+    type: integer
+  card_exp_year:
+    type: integer
+  card_holder_name:
+    type: string
+  card_last4:
+    type: string
+  created_at:
+    type: string
+  id:
+    type: string
+  is_default:
+    type: boolean
+  org_id:
+    type: string
+  stripe_pm_id:
+    type: string
+  type:
+    $ref: ./billing.PaymentMethodType.yaml
+  updated_at:
+    type: string

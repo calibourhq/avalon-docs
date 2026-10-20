@@ -1,0 +1,100 @@
+type: object
+properties:
+  active:
+    type: boolean
+  agent_id:
+    type: string
+  agent_name:
+    type: string
+  arp_rate_bps:
+    type: integer
+  bridge_name:
+    description: |-
+      Managed topology. Avalon never creates the bridge, the uplink trunk or
+      the management VLAN; the admin pre-configures those and Avalon manages
+      customer ports' pvid/membership and VLAN rows in the 3000-4000 range.
+    type: string
+  capabilities_effective:
+    description: Derived (not stored)
+    type: array
+    items:
+      type: string
+  capabilities_enabled:
+    type: array
+    items:
+      type: string
+  capabilities_supported:
+    description: |-
+      Capabilities: what the driver/probe reported vs. what the admin enabled.
+      A feature is effective only when in both.
+    type: array
+    items:
+      type: string
+  created_at:
+    type: string
+  customer_port_count:
+    type: integer
+  default_storm_rate_percent:
+    description: Defaults applied to newly discovered customer ports.
+    type: integer
+  driver:
+    $ref: ./netswitch.SwitchDriver.yaml
+  host:
+    description: |-
+      Connection details (used agent-side). Secrets follow the codebase
+      convention: plaintext column + json:"-".
+    type: string
+  id:
+    type: string
+  identity:
+    description: Discovered by probe
+    type: string
+  insecure_tls:
+    type: boolean
+  last_probe_at:
+    type: string
+  last_seen_at:
+    type: string
+  last_sync_at:
+    type: string
+  max_acl_rules:
+    description: |-
+      MaxACLRules is the rule budget the compiler enforces before touching the
+      device (the chip's real limit is version dependent; keep headroom).
+    type: integer
+  model:
+    type: string
+  name:
+    type: string
+  password_set:
+    type: boolean
+  port:
+    description: 0 = driver default
+    type: integer
+  port_count:
+    type: integer
+  public_vlan_id:
+    description: pvid of customer ports (shared dedi VLAN)
+    type: integer
+  region_display_name:
+    type: string
+  region_id:
+    type: string
+  rule_count:
+    type: integer
+  switch_chip:
+    type: string
+  sync_error:
+    type: string
+  sync_status:
+    description: Sync state (machine-owned)
+    allOf:
+      - $ref: ./netswitch.SyncStatus.yaml
+  sync_warnings:
+    type: string
+  updated_at:
+    type: string
+  username:
+    type: string
+  version:
+    type: string

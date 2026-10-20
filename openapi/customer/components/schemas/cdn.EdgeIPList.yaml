@@ -1,0 +1,14 @@
+type: object
+properties:
+  ipv4:
+    type: array
+    items:
+      type: string
+  ipv6:
+    type: array
+    items:
+      type: string
+  nodes:
+    type: array
+    items:
+      $ref: ./cdn.EdgeNode.yaml

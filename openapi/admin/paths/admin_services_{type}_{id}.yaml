@@ -1,0 +1,53 @@
+get:
+  operationId: admin-service-summary
+  security:
+    - BearerAuth: []
+  description: >-
+    Ownership and billing subscription of any service, for the admin service card.
+  tags:
+    - admin
+  summary: Admin service summary
+  parameters:
+    - description: vps|dedicated|hosting|email|s3|dns|cdn|domain
+      name: type
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.adminServiceSummary.yaml
+delete:
+  operationId: terminate-a-service-immediately-admin
+  security:
+    - BearerAuth: []
+  description: Dispatches to the service type's own teardown.
+  tags:
+    - admin
+  summary: Terminate a service immediately (admin)
+  parameters:
+    - description: service type
+      name: type
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content

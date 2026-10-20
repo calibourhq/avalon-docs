@@ -1,0 +1,25 @@
+get:
+  operationId: list-acme-certificate-providers
+  security:
+    - BearerAuth: []
+  description: |-
+    Lists the configured ACME providers a CDN record's certificate may
+    be issued from, so an admin can override a zone's provider (admin only).
+  tags:
+    - cdn
+  summary: List ACME certificate providers
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/cdn.ProviderInfo.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

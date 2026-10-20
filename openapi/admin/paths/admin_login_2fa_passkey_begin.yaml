@@ -1,0 +1,33 @@
+post:
+  security: []
+  operationId: begin-admin-passkey-2fa
+  description: Begin passkey assertion for a pending admin 2FA login session.
+  tags:
+    - two-factor
+  summary: Begin admin passkey 2FA
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

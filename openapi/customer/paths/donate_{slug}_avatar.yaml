@@ -1,0 +1,34 @@
+get:
+  security: []
+  operationId: get-a-donation-page-avatar
+  description: Streams a page's avatar image.
+  tags:
+    - donations
+  summary: Get a donation page avatar
+  parameters:
+    - description: donation page slug
+      name: slug
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/octet-stream:
+          schema:
+            type: string
+            format: binary
+    '404':
+      description: Not Found
+      content:
+        application/octet-stream:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/octet-stream:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

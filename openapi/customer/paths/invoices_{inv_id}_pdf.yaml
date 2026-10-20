@@ -1,0 +1,40 @@
+get:
+  operationId: get-invoice-pdf
+  security:
+    - BearerAuth: []
+  description: Streams the PDF for an invoice.
+  tags:
+    - invoices
+  summary: Get invoice PDF
+  parameters:
+    - description: invoice id
+      name: inv_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: PDF document
+      content:
+        application/pdf:
+          schema:
+            type: string
+    '400':
+      description: Bad Request
+      content:
+        application/pdf:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/pdf:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/pdf:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

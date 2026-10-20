@@ -1,0 +1,42 @@
+post:
+  operationId: cancel-a-vps-at-renewal
+  security:
+    - BearerAuth: []
+  description: >-
+    Marks a non-hourly VPS for non-renewal so it is deleted at the end of the current paid period.
+  tags:
+    - vps
+  summary: Cancel a VPS at renewal
+  parameters:
+    - description: vps id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

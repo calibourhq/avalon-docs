@@ -1,0 +1,305 @@
+type: object
+properties:
+  anti_spoofing_disabled:
+    description: |-
+      AntiSpoofingDisabled is an admin-only escape hatch that turns off the
+      mandatory anti-spoofing enforcement for this server: the per-NIC ipfilter
+      IPSets are removed, the Proxmox ipfilter option is disabled and the
+      managed rules lose their approved-source/-destination constraints. The
+      port-25 block and any attached user firewall keep applying.
+    type: boolean
+  bandwidth_exceeded_action:
+    type: string
+  bandwidth_exceeded_speed_mbps:
+    description: Mbit/s (megabits)
+    type: integer
+  bandwidth_limited:
+    type: boolean
+  bandwidth_tb:
+    type: integer
+  billing_cycle:
+    description: Billing
+    type: string
+  bios_type:
+    description: >-
+      Hardware settings (snapshotted from plan at order time; user-mutable;
+      reset on reinstall)
+    type: string
+  cancel_at_renewal:
+    description: >-
+      Cancellation - derived from the billing subscription's CancelAtPeriodEnd
+      flag (the single
+
+      source of truth). Set for non-hourly servers when the customer cancels;
+      billing stops
+
+      renewing and the VM is torn down at the end of the paid period. Populated
+      on read.
+    type: boolean
+  cluster_id:
+    type: string
+  cpu:
+    description: Resource snapshot (copied from plan at order time)
+    type: integer
+  cpu_limit:
+    type: integer
+  created_at:
+    type: string
+  disk_bus:
+    description: virtio | ide
+    type: string
+  disk_gb:
+    type: integer
+  ephemeral:
+    description: >-
+      Ephemeral servers (hourly only) are terminated automatically once they are
+
+      observed stopped, or when EphemeralExpiresAt passes. The flag is fixed at
+      order
+
+      time; the max age may be changed later. The expiry is set at activation
+      (not at
+
+      order) so provisioning time does not count against it.
+    type: boolean
+  ephemeral_expires_at:
+    type: string
+  ephemeral_max_age_minutes:
+    type: integer
+  hostname:
+    type: string
+  id:
+    type: string
+  invoice_id:
+    type: string
+  iops_rd:
+    type: integer
+  iops_rd_max:
+    type: integer
+  iops_rd_max_length:
+    type: integer
+  iops_wr:
+    type: integer
+  iops_wr_max:
+    type: integer
+  iops_wr_max_length:
+    type: integer
+  ipv4_address:
+    description: >-
+      Derived network info (populated on read, not stored - reflects primary
+      assignment)
+    type: string
+  ipv4_address_ids:
+    description: Network assignments (IPAM IDs)
+    type: array
+    items:
+      type: string
+  ipv4_enabled:
+    description: >-
+      IP family selection - whether the public interface gets an IPv4/IPv6
+      address.
+
+      Both default true (dual-stack); forced false when the primary interface is
+      private.
+    type: boolean
+  ipv6_address:
+    type: string
+  ipv6_address_ids:
+    type: array
+    items:
+      type: string
+  ipv6_enabled:
+    type: boolean
+  is_reinstall:
+    type: boolean
+  last_traffic_poll_at:
+    type: string
+  lock_operation:
+    type: string
+  locked:
+    description: >-
+      Derived lock state (populated on detail/status fetch, not stored). Locked
+      is true while one of
+
+      our processes, or Proxmox itself, is operating on the server;
+      LockOperation is the operation
+
+      key (e.g. plan_change, or migrate for a Proxmox lock, see
+      ProxmoxLockOperation).
+    type: boolean
+  max_user_backups:
+    description: >-
+      Max user-created (protected) backups allowed for this server. 0 =
+      disabled.
+
+      Snapshotted from the plan at order time.
+    type: integer
+  mbps_rd:
+    type: integer
+  mbps_rd_max:
+    type: integer
+  mbps_rd_max_length:
+    type: integer
+  mbps_wr:
+    type: integer
+  mbps_wr_max:
+    type: integer
+  mbps_wr_max_length:
+    type: integer
+  network_speed_mbps:
+    description: Mbit/s (megabits); 0 = unlimited
+    type: integer
+  nic_model:
+    description: virtio | e1000
+    type: string
+  org_id:
+    type: string
+  os_version_id:
+    type: string
+  plan_display_name:
+    type: string
+  plan_id:
+    type: string
+  plan_name:
+    description: Derived billing info (populated on detail fetch, not stored)
+    type: string
+  plan_price_micros:
+    description: per cycle, micro-euros (billing.MicrosPerEuro)
+    type: integer
+  power_state:
+    type: string
+  primary_interface:
+    description: >-
+      Primary network interface (net0): "public" uses our default bridge and
+      assigned
+
+      IPs; "private" uses one of the org's private networks as net0 with no
+      assigned IP.
+    type: string
+  primary_ipv4_id:
+    description: |-
+      Explicit primary IPs - used for BGP peering and other network services.
+      Set automatically to the first assignment; admin-overridable via API.
+    type: string
+  primary_ipv6_id:
+    type: string
+  primary_private_network_id:
+    type: string
+  private_dns:
+    type: string
+  private_ipv4_cidr:
+    description: >-
+      Manual cloud-init network hints for a private primary interface (all
+      optional,
+
+      purely to seed cloud-init auto-config; not tracked in IPAM).
+    type: string
+  private_ipv4_gateway:
+    type: string
+  private_ipv6_cidr:
+    type: string
+  private_ipv6_gateway:
+    type: string
+  provisioned_by_user_id:
+    description: >-
+      The org member who started the current provisioning run (order or
+      reinstall). Null for runs started by an admin, in which case
+      notifications go to the org's technical contacts.
+    type: string
+  provisioning_ended_at:
+    type: string
+  provisioning_error:
+    type: string
+  provisioning_job_id:
+    description: Proxmox async task tracking
+    type: string
+  provisioning_node_name:
+    description: |-
+      ProvisioningNodeName is the node the guest lives on. An order sets it to
+      the node it reserved room on (see ReserveNode); provisioning places the
+      guest there and later node resolution keeps it current across migrations.
+    type: string
+  provisioning_started_at:
+    type: string
+  ram:
+    type: integer
+  renews_at:
+    type: string
+  root_password_set:
+    description: |-
+      RootPasswordSet tells the UI whether the one-time reveal is still
+      available (populated on detail fetch, not stored).
+    type: boolean
+  routed_prefix:
+    type: string
+  routed_prefix_ids:
+    type: array
+    items:
+      type: string
+  ssh_public_keys:
+    description: Cloud-init credentials (SSH keys stored newline-separated)
+    type: string
+  status:
+    description: Status
+    allOf:
+      - $ref: ./vps.VPSStatus.yaml
+  status_message:
+    type: string
+  storage_name:
+    description: |-
+      StorageName is the default storage pool the guest's disks are on. An
+      order picks it together with the node (the least used of the node's
+      pools with room); provisioning confirms it against the node it finally
+      places on and corrects it when needed, and every later restore keeps
+      the disks there. "" until known (see ServerStorage for the fallback).
+    type: string
+  subscription_exempt_from_automation:
+    description: >-
+      SubscriptionExemptFromAutomation excludes the service from
+      auto-suspension/termination and
+
+      dunning. Settable from the service detail page. Populated on detail fetch.
+    type: boolean
+  subscription_id:
+    type: string
+  subscription_price_micros:
+    description: >-
+      SubscriptionPriceMicros is the linked subscription's live per-cycle price
+      in micro-euros (the
+
+      billing source of truth; may differ from the PlanPriceMicros snapshot
+      after an admin price
+
+      edit). A price of zero means the service is free: tracked, but never
+      invoiced. Populated on
+
+      detail fetch.
+    type: integer
+  traffic_reset_at:
+    type: string
+  traffic_used_bytes:
+    description: Traffic tracking (net0 only - public interface)
+    type: integer
+  unreachable:
+    description: >-
+      Unreachable is true when the live state could not be read from the
+      server's cluster (an
+
+      outage, a region down for maintenance), so nothing that needs Proxmox can
+      be done to it right
+
+      now; PowerState then holds the last state seen. Populated on detail/status
+      fetch (live) and
+
+      on the list (from the cluster's tracked reachability), not stored.
+    type: boolean
+  updated_at:
+    type: string
+  vm_created_at:
+    description: |-
+      VMCreatedAt is when the guest first came to exist in Proxmox (the first
+      successful restore). Nil until then: the capacity accounting counts such a
+      server from its own row, since no cluster snapshot can show it yet.
+    type: string
+  vmid:
+    type: integer

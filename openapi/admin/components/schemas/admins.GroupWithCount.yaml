@@ -1,0 +1,20 @@
+type: object
+properties:
+  created_at:
+    type: string
+  description:
+    type: string
+  id:
+    type: string
+  is_system:
+    type: boolean
+  member_count:
+    type: integer
+  name:
+    type: string
+  permissions:
+    type: array
+    items:
+      type: string
+  updated_at:
+    type: string

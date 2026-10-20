@@ -1,0 +1,25 @@
+post:
+  operationId: suspend-a-service-admin
+  security:
+    - BearerAuth: []
+  description: >-
+    Places a manual billing hold on any service; billing automation never lifts it.
+  tags:
+    - admin
+  summary: Suspend a service (admin)
+  parameters:
+    - description: service type
+      name: type
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content

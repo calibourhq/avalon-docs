@@ -1,0 +1,46 @@
+get:
+  operationId: get-storage-node-traffic
+  security:
+    - BearerAuth: []
+  description: >-
+    Returns a node's metered traffic over a period, summed across buckets (admin only).
+  tags:
+    - s3-nodes
+  summary: Get storage node traffic
+  parameters:
+    - description: node id
+      name: node_id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: 24h, 7d or 30d
+      name: period
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/s3.MetricsSummary.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

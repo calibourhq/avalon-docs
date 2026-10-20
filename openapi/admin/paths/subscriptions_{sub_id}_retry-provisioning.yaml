@@ -1,0 +1,41 @@
+post:
+  operationId: retry-provisioning-now-admin
+  security:
+    - BearerAuth: []
+  description: >-
+    Immediately re-runs provisioning for a subscription whose service failed to provision, ignoring the retry backoff. Synchronous: a non-2xx response carries the provisioning error, so the admin sees on the spot whether the fix worked.
+  tags:
+    - subscriptions
+  summary: Retry provisioning now (admin)
+  parameters:
+    - description: subscription id
+      name: sub_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/billing.Subscription.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

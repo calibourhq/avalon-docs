@@ -1,0 +1,21 @@
+post:
+  operationId: test-dedicated-agent-connectivity
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Test dedicated agent connectivity
+  parameters:
+    - description: agent id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/agentproto.HealthResponse.yaml

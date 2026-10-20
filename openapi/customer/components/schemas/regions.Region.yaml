@@ -1,0 +1,20 @@
+type: object
+required:
+  - display_name
+properties:
+  country:
+    type: string
+  created_at:
+    type: string
+  description:
+    type: string
+    maxLength: 255
+  display_name:
+    type: string
+    maxLength: 100
+  id:
+    type: string
+  name:
+    type: string
+  updated_at:
+    type: string

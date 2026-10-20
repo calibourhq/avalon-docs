@@ -1,0 +1,18 @@
+type: object
+properties:
+  autobird_id:
+    type: integer
+  byoip_prefix_id:
+    type: string
+  created_at:
+    type: string
+  id:
+    type: string
+  last_error:
+    type: string
+  route_server_id:
+    type: string
+  status:
+    $ref: ./bgp.BYOIPInstanceStatus.yaml
+  updated_at:
+    type: string

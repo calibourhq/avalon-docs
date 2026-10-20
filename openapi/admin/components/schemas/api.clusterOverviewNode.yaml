@@ -1,0 +1,28 @@
+type: object
+properties:
+  avg_cpu_24h:
+    description: |-
+      24h averages from the availability worker (0-1 fractions); nil until the
+      worker has recorded stats for this node.
+    type: number
+  avg_iowait_24h:
+    type: number
+  cpu:
+    description: 0-1 fraction, instantaneous
+    type: number
+  disk:
+    type: integer
+  max_cpu:
+    type: integer
+  max_disk:
+    type: integer
+  max_mem:
+    type: integer
+  mem:
+    type: integer
+  name:
+    type: string
+  status:
+    type: string
+  uptime:
+    type: integer

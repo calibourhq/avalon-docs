@@ -1,0 +1,37 @@
+delete:
+  operationId: delete-a-customers-passkey
+  security:
+    - BearerAuth: []
+  description: >-
+    Removes one WebAuthn credential from a customer account, e.g. after a lost device (admin only).
+  tags:
+    - customer-accounts
+  summary: Delete a customer's passkey
+  parameters:
+    - description: Account (user) ID
+      name: uid
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: Passkey ID
+      name: key_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

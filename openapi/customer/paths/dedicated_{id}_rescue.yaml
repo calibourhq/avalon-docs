@@ -1,0 +1,89 @@
+get:
+  operationId: get-the-current-rescue-session
+  security:
+    - BearerAuth: []
+  description: Returns {session}, null when this service has no live rescue session.
+  tags:
+    - dedicated
+  summary: Get the current rescue session
+  parameters:
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties:
+              $ref: ../components/schemas/api.rescueSessionView.yaml
+post:
+  operationId: start-a-rescue-boot
+  security:
+    - BearerAuth: []
+  description: >-
+    Network-boots the server into a rescue system. Returns the session, including the generated root password.
+  tags:
+    - dedicated
+  summary: Start a rescue boot
+  parameters:
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/api.startRescueBody.yaml
+    description: Rescue image (default if empty) and optional post-boot script
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.rescueSessionView.yaml
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+delete:
+  operationId: end-a-rescue-boot
+  security:
+    - BearerAuth: []
+  description: >-
+    Stops a session this service started. With reboot=1 the server is restarted, which brings it back up from its disk.
+  tags:
+    - dedicated
+  summary: End a rescue boot
+  parameters:
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: reboot back to disk
+      name: reboot
+      in: query
+      schema:
+        type: boolean
+  responses:
+    '204':
+      description: No Content

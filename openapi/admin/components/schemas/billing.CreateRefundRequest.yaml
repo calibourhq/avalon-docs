@@ -1,0 +1,28 @@
+type: object
+properties:
+  amount_cents:
+    description: >-
+      AmountCents is the amount to refund in euro cents. 0 means a full refund
+      of the
+
+      invoice total minus any previously succeeded refunds.
+    type: integer
+  auto:
+    description: >-
+      Auto instructs the system to process the refund via the gateway that
+      collected the
+
+      original payment. Only valid when the invoice has a succeeded Stripe or
+      PayPal payment.
+    type: boolean
+  external_txn_id:
+    description: >-
+      ExternalTxnID is an optional reference to the external transaction (bank
+      transfer
+
+      reference, gateway transaction ID, etc.) for audit purposes.
+    type: string
+  gateway:
+    description: Gateway specifies how the refund was returned when Auto is false.
+    allOf:
+      - $ref: ./billing.RefundGateway.yaml

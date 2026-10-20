@@ -1,0 +1,64 @@
+get:
+  operationId: list-firewalls
+  security:
+    - BearerAuth: []
+  description: List the firewalls of the active organisation.
+  tags:
+    - network-firewall
+  summary: List firewalls
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/firewall.Firewall.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: create-a-firewall
+  security:
+    - BearerAuth: []
+  description: Create a new firewall for an organisation.
+  tags:
+    - network-firewall
+  summary: Create a firewall
+  requestBody:
+    $ref: ../components/requestBodies/api.firewallRequest.yaml
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/firewall.Firewall.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

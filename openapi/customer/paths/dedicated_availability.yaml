@@ -1,0 +1,28 @@
+get:
+  operationId: dedicated-plan-availability
+  security:
+    - BearerAuth: []
+  description: Returns per-region available stock + backorder policy for a plan.
+  tags:
+    - dedicated
+  summary: Dedicated plan availability
+  parameters:
+    - description: plan id
+      name: plan_id
+      in: query
+      required: true
+      schema:
+        type: string
+    - description: only this region
+      name: region_id
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true

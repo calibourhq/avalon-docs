@@ -1,0 +1,23 @@
+type: object
+properties:
+  avg_watts:
+    type: number
+  from:
+    type: string
+  interval_seconds:
+    type: integer
+  peak_watts:
+    type: integer
+  period:
+    type: string
+  points:
+    type: array
+    items:
+      $ref: ./dedicated.PowerPoint.yaml
+  to:
+    type: string
+  total_watt_hours:
+    description: |-
+      TotalWattHours is the energy over the whole period; AvgWatts is the
+      sample-weighted mean draw and PeakWatts the highest single reading.
+    type: number

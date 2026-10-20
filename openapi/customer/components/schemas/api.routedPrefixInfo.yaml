@@ -1,0 +1,16 @@
+type: object
+properties:
+  pool:
+    description: |-
+      Pool says the subnet was carved from the location's routed pool, so
+      removing it deletes the prefix; otherwise it was attached from IPAM and
+      removing it only releases it.
+    type: boolean
+  prefix:
+    type: string
+  prefix_id:
+    type: string
+  ptr_records:
+    type: array
+    items:
+      $ref: ./api.routedPTRRecord.yaml

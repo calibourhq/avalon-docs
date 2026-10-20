@@ -1,0 +1,103 @@
+type: object
+required:
+  - from_address
+  - name
+  - vps_hostname_domain
+properties:
+  created_at:
+    type: string
+  customer_locked_fields:
+    type: array
+    items:
+      type: string
+  customer_required_fields:
+    description: |-
+      Customer data policy (see customer_fields.go): org details a customer
+      must supply, and those a customer may not change once set (they open a
+      ticket instead). Staff edits ignore both.
+    type: array
+    items:
+      type: string
+  dns_ns1:
+    type: string
+    maxLength: 255
+  dns_ns2:
+    type: string
+    maxLength: 255
+  dns_ns3:
+    type: string
+    maxLength: 255
+  dns_soa_email:
+    type: string
+    maxLength: 255
+  dns_soa_nameserver:
+    description: |-
+      Nameservers and SOA contact written into every zone Avalon creates
+      (customer zones, included registrar zones, reverse zones).
+    type: string
+    maxLength: 255
+  domain_dns_plan_id:
+    description: |-
+      DomainDNSPlanID is the DNS plan included for free with registrar domains
+      that use our nameservers. Nil = no zone included. The referenced plan is
+      validated at the API layer (settings must not import dns).
+    type: string
+  features:
+    description: |-
+      Features is the features section of config.yaml, shown read-only next
+      to the capabilities so an admin can see why a service is not offered.
+    allOf:
+      - $ref: ./config.FeaturesConfig.yaml
+  from_address:
+    type: string
+    maxLength: 255
+  id:
+    type: string
+  interface_url:
+    type: string
+  name:
+    description: |-
+      Identity. The customer interface URL is application.interface_url in
+      config.yaml, since the API also needs it for CORS before any row exists.
+    type: string
+    maxLength: 100
+  oauth_client_id:
+    type: string
+    maxLength: 255
+  oauth_enabled:
+    description: |-
+      External OAuth/OIDC identity provider (e.g. Keycloak) for migrating legacy
+      customers. OAuthEnabled=false (or empty issuer) means SSO is off.
+    type: boolean
+  oauth_issuer:
+    type: string
+    maxLength: 255
+  oauth_scopes:
+    type: string
+    maxLength: 255
+  registration_enabled:
+    type: boolean
+  staff_bot_configured:
+    type: boolean
+  staff_two_fa_required:
+    type: boolean
+  telegram_auto_delete_hours:
+    type: integer
+    maximum: 48
+    minimum: 0
+  two_fa_required:
+    description: >-
+      TwoFARequired applies to customers only. Staff 2FA is
+      admin.two_fa_required
+
+      in config.yaml, so a misclick here can never lock every admin out.
+    type: boolean
+  updated_at:
+    type: string
+  vps_hostname_domain:
+    description: |-
+      Domain suffix for auto-generated VPS hostnames when a customer leaves the
+      hostname blank at order time, e.g. "example.net" yields
+      "<random>.example.net".
+    type: string
+    maxLength: 255

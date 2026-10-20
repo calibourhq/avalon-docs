@@ -1,0 +1,16 @@
+type: object
+properties:
+  customer_fields:
+    description: |-
+      CustomerFields is the customer data policy: org fields that must be
+      filled in, and those only support can change once set.
+    allOf:
+      - $ref: ./settings.CustomerFieldPolicy.yaml
+  features:
+    $ref: ./api.EffectiveFeatures.yaml
+  name:
+    type: string
+  oauth_enabled:
+    type: boolean
+  registration_enabled:
+    type: boolean

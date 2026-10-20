@@ -1,0 +1,9 @@
+type: string
+enum:
+  - active
+  - deleting
+  - error
+x-enum-varnames:
+  - StatusActive
+  - StatusDeleting
+  - StatusError

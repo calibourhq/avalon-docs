@@ -1,0 +1,37 @@
+get:
+  operationId: list-a-customers-passkeys
+  security:
+    - BearerAuth: []
+  description: >-
+    Lists the WebAuthn credentials registered on a customer account (admin only).
+  tags:
+    - customer-accounts
+  summary: List a customer's passkeys
+  parameters:
+    - description: Account (user) ID
+      name: uid
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/passkeys.Passkey.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

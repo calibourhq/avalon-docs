@@ -1,0 +1,30 @@
+post:
+  operationId: validate-promo-code
+  security:
+    - BearerAuth: []
+  description: |-
+    Validates a promo code against a specific order and returns the discounted
+    price. Read-only preview; does not consume a use.
+  tags:
+    - promo-codes
+  summary: Validate promo code
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

@@ -1,0 +1,32 @@
+type: object
+properties:
+  check_expected:
+    type: string
+  check_port:
+    type: integer
+  check_type:
+    $ref: ./dns.SmartCheckType.yaml
+  check_url:
+    type: string
+  created_at:
+    type: string
+  id:
+    type: string
+  mode:
+    $ref: ./dns.SmartRecordMode.yaml
+  name:
+    type: string
+  pdns_id:
+    type: integer
+  record_type:
+    $ref: ./dns.SmartRecordType.yaml
+  targets:
+    type: array
+    items:
+      $ref: ./dns.SmartTarget.yaml
+  ttl:
+    type: integer
+  updated_at:
+    type: string
+  zone_id:
+    type: string

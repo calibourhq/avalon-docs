@@ -1,0 +1,29 @@
+get:
+  operationId: dedicated-service-power-draw
+  security:
+    - BearerAuth: []
+  description: |-
+    Power draw and on-time for the machine behind a service, from
+    the samples the power-state worker records on every poll.
+  tags:
+    - dedicated
+  summary: Dedicated service power draw
+  parameters:
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: 24h|7d|30d
+      name: period
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.PowerSummary.yaml

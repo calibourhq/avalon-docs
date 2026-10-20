@@ -1,0 +1,9 @@
+type: string
+enum:
+  - pending
+  - active
+  - rejected
+x-enum-varnames:
+  - ASNStatusPending
+  - ASNStatusActive
+  - ASNStatusRejected

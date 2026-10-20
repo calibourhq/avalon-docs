@@ -1,0 +1,42 @@
+put:
+  operationId: set-vps-anti-spoofing-enforcement
+  security:
+    - BearerAuth: []
+  description: >-
+    Enable or disable the mandatory anti-spoofing enforcement for a VPS (admin only). Disabling removes the ipfilter IPSets and rule constraints on the next sync.
+  tags:
+    - network-firewall
+  summary: Set VPS anti-spoofing enforcement
+  parameters:
+    - description: vps id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

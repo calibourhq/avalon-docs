@@ -1,0 +1,26 @@
+get:
+  operationId: list-the-server-actions-this-session-may-run
+  security:
+    - BearerAuth: []
+  description: >-
+    Lists enabled customer actions. Filter by tag to get a purpose-built list; the reinstall screen asks for tag=os-install.
+
+    also lists staff-audience actions, with their admin fields.
+  tags:
+    - dedicated
+  summary: List the server actions this session may run
+  parameters:
+    - description: only actions carrying this tag
+      name: tag
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/api.actionDefinitionView.yaml

@@ -1,0 +1,17 @@
+post:
+  operationId: price-and-validate-a-dedicated-configuration
+  security:
+    - BearerAuth: []
+  description: |-
+    Live configurator preview: total price, whether the build fits the
+    platform, and how much matching stock is available.
+  tags:
+    - dedicated
+  summary: Price and validate a dedicated configuration
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.ConfigPreview.yaml

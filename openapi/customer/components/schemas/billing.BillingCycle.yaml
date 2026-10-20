@@ -1,0 +1,15 @@
+type: string
+enum:
+  - one_time
+  - hourly
+  - monthly
+  - quarterly
+  - biannual
+  - yearly
+x-enum-varnames:
+  - BillingCycleOneTime
+  - BillingCycleHourly
+  - BillingCycleMonthly
+  - BillingCycleQuarterly
+  - BillingCycleBiannual
+  - BillingCycleYearly

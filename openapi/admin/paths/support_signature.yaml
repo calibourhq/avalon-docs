@@ -1,0 +1,28 @@
+get:
+  operationId: get-my-reply-signature
+  security:
+    - BearerAuth: []
+  description: >-
+    Return the support signature as it will be appended to the acting admin's public replies.
+  tags:
+    - support
+  summary: Get my reply signature
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.replySignatureResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

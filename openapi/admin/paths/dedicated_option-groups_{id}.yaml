@@ -1,0 +1,41 @@
+put:
+  operationId: update-a-dedicated-upgrade-option-group
+  security:
+    - BearerAuth: []
+  description: >-
+    Replaces the group's options; refused when they do not fit a plan using the group.
+  tags:
+    - dedicated
+  summary: Update a dedicated upgrade option group
+  parameters:
+    - description: group id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.DedicatedUpgradeGroup.yaml
+delete:
+  operationId: delete-a-dedicated-upgrade-option-group
+  security:
+    - BearerAuth: []
+  description: Refused while a plan still uses the group.
+  tags:
+    - dedicated
+  summary: Delete a dedicated upgrade option group
+  parameters:
+    - description: group id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content

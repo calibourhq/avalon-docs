@@ -1,0 +1,40 @@
+put:
+  operationId: update-sla-policy
+  security:
+    - BearerAuth: []
+  description: Upsert the SLA policy for a given priority.
+  tags:
+    - support
+  summary: Update SLA policy
+  parameters:
+    - description: priority id
+      name: priority
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/support.SupportSLAPolicy.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

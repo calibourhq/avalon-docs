@@ -1,0 +1,45 @@
+get:
+  operationId: accounting-period-summary-admin
+  security:
+    - BearerAuth: []
+  description: >-
+    Totals and the VAT breakdown of a period, as the accounting export will report them.
+  tags:
+    - billing
+  summary: Accounting period summary (admin)
+  parameters:
+    - description: first day (YYYY-MM-DD); defaults to January 1st of this year
+      name: date_from
+      in: query
+      schema:
+        type: string
+    - description: last day (YYYY-MM-DD); defaults to December 31st of this year
+      name: date_to
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/billing.AccountingSummary.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

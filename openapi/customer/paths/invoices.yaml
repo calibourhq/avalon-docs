@@ -1,0 +1,85 @@
+get:
+  operationId: list-invoices
+  security:
+    - BearerAuth: []
+  description: Lists invoices of the caller's active org.
+  tags:
+    - invoices
+  summary: List invoices
+  parameters:
+    - description: filter by status; comma-separated for several
+      name: status
+      in: query
+      schema:
+        type: string
+    - description: filter by type; comma-separated for several
+      name: type
+      in: query
+      schema:
+        type: string
+    - description: documents pointing back at this invoice (its credit notes)
+      name: related_invoice_id
+      in: query
+      schema:
+        type: string
+    - description: issued on or after (YYYY-MM-DD)
+      name: date_from
+      in: query
+      schema:
+        type: string
+    - description: issued on or before (YYYY-MM-DD)
+      name: date_to
+      in: query
+      schema:
+        type: string
+    - description: search number, billed name or amount
+      name: q
+      in: query
+      schema:
+        type: string
+    - description: number, type, status, issued_at, due_at or total
+      name: sort
+      in: query
+      schema:
+        type: string
+    - description: asc or desc (default desc)
+      name: dir
+      in: query
+      schema:
+        type: string
+    - description: page number (1-based)
+      name: page
+      in: query
+      schema:
+        type: integer
+    - description: rows per page (default 50, max 200)
+      name: page_size
+      in: query
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

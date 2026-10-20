@@ -1,0 +1,8 @@
+type: object
+properties:
+  bandwidth:
+    type: integer
+  requests:
+    type: integer
+  time:
+    type: string

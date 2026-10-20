@@ -1,0 +1,36 @@
+type: object
+required:
+  - country
+properties:
+  address:
+    type: string
+    maxLength: 255
+  address2:
+    type: string
+    maxLength: 255
+  billing_email:
+    type: string
+    maxLength: 255
+  city:
+    type: string
+    maxLength: 100
+  company_name:
+    type: string
+    maxLength: 255
+  country:
+    type: string
+  first_name:
+    type: string
+    maxLength: 100
+  last_name:
+    type: string
+    maxLength: 100
+  postal_code:
+    type: string
+    maxLength: 20
+  registration:
+    type: string
+    maxLength: 100
+  vat_number:
+    type: string
+    maxLength: 100

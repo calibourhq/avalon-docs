@@ -1,0 +1,11 @@
+type: string
+enum:
+  - stripe
+  - paypal
+  - manual
+  - nowpayments
+x-enum-varnames:
+  - PaymentGatewayStripe
+  - PaymentGatewayPayPal
+  - PaymentGatewayManual
+  - PaymentGatewayNOWPayments

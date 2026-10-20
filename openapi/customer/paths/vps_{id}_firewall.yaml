@@ -1,0 +1,118 @@
+get:
+  operationId: get-the-firewall-attached-to-a-vps
+  security:
+    - BearerAuth: []
+  description: >-
+    Return the firewall attached to a VPS, or {"firewall_id": null} when none is.
+  tags:
+    - network-firewall
+  summary: Get the firewall attached to a VPS
+  parameters:
+    - description: vps id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/firewall.Firewall.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: attach-a-firewall-to-a-vps
+  security:
+    - BearerAuth: []
+  description: Attach an org firewall to a VPS server.
+  tags:
+    - network-firewall
+  summary: Attach a firewall to a VPS
+  parameters:
+    - description: vps id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+delete:
+  operationId: detach-a-vps-firewall
+  security:
+    - BearerAuth: []
+  description: Detach the firewall currently attached to a VPS server.
+  tags:
+    - network-firewall
+  summary: Detach a VPS firewall
+  parameters:
+    - description: vps id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

@@ -1,0 +1,13 @@
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        description:
+          type: string
+        name:
+          type: string
+        public_key:
+          type: string
+description: Key
+required: true

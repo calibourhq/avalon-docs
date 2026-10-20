@@ -1,0 +1,23 @@
+type: string
+enum:
+  - available
+  - assigned
+  - maintenance
+  - internal
+  - decommissioned
+x-enum-comments:
+  InventoryAssigned: let to a customer (has a live service)
+  InventoryAvailable: in stock, sellable
+  InventoryMaintenance: withheld from stock
+x-enum-descriptions:
+  - in stock, sellable
+  - let to a customer (has a live service)
+  - withheld from stock
+  - ''
+  - ''
+x-enum-varnames:
+  - InventoryAvailable
+  - InventoryAssigned
+  - InventoryMaintenance
+  - InventoryInternal
+  - InventoryDecommission

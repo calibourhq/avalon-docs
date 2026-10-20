@@ -1,0 +1,76 @@
+get:
+  operationId: get-floating-route
+  security:
+    - BearerAuth: []
+  description: Get a single floating route by id.
+  tags:
+    - network-bgp
+  summary: Get floating route
+  parameters:
+    - description: floating route id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/bgp.FloatingRoute.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+delete:
+  operationId: delete-floating-route
+  security:
+    - BearerAuth: []
+  description: Delete a floating route (async withdrawal).
+  tags:
+    - network-bgp
+  summary: Delete floating route
+  parameters:
+    - description: floating route id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '202':
+      description: Accepted
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

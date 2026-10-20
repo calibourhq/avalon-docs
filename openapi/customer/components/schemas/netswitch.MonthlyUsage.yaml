@@ -1,0 +1,10 @@
+type: object
+properties:
+  month:
+    type: string
+  rx_bytes:
+    type: integer
+  total_bytes:
+    type: integer
+  tx_bytes:
+    type: integer

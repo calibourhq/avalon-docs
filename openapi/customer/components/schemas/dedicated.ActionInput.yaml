@@ -1,0 +1,38 @@
+type: object
+properties:
+  choices:
+    description: Choices are the permitted values, for select only.
+    type: array
+    items:
+      $ref: ./dedicated.ActionInputChoice.yaml
+  default:
+    type: string
+  help:
+    type: string
+  key:
+    description: |-
+      Key names the value. It becomes AVALON_IN_<key> in the script's
+      environment, which is why it is lower snake case and nothing else.
+    type: string
+  label:
+    type: string
+  max:
+    type: number
+  max_len:
+    description: MaxLen caps text, textarea and password. Zero means the type's default.
+    type: integer
+  min:
+    description: |-
+      Min and Max bound a number. Pointers so "no bound" and "bounded at zero"
+      are different things.
+    type: number
+  pattern:
+    description: |-
+      Pattern is an RE2 expression a text value must match. RE2 rather than
+      PCRE is what Go gives us and is the reason an admin cannot author a
+      pattern that takes exponential time to fail.
+    type: string
+  required:
+    type: boolean
+  type:
+    type: string

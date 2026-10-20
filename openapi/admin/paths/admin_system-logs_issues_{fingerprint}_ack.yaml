@@ -1,0 +1,30 @@
+post:
+  operationId: acknowledge-a-problem
+  security:
+    - BearerAuth: []
+  description: >-
+    Marks a problem as handled so it drops off the dashboard. It comes back if it happens again.
+  tags:
+    - system-logs
+  summary: Acknowledge a problem
+  parameters:
+    - description: issue fingerprint
+      name: fingerprint
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

@@ -1,0 +1,33 @@
+post:
+  security: []
+  operationId: begin-oauth-login
+  description: Starts an external OIDC login and returns the IdP authorize URL.
+  tags:
+    - auth
+  summary: Begin OAuth login
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/api.OAuthBeginRequest.yaml
+    description: Email of the OAuth account
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.OAuthBeginResponse.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

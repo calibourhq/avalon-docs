@@ -1,0 +1,17 @@
+type: object
+properties:
+  also_takes:
+    description: AlsoTakes lists the other drive types the bays accept.
+    type: array
+    items:
+      type: string
+  count:
+    type: integer
+  form_factor:
+    description: the bay's own type; matches Component.FormFactor (disk kinds)
+    type: string
+  socket:
+    description: |-
+      Socket is the CPU these bays are wired to (e.g. NVMe lanes off CPU 2):
+      they only work when that many CPUs are installed. 0 = always usable.
+    type: integer

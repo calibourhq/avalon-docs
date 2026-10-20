@@ -1,0 +1,131 @@
+get:
+  operationId: get-current-account
+  security:
+    - BearerAuth: []
+  description: >-
+    Return the currently authenticated user account. API key sessions are rejected.
+  tags:
+    - self
+  summary: Get current account
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/users.User.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+put:
+  operationId: update-current-account
+  security:
+    - BearerAuth: []
+  description: >-
+    Update the currently authenticated user account. A changed email is not applied until the new address is verified; email_changed is then true.
+  tags:
+    - self
+  summary: Update current account
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/api.UpdateUserRequest.yaml
+    description: Profile
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              email_changed:
+                type: boolean
+              message:
+                type: string
+              user:
+                $ref: ../components/schemas/users.User.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+delete:
+  operationId: delete-current-account
+  security:
+    - BearerAuth: []
+  description: >-
+    Permanently delete the current user account. Organisations solely owned by the account are deleted with it; other memberships are removed. Fails with 409 while any organisation that would cascade still holds resources.
+  tags:
+    - self
+  summary: Delete current account
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/api.DeleteAccountRequest.yaml
+    description: Current password, required when the account has one
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

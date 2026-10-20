@@ -1,0 +1,29 @@
+type: string
+enum:
+  - domestic
+  - oss
+  - reverse_charge
+  - non_eu
+  - zero_rated
+  - taxed_abroad
+x-enum-comments:
+  VatReportDomestic: 'standard-rated at home: the VAT return'
+  VatReportNonEU: outside the scope of EU VAT
+  VatReportOSS: 'taxed in another EU country: the OSS return'
+  VatReportReverseCharge: 'intra-EU B2B: the EC sales list'
+  VatReportTaxedAbroad: standard-rated in a non-EU country (own registration)
+  VatReportZeroRated: untaxed for another reason
+x-enum-descriptions:
+  - 'standard-rated at home: the VAT return'
+  - 'taxed in another EU country: the OSS return'
+  - 'intra-EU B2B: the EC sales list'
+  - outside the scope of EU VAT
+  - untaxed for another reason
+  - standard-rated in a non-EU country (own registration)
+x-enum-varnames:
+  - VatReportDomestic
+  - VatReportOSS
+  - VatReportReverseCharge
+  - VatReportNonEU
+  - VatReportZeroRated
+  - VatReportTaxedAbroad

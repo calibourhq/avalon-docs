@@ -1,0 +1,64 @@
+get:
+  operationId: list-all-news-articles
+  security:
+    - BearerAuth: []
+  description: Returns all news articles including drafts.
+  tags:
+    - news
+  summary: List all news articles
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: create-a-news-article
+  security:
+    - BearerAuth: []
+  description: Creates a news article.
+  tags:
+    - news
+  summary: Create a news article
+  requestBody:
+    $ref: ../components/requestBodies/api.newsArticleRequest.yaml
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

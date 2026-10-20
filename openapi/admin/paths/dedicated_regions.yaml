@@ -1,0 +1,19 @@
+get:
+  operationId: list-regions-offering-dedicated-servers
+  security:
+    - BearerAuth: []
+  description: |-
+    Lists regions with an active datacenter agent.
+    lists every region.
+  tags:
+    - dedicated
+  summary: List regions offering dedicated servers
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/regions.Region.yaml

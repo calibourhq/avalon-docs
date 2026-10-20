@@ -1,0 +1,9 @@
+type: string
+enum:
+  - full
+  - front
+  - rear
+x-enum-varnames:
+  - RackFaceFull
+  - RackFaceFront
+  - RackFaceRear

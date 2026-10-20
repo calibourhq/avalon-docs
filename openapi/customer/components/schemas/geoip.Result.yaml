@@ -1,0 +1,19 @@
+type: object
+properties:
+  as_org:
+    type: string
+  asn:
+    type: integer
+  city:
+    type: string
+  country_code:
+    description: ISO 3166-1 alpha-2, e.g. "DE"
+    type: string
+  country_name:
+    type: string
+  ip:
+    type: string
+  latitude:
+    type: number
+  longitude:
+    type: number

@@ -1,0 +1,48 @@
+delete:
+  operationId: remove-admin-from-department
+  security:
+    - BearerAuth: []
+  description: Detach an admin from a support department.
+  tags:
+    - support
+  summary: Remove admin from department
+  parameters:
+    - description: id id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: admin_id id
+      name: admin_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content
+    '400':
+      description: Bad Request
+      content:
+        '*/*':
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        '*/*':
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        '*/*':
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        '*/*':
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

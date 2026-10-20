@@ -1,0 +1,34 @@
+get:
+  operationId: get-fleet-wide-cdn-metrics
+  security:
+    - BearerAuth: []
+  description: >-
+    Returns aggregated CDN traffic totals with per-zone and per-location breakdowns (admin only).
+  tags:
+    - cdn-nodes
+  summary: Get fleet-wide CDN metrics
+  parameters:
+    - description: aggregation period
+      name: period
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/cdn.MetricsOverview.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

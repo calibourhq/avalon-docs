@@ -1,0 +1,68 @@
+get:
+  operationId: get-global-billing-settings
+  security:
+    - BearerAuth: []
+  description: Returns the singleton global billing policy.
+  tags:
+    - billing
+  summary: Get global billing settings
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/billing.GlobalBillingSettings.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+put:
+  operationId: update-global-billing-settings
+  security:
+    - BearerAuth: []
+  description: >-
+    Updates the billing policy and seller identity (admin billing:write). Only the fields present are changed.
+  tags:
+    - billing
+  summary: Update global billing settings
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/api.GlobalBillingSettingsRequest.yaml
+    description: Billing settings
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/billing.GlobalBillingSettings.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

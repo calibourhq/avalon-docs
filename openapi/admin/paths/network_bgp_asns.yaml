@@ -1,0 +1,86 @@
+get:
+  operationId: list-bgp-asns
+  security:
+    - BearerAuth: []
+  description: >-
+    List the BGP ASNs of the active organisation.
+
+    lists every org's ASNs, or one org's with org_id, including the AS-SET sync status.
+  tags:
+    - network-bgp
+  summary: List BGP ASNs
+  parameters:
+    - description: filter by org
+      name: org_id
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/bgp.OrgASN.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: create-bgp-asn
+  security:
+    - BearerAuth: []
+  description: >-
+    Submit a new BGP ASN (org_id, asn) for the org. The request starts pending: with verify_email set to one of the registry contacts from /network/bgp/asn-contacts, that address is mailed an approve/deny link; without it (or when the ASN was denied before) the request goes to manual review.
+
+    (bgp:write) creates an active ASN and triggers RPKI sync; verify_email is ignored.
+  tags:
+    - network-bgp
+  summary: Create BGP ASN
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/bgp.OrgASN.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

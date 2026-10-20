@@ -1,0 +1,23 @@
+post:
+  operationId: resync-global-ip-lists-to-the-clusters
+  security:
+    - BearerAuth: []
+  description: >-
+    Reconcile every Proxmox cluster's datacenter IPSets against the global IP lists.
+  tags:
+    - network-firewall
+  summary: Resync global IP lists to the clusters
+  responses:
+    '202':
+      description: Accepted
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

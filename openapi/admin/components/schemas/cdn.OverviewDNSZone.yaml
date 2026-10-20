@@ -1,0 +1,26 @@
+type: object
+properties:
+  bandwidth:
+    type: integer
+  cache_hit_rate:
+    type: number
+  cache_hits:
+    type: integer
+  cache_misses:
+    type: integer
+  dns_zone_id:
+    type: string
+  dns_zone_name:
+    type: string
+  errors_4xx:
+    type: integer
+  errors_5xx:
+    type: integer
+  records:
+    type: integer
+  requests:
+    type: integer
+  verify_challenges:
+    type: integer
+  verify_successes:
+    type: integer

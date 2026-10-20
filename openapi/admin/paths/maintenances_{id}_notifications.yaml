@@ -1,0 +1,22 @@
+get:
+  operationId: list-a-maintenances-notification-rounds
+  security:
+    - BearerAuth: []
+  tags:
+    - maintenance
+  summary: List a maintenance's notification rounds
+  parameters:
+    - description: maintenance id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true

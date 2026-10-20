@@ -1,0 +1,6 @@
+type: object
+properties:
+  hostname:
+    type: string
+  ip:
+    type: string

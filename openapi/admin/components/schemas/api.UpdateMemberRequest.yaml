@@ -1,0 +1,13 @@
+type: object
+properties:
+  is_owner:
+    type: boolean
+  notify_billing:
+    description: Pointers so payloads that omit the flags don't clear them.
+    type: boolean
+  notify_technical:
+    type: boolean
+  permissions:
+    type: array
+    items:
+      type: string

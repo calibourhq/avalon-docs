@@ -1,0 +1,39 @@
+post:
+  operationId: set-ptr-for-an-inventory-server-ip-admin
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Set PTR for an inventory server IP (admin)
+  parameters:
+    - description: server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+delete:
+  operationId: delete-ptr-for-an-inventory-server-ip-admin
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Delete PTR for an inventory server IP (admin)
+  parameters:
+    - description: server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content

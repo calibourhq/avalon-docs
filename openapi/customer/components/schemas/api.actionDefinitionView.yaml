@@ -1,0 +1,26 @@
+type: object
+properties:
+  description:
+    type: string
+  icon:
+    type: string
+  id:
+    type: string
+  inputs:
+    type: array
+    items:
+      $ref: ./dedicated.ActionInput.yaml
+  key:
+    type: string
+  name:
+    type: string
+  on_success:
+    type: string
+  steps:
+    type: array
+    items:
+      $ref: ./dedicated.ActionStep.yaml
+  tags:
+    type: array
+    items:
+      type: string

@@ -1,0 +1,6 @@
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/s3.NodeInput.yaml
+description: node
+required: true

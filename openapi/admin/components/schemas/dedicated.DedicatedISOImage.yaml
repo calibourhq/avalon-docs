@@ -1,0 +1,77 @@
+type: object
+properties:
+  agents_ready:
+    description: |-
+      Derived, not stored: how many agents hold this image, for the UI's
+      "ready on 4/5 agents" column.
+    type: integer
+  agents_total:
+    type: integer
+  cmdline_template:
+    description: |-
+      CmdlineTemplate is the kernel command line for a rescue image, with the
+      placeholders the agent fills in. Editable because the cheat codes belong
+      to the rescue distribution rather than to Avalon, and tuning them should
+      not need a release. Empty means agentproto.DefaultRescueCmdline.
+    type: string
+  created_at:
+    type: string
+  error_message:
+    type: string
+  filename:
+    description: >-
+      Filename is what the file is called on every agent, and therefore what the
+
+      customer sees in the console's file picker. Assigned centrally so the name
+
+      is identical fleet-wide, and sanitised at assignment (see
+      MakeISOFilename).
+    type: string
+  global:
+    type: boolean
+  id:
+    type: string
+  kind:
+    description: |-
+      Kind is ISOKindISO or ISOKindRescue. Existing rows predate the column and
+      are ISOs, which is what the default gives them.
+    type: string
+  name:
+    type: string
+  org_id:
+    type: string
+  rescue_default:
+    description: |-
+      RescueDefault marks the one rescue image a start form arrives on. At most
+      one row carries it (SetDefaultRescueImage clears the others), and it is
+      a preference rather than a constraint: nothing stops a customer choosing
+      another image, and a fleet with no default simply opens on the first one.
+    type: boolean
+  rescue_files:
+    description: |-
+      RescueFiles are the files extracted from a rescue ISO, each with the
+      digest an agent verifies its copy against. Empty for an ISO, and empty
+      for a chain-style rescue image, which has no files anywhere.
+    type: array
+    items:
+      $ref: ./dedicated.RescueFile.yaml
+  rescue_style:
+    description: |-
+      RescueStyle is RescueStyleLive or RescueStyleChain, and means nothing on
+      an ISO. Existing rows predate the column and are live images, which is
+      what the default gives them.
+    type: string
+  sha256:
+    description: |-
+      SHA256 is computed while the file is written to the spool and travels in
+      every manifest. It is what makes an agent's copy trustworthy without the
+      agent having to trust the URL it came from.
+    type: string
+  size_bytes:
+    type: integer
+  source_url:
+    type: string
+  status:
+    type: string
+  updated_at:
+    type: string

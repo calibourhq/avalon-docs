@@ -1,0 +1,28 @@
+post:
+  security: []
+  operationId: deny-asn-verification-request
+  description: The ASN's registry contact denies the request; it is rejected at once.
+  tags:
+    - network-bgp
+  summary: Deny ASN verification request
+  parameters:
+    - description: verification token
+      name: token
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

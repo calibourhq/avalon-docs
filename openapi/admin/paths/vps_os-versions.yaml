@@ -1,0 +1,68 @@
+get:
+  operationId: list-os-versions
+  security:
+    - BearerAuth: []
+  description: List VPS OS versions, optionally filtered by family.
+  tags:
+    - vps
+  summary: List OS versions
+  parameters:
+    - description: filter by OS family id
+      name: family_id
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/vps.VPSOSVersion.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: create-os-version
+  security:
+    - BearerAuth: []
+  description: Create a VPS OS version under a family.
+  tags:
+    - vps
+  summary: Create OS version
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/vps.VPSOSVersion.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

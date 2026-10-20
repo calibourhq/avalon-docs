@@ -1,0 +1,80 @@
+get:
+  operationId: list-dns-plans
+  security:
+    - BearerAuth: []
+  description: >-
+    Lists the active DNS plans an org can order. org_id is required for customers.
+
+    without org_id, lists every plan including inactive ones.
+  tags:
+    - dns
+  summary: List DNS plans
+  parameters:
+    - description: org that will order
+      name: org_id
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/dns.DNSPlan.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: create-a-dns-plan
+  security:
+    - BearerAuth: []
+  description: Creates a new DNS plan (admin only).
+  tags:
+    - dns
+  summary: Create a DNS plan
+  requestBody:
+    $ref: ../components/requestBodies/dns.DNSPlanInput.yaml
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

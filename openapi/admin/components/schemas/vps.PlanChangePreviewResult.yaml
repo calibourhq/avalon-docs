@@ -1,0 +1,31 @@
+type: object
+properties:
+  can_include_disk:
+    type: boolean
+  current_disk_gb:
+    type: integer
+  direction:
+    description: '"upgrade" | "downgrade"'
+    type: string
+  due_now_cents:
+    description: amount invoiced immediately (>= 0)
+    type: integer
+  effective_disk_gb:
+    type: integer
+  include_disk:
+    type: boolean
+  is_current_plan:
+    type: boolean
+  new_price_micros:
+    type: integer
+  old_price_micros:
+    type: integer
+  proration_cents:
+    type: integer
+  requires_payment:
+    description: 'prepaid upgrade: charged + gated before applying'
+    type: boolean
+  to_plan_id:
+    type: string
+  to_plan_name:
+    type: string

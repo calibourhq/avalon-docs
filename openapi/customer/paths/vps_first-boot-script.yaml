@@ -1,0 +1,28 @@
+get:
+  security: []
+  operationId: fetch-a-vps-first-boot-script-guest-facing
+  description: >-
+    Called by the guest image on first boot. Returns the script once, then deletes it.
+  tags:
+    - vps
+  summary: Fetch a VPS first-boot script (guest-facing)
+  parameters:
+    - description: Bearer <the VM's SMBIOS serial number>
+      name: Authorization
+      in: header
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        text/plain:
+          schema:
+            type: string
+    '404':
+      description: Not Found
+      content:
+        text/plain:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

@@ -1,0 +1,63 @@
+get:
+  operationId: get-a-maintenance
+  security:
+    - BearerAuth: []
+  tags:
+    - maintenance
+  summary: Get a maintenance
+  parameters:
+    - description: maintenance id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+put:
+  operationId: update-a-maintenance
+  security:
+    - BearerAuth: []
+  tags:
+    - maintenance
+  summary: Update a maintenance
+  parameters:
+    - description: maintenance id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    $ref: ../components/requestBodies/api.maintenanceRequest.yaml
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+delete:
+  operationId: delete-a-maintenance
+  security:
+    - BearerAuth: []
+  tags:
+    - maintenance
+  summary: Delete a maintenance
+  parameters:
+    - description: maintenance id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content

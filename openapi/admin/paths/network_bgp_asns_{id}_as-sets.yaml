@@ -1,0 +1,40 @@
+post:
+  operationId: attach-downstream-as-set-admin
+  security:
+    - BearerAuth: []
+  description: Attach an AS-SET to a BGP ASN and import the prefixes of the ASNs it covers.
+  tags:
+    - network-bgp
+  summary: Attach downstream AS-SET (admin)
+  parameters:
+    - description: asn id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/bgp.DownstreamASSet.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

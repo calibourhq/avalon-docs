@@ -1,0 +1,15 @@
+post:
+  operationId: test-switch-connection-admin
+  security:
+    - BearerAuth: []
+  description: Probes an unsaved switch configuration through the chosen agent.
+  tags:
+    - network-switches
+  summary: Test switch connection (admin)
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/switchproto.ProbeResult.yaml

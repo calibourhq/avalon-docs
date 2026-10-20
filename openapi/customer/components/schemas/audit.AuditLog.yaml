@@ -1,0 +1,40 @@
+type: object
+properties:
+  action:
+    type: string
+  actor_email:
+    type: string
+  actor_id:
+    type: string
+  actor_name:
+    description: Resolved at read time, not stored.
+    type: string
+  actor_type:
+    description: '"staff", "user" or "apikey"'
+    type: string
+  created_at:
+    type: string
+  id:
+    type: string
+  ip_address:
+    type: string
+  meta:
+    $ref: ./audit.Meta.yaml
+  org_id:
+    type: string
+  org_name:
+    type: string
+  resource_deleted:
+    description: |-
+      ResourceDeleted is set when the resource no longer exists; ResourceName
+      then holds the last name it was known by.
+    type: boolean
+  resource_id:
+    type: string
+  resource_name:
+    description: |-
+      ResourceName is the resource's display name when the entry was written
+      (see names.go). Reads replace it with the live name while the row exists.
+    type: string
+  resource_type:
+    type: string

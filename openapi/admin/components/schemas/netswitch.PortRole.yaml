@@ -1,0 +1,23 @@
+type: string
+enum:
+  - unused
+  - customer
+  - uplink
+  - infrastructure
+  - management
+x-enum-comments:
+  RoleCustomer: a dedicated server is patched here
+  RoleManagement: never touched
+  RoleUplink: trunk towards the router / other switches
+x-enum-descriptions:
+  - ''
+  - a dedicated server is patched here
+  - trunk towards the router / other switches
+  - ''
+  - never touched
+x-enum-varnames:
+  - RoleUnused
+  - RoleCustomer
+  - RoleUplink
+  - RoleInfrastructure
+  - RoleManagement

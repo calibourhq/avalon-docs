@@ -1,0 +1,43 @@
+put:
+  operationId: enable-or-disable-a-global-ip-list
+  security:
+    - BearerAuth: []
+  description: >-
+    Enable or disable a global IP list. Disabling removes it from every Proxmox cluster and stops rules referencing it from being applied, without deleting the references.
+  tags:
+    - network-firewall
+  summary: Enable or disable a global IP list
+  parameters:
+    - description: IP list id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/api.ipListEnabledRequest.yaml
+    description: Enabled flag
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

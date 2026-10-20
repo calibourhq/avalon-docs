@@ -1,0 +1,21 @@
+post:
+  operationId: assign-an-ip-to-an-inventory-server-admin
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Assign an IP to an inventory server (admin)
+  parameters:
+    - description: server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ipam.IPAMAddress.yaml

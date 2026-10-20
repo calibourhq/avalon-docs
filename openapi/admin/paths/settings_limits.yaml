@@ -1,0 +1,62 @@
+get:
+  operationId: get-default-account-limits
+  security:
+    - BearerAuth: []
+  description: Returns the account limits every customer gets unless overridden.
+  tags:
+    - settings
+  summary: Get default account limits
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/firewall.DefaultLimits.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+put:
+  operationId: update-default-account-limits
+  security:
+    - BearerAuth: []
+  description: Updates the default account limits. Only the fields present are changed.
+  tags:
+    - settings
+  summary: Update default account limits
+  requestBody:
+    $ref: ../components/requestBodies/api.LimitsRequest.yaml
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/firewall.DefaultLimits.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

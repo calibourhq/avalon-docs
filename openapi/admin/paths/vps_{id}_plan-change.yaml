@@ -1,0 +1,45 @@
+post:
+  operationId: start-a-vps-plan-change
+  security:
+    - BearerAuth: []
+  description: |-
+    Begins an upgrade or downgrade for the server.
+    billing_mode overrides how the change is billed.
+  tags:
+    - vps
+  summary: Start a VPS plan change
+  parameters:
+    - description: id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    $ref: ../components/requestBodies/api.planChangeBody.yaml
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

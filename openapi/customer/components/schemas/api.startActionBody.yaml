@@ -1,0 +1,8 @@
+type: object
+properties:
+  definition_id:
+    type: string
+  values:
+    type: object
+    additionalProperties:
+      type: string

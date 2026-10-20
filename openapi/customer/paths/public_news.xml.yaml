@@ -1,0 +1,16 @@
+get:
+  security: []
+  operationId: get-the-news-rss-feed
+  description: Returns an RSS 2.0 feed of published news.
+  tags:
+    - news
+  summary: Get the news RSS feed
+  responses:
+    '200':
+      description: OK
+    '500':
+      description: Internal Server Error
+      content:
+        text/xml:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

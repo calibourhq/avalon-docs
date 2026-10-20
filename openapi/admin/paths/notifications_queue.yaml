@@ -1,0 +1,40 @@
+get:
+  operationId: list-the-notification-queue
+  security:
+    - BearerAuth: []
+  description: List queued notifications, optionally filtered by status.
+  tags:
+    - notifications
+  summary: List the notification queue
+  parameters:
+    - description: filter by status
+      name: status
+      in: query
+      schema:
+        type: string
+    - description: only rows not dismissed yet (1/true)
+      name: undismissed
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/notifications.NotificationQueue.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

@@ -1,0 +1,29 @@
+get:
+  operationId: list-billable-items
+  security:
+    - BearerAuth: []
+  description: Lists billable items of the caller's active org.
+  tags:
+    - billing
+  summary: List billable items
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/billableitems.Item.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

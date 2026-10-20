@@ -1,0 +1,10 @@
+type: object
+properties:
+  groups:
+    type: array
+    items:
+      $ref: ./search.Group.yaml
+  kind:
+    type: string
+  query:
+    type: string

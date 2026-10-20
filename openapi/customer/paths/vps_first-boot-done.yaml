@@ -1,0 +1,30 @@
+post:
+  security: []
+  operationId: report-a-vps-first-boot-done-guest-facing
+  description: >-
+    Called by the guest image once cloud-init has run. Lets the cloud-init drive be removed.
+  tags:
+    - vps
+  summary: Report a VPS first boot done (guest-facing)
+  parameters:
+    - description: Bearer <the VM's SMBIOS serial number>
+      name: Authorization
+      in: header
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content
+    '404':
+      description: Not Found
+      content:
+        '*/*':
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        '*/*':
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

@@ -1,0 +1,73 @@
+get:
+  operationId: list-dns-zones
+  security:
+    - BearerAuth: []
+  description: |-
+    Lists the zones of the active organisation.
+    lists every zone, or one org's with org_id.
+  tags:
+    - dns
+  summary: List DNS zones
+  parameters:
+    - description: filter by org
+      name: org_id
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/dns.Zone.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: create-a-dns-zone
+  security:
+    - BearerAuth: []
+  description: >-
+    Orders a new DNS zone for org_id on plan_id and billing_cycle. Give a name, or a reverse_prefix (CIDR) for a reverse zone. Optional: soa_nameserver, promo_code. The zone waits for payment of the created invoice.
+
+    org_id may be omitted for an unowned zone; plan_id is optional; price_cents, activate_now and create_invoice are honoured.
+  tags:
+    - dns
+  summary: Create a DNS zone
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dns.Zone.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

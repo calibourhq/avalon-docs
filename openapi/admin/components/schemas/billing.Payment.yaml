@@ -1,0 +1,38 @@
+type: object
+properties:
+  amount_cents:
+    type: integer
+  created_at:
+    type: string
+  currency:
+    type: string
+  failure_message:
+    type: string
+  gateway:
+    $ref: ./billing.PaymentGateway.yaml
+  id:
+    type: string
+  invoice_id:
+    type: string
+  last_polled_at:
+    type: string
+  np_payment_id:
+    type: string
+  org_id:
+    type: string
+  payment_method_id:
+    type: string
+  paypal_order_id:
+    type: string
+  poll_until:
+    type: string
+  status:
+    $ref: ./billing.PaymentStatus.yaml
+  stripe_cs_id:
+    type: string
+  stripe_pi_id:
+    type: string
+  stripe_setup_id:
+    type: string
+  updated_at:
+    type: string

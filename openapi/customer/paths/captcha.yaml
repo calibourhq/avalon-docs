@@ -1,0 +1,25 @@
+get:
+  security: []
+  operationId: get-a-new-captcha
+  description: Generates a new captcha and returns the image with a token in the header
+  tags:
+    - captcha
+  summary: Get a new captcha
+  responses:
+    '200':
+      description: Captcha Image
+      headers:
+        X-Captcha-Token:
+          description: Captcha Token
+          schema:
+            type: string
+      content:
+        image/png:
+          schema:
+            type: string
+    '500':
+      description: Internal Server Error
+      content:
+        image/png:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

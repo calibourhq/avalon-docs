@@ -1,0 +1,41 @@
+get:
+  operationId: list-assignable-network-prefixes
+  security:
+    - BearerAuth: []
+  description: >-
+    Returns the cluster's IPv4/IPv6 pool prefixes an admin can assign addresses from, with a suggested address pre-computed.
+  tags:
+    - vps
+  summary: List assignable network prefixes
+  parameters:
+    - description: server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.assignablePrefixesResponse.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

@@ -1,0 +1,42 @@
+post:
+  operationId: generate-a-login-as-link-for-a-customer-account
+  security:
+    - BearerAuth: []
+  description: >-
+    Issues a single-use magic link that signs the admin into a customer account (admin only).
+  tags:
+    - customer-accounts
+  summary: Generate a login-as link for a customer account
+  parameters:
+    - description: Account (user) ID
+      name: uid
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: Organisation to sign in to; required when the account belongs to several
+      name: org
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties:
+              type: string
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

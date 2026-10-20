@@ -1,0 +1,53 @@
+post:
+  operationId: upload-os-family-icon
+  security:
+    - BearerAuth: []
+  description: Accept a multipart image upload, encode to AVIF, and store it on the family.
+  tags:
+    - vps
+  summary: Upload OS family icon
+  parameters:
+    - description: os family id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          type: object
+          properties:
+            icon:
+              description: icon image file
+              type: string
+              format: binary
+          required:
+            - icon
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/vps.VPSOSFamily.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

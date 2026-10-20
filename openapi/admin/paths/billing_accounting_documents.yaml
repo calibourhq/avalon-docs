@@ -1,0 +1,45 @@
+get:
+  operationId: accounting-documents-admin
+  security:
+    - BearerAuth: []
+  description: >-
+    A ZIP of every document of a period: the PDF of each invoice, credit note and receipt, and its e-invoice XML.
+  tags:
+    - billing
+  summary: Accounting documents (admin)
+  parameters:
+    - description: first day (YYYY-MM-DD)
+      name: date_from
+      in: query
+      schema:
+        type: string
+    - description: last day (YYYY-MM-DD)
+      name: date_to
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: the archive
+      content:
+        application/zip:
+          schema:
+            type: string
+    '400':
+      description: Bad Request
+      content:
+        application/zip:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/zip:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/zip:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

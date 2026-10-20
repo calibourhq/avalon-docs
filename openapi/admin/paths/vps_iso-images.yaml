@@ -1,0 +1,38 @@
+get:
+  operationId: list-iso-images
+  security:
+    - BearerAuth: []
+  description: >-
+    Returns the ISO images of the caller's active org. Global images are listed by GET /vps/{id}/iso.
+
+    lists every image, including global ones; org_id filters by org.
+  tags:
+    - vps
+  summary: List ISO images
+  parameters:
+    - description: filter by org
+      name: org_id
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/vps.VPSISOImage.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

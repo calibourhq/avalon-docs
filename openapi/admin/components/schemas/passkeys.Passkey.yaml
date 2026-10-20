@@ -1,0 +1,37 @@
+type: object
+properties:
+  aaguid:
+    description: hex encoded
+    type: string
+  backupEligible:
+    description: true for synced / password-manager passkeys
+    type: boolean
+  backupState:
+    type: boolean
+  createdAt:
+    type: string
+  credentialID:
+    description: base64url encoded
+    type: string
+  id:
+    type: string
+  lastUsedAt:
+    type: string
+  name:
+    type: string
+  publicKey:
+    type: array
+    items:
+      type: integer
+  signCount:
+    type: integer
+  transports:
+    description: JSON-encoded []protocol.AuthenticatorTransport
+    type: string
+  updatedAt:
+    type: string
+  userID:
+    type: string
+  userType:
+    description: '"user" or "admin"'
+    type: string

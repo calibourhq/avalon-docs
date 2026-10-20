@@ -1,0 +1,14 @@
+type: object
+properties:
+  content:
+    type: string
+  name:
+    type: string
+  node:
+    type: string
+  shared:
+    type: boolean
+  total:
+    type: integer
+  used:
+    type: integer

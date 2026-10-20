@@ -1,0 +1,26 @@
+type: object
+properties:
+  comment:
+    type: string
+  default_name:
+    type: string
+  disabled:
+    type: boolean
+  frame_types:
+    type: string
+  in_bridge:
+    type: boolean
+  index:
+    type: integer
+  name:
+    type: string
+  pvid:
+    type: integer
+  running:
+    type: boolean
+  speed_mbps:
+    type: integer
+  tagged_vlans:
+    type: array
+    items:
+      type: integer

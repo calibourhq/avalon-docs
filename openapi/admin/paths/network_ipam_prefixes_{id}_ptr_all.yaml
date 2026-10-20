@@ -1,0 +1,36 @@
+delete:
+  operationId: delete-all-ptr-records-for-a-prefix
+  security:
+    - BearerAuth: []
+  description: Deletes all PTR records for a prefix.
+  tags:
+    - network-ipam
+  summary: Delete all PTR records for a prefix
+  parameters:
+    - description: prefix id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

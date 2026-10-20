@@ -1,0 +1,22 @@
+post:
+  operationId: disable-a-cdn-node
+  security:
+    - BearerAuth: []
+  description: Takes an edge node out of service (admin only).
+  tags:
+    - cdn-nodes
+  summary: Disable a CDN node
+  parameters:
+    - description: node id
+      name: node_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/cdn.CDNNode.yaml

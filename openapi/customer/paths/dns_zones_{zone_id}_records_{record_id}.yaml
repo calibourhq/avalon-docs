@@ -1,0 +1,136 @@
+get:
+  operationId: get-a-dns-record
+  security:
+    - BearerAuth: []
+  description: Returns a single DNS record.
+  tags:
+    - dns
+  summary: Get a DNS record
+  parameters:
+    - description: zone id
+      name: zone_id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: record id
+      name: record_id
+      in: path
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/pdns.Record.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+put:
+  operationId: update-a-dns-record
+  security:
+    - BearerAuth: []
+  description: Updates a DNS record. The zone apex NS set cannot be changed.
+  tags:
+    - dns
+  summary: Update a DNS record
+  parameters:
+    - description: zone id
+      name: zone_id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: record id
+      name: record_id
+      in: path
+      required: true
+      schema:
+        type: integer
+  requestBody:
+    $ref: ../components/requestBodies/dns.RecordInput.yaml
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/pdns.Record.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+delete:
+  operationId: delete-a-dns-record
+  security:
+    - BearerAuth: []
+  description: Removes a DNS record. The zone apex NS set cannot be removed.
+  tags:
+    - dns
+  summary: Delete a DNS record
+  parameters:
+    - description: zone id
+      name: zone_id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: record id
+      name: record_id
+      in: path
+      required: true
+      schema:
+        type: integer
+  responses:
+    '204':
+      description: No Content
+    '400':
+      description: Bad Request
+      content:
+        '*/*':
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        '*/*':
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        '*/*':
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

@@ -1,0 +1,50 @@
+put:
+  operationId: update-a-rack-device
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Update a rack device
+  parameters:
+    - description: rack id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: device id
+      name: device_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.RackDevice.yaml
+delete:
+  operationId: unmount-a-rack-device
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Unmount a rack device
+  parameters:
+    - description: rack id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: device id
+      name: device_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content

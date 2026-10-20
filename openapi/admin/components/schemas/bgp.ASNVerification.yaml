@@ -1,0 +1,29 @@
+type: object
+properties:
+  asn:
+    type: integer
+  contact_roles:
+    type: string
+  created_at:
+    type: string
+  decided_at:
+    type: string
+  email:
+    description: lower-cased
+    type: string
+  expires_at:
+    type: string
+  id:
+    type: string
+  method:
+    $ref: ./bgp.ASNVerificationMethod.yaml
+  org_asn_id:
+    type: string
+  org_id:
+    type: string
+  registry:
+    type: string
+  status:
+    $ref: ./bgp.ASNVerificationStatus.yaml
+  updated_at:
+    type: string

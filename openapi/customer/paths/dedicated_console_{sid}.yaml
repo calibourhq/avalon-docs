@@ -1,0 +1,44 @@
+get:
+  operationId: poll-a-console-session
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Poll a console session
+  parameters:
+    - description: console session id
+      name: sid
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+delete:
+  operationId: close-a-console-session
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Close a console session
+  parameters:
+    - description: console session id
+      name: sid
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true

@@ -1,0 +1,11 @@
+type: object
+properties:
+  has_more:
+    description: more rows existed than PerTypeLimit
+    type: boolean
+  results:
+    type: array
+    items:
+      $ref: ./search.Result.yaml
+  type:
+    type: string

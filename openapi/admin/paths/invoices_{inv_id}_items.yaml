@@ -1,0 +1,42 @@
+post:
+  operationId: add-invoice-item-admin
+  security:
+    - BearerAuth: []
+  description: Adds an item to a draft invoice.
+  tags:
+    - invoices
+  summary: Add invoice item (admin)
+  parameters:
+    - description: invoice id
+      name: inv_id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    $ref: ../components/requestBodies/billing.AddItemRequest.yaml
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/billing.InvoiceItem.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

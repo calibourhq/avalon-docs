@@ -1,0 +1,29 @@
+get:
+  operationId: server-power-metrics-admin
+  security:
+    - BearerAuth: []
+  description: |-
+    Power draw and on-time for one machine over a period, from the
+    samples the power-state worker records on every poll.
+  tags:
+    - dedicated
+  summary: Server power metrics (admin)
+  parameters:
+    - description: server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: 24h|7d|30d
+      name: period
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.PowerSummary.yaml

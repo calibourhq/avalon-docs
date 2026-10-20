@@ -1,0 +1,96 @@
+type: object
+properties:
+  action:
+    type: string
+  cache_shard_enabled:
+    type: boolean
+  cache_ttl:
+    type: integer
+  cdn_record_id:
+    description: >-
+      HostnameID is the pre-zone owner column, retained so the backfill stays
+
+      reversible and legacy rows remain attributable. Not read once ZoneID is
+      set.
+    type: string
+  condition_group_match:
+    description: all, any
+    type: string
+  created_at:
+    type: string
+  detached:
+    description: |-
+      Detached records that a user took ownership of a formerly managed rule.
+      Such a rule is never regenerated or removed by its original generator.
+    type: boolean
+  groups:
+    description: |-
+      No FK constraint here, deliberately. This column already exists and
+      already has rows, and orphans are guaranteed on any deployment that has
+      ever deleted a CDN record: the delete path removed the rule but not its
+      groups or conditions. AutoMigrate would try to ADD CONSTRAINT, MySQL and
+      Postgres would reject it against those orphans, and a failed AutoMigrate
+      is fatal. (SQLite cannot ALTER in a constraint at all, so a passing local
+      test proves nothing here.) The cascade is done explicitly in Go instead,
+      on every delete path; a later cleanup migration can purge the orphans and
+      add the constraint once the data is known to be sound.
+    type: array
+    items:
+      $ref: ./cdn.CDNRuleGroup.yaml
+  id:
+    type: string
+  managed:
+    description: >-
+      Managed marks a rule the system owns and regenerates from a preset, a
+
+      simple-mode toggle, a policy or an applied recommendation. The generator
+
+      only ever touches managed rows, so user-authored rules are invisible to
+      it.
+    type: boolean
+  managed_key:
+    description: |-
+      ManagedKey identifies which generator owns the rule, e.g.
+      "preset:wordpress:cache-html" or "toggle:cache_static". Unique per zone.
+    type: string
+  managed_rev:
+    type: integer
+  query_mode:
+    description: ignore, sort, full
+    type: string
+  ratelimit:
+    type: integer
+  redirect_code:
+    type: integer
+  redirect_url:
+    type: string
+  sort_order:
+    type: integer
+  timeout_connect:
+    type: string
+  timeout_min_upload_rate:
+    type: integer
+  timeout_read:
+    description: |-
+      Per-rule timeout overrides, used by rules of type "timeout" and pushed
+      to the edge verbatim. Durations are Go duration strings ("90s", "15m"):
+      empty means "keep the zone/global value" (the field is omitted from the
+      payload), "0" disables that timeout entirely. MinUploadRate is the
+      bytes/sec floor for request bodies: nil for unset, 0 for "no floor".
+    type: string
+  timeout_stream_activity:
+    type: string
+  timeout_upstream:
+    type: string
+  timeout_write:
+    type: string
+  type:
+    description: access, cache, ratelimit, redirect, timeout
+    type: string
+  updated_at:
+    type: string
+  zone_id:
+    description: |-
+      Nullable for the same reason as CDNHostname.ZoneID: this column lands on a
+      populated table.
+    type: string

@@ -1,0 +1,29 @@
+get:
+  operationId: list-sla-policies
+  security:
+    - BearerAuth: []
+  description: Return all support SLA policies.
+  tags:
+    - support
+  summary: List SLA policies
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/support.SupportSLAPolicy.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

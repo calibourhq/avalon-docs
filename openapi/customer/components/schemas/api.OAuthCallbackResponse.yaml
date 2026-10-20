@@ -1,0 +1,8 @@
+type: object
+properties:
+  org_id:
+    type: string
+  password_setup_required:
+    type: boolean
+  token:
+    type: string

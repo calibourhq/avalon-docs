@@ -1,0 +1,26 @@
+type: object
+properties:
+  cancel:
+    type: boolean
+  edit_billing:
+    description: due date, automation exemption (billing:write)
+    type: boolean
+  edit_cycle:
+    description: EditPrice, on a fixed-cycle subscription
+    type: boolean
+  edit_price:
+    description: EditBilling, unless the type locks the price
+    type: boolean
+  suspend:
+    type: boolean
+  terminate:
+    type: boolean
+  transfer:
+    type: boolean
+  uncancel:
+    type: boolean
+  unsuspend:
+    type: boolean
+  view_invoices:
+    description: ViewInvoices is billing:read; it outlives the service, as its invoices do.
+    type: boolean

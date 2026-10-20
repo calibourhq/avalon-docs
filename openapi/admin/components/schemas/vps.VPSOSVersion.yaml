@@ -1,0 +1,20 @@
+type: object
+properties:
+  active:
+    type: boolean
+  backup_filename:
+    type: string
+  created_at:
+    type: string
+  display_name:
+    type: string
+  family:
+    $ref: ./vps.VPSOSFamily.yaml
+  family_id:
+    type: string
+  id:
+    type: string
+  name:
+    type: string
+  updated_at:
+    type: string

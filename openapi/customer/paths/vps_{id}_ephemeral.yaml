@@ -1,0 +1,41 @@
+put:
+  operationId: update-an-ephemeral-vpss-max-age
+  security:
+    - BearerAuth: []
+  description: >-
+    Sets max_age_minutes (10-43200, counted from activation) or clears it with null. Only for ephemeral servers.
+  tags:
+    - vps
+  summary: Update an ephemeral VPS's max age
+  parameters:
+    - description: vps id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/vps.VPSServer.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

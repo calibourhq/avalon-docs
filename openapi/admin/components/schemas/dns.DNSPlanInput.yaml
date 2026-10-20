@@ -1,0 +1,16 @@
+type: object
+required:
+  - name
+properties:
+  active:
+    type: boolean
+  name:
+    type: string
+  prices:
+    type: array
+    items:
+      $ref: ./dns.PlanPriceInput.yaml
+  record_limit:
+    type: integer
+  smart_record_limit:
+    type: integer

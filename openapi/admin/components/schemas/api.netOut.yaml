@@ -1,0 +1,24 @@
+type: object
+properties:
+  cluster_id:
+    type: string
+  created_at:
+    type: string
+  id:
+    type: string
+  kind:
+    $ref: ./privatenet.PrivateNetworkKind.yaml
+  name:
+    type: string
+  network_id:
+    type: integer
+  org_id:
+    type: string
+  region_id:
+    type: string
+  status:
+    $ref: ./privatenet.PrivateNetworkStatus.yaml
+  updated_at:
+    type: string
+  vlan_id:
+    type: integer

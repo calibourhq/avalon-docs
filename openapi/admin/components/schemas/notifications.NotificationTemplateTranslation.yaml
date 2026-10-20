@@ -1,0 +1,16 @@
+type: object
+properties:
+  body_text:
+    type: string
+  created_at:
+    type: string
+  id:
+    type: string
+  language:
+    type: string
+  subject:
+    type: string
+  template_id:
+    type: string
+  updated_at:
+    type: string

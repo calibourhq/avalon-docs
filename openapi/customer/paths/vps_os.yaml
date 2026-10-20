@@ -1,0 +1,28 @@
+get:
+  operationId: list-vps-os-versions
+  security:
+    - BearerAuth: []
+  description: Returns the OS families and installable OS versions for VPS ordering.
+  tags:
+    - vps
+  summary: List VPS OS versions
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

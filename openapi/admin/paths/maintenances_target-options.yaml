@@ -1,0 +1,15 @@
+get:
+  operationId: list-maintenance-target-options
+  security:
+    - BearerAuth: []
+  description: Regions, switches, racks and VPS clusters with nodes for the target editor.
+  tags:
+    - maintenance
+  summary: List maintenance target options
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/maintenance.TargetOptions.yaml

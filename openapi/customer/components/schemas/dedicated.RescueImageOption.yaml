@@ -1,0 +1,10 @@
+type: object
+properties:
+  default:
+    type: boolean
+  id:
+    type: string
+  name:
+    type: string
+  style:
+    type: string

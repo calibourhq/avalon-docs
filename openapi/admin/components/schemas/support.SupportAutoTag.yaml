@@ -1,0 +1,20 @@
+type: object
+properties:
+  channel:
+    description: a ticket channel (web, api); "" = any
+    type: string
+  created_at:
+    type: string
+  enabled:
+    type: boolean
+  id:
+    type: string
+  keyword:
+    description: comma-separated keywords or phrases
+    type: string
+  name:
+    type: string
+  priority:
+    type: string
+  updated_at:
+    type: string

@@ -1,0 +1,29 @@
+type: string
+enum:
+  - acl
+  - vlan
+  - port_metrics
+  - rate_limit
+  - storm_control
+  - arp_policing
+x-enum-comments:
+  CapACL: per-port hardware ACL rules (anti-spoof, generic protections)
+  CapARPPolicing: rate-limited ARP allow rule
+  CapPortMetrics: per-port byte/packet counters
+  CapRateLimit: per-port ingress/egress rate
+  CapStormControl: broadcast / unknown-multicast / unknown-unicast limiting
+  CapVLAN: 802.1Q pvid / tagged membership per port
+x-enum-descriptions:
+  - per-port hardware ACL rules (anti-spoof, generic protections)
+  - 802.1Q pvid / tagged membership per port
+  - per-port byte/packet counters
+  - per-port ingress/egress rate
+  - broadcast / unknown-multicast / unknown-unicast limiting
+  - rate-limited ARP allow rule
+x-enum-varnames:
+  - CapACL
+  - CapVLAN
+  - CapPortMetrics
+  - CapRateLimit
+  - CapStormControl
+  - CapARPPolicing

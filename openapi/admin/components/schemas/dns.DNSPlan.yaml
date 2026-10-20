@@ -1,0 +1,22 @@
+type: object
+properties:
+  active:
+    type: boolean
+  created_at:
+    type: string
+  id:
+    type: string
+  name:
+    type: string
+  prices:
+    type: array
+    items:
+      $ref: ./dns.DNSPlanPrice.yaml
+  record_limit:
+    description: 0 = unlimited
+    type: integer
+  smart_record_limit:
+    description: reserved for future use
+    type: integer
+  updated_at:
+    type: string

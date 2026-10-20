@@ -1,0 +1,23 @@
+get:
+  operationId: list-dedicated-hardware-components
+  security:
+    - BearerAuth: []
+  description: Lists active catalogue components.
+  tags:
+    - dedicated
+  summary: List dedicated hardware components
+  parameters:
+    - description: only components of this kind, e.g. cpu, ram, disk
+      name: kind
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/dedicated.Component.yaml

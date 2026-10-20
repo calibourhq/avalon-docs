@@ -1,0 +1,12 @@
+type: object
+properties:
+  avg_celsius:
+    type: number
+  peak_celsius:
+    type: number
+  points:
+    type: array
+    items:
+      $ref: ./dedicated.TempPoint.yaml
+  socket:
+    type: integer

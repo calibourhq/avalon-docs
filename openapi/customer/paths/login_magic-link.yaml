@@ -1,0 +1,26 @@
+post:
+  security: []
+  operationId: redeem-a-magic-link
+  tags:
+    - auth
+  summary: Redeem a magic link
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/api.MagicLinkRequest.yaml
+    description: Magic Link Request
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.LoginResponse.yaml
+    '202':
+      description: second factor required
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.TwoFAChallengeResponse.yaml

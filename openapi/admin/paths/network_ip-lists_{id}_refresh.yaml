@@ -1,0 +1,36 @@
+post:
+  operationId: refresh-a-global-ip-list
+  security:
+    - BearerAuth: []
+  description: >-
+    Re-fetch a global IP list from its upstream source and push the result to every cluster.
+  tags:
+    - network-firewall
+  summary: Refresh a global IP list
+  parameters:
+    - description: IP list id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '502':
+      description: Bad Gateway
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

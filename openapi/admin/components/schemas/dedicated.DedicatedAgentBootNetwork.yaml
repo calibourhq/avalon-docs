@@ -1,0 +1,26 @@
+type: object
+properties:
+  agent_id:
+    type: string
+  created_at:
+    type: string
+  id:
+    type: string
+  interface:
+    description: |-
+      Interface is the name on the agent host, including VLAN sub-interfaces
+      such as eno1.100.
+    type: string
+  message:
+    type: string
+  reported_at:
+    type: string
+  server_ip:
+    type: string
+  status:
+    description: |-
+      Mirrored from the agent's inventory, so an admin can see whether the
+      interface actually exists and which of its addresses is serving.
+    type: string
+  updated_at:
+    type: string

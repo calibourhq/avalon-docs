@@ -1,0 +1,21 @@
+get:
+  security: []
+  operationId: get-published-news
+  description: Returns published news articles.
+  tags:
+    - news
+  summary: Get published news
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

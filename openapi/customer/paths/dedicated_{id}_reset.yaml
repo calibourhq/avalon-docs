@@ -1,0 +1,22 @@
+post:
+  operationId: reset-a-dedicated-server
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Reset a dedicated server
+  parameters:
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true

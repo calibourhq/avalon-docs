@@ -1,0 +1,47 @@
+type: object
+properties:
+  address:
+    description: |-
+      Address is the host (or IP) of the node's garagedoor metrics listener.
+      A ":port" suffix here is ignored in favour of MetricsPort.
+    type: string
+  created_at:
+    type: string
+  enabled:
+    description: |-
+      Enabled is admin intent: a disabled node is not scraped, so its traffic
+      stops counting towards bucket usage. It is deliberately separate from
+      Status so a node can be pulled out of metering while its health stays
+      visible (the monitor probes disabled nodes too).
+    type: boolean
+  has_token:
+    description: |-
+      Derived, populated on read (not stored): whether a metrics token is set,
+      so the UI can show that without ever receiving the token itself.
+    type: boolean
+  id:
+    type: string
+  last_checked_at:
+    type: string
+  last_error:
+    type: string
+  last_scraped_at:
+    type: string
+  location:
+    type: string
+  metrics_port:
+    type: integer
+  metrics_scheme:
+    description: |-
+      MetricsScheme/MetricsPort/MetricsToken locate and authenticate the
+      garagedoor metrics listener ([metrics].listen, default port 9102). The
+      token is only needed when the listener is published behind an
+      authenticating proxy; garagedoor itself does not authenticate.
+    type: string
+  name:
+    type: string
+  status:
+    description: 'Status is machine-owned health only: unknown, online, offline.'
+    type: string
+  updated_at:
+    type: string

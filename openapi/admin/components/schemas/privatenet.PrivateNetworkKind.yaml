@@ -1,0 +1,7 @@
+type: string
+enum:
+  - vps
+  - dedicated
+x-enum-varnames:
+  - KindVPS
+  - KindDedicated

@@ -1,0 +1,9 @@
+type: string
+enum:
+  - manual
+  - irr
+  - as_set
+x-enum-varnames:
+  - PrefixSourceManual
+  - PrefixSourceIRR
+  - PrefixSourceASSet

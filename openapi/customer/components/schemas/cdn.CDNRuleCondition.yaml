@@ -1,0 +1,37 @@
+type: object
+properties:
+  cdn_rule_group_id:
+    type: string
+  created_at:
+    type: string
+  id:
+    type: string
+  match_type:
+    description: exact, contains, regex
+    type: string
+  negate:
+    type: boolean
+  selector:
+    description: >-
+      "default" is the edge's static-asset selector: it matches paths ending in
+      a
+
+      known static file extension (images, CSS, JS, fonts, media, documents,
+
+      archives), not every request. Surfaced in the UI as "Static assets".
+    type: string
+  sort_order:
+    description: >-
+      SortOrder preserves the order conditions were written in. Without it the
+
+      database returns them in arbitrary order, which scrambles the editor and
+
+      makes ruleHash nondeterministic. Rows from before this column all carry 0;
+
+      orderedRuleChildren breaks the tie by id so their order is at least
+      stable.
+    type: integer
+  updated_at:
+    type: string
+  value:
+    type: string

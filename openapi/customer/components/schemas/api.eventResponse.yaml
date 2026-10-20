@@ -1,0 +1,25 @@
+type: object
+properties:
+  actor_id:
+    type: string
+  actor_name:
+    type: string
+  actor_type:
+    description: user, admin, system
+    type: string
+  created_at:
+    type: string
+  from:
+    type: string
+  id:
+    type: string
+  is_internal:
+    type: boolean
+  ticket_id:
+    type: string
+  to:
+    type: string
+  type:
+    type: string
+  updated_at:
+    type: string

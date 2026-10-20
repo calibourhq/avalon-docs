@@ -1,0 +1,20 @@
+type: object
+properties:
+  component:
+    $ref: ./dedicated.Component.yaml
+  component_id:
+    type: string
+  created_at:
+    type: string
+  form_factor:
+    type: string
+  id:
+    type: string
+  kind:
+    $ref: ./dedicated.ComponentKind.yaml
+  quantity:
+    type: integer
+  server_id:
+    type: string
+  updated_at:
+    type: string

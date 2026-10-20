@@ -1,0 +1,9 @@
+type: string
+enum:
+  - valid
+  - not_found
+  - invalid
+x-enum-varnames:
+  - RPKIValid
+  - RPKINotFound
+  - RPKIInvalid

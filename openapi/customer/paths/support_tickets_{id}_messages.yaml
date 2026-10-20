@@ -1,0 +1,95 @@
+get:
+  operationId: list-support-ticket-messages
+  security:
+    - BearerAuth: []
+  description: Returns the messages of a ticket of the active organisation.
+  tags:
+    - support
+  summary: List support ticket messages
+  parameters:
+    - description: ticket id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/api.messageResponse.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: reply-to-support-ticket
+  security:
+    - BearerAuth: []
+  description: >-
+    Adds a reply (body) to a ticket of the active organisation. A closed ticket only takes replies inside the reopen window, and a reply reopens it. Also accepts multipart/form-data with the same fields as form values plus up to 3 attachments (5 MB each) under "files".
+  tags:
+    - support
+  summary: Reply to support ticket
+  parameters:
+    - description: ticket id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.messageResponse.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

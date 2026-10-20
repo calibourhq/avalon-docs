@@ -1,0 +1,47 @@
+get:
+  operationId: look-up-asn-registry-contacts
+  security:
+    - BearerAuth: []
+  description: >-
+    Find the contact addresses the ASN's registry (ARIN or RIPE NCC) publishes, for the customer to pick one to receive the verification email. An empty contact list with a reason means the request can only go to manual review.
+  tags:
+    - network-bgp
+  summary: Look up ASN registry contacts
+  parameters:
+    - description: org the ASN is being requested for
+      name: org_id
+      in: query
+      required: true
+      schema:
+        type: string
+    - description: AS number
+      name: asn
+      in: query
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/bgp.ASNContactLookup.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

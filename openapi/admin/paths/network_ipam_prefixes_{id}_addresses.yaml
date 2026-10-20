@@ -1,0 +1,87 @@
+get:
+  operationId: list-addresses-in-a-prefix
+  security:
+    - BearerAuth: []
+  description: List IP addresses within a prefix.
+  tags:
+    - network-ipam
+  summary: List addresses in a prefix
+  parameters:
+    - description: prefix id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: filter by status
+      name: status
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: add-an-address-to-a-prefix
+  security:
+    - BearerAuth: []
+  description: Add an IP address to a prefix.
+  tags:
+    - network-ipam
+  summary: Add an address to a prefix
+  parameters:
+    - description: prefix id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

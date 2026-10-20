@@ -1,0 +1,8 @@
+type: object
+properties:
+  ipv4:
+    type: string
+  ipv6:
+    type: string
+  name:
+    type: string

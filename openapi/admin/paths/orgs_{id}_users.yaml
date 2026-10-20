@@ -1,0 +1,49 @@
+post:
+  operationId: create-an-sso-org-user
+  security:
+    - BearerAuth: []
+  description: >-
+    Provisions an external-IdP (Keycloak) passwordless customer account and adds them to the org. Admin-only; SSO must be enabled.
+  tags:
+    - orgs
+  summary: Create an SSO org user
+  parameters:
+    - description: organisation id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/api.CreateSSOUserRequest.yaml
+    description: SSO user details
+    required: true
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

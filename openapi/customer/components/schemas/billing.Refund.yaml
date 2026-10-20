@@ -1,0 +1,28 @@
+type: object
+properties:
+  amount_cents:
+    type: integer
+  created_at:
+    type: string
+  credit_note_id:
+    type: string
+  external_txn_id:
+    type: string
+  failure_message:
+    type: string
+  gateway:
+    $ref: ./billing.RefundGateway.yaml
+  gateway_refund_id:
+    type: string
+  id:
+    type: string
+  invoice_id:
+    type: string
+  org_id:
+    type: string
+  processed_by:
+    type: string
+  status:
+    $ref: ./billing.RefundStatus.yaml
+  updated_at:
+    type: string

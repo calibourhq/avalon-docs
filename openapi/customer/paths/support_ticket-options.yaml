@@ -1,0 +1,29 @@
+get:
+  operationId: get-ticket-form-options
+  security:
+    - BearerAuth: []
+  description: >-
+    Returns the priority levels selectable when opening a ticket and the default one.
+  tags:
+    - support
+  summary: Get ticket form options
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

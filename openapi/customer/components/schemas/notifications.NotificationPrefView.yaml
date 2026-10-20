@@ -1,0 +1,26 @@
+type: object
+properties:
+  available_channels:
+    description: non-excluded channels the user can choose
+    type: array
+    items:
+      $ref: ./notifications.Channel.yaml
+  excluded_channels:
+    description: never available for this template
+    type: array
+    items:
+      $ref: ./notifications.Channel.yaml
+  mandatory_channels:
+    description: always delivered regardless of prefs
+    type: array
+    items:
+      $ref: ./notifications.Channel.yaml
+  selected_channels:
+    description: current effective selection (incl. mandatory)
+    type: array
+    items:
+      $ref: ./notifications.Channel.yaml
+  template_name:
+    type: string
+  template_slug:
+    type: string

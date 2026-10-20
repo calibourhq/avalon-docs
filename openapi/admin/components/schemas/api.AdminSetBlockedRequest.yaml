@@ -1,0 +1,10 @@
+type: object
+properties:
+  blocked:
+    type: boolean
+  reason:
+    description: >-
+      Reason is the staff note shown on the account page; ignored when
+      unblocking.
+    type: string
+    maxLength: 500

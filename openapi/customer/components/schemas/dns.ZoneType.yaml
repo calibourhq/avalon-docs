@@ -1,0 +1,7 @@
+type: string
+enum:
+  - forward
+  - reverse
+x-enum-varnames:
+  - ZoneTypeForward
+  - ZoneTypeReverse

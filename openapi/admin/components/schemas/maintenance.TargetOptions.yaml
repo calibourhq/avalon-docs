@@ -1,0 +1,18 @@
+type: object
+properties:
+  clusters:
+    type: array
+    items:
+      $ref: ./maintenance.Option.yaml
+  racks:
+    type: array
+    items:
+      $ref: ./maintenance.Option.yaml
+  regions:
+    type: array
+    items:
+      $ref: ./maintenance.Option.yaml
+  switches:
+    type: array
+    items:
+      $ref: ./maintenance.Option.yaml

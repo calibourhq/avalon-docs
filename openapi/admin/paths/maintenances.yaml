@@ -1,0 +1,32 @@
+get:
+  operationId: list-maintenances
+  security:
+    - BearerAuth: []
+  tags:
+    - maintenance
+  summary: List maintenances
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+post:
+  operationId: create-a-maintenance
+  security:
+    - BearerAuth: []
+  tags:
+    - maintenance
+  summary: Create a maintenance
+  requestBody:
+    $ref: ../components/requestBodies/api.maintenanceRequest.yaml
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true

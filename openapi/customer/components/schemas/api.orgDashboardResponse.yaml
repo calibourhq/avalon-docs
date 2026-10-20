@@ -1,0 +1,15 @@
+type: object
+properties:
+  billing:
+    type: boolean
+  domains_expiring:
+    description: |-
+      DomainsExpiring counts active domains that lapse within 30 days and
+      will not renew on their own.
+    type: integer
+  services:
+    type: array
+    items:
+      $ref: ./api.orgDashService.yaml
+  support:
+    type: boolean

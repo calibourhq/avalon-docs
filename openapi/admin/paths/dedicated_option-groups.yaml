@@ -1,0 +1,30 @@
+get:
+  operationId: list-dedicated-upgrade-option-groups
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: List dedicated upgrade option groups
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/dedicated.DedicatedUpgradeGroup.yaml
+post:
+  operationId: create-a-dedicated-upgrade-option-group
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Create a dedicated upgrade option group
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.DedicatedUpgradeGroup.yaml

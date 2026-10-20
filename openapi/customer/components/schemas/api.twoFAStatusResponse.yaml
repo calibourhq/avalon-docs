@@ -1,0 +1,8 @@
+type: object
+properties:
+  has_passkeys:
+    type: boolean
+  recovery_codes_remaining:
+    type: integer
+  totp_enabled:
+    type: boolean

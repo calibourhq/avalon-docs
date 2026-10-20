@@ -1,0 +1,41 @@
+type: object
+properties:
+  autobird_id_v4:
+    type: integer
+  autobird_id_v6:
+    type: integer
+  bgp_session_id:
+    type: string
+  created_at:
+    type: string
+  gateway_ipv4:
+    type: string
+  gateway_ipv6:
+    type: string
+  id:
+    type: string
+  last_error:
+    type: string
+  our_ipv4:
+    type: string
+  our_ipv6:
+    type: string
+  peer_ipv4:
+    type: string
+  peer_ipv6:
+    type: string
+  route_server:
+    $ref: ./bgp.RouteServer.yaml
+  route_server_id:
+    type: string
+  status:
+    $ref: ./bgp.BGPInstanceStatus.yaml
+  synced_at:
+    description: |-
+      SyncedAt is the moment the last successful full-state push to this route
+      server completed - i.e. which generation of our config BIRD is running
+      there. Nil until the first push succeeds; left untouched by a failed push,
+      so it keeps pointing at the config that is actually installed.
+    type: string
+  updated_at:
+    type: string

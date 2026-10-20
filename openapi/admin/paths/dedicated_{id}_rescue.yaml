@@ -1,0 +1,26 @@
+delete:
+  operationId: end-a-rescue-boot
+  security:
+    - BearerAuth: []
+  description: >-
+    Stops a session this service started. With reboot=1 the server is restarted, which brings it back up from its disk.
+
+    may end any session on the machine.
+  tags:
+    - dedicated
+  summary: End a rescue boot
+  parameters:
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: reboot back to disk
+      name: reboot
+      in: query
+      schema:
+        type: boolean
+  responses:
+    '204':
+      description: No Content

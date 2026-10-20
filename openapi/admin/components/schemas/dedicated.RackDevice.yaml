@@ -1,0 +1,38 @@
+type: object
+properties:
+  created_at:
+    type: string
+  face:
+    description: |-
+      Face is which side of the cabinet it is on. Devices are where half depth
+      is common - a switch on the rear rails, a patch panel on the front ones -
+      but a device nobody said otherwise about is assumed to fill the unit.
+    allOf:
+      - $ref: ./dedicated.RackFace.yaml
+  height_u:
+    type: integer
+  id:
+    type: string
+  kind:
+    description: |-
+      Kind is one of RackDeviceKinds, drawn as the device's label in an
+      elevation.
+    type: string
+  name:
+    description: |-
+      Name is what is written on the thing, or how you would ask someone to find
+      it: "sw-ams1-core", "PDU A". It is not unique - two cabinets each having a
+      "PDU A" is how datacentres are actually labelled.
+    type: string
+  notes:
+    type: string
+  position:
+    description: |-
+      Position is the lowest unit the device covers, and HeightU how many it
+      covers upward from there. A device has no platform to ask, so it carries
+      its own footprint.
+    type: integer
+  rack_id:
+    type: string
+  updated_at:
+    type: string

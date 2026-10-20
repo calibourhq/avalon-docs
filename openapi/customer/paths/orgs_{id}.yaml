@@ -1,0 +1,144 @@
+get:
+  operationId: get-an-organisation
+  security:
+    - BearerAuth: []
+  description: Returns org details and the caller's membership. Membership required.
+  tags:
+    - orgs
+  summary: Get an organisation
+  parameters:
+    - description: organisation id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              membership:
+                $ref: ../components/schemas/orgs.OrgUser.yaml
+              org:
+                $ref: ../components/schemas/orgs.Org.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+put:
+  operationId: update-an-organisation
+  security:
+    - BearerAuth: []
+  description: >-
+    Updates org details. Requires org:write or ownership. charge_vat is ignored.
+
+    The fields in customer_fields.required of GET /public/settings must be filled in, and those in
+
+    customer_fields.locked cannot be changed once they have a value (open a support ticket instead).
+
+    An EU VAT number is verified with VIES whenever it, the country or the name changes: a number VIES
+
+    rejects is refused, and while VIES is unreachable the update fails with 409 VAT_CHECK_UNAVAILABLE.
+
+    A verified number from another EU member state than ours turns charge_vat off (reverse charge).
+  tags:
+    - orgs
+  summary: Update an organisation
+  parameters:
+    - description: organisation id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    $ref: ../components/requestBodies/api.OrgRequest.yaml
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/orgs.Org.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+delete:
+  operationId: delete-an-organisation
+  security:
+    - BearerAuth: []
+  description: >-
+    Deletes an org. Owner only. Returns a new session token scoped to the caller's next org (org_id is empty when none is left).
+  tags:
+    - orgs
+  summary: Delete an organisation
+  parameters:
+    - description: organisation id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              org_id:
+                type: string
+              token:
+                type: string
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

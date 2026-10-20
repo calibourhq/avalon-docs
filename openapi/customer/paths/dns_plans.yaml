@@ -1,0 +1,42 @@
+get:
+  operationId: list-dns-plans
+  security:
+    - BearerAuth: []
+  description: >-
+    Lists the active DNS plans an org can order. org_id is required for customers.
+  tags:
+    - dns
+  summary: List DNS plans
+  parameters:
+    - description: org that will order
+      name: org_id
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/dns.DNSPlan.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

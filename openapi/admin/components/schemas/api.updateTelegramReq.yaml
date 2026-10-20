@@ -1,0 +1,9 @@
+type: object
+properties:
+  telegram_auto_delete_hours:
+    type: integer
+    maximum: 48
+    minimum: 0
+  telegram_bot_token:
+    type: string
+    maxLength: 200

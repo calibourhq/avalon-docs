@@ -1,0 +1,27 @@
+put:
+  operationId: update-switch-port-admin
+  security:
+    - BearerAuth: []
+  tags:
+    - network-switches
+  summary: Update switch port (admin)
+  parameters:
+    - description: switch id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: port id
+      name: port_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/netswitch.SwitchPort.yaml

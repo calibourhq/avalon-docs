@@ -1,0 +1,22 @@
+type: object
+properties:
+  created_at:
+    type: string
+  id:
+    type: string
+  ipv4_pool_prefix_ids:
+    type: array
+    items:
+      type: string
+  ipv6_pool_prefix_ids:
+    type: array
+    items:
+      type: string
+  region_id:
+    type: string
+  routed_prefix_ids:
+    type: array
+    items:
+      type: string
+  updated_at:
+    type: string

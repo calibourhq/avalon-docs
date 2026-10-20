@@ -1,0 +1,19 @@
+type: object
+properties:
+  created_at:
+    type: string
+  id:
+    type: string
+  name:
+    type: string
+  options:
+    type: array
+    items:
+      $ref: ./dedicated.DedicatedPlanUpgradeOption.yaml
+  plans:
+    description: Plans names the plans the group is attached to. Derived on read.
+    type: array
+    items:
+      type: string
+  updated_at:
+    type: string

@@ -1,0 +1,50 @@
+type: object
+properties:
+  action:
+    $ref: ./firewall.Action.yaml
+  comment:
+    type: string
+  created_at:
+    type: string
+  dest_ports:
+    description: |-
+      DestPorts is a list of destination ports or port ranges (e.g. "443",
+      "8000:8100"). Empty means "any port". Only valid for tcp/udp.
+    type: array
+    items:
+      type: string
+  direction:
+    $ref: ./firewall.Direction.yaml
+  enabled:
+    type: boolean
+  firewall_id:
+    type: string
+  id:
+    type: string
+  position:
+    description: Position determines evaluation order within the firewall (ascending).
+    type: integer
+  protocol:
+    type: string
+  source_lists:
+    description: |-
+      SourceLists holds the ids of global IPLists this rule matches on, as an
+      addition to Sources: the rule matches a packet whose source is in
+      Sources OR in any referenced list. They are stored by id rather than by
+      slug so a list can be renamed without rewriting customer rules.
+
+      A rule with both literal sources and list references expands to several
+      Proxmox rules - PVE's source field accepts an IPSet reference only as the
+      entire value, never mixed with literal CIDRs (see buildRules).
+    type: array
+    items:
+      type: string
+  sources:
+    description: |-
+      Sources is a list of source CIDRs (e.g. "203.0.113.0/24", "::/0"). Empty
+      means "any source".
+    type: array
+    items:
+      type: string
+  updated_at:
+    type: string

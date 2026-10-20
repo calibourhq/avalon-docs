@@ -1,0 +1,73 @@
+get:
+  operationId: list-cdn-records
+  security:
+    - BearerAuth: []
+  description: Lists all CDN records for a zone.
+  tags:
+    - dns
+  summary: List CDN records
+  parameters:
+    - description: zone id
+      name: zone_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/cdn.HostnameRow.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: point-a-dns-record-at-the-cdn
+  security:
+    - BearerAuth: []
+  description: |-
+    Adds the record that sends a hostname's traffic to the CDN edge.
+    Requires a CDN already ordered for the domain; this never creates
+    a CDN zone or a subscription.
+  tags:
+    - dns
+  summary: Point a DNS record at the CDN
+  parameters:
+    - description: zone id
+      name: zone_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/cdn.HostnameRow.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

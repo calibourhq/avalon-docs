@@ -1,0 +1,15 @@
+type: object
+properties:
+  avg_celsius:
+    type: number
+  has_data:
+    description: |-
+      HasData marks a bucket nobody polled, so a chart leaves a gap rather than
+      drawing a line down to zero across a machine's downtime.
+    type: boolean
+  max_celsius:
+    type: number
+  min_celsius:
+    type: number
+  time:
+    type: string

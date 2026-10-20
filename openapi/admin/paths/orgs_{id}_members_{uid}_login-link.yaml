@@ -1,0 +1,29 @@
+post:
+  security:
+    - BearerAuth: []
+  operationId: generate-a-login-as-customer-magic-link
+  tags:
+    - admin
+  summary: Generate a login-as-customer magic link
+  parameters:
+    - description: Organisation ID
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: Member user ID
+      name: uid
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties:
+              type: string

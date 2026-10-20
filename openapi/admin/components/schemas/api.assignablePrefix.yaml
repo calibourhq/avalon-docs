@@ -1,0 +1,14 @@
+type: object
+properties:
+  available:
+    type: array
+    items:
+      type: string
+  gateway:
+    type: string
+  prefix:
+    type: string
+  prefix_id:
+    type: string
+  suggested:
+    type: string

@@ -1,0 +1,28 @@
+put:
+  operationId: set-a-dedicated-services-uplink-speed-limit-admin
+  security:
+    - BearerAuth: []
+  description: |-
+    Rewrites the sold uplink on the service's spec snapshot, writes
+    it through to the machine's customer switch ports - replacing
+    any per-port rate an operator had set there - and re-syncs the
+    switches, which is what turns the number into an actual rate
+    limit. 0 means no limit, i.e. whatever the port negotiates.
+  tags:
+    - dedicated
+  summary: Set a dedicated service's uplink speed limit (admin)
+  parameters:
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true

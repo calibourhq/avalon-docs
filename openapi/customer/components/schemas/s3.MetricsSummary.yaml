@@ -1,0 +1,17 @@
+type: object
+properties:
+  from:
+    type: string
+  interval:
+    description: |-
+      Interval is the width of one point, "hour" or "day", so the chart can
+      label the axis without guessing from the timestamps.
+    type: string
+  period:
+    type: string
+  points:
+    type: array
+    items:
+      $ref: ./s3.MetricsPoint.yaml
+  totals:
+    $ref: ./s3.MetricsPoint.yaml

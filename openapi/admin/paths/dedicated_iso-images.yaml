@@ -1,0 +1,64 @@
+get:
+  operationId: list-dedicated-server-iso-images
+  security:
+    - BearerAuth: []
+  description: >-
+    Returns the ISO images the caller can mount in a KVM console: their own organisation's. Global images are offered in the console but not listed here.
+
+    lists every organisation's images; org_id narrows to one.
+  tags:
+    - dedicated
+  summary: List dedicated-server ISO images
+  parameters:
+    - description: organisation id; must be the active organisation
+      name: org_id
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/dedicated.DedicatedISOImage.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: add-a-dedicated-server-iso-image
+  security:
+    - BearerAuth: []
+  description: >-
+    Registers an ISO by URL. Avalon downloads it and distributes it to every datacenter agent; it becomes mountable once its status is "ready".
+
+    Needs an active dedicated server and counts against the organisation's ISO limit.
+
+    neither check applies.
+  tags:
+    - dedicated
+  summary: Add a dedicated-server ISO image
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.DedicatedISOImage.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

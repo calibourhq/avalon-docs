@@ -1,0 +1,17 @@
+type: object
+properties:
+  asn:
+    type: integer
+  contacts:
+    type: array
+    items:
+      $ref: ./bgp.ASNContact.yaml
+  holder:
+    description: the registered holder's name, when published
+    type: string
+  reason:
+    description: Reason is set when Contacts is empty and says why.
+    type: string
+  registry:
+    description: arin, ripe, apnic, ... when known
+    type: string

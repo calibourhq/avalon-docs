@@ -1,0 +1,23 @@
+get:
+  security: []
+  operationId: list-cdn-edge-ips
+  description: |-
+    Returns every CDN edge node's name and addresses, plus flat IPv4 and
+    IPv6 lists for origin firewall
+    allowlists. The list can change; poll it rather than copying it once.
+  tags:
+    - cdn
+  summary: List CDN edge IPs
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/cdn.EdgeIPList.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

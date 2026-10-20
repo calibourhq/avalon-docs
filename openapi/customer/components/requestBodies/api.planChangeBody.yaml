@@ -1,0 +1,6 @@
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/api.planChangeBody.yaml
+description: Target plan
+required: true

@@ -1,0 +1,157 @@
+type: object
+properties:
+  abuse_held:
+    type: boolean
+  activated_at:
+    type: string
+  billing_cycle:
+    description: hourly => usage metered
+    allOf:
+      - $ref: ./billing.BillingCycle.yaml
+  billing_held:
+    description: >-
+      Suspension holds. The service must be stopped while ANY hold is set and
+      may only run
+
+      when NONE is set; reconcileServiceState is the single place this invariant
+      is enforced.
+
+      Keeping billing and abuse as independent holds is what lets paying an
+      overdue invoice
+
+      lift only the billing hold (not an abuse hold), and resolving an abuse
+      report lift only
+
+      the abuse hold (not a billing hold). SuspendReason still records the
+      billing reason for
+
+      display/automation; abuse holds do not touch it.
+    type: boolean
+  billing_held_at:
+    description: >-
+      BillingHeldAt records when the billing hold was applied. Auto-termination
+      measures its
+
+      grace period from this, NOT from SuspendedAt: when billing holds a service
+      that was
+
+      already stopped for abuse, SuspendedAt still points at the (possibly much
+      older) abuse
+
+      suspension, so keying termination off it would skip the billing grace
+      entirely. Nil for
+
+      legacy suspensions predating this field (termination falls back to
+      SuspendedAt for those).
+    type: string
+  billing_mode:
+    description: snapshot at order
+    allOf:
+      - $ref: ./billing.BillingMode.yaml
+  cancel_at_period_end:
+    description: >-
+      CancelAtPeriodEnd marks a fixed-cycle subscription to be terminated at
+      CurrentPeriodEnd
+
+      instead of renewed. The renewal worker stops advancing the schedule
+      (billing the final
+
+      arrears period for postpaid) and RunCancelAtPeriodEnd tears the service
+      down via the
+
+      provider once the paid period has elapsed. Cleared to resume normal
+      renewal.
+    type: boolean
+  created_at:
+    type: string
+  current_period_end:
+    type: string
+  current_period_start:
+    description: >-
+      Fixed-cycle scheduling. CurrentPeriodEnd is how far we have invoiced;
+      NextInvoiceAt is
+
+      when the renewal worker generates the next invoice (CurrentPeriodEnd -
+      InvoiceLeadDays).
+
+      Hourly subscriptions carry no NextInvoiceAt: their usage is invoiced per
+      org on the
+
+      org's roll-up date (OrgBillingSettings.NextUsageInvoiceAt), not per
+      subscription.
+    type: string
+  exempt_from_automation:
+    description: >-
+      ExemptFromAutomation exempts this service from auto-suspension and
+      auto-termination.
+
+      Renewal invoices are still generated (debt accrues); only enforcement is
+      skipped.
+    type: boolean
+  id:
+    type: string
+  label:
+    description: human label reused on invoice line items
+    type: string
+  last_billed_at:
+    description: last usage rolled into an invoice
+    type: string
+  last_metered_at:
+    description: Hourly usage bookkeeping.
+    type: string
+  next_invoice_at:
+    type: string
+  org_id:
+    type: string
+  pending_billing_cycle:
+    description: >-
+      PendingBillingCycle is the postpaid counterpart for a cycle change: the
+      running period keeps
+
+      its length and is billed on the old cycle, and the renewal worker starts
+      the next one on this.
+    allOf:
+      - $ref: ./billing.BillingCycle.yaml
+  pending_unit_price_micros:
+    description: >-
+      PendingUnitPriceMicros is a price that takes effect at the next renewal. A
+      postpaid plan
+
+      change bills the in-progress period in arrears at the old price, so the
+      new price is deferred
+
+      here and applied by the renewal worker once that period rolls over.
+    type: integer
+  provisioned_at:
+    description: |-
+      Provisioning state, owned by the provisioning pipeline (see
+      RunProvisioning), whose work queue is the SubStatusProvisioning rows.
+      ProvisionedAt records when the Provision hook succeeded. The retry fields
+      track backoff and the last failure so a permanently broken order backs off
+      and alerts once instead of retrying every tick. All cleared/stamped
+      together on success.
+    type: string
+  service_id:
+    type: string
+  service_type:
+    type: string
+  status:
+    $ref: ./billing.SubStatus.yaml
+  suspend_reason:
+    $ref: ./billing.SuspendReason.yaml
+  suspended_at:
+    type: string
+  terminated_at:
+    type: string
+  unit_price_micros:
+    description: >-
+      UnitPriceMicros is the price per cycle, or per hour when hourly, in
+      micro-euros (see
+
+      money.go). Hourly rates are routinely below a cent (€0.0041/h), which is
+      why this is
+
+      not a cent figure: a price only becomes cents when it is charged.
+    type: integer
+  updated_at:
+    type: string

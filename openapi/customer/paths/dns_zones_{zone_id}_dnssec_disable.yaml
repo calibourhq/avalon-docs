@@ -1,0 +1,30 @@
+post:
+  operationId: disable-dnssec
+  security:
+    - BearerAuth: []
+  description: Disables DNSSEC for a zone.
+  tags:
+    - dns
+  summary: Disable DNSSEC
+  parameters:
+    - description: zone id
+      name: zone_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content
+    '401':
+      description: Unauthorized
+      content:
+        '*/*':
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        '*/*':
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

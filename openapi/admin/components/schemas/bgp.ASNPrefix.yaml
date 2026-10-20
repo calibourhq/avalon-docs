@@ -1,0 +1,63 @@
+type: object
+required:
+  - prefix
+properties:
+  as_set_depth:
+    type: integer
+  as_set_id:
+    description: >-
+      Import provenance, set on as_set rows only. ASSetID points at the
+
+      DownstreamASSet that pulled the prefix in (nulled out when it is
+      detached),
+
+      ASSetName is denormalised so the prefix list needs no join, and Depth/Path
+
+      record where in the AS-SET tree the origin AS was found: depth 1 is a
+      direct
+
+      member of the attached set, and Path is the chain of set names walked to
+
+      reach it.
+    type: string
+  as_set_name:
+    type: string
+  as_set_path:
+    type: string
+  created_at:
+    type: string
+  id:
+    type: string
+  max_length:
+    type: integer
+  org_asn_id:
+    type: string
+  origin_asn:
+    description: >-
+      OriginASN is the AS the prefix is authorised for. For irr rows that is the
+
+      ASN this row hangs off; for as_set rows it is the downstream member AS the
+
+      route object was read from, which is what makes an imported prefix
+      traceable back to
+
+      a customer-of-a-customer. Zero on manual rows, where nobody stated an
+      origin.
+    type: integer
+  prefix:
+    type: string
+    maxLength: 50
+  rpki:
+    description: >-
+      RPKI is the origin validation state of an irr or as_set row: valid when a
+
+      ROA matches the route object, not_found when no ROA covers it. Invalid
+      rows
+
+      are never stored. Empty on manual rows.
+    allOf:
+      - $ref: ./bgp.RPKIState.yaml
+  source:
+    $ref: ./bgp.PrefixSource.yaml
+  updated_at:
+    type: string

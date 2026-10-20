@@ -1,0 +1,164 @@
+type: object
+properties:
+  billing_cycle:
+    description: Billing
+    type: string
+  cancel_at_renewal:
+    type: boolean
+  console_available:
+    description: |-
+      ConsoleAvailable is false when there is no out-of-band path to a physical
+      console for this machine (no agent, no BMC host, or an agent too old to
+      serve one). Deliberately the ONLY console-related field on the
+      customer-facing type: everything that would identify or authenticate the
+      BMC stays on DedicatedServer. See bmc_exposure_test.go.
+    type: boolean
+  created_at:
+    type: string
+  expected_delivery_at:
+    description: |-
+      ExpectedDeliveryAt is the delivery date promised on a backorder, from the
+      plan's lead time at order time. Nil when the plan states none.
+    type: string
+  hostname:
+    type: string
+  id:
+    type: string
+  invoice_id:
+    type: string
+  ipv4_address:
+    type: string
+  ipv4_enabled:
+    description: |-
+      Which address families the tenant bought. The addresses themselves live on
+      the DedicatedServer; the let allocates or releases per family to match
+      these (see EnsureServerAddresses).
+    type: boolean
+  ipv6_address:
+    type: string
+  ipv6_enabled:
+    type: boolean
+  link_speed_mbps:
+    description: |-
+      LinkSpeedMbps is what the machine's customer ports negotiated with the
+      switch. Filled only when SpecUplinkMbps is 0 (no limit), where the link
+      itself is the uplink the customer gets; 0 when it is not known.
+    type: integer
+  lock_operation:
+    type: string
+  locked:
+    type: boolean
+  org_id:
+    type: string
+  plan_display_name:
+    type: string
+  plan_id:
+    type: string
+  plan_name:
+    description: Derived (not stored, populated on read)
+    type: string
+  plan_price_cents:
+    type: integer
+  power_controllable:
+    description: |-
+      PowerControllable is false when the assigned server has no agent or no BMC
+      host, i.e. there is no out-of-band path to it. The UI drops the power
+      controls instead of offering buttons that can only fail.
+    type: boolean
+  power_draw_available:
+    description: |-
+      PowerDrawAvailable and TemperatureAvailable say which of the optional
+      metric series this service actually has. Hardware varies far more than
+      the rest of the catalogue admits - every metered port reports traffic,
+      but only some BMCs report consumption and only some report a usable
+      per-socket temperature - so the page asks rather than assuming, and draws
+      only the charts there is data behind. Populated on the detail read only:
+      they cost a query each and no list column shows them.
+    type: boolean
+  power_state:
+    type: string
+  provisioned_by_user_id:
+    type: string
+  region_id:
+    type: string
+  renews_at:
+    type: string
+  rescue_available:
+    description: |-
+      RescueAvailable mirrors the field on the machine: whether a rescue boot
+      could be started for this contract right now.
+    type: boolean
+  rescue_manual_reboot:
+    description: |-
+      RescueManualReboot mirrors the machine's: the rescue can be armed, but
+      the customer will have to restart the server themselves for it to boot.
+    type: boolean
+  server_id:
+    description: nil while awaiting_stock and once terminated
+    type: string
+  server_name:
+    type: string
+  setup_fee_cents:
+    type: integer
+  spec_bandwidth_tb:
+    type: integer
+  spec_components:
+    type: array
+    items:
+      $ref: ./dedicated.ConfigItem.yaml
+  spec_cpu_cores:
+    type: integer
+  spec_cpu_model:
+    description: >-
+      Aggregate spec snapshot. Derived from SpecComponents (via
+      RecomputeService)
+
+      for configured orders, or copied from the plan's advertised specs for
+      legacy
+
+      plans without a platform. Kept as a display cache.
+    type: string
+  spec_platform_id:
+    description: >-
+      Config snapshot (the effective build ordered: plan base ⊕ chosen
+      upgrades),
+
+      copied at order time and never read live from the plan after.
+    type: string
+  spec_ram_gb:
+    type: integer
+  spec_storage:
+    type: string
+  spec_uplink_mbps:
+    type: integer
+  status:
+    description: Lifecycle
+    allOf:
+      - $ref: ./dedicated.ServiceStatus.yaml
+  status_message:
+    type: string
+  subscription_id:
+    type: string
+  temperature_available:
+    type: boolean
+  traffic_month_bytes:
+    description: |-
+      TrafficMonthBytes is this calendar month's metered switch-port traffic
+      (rx+tx), 0 when the server has no metered port.
+    type: integer
+  unreachable:
+    description: >-
+      Unreachable is true while the agent that manages the server can't be
+      reached (an outage,
+
+      maintenance): power, console, rescue and actions are unavailable for now
+      and PowerState is
+
+      the last state seen. Populated on read from the agent's tracked
+      reachability, not stored.
+    type: boolean
+  updated_at:
+    type: string
+  upgrade_price_cents:
+    description: recurring upgrade portion
+    type: integer

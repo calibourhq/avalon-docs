@@ -1,0 +1,34 @@
+type: object
+properties:
+  caller:
+    type: string
+  code:
+    type: string
+  created_at:
+    type: string
+  fields:
+    description: |-
+      Fields carries every remaining structured field of the log line as JSON
+      (method, path, ip, …) - whatever the call site attached.
+    type: string
+  fingerprint:
+    type: string
+  id:
+    description: |-
+      A log table takes far more rows than anything else in the schema, so it
+      uses a compact auto-increment key rather than the usual char(36) UUID.
+    type: integer
+  level:
+    type: string
+  message:
+    type: string
+  node:
+    description: |-
+      Node names the instance that logged the event, so a cluster deployment can
+      tell "one node is broken" from "the platform is broken".
+    type: string
+  suppressed:
+    description: |-
+      Suppressed counts occurrences collapsed into this row by the per-issue
+      write cap. Zero for a normally recorded event.
+    type: integer

@@ -1,0 +1,41 @@
+get:
+  operationId: list-dedicated-servers
+  security:
+    - BearerAuth: []
+  description: Lists the dedicated-server services of the caller's active organisation.
+  tags:
+    - dedicated
+  summary: List dedicated servers
+  parameters:
+    - description: organisation id; must be the active organisation
+      name: org_id
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/dedicated.DedicatedService.yaml
+post:
+  operationId: order-a-dedicated-server
+  security:
+    - BearerAuth: []
+  description: >-
+    Places a self-service order; auto-assigns in-stock inventory or records a backorder.
+
+    When the order raises an invoice the response is {service, invoice} instead.
+  tags:
+    - dedicated
+  summary: Order a dedicated server
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.DedicatedService.yaml

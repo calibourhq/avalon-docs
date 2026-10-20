@@ -1,0 +1,9 @@
+type: string
+enum:
+  - percent
+  - fixed
+  - override
+x-enum-varnames:
+  - PromoCodeTypePercent
+  - PromoCodeTypeFixed
+  - PromoCodeTypeOverride

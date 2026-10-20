@@ -1,0 +1,23 @@
+get:
+  operationId: list-irr-registries
+  security:
+    - BearerAuth: []
+  description: List the registries an AS-SET can be resolved in, for the add-AS-SET form.
+  tags:
+    - network-bgp
+  summary: List IRR registries
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/bgp.IRRRegistry.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

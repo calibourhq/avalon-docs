@@ -1,0 +1,28 @@
+delete:
+  operationId: unlink-telegram
+  security:
+    - BearerAuth: []
+  description: Unlink the Telegram account from the current account.
+  tags:
+    - self
+  summary: Unlink Telegram
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

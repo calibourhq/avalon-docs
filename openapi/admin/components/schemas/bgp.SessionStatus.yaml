@@ -1,0 +1,12 @@
+type: object
+properties:
+  description:
+    type: string
+  prefixes:
+    type: array
+    items:
+      type: string
+  routes:
+    type: integer
+  state:
+    type: string

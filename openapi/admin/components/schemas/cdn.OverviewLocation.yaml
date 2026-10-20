@@ -1,0 +1,22 @@
+type: object
+properties:
+  bandwidth:
+    type: integer
+  cache_hit_rate:
+    type: number
+  cache_hits:
+    type: integer
+  cache_misses:
+    type: integer
+  errors_4xx:
+    type: integer
+  errors_5xx:
+    type: integer
+  location:
+    type: string
+  nodes:
+    type: integer
+  nodes_online:
+    type: integer
+  requests:
+    type: integer

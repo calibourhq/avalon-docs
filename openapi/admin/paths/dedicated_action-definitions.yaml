@@ -1,0 +1,36 @@
+get:
+  operationId: list-server-action-definitions
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated-admin
+  summary: List server action definitions
+  parameters:
+    - description: only actions carrying this tag
+      name: tag
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/api.actionDefinitionView.yaml
+post:
+  operationId: create-a-server-action-definition
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated-admin
+  summary: Create a server action definition
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.actionDefinitionView.yaml

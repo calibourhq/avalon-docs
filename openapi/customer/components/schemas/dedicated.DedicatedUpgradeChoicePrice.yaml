@@ -1,0 +1,15 @@
+type: object
+properties:
+  choice_id:
+    type: string
+  created_at:
+    type: string
+  cycle:
+    type: string
+  id:
+    type: string
+  price:
+    description: EUR per unit per cycle
+    type: number
+  updated_at:
+    type: string

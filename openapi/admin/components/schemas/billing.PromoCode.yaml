@@ -1,0 +1,48 @@
+type: object
+properties:
+  applicable_to_billing_cycles:
+    description: >-
+      ApplicableToBillingCycles is a JSON array of billing cycles the code is
+      limited
+
+      to (empty = all cycles).
+    type: string
+  applicable_to_plan_ids:
+    description: >-
+      ApplicableToPlanIDs is a JSON array of composite
+      "<service_type>:<plan_uuid>" keys
+
+      the code is limited to (empty = all plans within the allowed service
+      types).
+    type: string
+  applicable_to_service_types:
+    description: >-
+      ApplicableToServiceTypes is a JSON array of service types the code is
+      limited to,
+
+      e.g. ["vps","dns"] (empty = all products).
+    type: string
+  code:
+    type: string
+  created_at:
+    type: string
+  id:
+    type: string
+  is_active:
+    type: boolean
+  max_uses:
+    type: integer
+  name:
+    type: string
+  type:
+    $ref: ./billing.PromoCodeType.yaml
+  updated_at:
+    type: string
+  uses_count:
+    type: integer
+  valid_from:
+    type: string
+  valid_until:
+    type: string
+  value:
+    type: integer

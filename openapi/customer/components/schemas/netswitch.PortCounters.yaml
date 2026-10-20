@@ -1,0 +1,14 @@
+type: object
+properties:
+  rx_bytes:
+    type: integer
+  rx_errors:
+    type: integer
+  rx_packets:
+    type: integer
+  tx_bytes:
+    type: integer
+  tx_drops:
+    type: integer
+  tx_packets:
+    type: integer

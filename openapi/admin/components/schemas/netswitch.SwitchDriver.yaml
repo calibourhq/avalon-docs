@@ -1,0 +1,7 @@
+type: string
+enum:
+  - routeros
+  - snmp
+x-enum-varnames:
+  - DriverRouterOS
+  - DriverSNMP

@@ -1,0 +1,33 @@
+type: object
+properties:
+  active:
+    type: boolean
+  auto_goal:
+    type: boolean
+  avatar_mime:
+    type: string
+  created_at:
+    type: string
+  description:
+    type: string
+  effective_goal:
+    type: integer
+  has_avatar:
+    type: boolean
+  id:
+    type: string
+  month_received:
+    type: integer
+  monthly_goal:
+    description: cents; 0 = no goal
+    type: integer
+  org_id:
+    type: string
+  recipient_name:
+    type: string
+  slug:
+    type: string
+  updated_at:
+    type: string
+  url:
+    type: string

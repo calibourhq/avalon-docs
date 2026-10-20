@@ -1,0 +1,9 @@
+type: string
+enum:
+  - ''
+  - kiosk
+  - windowed
+x-enum-varnames:
+  - ConsoleModeInherit
+  - ConsoleModeKiosk
+  - ConsoleModeWindowed

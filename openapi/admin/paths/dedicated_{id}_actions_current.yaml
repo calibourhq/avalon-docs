@@ -1,0 +1,51 @@
+get:
+  operationId: get-a-servers-current-action-run
+  security:
+    - BearerAuth: []
+  description: |-
+    Returns {run}, null when nothing of this service is running.
+    sees any run on the machine.
+  tags:
+    - dedicated
+  summary: Get a server's current action run
+  parameters:
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+delete:
+  operationId: cancel-a-servers-current-action-run
+  security:
+    - BearerAuth: []
+  description: >-
+    Cancels a run this service started. Runs started by staff cannot be cancelled here.
+
+    may cancel any run on the machine.
+  tags:
+    - dedicated
+  summary: Cancel a server's current action run
+  parameters:
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: reboot the machine back to its disk
+      name: reboot
+      in: query
+      schema:
+        type: boolean
+  responses:
+    '204':
+      description: No Content

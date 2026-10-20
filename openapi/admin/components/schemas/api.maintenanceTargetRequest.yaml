@@ -1,0 +1,18 @@
+type: object
+properties:
+  cluster_id:
+    type: string
+  kind:
+    type: string
+  node_name:
+    type: string
+  product_type:
+    type: string
+  rack_id:
+    type: string
+  region_id:
+    type: string
+  service_id:
+    type: string
+  switch_id:
+    type: string

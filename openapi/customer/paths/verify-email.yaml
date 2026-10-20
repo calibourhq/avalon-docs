@@ -1,0 +1,34 @@
+post:
+  security: []
+  operationId: verify-a-user-email-address
+  description: >-
+    Verify a user email via a submitted verification token, confirming registration or an email change.
+  tags:
+    - auth
+  summary: Verify a user email address
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/api.VerifyEmailRequest.yaml
+    description: Verification token
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.VerifyEmailResponse.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

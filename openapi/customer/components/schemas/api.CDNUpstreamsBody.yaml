@@ -1,0 +1,13 @@
+type: object
+required:
+  - upstreams
+properties:
+  balancing:
+    description: |-
+      Balancing is "weighted" or "latency". Omitted keeps the current mode;
+      whatever is sent, a pool of one origin is stored as weighted.
+    type: string
+  upstreams:
+    type: array
+    items:
+      $ref: ./cdn.UpstreamInput.yaml

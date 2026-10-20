@@ -1,0 +1,7 @@
+type: string
+enum:
+  - email
+  - telegram
+x-enum-varnames:
+  - ChannelEmail
+  - ChannelTelegram

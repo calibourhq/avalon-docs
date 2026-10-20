@@ -1,0 +1,83 @@
+get:
+  operationId: get-a-customer-account
+  security:
+    - BearerAuth: []
+  description: >-
+    Full profile, security state and org memberships for one customer account (admin only).
+  tags:
+    - customer-accounts
+  summary: Get a customer account
+  parameters:
+    - description: Account (user) ID
+      name: uid
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.AdminUserResponse.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+put:
+  operationId: update-a-customer-account
+  security:
+    - BearerAuth: []
+  description: >-
+    Updates a customer's name, email and preferred language (admin only). A changed email is applied immediately and marked unverified.
+  tags:
+    - customer-accounts
+  summary: Update a customer account
+  parameters:
+    - description: Account (user) ID
+      name: uid
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/api.AdminUpdateUserRequest.yaml
+    description: Profile
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/users.User.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

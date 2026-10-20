@@ -1,0 +1,29 @@
+get:
+  operationId: get-the-customer-dashboard
+  security:
+    - BearerAuth: []
+  description: >-
+    The sections the caller may see on the org dashboard: per-product service counts for products the instance offers and the caller can read, whether billing and support are visible, and the attention counts that need no list.
+  tags:
+    - orgs
+  summary: Get the customer dashboard
+  parameters:
+    - description: org id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.orgDashboardResponse.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

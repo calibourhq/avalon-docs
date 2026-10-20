@@ -1,0 +1,45 @@
+get:
+  operationId: get-a-customers-login-history
+  security:
+    - BearerAuth: []
+  description: >-
+    Successful sign-ins for one customer account, including admin login-as events (admin only).
+  tags:
+    - customer-accounts
+  summary: Get a customer's login history
+  parameters:
+    - description: Account (user) ID
+      name: uid
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: page number
+      name: page
+      in: query
+      schema:
+        type: integer
+    - description: page size
+      name: page_size
+      in: query
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/audit.ListResult.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

@@ -1,0 +1,80 @@
+get:
+  operationId: list-vps-servers
+  security:
+    - BearerAuth: []
+  description: |-
+    Lists the servers of the caller's active org.
+    lists all orgs; org_id filters by org.
+  tags:
+    - vps
+  summary: List VPS servers
+  parameters:
+    - description: filter by org
+      name: org_id
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/vps.VPSServer.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: order-a-vps-server
+  security:
+    - BearerAuth: []
+  description: >-
+    Orders a new VPS from a plan, allocating network and creating the billing subscription. Plan, region and OS are named by name, e.g. {"org_id": "...", "plan": "vps-s", "region": "ams1", "os": "debian-13", "billing_cycle": "monthly"}; the names come from GET /vps/plans (name), GET /vps/regions (region_name) and GET /vps/os (versions[].name). Hourly orders may set ephemeral (terminated automatically once stopped) with an optional ephemeral_max_age_minutes (10-43200, counted from activation).
+
+    an empty plan orders a custom spec (cpu, ram, disk_gb, ...); price_micros overrides the price; retired plans and OS versions stay orderable.
+  tags:
+    - vps
+  summary: Order a VPS server
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/api.OrderVPSRequest.yaml
+    description: Order
+    required: true
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/vps.VPSServer.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

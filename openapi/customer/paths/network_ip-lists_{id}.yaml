@@ -1,0 +1,34 @@
+get:
+  operationId: get-a-global-firewall-ip-list
+  security:
+    - BearerAuth: []
+  description: Get one enabled global IP list including its current entries.
+  tags:
+    - network-firewall
+  summary: Get a global firewall IP list
+  parameters:
+    - description: IP list id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/firewall.IPList.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

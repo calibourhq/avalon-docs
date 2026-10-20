@@ -1,0 +1,48 @@
+get:
+  operationId: list-an-agents-boot-networks
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated-admin
+  summary: List an agent's boot networks
+  parameters:
+    - description: agent id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/dedicated.DedicatedAgentBootNetwork.yaml
+put:
+  operationId: replace-an-agents-boot-networks
+  security:
+    - BearerAuth: []
+  description: >-
+    Sets which of the agent host's interfaces serve DHCP for which IPAM prefix. The list is the state.
+  tags:
+    - dedicated-admin
+  summary: Replace an agent's boot networks
+  parameters:
+    - description: agent id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/dedicated.DedicatedAgentBootNetwork.yaml

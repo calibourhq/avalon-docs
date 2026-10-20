@@ -1,0 +1,5 @@
+type: object
+properties:
+  method:
+    description: '"password" or "oauth"'
+    type: string

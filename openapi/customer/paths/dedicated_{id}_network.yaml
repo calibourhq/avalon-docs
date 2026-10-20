@@ -1,0 +1,23 @@
+get:
+  operationId: get-dedicated-server-network
+  security:
+    - BearerAuth: []
+  description: Lists the IP addresses and routed prefixes of the machine behind a service.
+  tags:
+    - dedicated
+  summary: Get dedicated server network
+  parameters:
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true

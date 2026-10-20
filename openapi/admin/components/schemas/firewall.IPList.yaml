@@ -1,0 +1,60 @@
+type: object
+properties:
+  created_at:
+    type: string
+  description:
+    type: string
+  enabled:
+    description: |-
+      Enabled lists are mirrored to every cluster and offered to customers. A
+      disabled list stays in the database (so existing rule references survive
+      a temporary disable) but is removed from the clusters and refused by
+      rule validation.
+    type: boolean
+  entries:
+    description: Entries is the current CIDR set, sorted and deduplicated.
+    type: array
+    items:
+      type: string
+  entries_hash:
+    description: |-
+      EntriesHash fingerprints Entries so the cluster reconciler can skip a
+      list whose content has not moved since it last converged that cluster,
+      without diffing every CIDR against the Proxmox API.
+    type: string
+  id:
+    type: string
+  last_error:
+    description: |-
+      LastError records why the most recent refresh failed; cleared on success.
+      The previous Entries are kept on failure, so a vendor outage degrades to
+      stale data rather than to an empty set that would silently stop matching.
+    type: string
+  name:
+    type: string
+  provider:
+    description: |-
+      Provider is the catalog key whose Fetch or Local function populates
+      Entries. It is empty only on a row whose catalog entry has been retired.
+    type: string
+  refreshed_at:
+    description: RefreshedAt is the last successful refresh; nil until the first one runs.
+    type: string
+  set_name:
+    description: |-
+      SetName is not stored: it is derived, and returned so the UI and the API
+      can show operators which Proxmox object backs the list.
+    type: string
+  slug:
+    description: |-
+      Slug is the stable identity of the list, both in the catalog and in the
+      IPSet name we create on Proxmox. It never changes for a given list.
+    type: string
+  source:
+    description: |-
+      Source is derived from the catalog: "remote" for a list fetched from a
+      third party, "local" for one computed from our own tables, "" for a row
+      whose catalog entry is gone.
+    type: string
+  updated_at:
+    type: string

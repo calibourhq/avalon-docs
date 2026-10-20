@@ -1,0 +1,23 @@
+get:
+  operationId: list-services-a-maintenance-affects
+  security:
+    - BearerAuth: []
+  description: Resolves the targets live, grouped by org, with the reasons.
+  tags:
+    - maintenance
+  summary: List services a maintenance affects
+  parameters:
+    - description: maintenance id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true

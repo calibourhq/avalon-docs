@@ -1,0 +1,27 @@
+type: string
+enum:
+  - cpu
+  - ram
+  - disk
+  - nic
+  - gpu
+  - bandwidth
+  - uplink
+x-enum-comments:
+  KindRAM: 'one memory module: per-DIMM capacity + type, quantity = DIMMs fitted'
+x-enum-descriptions:
+  - ''
+  - 'one memory module: per-DIMM capacity + type, quantity = DIMMs fitted'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+x-enum-varnames:
+  - KindCPU
+  - KindRAM
+  - KindDisk
+  - KindNIC
+  - KindGPU
+  - KindBandwidth
+  - KindUplink

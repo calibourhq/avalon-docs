@@ -1,0 +1,57 @@
+type: object
+properties:
+  armed_at:
+    type: string
+  booted_at:
+    type: string
+  created_at:
+    type: string
+  dhcp_at:
+    type: string
+  ended_at:
+    type: string
+  expires_at:
+    type: string
+  has_post_boot_script:
+    description: HasPostBootScript says whether one was supplied, without echoing it.
+    type: boolean
+  hostname:
+    type: string
+  id:
+    type: string
+  image_id:
+    type: string
+  image_name:
+    type: string
+  image_style:
+    description: |-
+      ImageStyle is "live" or "chain". The panel reads it to know what this
+      session can and cannot report: a chained menu sets no root password, runs
+      no script, and never tells anyone it came up, so a progress bar waiting
+      for "booted" would sit at three quarters forever and look like a fault.
+    type: string
+  ip:
+    type: string
+  ipxe_at:
+    type: string
+  mac:
+    type: string
+  manual_reboot:
+    description: |-
+      ManualReboot says nothing restarted the machine into this session, so it
+      is waiting for somebody to restart it. The panel says so rather than
+      drawing a boot that is about to happen on its own.
+    type: boolean
+  message:
+    type: string
+  root_password:
+    description: RootPassword is present only while the session is live.
+    type: string
+  script_ended_at:
+    type: string
+  script_exit:
+    type: integer
+  server_id:
+    type: string
+  status:
+    type: string

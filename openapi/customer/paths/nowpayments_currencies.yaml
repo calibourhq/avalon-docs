@@ -1,0 +1,28 @@
+get:
+  operationId: list-nowpayments-currencies
+  security:
+    - BearerAuth: []
+  description: Returns the list of crypto currencies accepted by NOWPayments.
+  tags:
+    - invoices
+  summary: List NOWPayments currencies
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

@@ -1,0 +1,42 @@
+put:
+  operationId: set-a-customers-email-verification-state
+  security:
+    - BearerAuth: []
+  description: >-
+    Marks a customer's email address verified or unverified by hand (admin only).
+  tags:
+    - customer-accounts
+  summary: Set a customer's email verification state
+  parameters:
+    - description: Account (user) ID
+      name: uid
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/api.AdminSetEmailVerifiedRequest.yaml
+    description: Verified state
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/users.User.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

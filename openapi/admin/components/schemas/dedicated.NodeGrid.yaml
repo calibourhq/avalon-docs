@@ -1,0 +1,10 @@
+type: object
+properties:
+  cols:
+    type: integer
+  order:
+    type: array
+    items:
+      type: integer
+  rows:
+    type: integer

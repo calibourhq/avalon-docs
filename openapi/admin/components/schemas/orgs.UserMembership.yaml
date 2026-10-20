@@ -1,0 +1,18 @@
+type: object
+properties:
+  customer_id:
+    type: integer
+  is_owner:
+    type: boolean
+  notify_billing:
+    type: boolean
+  notify_technical:
+    type: boolean
+  org_id:
+    type: string
+  org_name:
+    type: string
+  permissions:
+    type: array
+    items:
+      $ref: ./orgs.Permission.yaml

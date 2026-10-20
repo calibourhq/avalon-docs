@@ -1,0 +1,33 @@
+post:
+  security: []
+  operationId: verify-admin-2fa-code
+  description: >-
+    Verify an admin's TOTP, OTP or recovery code to complete a pending 2FA login.
+  tags:
+    - two-factor
+  summary: Verify admin 2FA code
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.LoginResponse.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

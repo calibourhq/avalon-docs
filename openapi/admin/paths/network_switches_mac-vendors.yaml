@@ -1,0 +1,25 @@
+post:
+  operationId: name-the-vendors-behind-mac-addresses-admin
+  security:
+    - BearerAuth: []
+  description: >-
+    Looks each MAC up in the IEEE registries. Only addresses with a known vendor appear in the result; locally administered ones never do.
+  tags:
+    - network-switches
+  summary: Name the vendors behind MAC addresses (admin)
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/api.macVendorsInput.yaml
+    description: MAC addresses
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties:
+              type: string

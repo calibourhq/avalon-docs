@@ -1,0 +1,23 @@
+type: object
+properties:
+  board:
+    description: board/model string, when the BMC reports one
+    type: string
+  console_tech:
+    description: '"html5" | "vnc"'
+    type: array
+    items:
+      type: string
+  firmware:
+    description: BMC firmware revision
+    type: string
+  message:
+    type: string
+  suggested_driver:
+    type: string
+  vendor:
+    description: '"Supermicro", "HPE", ...'
+    type: string
+  vnc_port_open:
+    description: the RFB port that answered, 0 if none
+    type: integer

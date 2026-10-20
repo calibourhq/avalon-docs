@@ -1,0 +1,44 @@
+put:
+  operationId: change-a-services-billing-cycle-admin
+  security:
+    - BearerAuth: []
+  description: >-
+    Moves a fixed-cycle service to another fixed cycle at the given price per new cycle. The period already running keeps its terms; the change applies from the next period not yet invoiced.
+  tags:
+    - admin
+  summary: Change a service's billing cycle (admin)
+  parameters:
+    - description: service type
+      name: type
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/api.changeCycleRequest.yaml
+    description: New cycle and price
+    required: true
+  responses:
+    '204':
+      description: No Content
+    '400':
+      description: Bad Request
+      content:
+        '*/*':
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '409':
+      description: Conflict
+      content:
+        '*/*':
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

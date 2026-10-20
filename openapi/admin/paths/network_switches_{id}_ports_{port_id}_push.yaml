@@ -1,0 +1,31 @@
+post:
+  operationId: push-a-switch-port-to-the-device-admin
+  security:
+    - BearerAuth: []
+  description: >-
+    Queues a one-off write of this port's stored settings. Infrastructure ports are never written by the periodic reconcile, so this is how their configuration reaches the switch; for other roles it forces the port to be re-applied.
+  tags:
+    - network-switches
+  summary: Push a switch port to the device (admin)
+  parameters:
+    - description: switch id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: port id
+      name: port_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '202':
+      description: Accepted
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties:
+              type: string

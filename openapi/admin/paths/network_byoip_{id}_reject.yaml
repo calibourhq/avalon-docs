@@ -1,0 +1,41 @@
+post:
+  operationId: reject-byoip-prefix-admin
+  security:
+    - BearerAuth: []
+  description: Reject a pending BYOIP prefix.
+  tags:
+    - network-bgp
+  summary: Reject BYOIP prefix (admin)
+  parameters:
+    - description: byoip prefix id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

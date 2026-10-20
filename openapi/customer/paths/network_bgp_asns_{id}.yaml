@@ -1,0 +1,77 @@
+get:
+  operationId: get-bgp-asn
+  security:
+    - BearerAuth: []
+  description: Get a single BGP ASN by id.
+  tags:
+    - network-bgp
+  summary: Get BGP ASN
+  parameters:
+    - description: asn id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/bgp.OrgASN.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+delete:
+  operationId: delete-bgp-asn
+  security:
+    - BearerAuth: []
+  description: >-
+    Delete a BGP ASN. Its verification history is kept, so asking again for a denied ASN goes to manual review.
+  tags:
+    - network-bgp
+  summary: Delete BGP ASN
+  parameters:
+    - description: asn id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

@@ -1,0 +1,16 @@
+type: object
+properties:
+  created_at:
+    type: string
+  id:
+    type: string
+  kind:
+    $ref: ./privatenet.PrivateNetworkKind.yaml
+  name:
+    type: string
+  region_id:
+    type: string
+  status:
+    $ref: ./privatenet.PrivateNetworkStatus.yaml
+  vlan_id:
+    type: integer

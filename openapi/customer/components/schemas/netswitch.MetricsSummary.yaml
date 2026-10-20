@@ -1,0 +1,19 @@
+type: object
+properties:
+  from:
+    type: string
+  interval_seconds:
+    description: |-
+      IntervalSeconds is the nominal width of one point (monthly points use
+      the average month), so the chart can label the axis.
+    type: integer
+  period:
+    type: string
+  points:
+    type: array
+    items:
+      $ref: ./netswitch.MetricsPoint.yaml
+  to:
+    type: string
+  totals:
+    $ref: ./netswitch.PortCounters.yaml

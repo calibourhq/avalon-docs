@@ -1,0 +1,37 @@
+post:
+  operationId: send-a-maintenance-notification-round
+  security:
+    - BearerAuth: []
+  description: >-
+    Queues the round for the reviewed recipients. Returns 409 when they changed since the preview.
+  tags:
+    - maintenance
+  summary: Send a maintenance notification round
+  parameters:
+    - description: maintenance id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/api.maintenanceNotifyRequest.yaml
+    description: Round
+    required: true
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

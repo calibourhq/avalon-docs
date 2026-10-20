@@ -1,0 +1,38 @@
+put:
+  operationId: update-dedicated-plan
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Update dedicated plan
+  parameters:
+    - description: plan id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.DedicatedPlan.yaml
+delete:
+  operationId: delete-dedicated-plan
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Delete dedicated plan
+  parameters:
+    - description: plan id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content

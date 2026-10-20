@@ -1,0 +1,16 @@
+get:
+  operationId: list-rescue-images-available-to-boot
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: List rescue images available to boot
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/dedicated.RescueImageOption.yaml

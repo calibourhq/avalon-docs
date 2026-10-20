@@ -1,0 +1,41 @@
+get:
+  operationId: get-vps-network-configuration
+  security:
+    - BearerAuth: []
+  description: >-
+    Returns the network configuration for a server including gateway, netmask, DNS servers, and any PTR records for assigned IPs and subnets.
+  tags:
+    - vps
+  summary: Get VPS network configuration
+  parameters:
+    - description: server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.vpsNetworkResponse.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

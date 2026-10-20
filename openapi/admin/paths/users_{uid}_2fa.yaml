@@ -1,0 +1,31 @@
+delete:
+  operationId: clear-a-customers-totp-2fa-delete-users-uid-2fa
+  security:
+    - BearerAuth: []
+  description: >-
+    Removes the TOTP configuration for a customer account so they can log in with a password alone (admin only).
+  tags:
+    - customer-accounts
+  summary: Clear a customer's TOTP 2FA
+  parameters:
+    - description: Account (user) ID
+      name: uid
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

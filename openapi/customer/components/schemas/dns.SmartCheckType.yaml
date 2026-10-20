@@ -1,0 +1,7 @@
+type: string
+enum:
+  - port
+  - http
+x-enum-varnames:
+  - SmartCheckTypePort
+  - SmartCheckTypeHTTP

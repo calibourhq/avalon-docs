@@ -1,0 +1,85 @@
+type: object
+properties:
+  api_endpoint:
+    type: string
+  api_token_id:
+    type: string
+  backup_storage:
+    type: string
+  created_at:
+    type: string
+  default_bridge:
+    type: string
+  default_cpu_type:
+    description: |-
+      DefaultCPUType is the QEMU CPU model (Proxmox's `cpu` option) applied to
+      every guest on this cluster, e.g. "host" or "x86-64-v2-AES". Empty leaves
+      whatever the OS template carries, which is Proxmox's own default (kvm64).
+      It lives on the cluster rather than the plan because the model has to be
+      valid on every node a guest may be placed on or migrated to.
+    type: string
+  default_storages:
+    description: |-
+      DefaultStorages are the storage pools a guest's disks may go on, by
+      Proxmox storage name. Not every node needs every pool: a guest is placed
+      on a node that has at least one of them and, when the node has several,
+      on the least used (see ReserveNode and PickStorage). The pool a server
+      landed on is recorded on it (VPSServer.StorageName).
+    type: array
+    items:
+      type: string
+  default_vlan_tag:
+    description: VLAN ID on a VLAN-aware DefaultBridge; 0 = untagged
+    type: integer
+  id:
+    type: string
+  insecure_tls:
+    description: |-
+      InsecureTLS accepts any certificate the cluster presents: no system trust
+      store, no fingerprint pinning. Escape hatch for clusters whose certificate
+      rotates (pinning would report a mismatch after every rotation).
+    type: boolean
+  ipv4_pool_prefix_ids:
+    description: IPAM pool prefix IDs selected by admin
+    type: array
+    items:
+      type: string
+  ipv6_pool_prefix_ids:
+    type: array
+    items:
+      type: string
+  max_avg_cpu_percent:
+    description: |-
+      Placement thresholds: a node whose 24h-average CPU/IO-wait exceeds these
+      percentages is disqualified from new orders by the availability gate.
+      <=0 falls back to DefaultMaxAvgCPUPercent / DefaultMaxAvgIOWaitPercent.
+    type: number
+  max_avg_iowait_percent:
+    type: number
+  name:
+    type: string
+  ram_oversell_factor:
+    description: >-
+      RAMOversellFactor scales the RAM aggregate budget the availability gate
+
+      allows per node (allocated + new guest must fit within physical × factor).
+
+      <=0 inherits the global vps.oversell_factor, then
+      DefaultRAMOversellFactor.
+    type: number
+  region_id:
+    type: string
+  routed_prefix_ids:
+    type: array
+    items:
+      type: string
+  sdn_mtu:
+    description: 0 = use Proxmox default
+    type: integer
+  sdn_zone:
+    description: SDN configuration for private networks
+    type: string
+  template_storage:
+    type: string
+  updated_at:
+    type: string

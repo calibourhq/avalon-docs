@@ -1,0 +1,31 @@
+type: object
+properties:
+  billing_cycle:
+    type: string
+  created_at:
+    type: string
+  description:
+    type: string
+  ends_at:
+    description: |-
+      EndsAt optionally ends the item: periods starting on/after this date are
+      never billed, and the item is closed out by the expiry sweep once the
+      date passes.
+    type: string
+  id:
+    type: string
+  invoice_id:
+    description: InvoiceID is the proforma that gates activation for prepaid orgs.
+    type: string
+  name:
+    type: string
+  org_id:
+    type: string
+  price_cents:
+    type: integer
+  status:
+    type: string
+  subscription_id:
+    type: string
+  updated_at:
+    type: string

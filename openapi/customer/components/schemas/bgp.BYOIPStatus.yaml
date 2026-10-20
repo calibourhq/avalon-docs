@@ -1,0 +1,13 @@
+type: string
+enum:
+  - pending
+  - active
+  - rejected
+  - deleting
+  - error
+x-enum-varnames:
+  - BYOIPPending
+  - BYOIPActive
+  - BYOIPRejected
+  - BYOIPDeleting
+  - BYOIPError

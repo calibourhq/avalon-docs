@@ -1,0 +1,34 @@
+get:
+  operationId: list-donations-received
+  security:
+    - BearerAuth: []
+  description: Returns one page of donations to the caller org's page, newest first.
+  tags:
+    - donations
+  summary: List donations received
+  parameters:
+    - description: page number (1-based)
+      name: page
+      in: query
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

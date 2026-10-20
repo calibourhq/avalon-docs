@@ -1,0 +1,34 @@
+post:
+  operationId: confirm-totp-setup
+  security:
+    - BearerAuth: []
+  description: >-
+    Verify a TOTP code and enable TOTP for the authenticated account. When the account has no recovery codes yet, a fresh set is returned; otherwise recovery_codes is empty and the existing set stays valid.
+  tags:
+    - two-factor
+  summary: Confirm TOTP setup
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.recoveryCodesResponse.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

@@ -1,0 +1,44 @@
+post:
+  operationId: transfer-a-billable-item-to-another-organisation
+  security:
+    - BearerAuth: []
+  description: >-
+    Moves an admin-defined billable item and its billing subscription to another organisation. Admin only, like every other billable-item mutation.
+  tags:
+    - billing
+  summary: Transfer a billable item to another organisation
+  parameters:
+    - description: billable item id
+      name: item_id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    $ref: ../components/requestBodies/api.transferServiceRequest.yaml
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

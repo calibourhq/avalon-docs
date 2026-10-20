@@ -1,0 +1,22 @@
+get:
+  security: []
+  operationId: list-cdn-edge-ips-as-plain-text
+  description: |-
+    Same list as /cdn/ips, one address per line (IPv4 first),
+    for scripts that feed ipset, nginx or similar directly.
+  tags:
+    - cdn
+  summary: List CDN edge IPs as plain text
+  responses:
+    '200':
+      description: OK
+      content:
+        text/plain:
+          schema:
+            type: string
+    '500':
+      description: Internal Server Error
+      content:
+        text/plain:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

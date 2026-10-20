@@ -1,0 +1,44 @@
+get:
+  operationId: list-rack-devices
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: List rack devices
+  parameters:
+    - description: rack id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/dedicated.RackDevice.yaml
+post:
+  operationId: mount-a-device-in-a-rack
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Mount a device in a rack
+  parameters:
+    - description: rack id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.RackDevice.yaml

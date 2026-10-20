@@ -1,0 +1,56 @@
+type: object
+required:
+  - email
+  - preferred_language
+  - username
+properties:
+  avatar:
+    type: array
+    items:
+      type: integer
+  created_at:
+    type: string
+  email:
+    type: string
+    maxLength: 255
+  first_name:
+    type: string
+    maxLength: 100
+  group:
+    $ref: ./admins.AdminGroup.yaml
+  group_id:
+    type: string
+  id:
+    type: string
+  last_login:
+    type: string
+  last_name:
+    type: string
+    maxLength: 100
+  preferred_language:
+    type: string
+    maxLength: 10
+  preferred_theme:
+    description: |-
+      PreferredTheme is the UI color mode: "system" (follow the browser
+      preference), "light" or "dark".
+    type: string
+    enum:
+      - system
+      - light
+      - dark
+  role:
+    description: job title for the support signature, e.g. "Support Lead"
+    type: string
+    maxLength: 100
+  telegram_chat_id:
+    type: integer
+  telegram_first_name:
+    type: string
+  telegram_username:
+    type: string
+  updated_at:
+    type: string
+  username:
+    type: string
+    maxLength: 100

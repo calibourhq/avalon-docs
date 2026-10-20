@@ -1,0 +1,42 @@
+get:
+  operationId: get-vps-mounted-iso
+  security:
+    - BearerAuth: []
+  description: >-
+    Returns the ISO currently mounted on the server (if any) and the list of ready images the org may mount.
+  tags:
+    - vps
+  summary: Get VPS mounted ISO
+  parameters:
+    - description: VPS server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

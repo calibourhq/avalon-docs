@@ -1,0 +1,12 @@
+type: object
+properties:
+  dns:
+    type: string
+  ipv4_cidr:
+    type: string
+  ipv4_gateway:
+    type: string
+  ipv6_cidr:
+    type: string
+  ipv6_gateway:
+    type: string

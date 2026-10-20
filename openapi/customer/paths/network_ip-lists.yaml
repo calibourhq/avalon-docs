@@ -1,0 +1,29 @@
+get:
+  operationId: list-global-firewall-ip-lists
+  security:
+    - BearerAuth: []
+  description: List the enabled global IP lists that firewall rules can reference.
+  tags:
+    - network-firewall
+  summary: List global firewall IP lists
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/api.ipListResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

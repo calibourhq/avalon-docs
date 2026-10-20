@@ -1,0 +1,21 @@
+type: string
+enum:
+  - stripe
+  - paypal
+  - credit
+  - manual
+  - other
+x-enum-comments:
+  RefundGatewayCredit: added to the org's account balance
+x-enum-descriptions:
+  - ''
+  - ''
+  - added to the org's account balance
+  - ''
+  - ''
+x-enum-varnames:
+  - RefundGatewayStripe
+  - RefundGatewayPayPal
+  - RefundGatewayCredit
+  - RefundGatewayManual
+  - RefundGatewayOther

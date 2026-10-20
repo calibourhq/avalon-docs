@@ -1,0 +1,22 @@
+post:
+  operationId: cancel-a-dedicated-server-at-period-end
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Cancel a dedicated server at period end
+  parameters:
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true

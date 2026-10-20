@@ -1,0 +1,33 @@
+type: object
+properties:
+  bandwidth_bytes:
+    type: integer
+  bytes_in:
+    description: |-
+      BytesIn is upload traffic (request bodies), BytesOut download traffic
+      (response bodies), both measured on the wire.
+    type: integer
+  bytes_out:
+    type: integer
+  ops_copy:
+    type: integer
+  ops_delete:
+    type: integer
+  ops_get:
+    type: integer
+  ops_head:
+    type: integer
+  ops_list:
+    type: integer
+  ops_other:
+    type: integer
+  ops_put:
+    type: integer
+  ops_read:
+    type: integer
+  ops_search:
+    type: integer
+  ops_write:
+    type: integer
+  time:
+    type: string

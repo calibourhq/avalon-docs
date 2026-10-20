@@ -1,0 +1,7 @@
+type: object
+properties:
+  billing_cycle:
+    $ref: ./billing.BillingCycle.yaml
+  unit_price_micros:
+    description: per new cycle, micro-euros
+    type: integer

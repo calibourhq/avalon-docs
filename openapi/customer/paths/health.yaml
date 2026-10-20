@@ -1,0 +1,14 @@
+get:
+  security: []
+  operationId: health-check
+  description: Get the health status of the API
+  tags:
+    - health
+  summary: Health check
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.HealthResponse.yaml

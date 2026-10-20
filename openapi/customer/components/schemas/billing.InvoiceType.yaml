@@ -1,0 +1,11 @@
+type: string
+enum:
+  - invoice
+  - proforma
+  - credit_note
+  - receipt
+x-enum-varnames:
+  - InvoiceTypeInvoice
+  - InvoiceTypeProforma
+  - InvoiceTypeCreditNote
+  - InvoiceTypeReceipt

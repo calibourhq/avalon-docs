@@ -1,0 +1,34 @@
+post:
+  security: []
+  operationId: check-login-email-auth-method
+  description: >-
+    Tells the login UI which auth method (password or oauth) an email should use.
+  tags:
+    - auth
+  summary: Check login email auth method
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/api.CheckEmailRequest.yaml
+    description: Email to check
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.CheckEmailResponse.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

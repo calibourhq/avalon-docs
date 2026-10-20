@@ -1,0 +1,44 @@
+post:
+  operationId: create-a-dns-record
+  security:
+    - BearerAuth: []
+  description: |-
+    Creates a DNS record in a zone. The zone apex NS set cannot be changed.
+    may also manage the apex NS set.
+  tags:
+    - dns
+  summary: Create a DNS record
+  parameters:
+    - description: zone id
+      name: zone_id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    $ref: ../components/requestBodies/dns.RecordInput.yaml
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/pdns.Record.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

@@ -1,0 +1,23 @@
+post:
+  operationId: migrate-zones-and-domains-onto-the-current-nameservers
+  security:
+    - BearerAuth: []
+  description: >-
+    Runs the nameserver migration for the given zones and domains, or for everything still outstanding when all is set (admin only). Never aborts on a single failure; the report says what succeeded.
+  tags:
+    - dns
+  summary: Migrate zones and domains onto the current nameservers
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

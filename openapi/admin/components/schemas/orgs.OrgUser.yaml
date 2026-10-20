@@ -1,0 +1,22 @@
+type: object
+properties:
+  is_owner:
+    type: boolean
+  notify_billing:
+    description: >-
+      NotifyBilling/NotifyTechnical mark this member as a notification contact
+      for the
+
+      respective category. When no member is flagged for a category, all owners
+      receive it.
+    type: boolean
+  notify_technical:
+    type: boolean
+  org_id:
+    type: string
+  permissions:
+    type: array
+    items:
+      $ref: ./orgs.Permission.yaml
+  user_id:
+    type: string

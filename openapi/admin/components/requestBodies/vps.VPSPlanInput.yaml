@@ -1,0 +1,6 @@
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/vps.VPSPlanInput.yaml
+description: plan input
+required: true

@@ -1,0 +1,23 @@
+get:
+  operationId: dedicated-server-live-status
+  security:
+    - BearerAuth: []
+  description: Fetches live BMC power state for a service's server.
+  tags:
+    - dedicated
+  summary: Dedicated server live status
+  parameters:
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true

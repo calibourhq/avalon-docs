@@ -1,0 +1,47 @@
+post:
+  operationId: create-credit-note-admin
+  security:
+    - BearerAuth: []
+  description: Creates a credit note for an invoice.
+  tags:
+    - invoices
+  summary: Create credit note (admin)
+  parameters:
+    - description: invoice id
+      name: inv_id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/billing.CreateInvoiceRequest.yaml
+    description: Credit note request
+    required: true
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/billing.Invoice.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

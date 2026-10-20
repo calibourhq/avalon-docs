@@ -1,0 +1,19 @@
+type: object
+properties:
+  breach_notify_agents:
+    type: boolean
+  breach_notify_before:
+    description: minutes before breach
+    type: integer
+  created_at:
+    type: string
+  first_response_hours:
+    type: integer
+  id:
+    type: string
+  priority:
+    type: string
+  resolution_hours:
+    type: integer
+  updated_at:
+    type: string

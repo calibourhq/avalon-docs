@@ -1,0 +1,6 @@
+type: object
+properties:
+  macs:
+    type: array
+    items:
+      type: string

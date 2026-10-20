@@ -1,0 +1,42 @@
+get:
+  operationId: get-dedicated-network-pool-by-region
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Get dedicated network pool by region
+  parameters:
+    - description: region id
+      name: region_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.DedicatedNetworkPool.yaml
+put:
+  operationId: upsert-dedicated-network-pool-for-a-region
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Upsert dedicated network pool for a region
+  parameters:
+    - description: region id
+      name: region_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.DedicatedNetworkPool.yaml

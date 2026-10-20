@@ -1,0 +1,14 @@
+type: object
+properties:
+  address:
+    type: string
+  location:
+    type: string
+  metrics_port:
+    type: integer
+  metrics_scheme:
+    type: string
+  metrics_token:
+    type: string
+  name:
+    type: string

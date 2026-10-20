@@ -1,0 +1,25 @@
+type: object
+required:
+  - email
+  - first_name
+  - last_name
+  - preferred_language
+properties:
+  email:
+    type: string
+    maxLength: 255
+  first_name:
+    type: string
+    maxLength: 100
+  last_name:
+    type: string
+    maxLength: 100
+  preferred_language:
+    type: string
+    maxLength: 10
+  preferred_theme:
+    type: string
+    enum:
+      - system
+      - light
+      - dark

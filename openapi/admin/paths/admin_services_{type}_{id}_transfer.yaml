@@ -1,0 +1,31 @@
+post:
+  operationId: transfer-a-service-to-another-organisation-admin
+  security:
+    - BearerAuth: []
+  description: Same billing guards as the per-type transfer endpoints.
+  tags:
+    - admin
+  summary: Transfer a service to another organisation (admin)
+  parameters:
+    - description: service type
+      name: type
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    $ref: ../components/requestBodies/api.transferServiceRequest.yaml
+  responses:
+    '200':
+      description: OK
+      content:
+        '*/*':
+          schema:
+            type: object
+            additionalProperties: true

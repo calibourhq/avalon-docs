@@ -1,0 +1,53 @@
+type: object
+properties:
+  audience:
+    description: Admin-only from here down.
+    type: string
+  created_at:
+    type: string
+  description:
+    type: string
+  enabled:
+    type: boolean
+  expose_log:
+    type: boolean
+  has_script:
+    type: boolean
+  icon:
+    type: string
+  id:
+    type: string
+  image_id:
+    type: string
+  image_name:
+    type: string
+  inputs:
+    type: array
+    items:
+      $ref: ./dedicated.ActionInput.yaml
+  key:
+    type: string
+  name:
+    type: string
+  on_success:
+    type: string
+  script:
+    description: |-
+      Script is present only on an admin's read of a single definition. It is
+      never on a list, because a list is the one place an accidental widening
+      would leak every script at once.
+    type: string
+  sort_order:
+    type: integer
+  steps:
+    type: array
+    items:
+      $ref: ./dedicated.ActionStep.yaml
+  tags:
+    type: array
+    items:
+      type: string
+  timeout_seconds:
+    type: integer
+  version:
+    type: integer

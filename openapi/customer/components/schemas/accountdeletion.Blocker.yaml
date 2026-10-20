@@ -1,0 +1,8 @@
+type: object
+properties:
+  amount_cents:
+    type: integer
+  count:
+    type: integer
+  type:
+    type: string

@@ -1,0 +1,61 @@
+get:
+  operationId: get-network-switch-admin
+  security:
+    - BearerAuth: []
+  tags:
+    - network-switches
+  summary: Get network switch (admin)
+  parameters:
+    - description: switch id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/netswitch.Switch.yaml
+put:
+  operationId: update-network-switch-admin
+  security:
+    - BearerAuth: []
+  tags:
+    - network-switches
+  summary: Update network switch (admin)
+  parameters:
+    - description: switch id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/netswitch.Switch.yaml
+delete:
+  operationId: delete-network-switch-admin
+  security:
+    - BearerAuth: []
+  description: >-
+    Deletes the switch and its ports. Servers patched into it lose their port assignment and keep running; nothing is changed on the device.
+  tags:
+    - network-switches
+  summary: Delete network switch (admin)
+  parameters:
+    - description: switch id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content

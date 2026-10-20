@@ -1,0 +1,690 @@
+openapi: 3.0.0
+info:
+  title: Admin API
+  version: '1.0'
+  description: >-
+    Staff-only endpoints, plus the shared endpoints whose behaviour differs for
+    staff sessions.
+paths:
+  /admin/accounts:
+    $ref: paths/admin_accounts.yaml
+  /admin/accounts/{id}:
+    $ref: paths/admin_accounts_{id}.yaml
+  /admin/dashboard:
+    $ref: paths/admin_dashboard.yaml
+  /admin/dashboard/widgets/{id}:
+    $ref: paths/admin_dashboard_widgets_{id}.yaml
+  /admin/forgot-password:
+    $ref: paths/admin_forgot-password.yaml
+  /admin/groups:
+    $ref: paths/admin_groups.yaml
+  /admin/groups/{id}:
+    $ref: paths/admin_groups_{id}.yaml
+  /admin/login:
+    $ref: paths/admin_login.yaml
+  /admin/login/2fa/passkey/begin:
+    $ref: paths/admin_login_2fa_passkey_begin.yaml
+  /admin/login/2fa/passkey/finish:
+    $ref: paths/admin_login_2fa_passkey_finish.yaml
+  /admin/login/2fa/send-otp:
+    $ref: paths/admin_login_2fa_send-otp.yaml
+  /admin/login/2fa/verify:
+    $ref: paths/admin_login_2fa_verify.yaml
+  /admin/permissions:
+    $ref: paths/admin_permissions.yaml
+  /admin/reset-password:
+    $ref: paths/admin_reset-password.yaml
+  /admin/services/{type}/{id}:
+    $ref: paths/admin_services_{type}_{id}.yaml
+  /admin/services/{type}/{id}/billing-cycle:
+    $ref: paths/admin_services_{type}_{id}_billing-cycle.yaml
+  /admin/services/{type}/{id}/cancel:
+    $ref: paths/admin_services_{type}_{id}_cancel.yaml
+  /admin/services/{type}/{id}/history:
+    $ref: paths/admin_services_{type}_{id}_history.yaml
+  /admin/services/{type}/{id}/invoices:
+    $ref: paths/admin_services_{type}_{id}_invoices.yaml
+  /admin/services/{type}/{id}/suspend:
+    $ref: paths/admin_services_{type}_{id}_suspend.yaml
+  /admin/services/{type}/{id}/transfer:
+    $ref: paths/admin_services_{type}_{id}_transfer.yaml
+  /admin/services/{type}/{id}/uncancel:
+    $ref: paths/admin_services_{type}_{id}_uncancel.yaml
+  /admin/services/{type}/{id}/unsuspend:
+    $ref: paths/admin_services_{type}_{id}_unsuspend.yaml
+  /admin/system-logs/events:
+    $ref: paths/admin_system-logs_events.yaml
+  /admin/system-logs/issues:
+    $ref: paths/admin_system-logs_issues.yaml
+  /admin/system-logs/issues/{fingerprint}/ack:
+    $ref: paths/admin_system-logs_issues_{fingerprint}_ack.yaml
+  /admin/version:
+    $ref: paths/admin_version.yaml
+  /admin/webauthn/login/begin:
+    $ref: paths/admin_webauthn_login_begin.yaml
+  /admin/webauthn/login/finish:
+    $ref: paths/admin_webauthn_login_finish.yaml
+  /audit-logs:
+    $ref: paths/audit-logs.yaml
+  /billable-items:
+    $ref: paths/billable-items.yaml
+  /billable-items/{item_id}:
+    $ref: paths/billable-items_{item_id}.yaml
+  /billable-items/{item_id}/cancel:
+    $ref: paths/billable-items_{item_id}_cancel.yaml
+  /billable-items/{item_id}/transfer:
+    $ref: paths/billable-items_{item_id}_transfer.yaml
+  /billing/accounting/documents:
+    $ref: paths/billing_accounting_documents.yaml
+  /billing/accounting/export:
+    $ref: paths/billing_accounting_export.yaml
+  /billing/accounting/summary:
+    $ref: paths/billing_accounting_summary.yaml
+  /billing/global-settings:
+    $ref: paths/billing_global-settings.yaml
+  /billing/transactions:
+    $ref: paths/billing_transactions.yaml
+  /capabilities:
+    $ref: paths/capabilities.yaml
+  /cdn/metrics:
+    $ref: paths/cdn_metrics.yaml
+  /cdn/nodes:
+    $ref: paths/cdn_nodes.yaml
+  /cdn/nodes/{node_id}:
+    $ref: paths/cdn_nodes_{node_id}.yaml
+  /cdn/nodes/{node_id}/disable:
+    $ref: paths/cdn_nodes_{node_id}_disable.yaml
+  /cdn/nodes/{node_id}/enable:
+    $ref: paths/cdn_nodes_{node_id}_enable.yaml
+  /cdn/nodes/{node_id}/events:
+    $ref: paths/cdn_nodes_{node_id}_events.yaml
+  /cdn/nodes/{node_id}/metrics:
+    $ref: paths/cdn_nodes_{node_id}_metrics.yaml
+  /cdn/nodes/{node_id}/reset-fingerprint:
+    $ref: paths/cdn_nodes_{node_id}_reset-fingerprint.yaml
+  /cdn/nodes/{node_id}/sync:
+    $ref: paths/cdn_nodes_{node_id}_sync.yaml
+  /cdn/providers:
+    $ref: paths/cdn_providers.yaml
+  /cdn/zones/{zone_id}/hostnames/{hostname_id}/upstreams:
+    $ref: paths/cdn_zones_{zone_id}_hostnames_{hostname_id}_upstreams.yaml
+  /dedicated:
+    $ref: paths/dedicated.yaml
+  /dedicated/action-definitions:
+    $ref: paths/dedicated_action-definitions.yaml
+  /dedicated/action-definitions/{id}:
+    $ref: paths/dedicated_action-definitions_{id}.yaml
+  /dedicated/actions:
+    $ref: paths/dedicated_actions.yaml
+  /dedicated/agents:
+    $ref: paths/dedicated_agents.yaml
+  /dedicated/agents/{id}:
+    $ref: paths/dedicated_agents_{id}.yaml
+  /dedicated/agents/{id}/boot-networks:
+    $ref: paths/dedicated_agents_{id}_boot-networks.yaml
+  /dedicated/agents/{id}/test:
+    $ref: paths/dedicated_agents_{id}_test.yaml
+  /dedicated/components:
+    $ref: paths/dedicated_components.yaml
+  /dedicated/components/{id}:
+    $ref: paths/dedicated_components_{id}.yaml
+  /dedicated/iso-images:
+    $ref: paths/dedicated_iso-images.yaml
+  /dedicated/iso-images/global:
+    $ref: paths/dedicated_iso-images_global.yaml
+  /dedicated/iso-images/global/{id}:
+    $ref: paths/dedicated_iso-images_global_{id}.yaml
+  /dedicated/iso-images/{id}:
+    $ref: paths/dedicated_iso-images_{id}.yaml
+  /dedicated/network-pools:
+    $ref: paths/dedicated_network-pools.yaml
+  /dedicated/network-pools/{region_id}:
+    $ref: paths/dedicated_network-pools_{region_id}.yaml
+  /dedicated/option-groups:
+    $ref: paths/dedicated_option-groups.yaml
+  /dedicated/option-groups/{id}:
+    $ref: paths/dedicated_option-groups_{id}.yaml
+  /dedicated/plans:
+    $ref: paths/dedicated_plans.yaml
+  /dedicated/plans/{id}:
+    $ref: paths/dedicated_plans_{id}.yaml
+  /dedicated/platforms:
+    $ref: paths/dedicated_platforms.yaml
+  /dedicated/platforms/{id}:
+    $ref: paths/dedicated_platforms_{id}.yaml
+  /dedicated/racks:
+    $ref: paths/dedicated_racks.yaml
+  /dedicated/racks/{id}:
+    $ref: paths/dedicated_racks_{id}.yaml
+  /dedicated/racks/{id}/devices:
+    $ref: paths/dedicated_racks_{id}_devices.yaml
+  /dedicated/racks/{id}/devices/{device_id}:
+    $ref: paths/dedicated_racks_{id}_devices_{device_id}.yaml
+  /dedicated/racks/{id}/layout:
+    $ref: paths/dedicated_racks_{id}_layout.yaml
+  /dedicated/regions:
+    $ref: paths/dedicated_regions.yaml
+  /dedicated/rescue-images:
+    $ref: paths/dedicated_rescue-images.yaml
+  /dedicated/rescue-images/admin:
+    $ref: paths/dedicated_rescue-images_admin.yaml
+  /dedicated/rescue-images/{id}:
+    $ref: paths/dedicated_rescue-images_{id}.yaml
+  /dedicated/servers:
+    $ref: paths/dedicated_servers.yaml
+  /dedicated/servers/{id}:
+    $ref: paths/dedicated_servers_{id}.yaml
+  /dedicated/servers/{id}/actions:
+    $ref: paths/dedicated_servers_{id}_actions.yaml
+  /dedicated/servers/{id}/actions/current:
+    $ref: paths/dedicated_servers_{id}_actions_current.yaml
+  /dedicated/servers/{id}/actions/runs:
+    $ref: paths/dedicated_servers_{id}_actions_runs.yaml
+  /dedicated/servers/{id}/actions/runs/{run_id}:
+    $ref: paths/dedicated_servers_{id}_actions_runs_{run_id}.yaml
+  /dedicated/servers/{id}/actions/runs/{run_id}/log:
+    $ref: paths/dedicated_servers_{id}_actions_runs_{run_id}_log.yaml
+  /dedicated/servers/{id}/anti-spoofing:
+    $ref: paths/dedicated_servers_{id}_anti-spoofing.yaml
+  /dedicated/servers/{id}/components:
+    $ref: paths/dedicated_servers_{id}_components.yaml
+  /dedicated/servers/{id}/console:
+    $ref: paths/dedicated_servers_{id}_console.yaml
+  /dedicated/servers/{id}/kvm-probe:
+    $ref: paths/dedicated_servers_{id}_kvm-probe.yaml
+  /dedicated/servers/{id}/network:
+    $ref: paths/dedicated_servers_{id}_network.yaml
+  /dedicated/servers/{id}/network/assignable-prefixes:
+    $ref: paths/dedicated_servers_{id}_network_assignable-prefixes.yaml
+  /dedicated/servers/{id}/network/ips:
+    $ref: paths/dedicated_servers_{id}_network_ips.yaml
+  /dedicated/servers/{id}/network/ips/{addr_id}:
+    $ref: paths/dedicated_servers_{id}_network_ips_{addr_id}.yaml
+  /dedicated/servers/{id}/network/ptr:
+    $ref: paths/dedicated_servers_{id}_network_ptr.yaml
+  /dedicated/servers/{id}/network/subnets:
+    $ref: paths/dedicated_servers_{id}_network_subnets.yaml
+  /dedicated/servers/{id}/network/subnets/attach:
+    $ref: paths/dedicated_servers_{id}_network_subnets_attach.yaml
+  /dedicated/servers/{id}/network/subnets/{prefix_id}:
+    $ref: paths/dedicated_servers_{id}_network_subnets_{prefix_id}.yaml
+  /dedicated/servers/{id}/power:
+    $ref: paths/dedicated_servers_{id}_power.yaml
+  /dedicated/servers/{id}/power-metrics:
+    $ref: paths/dedicated_servers_{id}_power-metrics.yaml
+  /dedicated/servers/{id}/rescue:
+    $ref: paths/dedicated_servers_{id}_rescue.yaml
+  /dedicated/servers/{id}/temperature-metrics:
+    $ref: paths/dedicated_servers_{id}_temperature-metrics.yaml
+  /dedicated/{id}/actions:
+    $ref: paths/dedicated_{id}_actions.yaml
+  /dedicated/{id}/actions/current:
+    $ref: paths/dedicated_{id}_actions_current.yaml
+  /dedicated/{id}/actions/runs:
+    $ref: paths/dedicated_{id}_actions_runs.yaml
+  /dedicated/{id}/actions/runs/{run_id}/log:
+    $ref: paths/dedicated_{id}_actions_runs_{run_id}_log.yaml
+  /dedicated/{id}/assign:
+    $ref: paths/dedicated_{id}_assign.yaml
+  /dedicated/{id}/console:
+    $ref: paths/dedicated_{id}_console.yaml
+  /dedicated/{id}/private-networks:
+    $ref: paths/dedicated_{id}_private-networks.yaml
+  /dedicated/{id}/rescue:
+    $ref: paths/dedicated_{id}_rescue.yaml
+  /dedicated/{id}/uplink:
+    $ref: paths/dedicated_{id}_uplink.yaml
+  /dns/plans:
+    $ref: paths/dns_plans.yaml
+  /dns/plans/{id}:
+    $ref: paths/dns_plans_{id}.yaml
+  /dns/zones:
+    $ref: paths/dns_zones.yaml
+  /dns/zones/{zone_id}:
+    $ref: paths/dns_zones_{zone_id}.yaml
+  /dns/zones/{zone_id}/plan-change:
+    $ref: paths/dns_zones_{zone_id}_plan-change.yaml
+  /dns/zones/{zone_id}/records:
+    $ref: paths/dns_zones_{zone_id}_records.yaml
+  /dns/zones/{zone_id}/records/{record_id}:
+    $ref: paths/dns_zones_{zone_id}_records_{record_id}.yaml
+  /domains/{id}:
+    $ref: paths/domains_{id}.yaml
+  /donations:
+    $ref: paths/donations.yaml
+  /donations/by-org/{id}:
+    $ref: paths/donations_by-org_{id}.yaml
+  /donations/{id}:
+    $ref: paths/donations_{id}.yaml
+  /donations/{id}/active:
+    $ref: paths/donations_{id}_active.yaml
+  /donations/{id}/avatar:
+    $ref: paths/donations_{id}_avatar.yaml
+  /donations/{id}/goal:
+    $ref: paths/donations_{id}_goal.yaml
+  /donations/{id}/list:
+    $ref: paths/donations_{id}_list.yaml
+  /donations/{id}/monthly-costs:
+    $ref: paths/donations_{id}_monthly-costs.yaml
+  /hosting/regions:
+    $ref: paths/hosting_regions.yaml
+  /invoices:
+    $ref: paths/invoices.yaml
+  /invoices/export:
+    $ref: paths/invoices_export.yaml
+  /invoices/{inv_id}:
+    $ref: paths/invoices_{inv_id}.yaml
+  /invoices/{inv_id}/apply-promo-code:
+    $ref: paths/invoices_{inv_id}_apply-promo-code.yaml
+  /invoices/{inv_id}/charge:
+    $ref: paths/invoices_{inv_id}_charge.yaml
+  /invoices/{inv_id}/convert:
+    $ref: paths/invoices_{inv_id}_convert.yaml
+  /invoices/{inv_id}/credit-note:
+    $ref: paths/invoices_{inv_id}_credit-note.yaml
+  /invoices/{inv_id}/finalize:
+    $ref: paths/invoices_{inv_id}_finalize.yaml
+  /invoices/{inv_id}/items:
+    $ref: paths/invoices_{inv_id}_items.yaml
+  /invoices/{inv_id}/items/{item_id}:
+    $ref: paths/invoices_{inv_id}_items_{item_id}.yaml
+  /invoices/{inv_id}/mark-paid:
+    $ref: paths/invoices_{inv_id}_mark-paid.yaml
+  /invoices/{inv_id}/promo-code:
+    $ref: paths/invoices_{inv_id}_promo-code.yaml
+  /invoices/{inv_id}/refund:
+    $ref: paths/invoices_{inv_id}_refund.yaml
+  /invoices/{inv_id}/void:
+    $ref: paths/invoices_{inv_id}_void.yaml
+  /maintenances:
+    $ref: paths/maintenances.yaml
+  /maintenances/target-options:
+    $ref: paths/maintenances_target-options.yaml
+  /maintenances/{id}:
+    $ref: paths/maintenances_{id}.yaml
+  /maintenances/{id}/affected:
+    $ref: paths/maintenances_{id}_affected.yaml
+  /maintenances/{id}/notifications:
+    $ref: paths/maintenances_{id}_notifications.yaml
+  /maintenances/{id}/notify:
+    $ref: paths/maintenances_{id}_notify.yaml
+  /maintenances/{id}/notify/preview:
+    $ref: paths/maintenances_{id}_notify_preview.yaml
+  /me:
+    $ref: paths/me.yaml
+  /network/bgp/asns:
+    $ref: paths/network_bgp_asns.yaml
+  /network/bgp/asns/{id}:
+    $ref: paths/network_bgp_asns_{id}.yaml
+  /network/bgp/asns/{id}/approve:
+    $ref: paths/network_bgp_asns_{id}_approve.yaml
+  /network/bgp/asns/{id}/as-sets:
+    $ref: paths/network_bgp_asns_{id}_as-sets.yaml
+  /network/bgp/asns/{id}/as-sets/sync:
+    $ref: paths/network_bgp_asns_{id}_as-sets_sync.yaml
+  /network/bgp/asns/{id}/as-sets/{as_set_id}:
+    $ref: paths/network_bgp_asns_{id}_as-sets_{as_set_id}.yaml
+  /network/bgp/asns/{id}/prefixes:
+    $ref: paths/network_bgp_asns_{id}_prefixes.yaml
+  /network/bgp/asns/{id}/prefixes/{prefix_id}:
+    $ref: paths/network_bgp_asns_{id}_prefixes_{prefix_id}.yaml
+  /network/bgp/asns/{id}/reject:
+    $ref: paths/network_bgp_asns_{id}_reject.yaml
+  /network/bgp/asns/{id}/sessions:
+    $ref: paths/network_bgp_asns_{id}_sessions.yaml
+  /network/bgp/asns/{id}/subnets:
+    $ref: paths/network_bgp_asns_{id}_subnets.yaml
+  /network/bgp/route-servers:
+    $ref: paths/network_bgp_route-servers.yaml
+  /network/bgp/route-servers/{id}:
+    $ref: paths/network_bgp_route-servers_{id}.yaml
+  /network/bgp/route-servers/{id}/check:
+    $ref: paths/network_bgp_route-servers_{id}_check.yaml
+  /network/bgp/route-servers/{id}/reconcile:
+    $ref: paths/network_bgp_route-servers_{id}_reconcile.yaml
+  /network/bgp/route-servers/{id}/state:
+    $ref: paths/network_bgp_route-servers_{id}_state.yaml
+  /network/bgp/sessions:
+    $ref: paths/network_bgp_sessions.yaml
+  /network/byoip:
+    $ref: paths/network_byoip.yaml
+  /network/byoip/{id}/approve:
+    $ref: paths/network_byoip_{id}_approve.yaml
+  /network/byoip/{id}/reject:
+    $ref: paths/network_byoip_{id}_reject.yaml
+  /network/firewalls:
+    $ref: paths/network_firewalls.yaml
+  /network/floating:
+    $ref: paths/network_floating.yaml
+  /network/ip-lists:
+    $ref: paths/network_ip-lists.yaml
+  /network/ip-lists/resync:
+    $ref: paths/network_ip-lists_resync.yaml
+  /network/ip-lists/{id}:
+    $ref: paths/network_ip-lists_{id}.yaml
+  /network/ip-lists/{id}/enabled:
+    $ref: paths/network_ip-lists_{id}_enabled.yaml
+  /network/ip-lists/{id}/refresh:
+    $ref: paths/network_ip-lists_{id}_refresh.yaml
+  /network/ipam/addresses/{id}:
+    $ref: paths/network_ipam_addresses_{id}.yaml
+  /network/ipam/addresses/{id}/assign:
+    $ref: paths/network_ipam_addresses_{id}_assign.yaml
+  /network/ipam/addresses/{id}/ptr:
+    $ref: paths/network_ipam_addresses_{id}_ptr.yaml
+  /network/ipam/prefixes:
+    $ref: paths/network_ipam_prefixes.yaml
+  /network/ipam/prefixes/{id}:
+    $ref: paths/network_ipam_prefixes_{id}.yaml
+  /network/ipam/prefixes/{id}/addresses:
+    $ref: paths/network_ipam_prefixes_{id}_addresses.yaml
+  /network/ipam/prefixes/{id}/allocate:
+    $ref: paths/network_ipam_prefixes_{id}_allocate.yaml
+  /network/ipam/prefixes/{id}/assign:
+    $ref: paths/network_ipam_prefixes_{id}_assign.yaml
+  /network/ipam/prefixes/{id}/children:
+    $ref: paths/network_ipam_prefixes_{id}_children.yaml
+  /network/ipam/prefixes/{id}/populate:
+    $ref: paths/network_ipam_prefixes_{id}_populate.yaml
+  /network/ipam/prefixes/{id}/ptr:
+    $ref: paths/network_ipam_prefixes_{id}_ptr.yaml
+  /network/ipam/prefixes/{id}/ptr/all:
+    $ref: paths/network_ipam_prefixes_{id}_ptr_all.yaml
+  /network/ipam/prefixes/{id}/rdns:
+    $ref: paths/network_ipam_prefixes_{id}_rdns.yaml
+  /network/ipam/prefixes/{id}/rdns/catchall:
+    $ref: paths/network_ipam_prefixes_{id}_rdns_catchall.yaml
+  /network/ipam/prefixes/{id}/rdns/link:
+    $ref: paths/network_ipam_prefixes_{id}_rdns_link.yaml
+  /network/private-networks:
+    $ref: paths/network_private-networks.yaml
+  /network/private-networks/options:
+    $ref: paths/network_private-networks_options.yaml
+  /network/private-networks/{id}:
+    $ref: paths/network_private-networks_{id}.yaml
+  /network/switches:
+    $ref: paths/network_switches.yaml
+  /network/switches/mac-vendors:
+    $ref: paths/network_switches_mac-vendors.yaml
+  /network/switches/macs:
+    $ref: paths/network_switches_macs.yaml
+  /network/switches/test:
+    $ref: paths/network_switches_test.yaml
+  /network/switches/{id}:
+    $ref: paths/network_switches_{id}.yaml
+  /network/switches/{id}/ports:
+    $ref: paths/network_switches_{id}_ports.yaml
+  /network/switches/{id}/ports/{port_id}:
+    $ref: paths/network_switches_{id}_ports_{port_id}.yaml
+  /network/switches/{id}/ports/{port_id}/metrics:
+    $ref: paths/network_switches_{id}_ports_{port_id}_metrics.yaml
+  /network/switches/{id}/ports/{port_id}/push:
+    $ref: paths/network_switches_{id}_ports_{port_id}_push.yaml
+  /network/switches/{id}/probe:
+    $ref: paths/network_switches_{id}_probe.yaml
+  /network/switches/{id}/state:
+    $ref: paths/network_switches_{id}_state.yaml
+  /network/switches/{id}/sync:
+    $ref: paths/network_switches_{id}_sync.yaml
+  /news:
+    $ref: paths/news.yaml
+  /news/images:
+    $ref: paths/news_images.yaml
+  /news/{id}:
+    $ref: paths/news_{id}.yaml
+  /notifications/queue:
+    $ref: paths/notifications_queue.yaml
+  /notifications/queue/dismiss-failed:
+    $ref: paths/notifications_queue_dismiss-failed.yaml
+  /notifications/queue/{id}/dismiss:
+    $ref: paths/notifications_queue_{id}_dismiss.yaml
+  /notifications/templates:
+    $ref: paths/notifications_templates.yaml
+  /notifications/templates/{slug}:
+    $ref: paths/notifications_templates_{slug}.yaml
+  /notifications/templates/{slug}/translations/{lang}:
+    $ref: paths/notifications_templates_{slug}_translations_{lang}.yaml
+  /ns-migration/bulk:
+    $ref: paths/ns-migration_bulk.yaml
+  /ns-migration/overview:
+    $ref: paths/ns-migration_overview.yaml
+  /orgs:
+    $ref: paths/orgs.yaml
+  /orgs/{id}:
+    $ref: paths/orgs_{id}.yaml
+  /orgs/{id}/accounts:
+    $ref: paths/orgs_{id}_accounts.yaml
+  /orgs/{id}/api-keys:
+    $ref: paths/orgs_{id}_api-keys.yaml
+  /orgs/{id}/billing/credit:
+    $ref: paths/orgs_{id}_billing_credit.yaml
+  /orgs/{id}/billing/payments/{payment_id}/status:
+    $ref: paths/orgs_{id}_billing_payments_{payment_id}_status.yaml
+  /orgs/{id}/billing/promo-credit:
+    $ref: paths/orgs_{id}_billing_promo-credit.yaml
+  /orgs/{id}/billing/settings:
+    $ref: paths/orgs_{id}_billing_settings.yaml
+  /orgs/{id}/billing/summary:
+    $ref: paths/orgs_{id}_billing_summary.yaml
+  /orgs/{id}/limits:
+    $ref: paths/orgs_{id}_limits.yaml
+  /orgs/{id}/members:
+    $ref: paths/orgs_{id}_members.yaml
+  /orgs/{id}/members/{uid}:
+    $ref: paths/orgs_{id}_members_{uid}.yaml
+  /orgs/{id}/members/{uid}/2fa:
+    $ref: paths/orgs_{id}_members_{uid}_2fa.yaml
+  /orgs/{id}/members/{uid}/login-link:
+    $ref: paths/orgs_{id}_members_{uid}_login-link.yaml
+  /orgs/{id}/notifications:
+    $ref: paths/orgs_{id}_notifications.yaml
+  /orgs/{id}/notifications/{notif_id}:
+    $ref: paths/orgs_{id}_notifications_{notif_id}.yaml
+  /orgs/{id}/ssh-keys:
+    $ref: paths/orgs_{id}_ssh-keys.yaml
+  /orgs/{id}/ssh-keys/{key_id}:
+    $ref: paths/orgs_{id}_ssh-keys_{key_id}.yaml
+  /orgs/{id}/users:
+    $ref: paths/orgs_{id}_users.yaml
+  /orgs/{id}/vat-check:
+    $ref: paths/orgs_{id}_vat-check.yaml
+  /promo-codes:
+    $ref: paths/promo-codes.yaml
+  /promo-codes/{id}:
+    $ref: paths/promo-codes_{id}.yaml
+  /regions:
+    $ref: paths/regions.yaml
+  /regions/{id}:
+    $ref: paths/regions_{id}.yaml
+  /s3/nodes:
+    $ref: paths/s3_nodes.yaml
+  /s3/nodes/{node_id}:
+    $ref: paths/s3_nodes_{node_id}.yaml
+  /s3/nodes/{node_id}/disable:
+    $ref: paths/s3_nodes_{node_id}_disable.yaml
+  /s3/nodes/{node_id}/enable:
+    $ref: paths/s3_nodes_{node_id}_enable.yaml
+  /s3/nodes/{node_id}/metrics:
+    $ref: paths/s3_nodes_{node_id}_metrics.yaml
+  /search:
+    $ref: paths/search.yaml
+  /settings/general:
+    $ref: paths/settings_general.yaml
+  /settings/limits:
+    $ref: paths/settings_limits.yaml
+  /settings/telegram:
+    $ref: paths/settings_telegram.yaml
+  /subscriptions:
+    $ref: paths/subscriptions.yaml
+  /subscriptions/{sub_id}:
+    $ref: paths/subscriptions_{sub_id}.yaml
+  /subscriptions/{sub_id}/retry-provisioning:
+    $ref: paths/subscriptions_{sub_id}_retry-provisioning.yaml
+  /support/attachments/{id}:
+    $ref: paths/support_attachments_{id}.yaml
+  /support/auto-tags:
+    $ref: paths/support_auto-tags.yaml
+  /support/auto-tags/{id}:
+    $ref: paths/support_auto-tags_{id}.yaml
+  /support/departments:
+    $ref: paths/support_departments.yaml
+  /support/departments/{id}:
+    $ref: paths/support_departments_{id}.yaml
+  /support/departments/{id}/admins:
+    $ref: paths/support_departments_{id}_admins.yaml
+  /support/departments/{id}/admins/{admin_id}:
+    $ref: paths/support_departments_{id}_admins_{admin_id}.yaml
+  /support/departments/{id}/groups:
+    $ref: paths/support_departments_{id}_groups.yaml
+  /support/departments/{id}/groups/{group_id}:
+    $ref: paths/support_departments_{id}_groups_{group_id}.yaml
+  /support/escalation-rules:
+    $ref: paths/support_escalation-rules.yaml
+  /support/escalation-rules/{id}:
+    $ref: paths/support_escalation-rules_{id}.yaml
+  /support/settings:
+    $ref: paths/support_settings.yaml
+  /support/signature:
+    $ref: paths/support_signature.yaml
+  /support/sla-policies:
+    $ref: paths/support_sla-policies.yaml
+  /support/sla-policies/{priority}:
+    $ref: paths/support_sla-policies_{priority}.yaml
+  /support/ticket-options:
+    $ref: paths/support_ticket-options.yaml
+  /support/tickets:
+    $ref: paths/support_tickets.yaml
+  /support/tickets/{id}:
+    $ref: paths/support_tickets_{id}.yaml
+  /support/tickets/{id}/events:
+    $ref: paths/support_tickets_{id}_events.yaml
+  /support/tickets/{id}/messages:
+    $ref: paths/support_tickets_{id}_messages.yaml
+  /tax-rates:
+    $ref: paths/tax-rates.yaml
+  /tax-rates/{id}:
+    $ref: paths/tax-rates_{id}.yaml
+  /users/{uid}:
+    $ref: paths/users_{uid}.yaml
+  /users/{uid}/2fa:
+    $ref: paths/users_{uid}_2fa.yaml
+  /users/{uid}/2fa/recovery-codes:
+    $ref: paths/users_{uid}_2fa_recovery-codes.yaml
+  /users/{uid}/blocked:
+    $ref: paths/users_{uid}_blocked.yaml
+  /users/{uid}/email-verified:
+    $ref: paths/users_{uid}_email-verified.yaml
+  /users/{uid}/login-history:
+    $ref: paths/users_{uid}_login-history.yaml
+  /users/{uid}/login-link:
+    $ref: paths/users_{uid}_login-link.yaml
+  /users/{uid}/passkeys:
+    $ref: paths/users_{uid}_passkeys.yaml
+  /users/{uid}/passkeys/{key_id}:
+    $ref: paths/users_{uid}_passkeys_{key_id}.yaml
+  /users/{uid}/password:
+    $ref: paths/users_{uid}_password.yaml
+  /users/{uid}/password-reset:
+    $ref: paths/users_{uid}_password-reset.yaml
+  /users/{uid}/resend-verification:
+    $ref: paths/users_{uid}_resend-verification.yaml
+  /users/{uid}/sessions:
+    $ref: paths/users_{uid}_sessions.yaml
+  /vps:
+    $ref: paths/vps.yaml
+  /vps/clusters:
+    $ref: paths/vps_clusters.yaml
+  /vps/clusters/test:
+    $ref: paths/vps_clusters_test.yaml
+  /vps/clusters/{id}:
+    $ref: paths/vps_clusters_{id}.yaml
+  /vps/clusters/{id}/adopt:
+    $ref: paths/vps_clusters_{id}_adopt.yaml
+  /vps/clusters/{id}/cpu-models:
+    $ref: paths/vps_clusters_{id}_cpu-models.yaml
+  /vps/clusters/{id}/node-categories:
+    $ref: paths/vps_clusters_{id}_node-categories.yaml
+  /vps/clusters/{id}/nodes/{node}/category:
+    $ref: paths/vps_clusters_{id}_nodes_{node}_category.yaml
+  /vps/clusters/{id}/overview:
+    $ref: paths/vps_clusters_{id}_overview.yaml
+  /vps/clusters/{id}/test:
+    $ref: paths/vps_clusters_{id}_test.yaml
+  /vps/iso-images:
+    $ref: paths/vps_iso-images.yaml
+  /vps/iso-images/global:
+    $ref: paths/vps_iso-images_global.yaml
+  /vps/iso-images/global/{id}:
+    $ref: paths/vps_iso-images_global_{id}.yaml
+  /vps/os-families:
+    $ref: paths/vps_os-families.yaml
+  /vps/os-families/{id}:
+    $ref: paths/vps_os-families_{id}.yaml
+  /vps/os-families/{id}/icon:
+    $ref: paths/vps_os-families_{id}_icon.yaml
+  /vps/os-versions:
+    $ref: paths/vps_os-versions.yaml
+  /vps/os-versions/{id}:
+    $ref: paths/vps_os-versions_{id}.yaml
+  /vps/plans:
+    $ref: paths/vps_plans.yaml
+  /vps/plans/{id}:
+    $ref: paths/vps_plans_{id}.yaml
+  /vps/{id}:
+    $ref: paths/vps_{id}.yaml
+  /vps/{id}/anti-spoofing:
+    $ref: paths/vps_{id}_anti-spoofing.yaml
+  /vps/{id}/console:
+    $ref: paths/vps_{id}_console.yaml
+  /vps/{id}/ephemeral:
+    $ref: paths/vps_{id}_ephemeral.yaml
+  /vps/{id}/firewall/resync:
+    $ref: paths/vps_{id}_firewall_resync.yaml
+  /vps/{id}/hardware:
+    $ref: paths/vps_{id}_hardware.yaml
+  /vps/{id}/hostname:
+    $ref: paths/vps_{id}_hostname.yaml
+  /vps/{id}/network/assignable-prefixes:
+    $ref: paths/vps_{id}_network_assignable-prefixes.yaml
+  /vps/{id}/network/ips:
+    $ref: paths/vps_{id}_network_ips.yaml
+  /vps/{id}/network/ips/{addr_id}:
+    $ref: paths/vps_{id}_network_ips_{addr_id}.yaml
+  /vps/{id}/network/ips/{addr_id}/primary:
+    $ref: paths/vps_{id}_network_ips_{addr_id}_primary.yaml
+  /vps/{id}/network/primary-interface:
+    $ref: paths/vps_{id}_network_primary-interface.yaml
+  /vps/{id}/network/private-config:
+    $ref: paths/vps_{id}_network_private-config.yaml
+  /vps/{id}/network/subnets:
+    $ref: paths/vps_{id}_network_subnets.yaml
+  /vps/{id}/network/subnets/attach:
+    $ref: paths/vps_{id}_network_subnets_attach.yaml
+  /vps/{id}/network/subnets/{prefix_id}:
+    $ref: paths/vps_{id}_network_subnets_{prefix_id}.yaml
+  /vps/{id}/plan-change:
+    $ref: paths/vps_{id}_plan-change.yaml
+  /vps/{id}/plan-change/preview:
+    $ref: paths/vps_{id}_plan-change_preview.yaml
+  /vps/{id}/private-networks:
+    $ref: paths/vps_{id}_private-networks.yaml
+  /vps/{id}/private-networks/{net_id}:
+    $ref: paths/vps_{id}_private-networks_{net_id}.yaml
+  /vps/{id}/release:
+    $ref: paths/vps_{id}_release.yaml
+  /vps/{id}/reprovision:
+    $ref: paths/vps_{id}_reprovision.yaml
+  /vps/{id}/specs:
+    $ref: paths/vps_{id}_specs.yaml
+  /vps/{id}/start:
+    $ref: paths/vps_{id}_start.yaml
+servers:
+  - url: https://api.example.com/v1
+    description: Replace with your Avalon API URL
+components:
+  securitySchemes:
+    BearerAuth:
+      description: Type "Bearer" followed by a space and the session token.
+      type: apiKey
+      name: Authorization
+      in: header

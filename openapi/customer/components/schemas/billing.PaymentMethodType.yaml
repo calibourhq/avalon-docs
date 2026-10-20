@@ -1,0 +1,9 @@
+type: string
+enum:
+  - stripe_card
+  - bank_transfer
+  - crypto
+x-enum-varnames:
+  - PaymentMethodTypeStripeCard
+  - PaymentMethodTypeBankTransfer
+  - PaymentMethodTypeCrypto

@@ -1,0 +1,30 @@
+get:
+  security: []
+  operationId: proxy-a-console-websocket
+  description: >-
+    Upgrades to a WebSocket and proxies it to the upstream console; authenticated via the one-time token query param.
+  tags:
+    - vps
+  summary: Proxy a console WebSocket
+  parameters:
+    - description: one-time console token
+      name: token
+      in: query
+      required: true
+      schema:
+        type: string
+  responses:
+    '101':
+      description: Switching Protocols
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

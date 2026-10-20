@@ -1,0 +1,34 @@
+get:
+  operationId: preview-a-maintenance-notification-round
+  security:
+    - BearerAuth: []
+  description: Lists everyone the round would go to and why, with a hash to send against.
+  tags:
+    - maintenance
+  summary: Preview a maintenance notification round
+  parameters:
+    - description: maintenance id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: announcement, update, completed or cancelled
+      name: round
+      in: query
+      required: true
+      schema:
+        type: string
+    - description: skip people who already received this round
+      name: only_new
+      in: query
+      schema:
+        type: boolean
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true

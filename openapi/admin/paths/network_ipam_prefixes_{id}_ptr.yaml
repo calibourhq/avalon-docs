@@ -1,0 +1,119 @@
+get:
+  operationId: list-ptr-records-for-a-prefix
+  security:
+    - BearerAuth: []
+  description: Lists all PTR records (addresses with PTR set) for a prefix.
+  tags:
+    - network-ipam
+  summary: List PTR records for a prefix
+  parameters:
+    - description: prefix id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: set-ptr-for-an-ip-in-a-prefix
+  security:
+    - BearerAuth: []
+  description: >-
+    Creates or updates a PTR for a specific IP in a prefix; works for tracked addresses and sparse IPv6 IPs.
+  tags:
+    - network-ipam
+  summary: Set PTR for an IP in a prefix
+  parameters:
+    - description: prefix id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+delete:
+  operationId: delete-ptr-for-an-ip-in-a-prefix
+  security:
+    - BearerAuth: []
+  description: Deletes the PTR record for a specific IP in a prefix.
+  tags:
+    - network-ipam
+  summary: Delete PTR for an IP in a prefix
+  parameters:
+    - description: prefix id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

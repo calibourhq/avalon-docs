@@ -1,0 +1,7 @@
+type: string
+enum:
+  - ipmi
+  - redfish
+x-enum-varnames:
+  - BMCProtocolIPMI
+  - BMCProtocolRedfish

@@ -1,0 +1,16 @@
+get:
+  security: []
+  operationId: list-supported-languages
+  description: Get the list of languages supported by the API
+  tags:
+    - health
+  summary: List supported languages
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/i18n.SupportedLanguage.yaml

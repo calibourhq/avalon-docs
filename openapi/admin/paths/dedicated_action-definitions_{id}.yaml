@@ -1,0 +1,68 @@
+get:
+  operationId: get-a-server-action-definition
+  security:
+    - BearerAuth: []
+  description: The only route that returns the script, and only to staff.
+  tags:
+    - dedicated-admin
+  summary: Get a server action definition
+  parameters:
+    - description: definition id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.actionDefinitionView.yaml
+put:
+  operationId: update-a-server-action-definition
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated-admin
+  summary: Update a server action definition
+  parameters:
+    - description: definition id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.actionDefinitionView.yaml
+delete:
+  operationId: delete-a-server-action-definition
+  security:
+    - BearerAuth: []
+  description: >-
+    Runs that have already finished stay readable: a run carries its own copy of the script, inputs and steps.
+  tags:
+    - dedicated-admin
+  summary: Delete a server action definition
+  parameters:
+    - description: definition id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

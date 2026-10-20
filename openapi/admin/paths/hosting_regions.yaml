@@ -1,0 +1,19 @@
+get:
+  operationId: list-regions-offering-webhosting
+  security:
+    - BearerAuth: []
+  description: |-
+    Returns the regions webhosting can be ordered in right now.
+    returns every region.
+  tags:
+    - hosting
+  summary: List regions offering webhosting
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/regions.Region.yaml

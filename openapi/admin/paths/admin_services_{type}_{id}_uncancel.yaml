@@ -1,0 +1,23 @@
+post:
+  operationId: revoke-a-scheduled-cancellation-admin
+  security:
+    - BearerAuth: []
+  tags:
+    - admin
+  summary: Revoke a scheduled cancellation (admin)
+  parameters:
+    - description: service type
+      name: type
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content

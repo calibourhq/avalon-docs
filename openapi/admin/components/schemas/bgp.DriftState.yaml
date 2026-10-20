@@ -1,0 +1,11 @@
+type: string
+enum:
+  - in_sync
+  - missing
+  - unexpected
+  - mismatch
+x-enum-varnames:
+  - DriftInSync
+  - DriftMissing
+  - DriftUnexpected
+  - DriftMismatch

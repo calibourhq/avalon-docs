@@ -1,0 +1,34 @@
+post:
+  operationId: disable-a-storage-node
+  security:
+    - BearerAuth: []
+  description: Stops metering traffic from a node; its health is still probed (admin only).
+  tags:
+    - s3-nodes
+  summary: Disable a storage node
+  parameters:
+    - description: node id
+      name: node_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/s3.Node.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

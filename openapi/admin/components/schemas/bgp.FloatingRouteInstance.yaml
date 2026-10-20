@@ -1,0 +1,18 @@
+type: object
+properties:
+  autobird_id:
+    type: integer
+  created_at:
+    type: string
+  floating_route_id:
+    type: string
+  id:
+    type: string
+  last_error:
+    type: string
+  route_server_id:
+    type: string
+  status:
+    $ref: ./bgp.FloatingInstanceStatus.yaml
+  updated_at:
+    type: string

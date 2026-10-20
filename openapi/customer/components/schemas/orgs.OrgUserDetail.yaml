@@ -1,0 +1,29 @@
+type: object
+properties:
+  is_owner:
+    type: boolean
+  notify_billing:
+    type: boolean
+  notify_technical:
+    type: boolean
+  org_id:
+    type: string
+  permissions:
+    type: array
+    items:
+      $ref: ./orgs.Permission.yaml
+  user_email:
+    type: string
+  user_first_name:
+    type: string
+  user_id:
+    type: string
+  user_inactive_since:
+    description: |-
+      UserInactiveSince mirrors users.User.InactiveSince so member lists can
+      badge dormant accounts without a second lookup.
+    type: string
+  user_last_login:
+    type: string
+  user_last_name:
+    type: string

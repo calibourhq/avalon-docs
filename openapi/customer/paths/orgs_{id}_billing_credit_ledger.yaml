@@ -1,0 +1,61 @@
+get:
+  operationId: list-org-credit-ledger
+  security:
+    - BearerAuth: []
+  description: Lists credit balance movements of an org, newest first, one page at a time.
+  tags:
+    - billing
+  summary: List org credit ledger
+  parameters:
+    - description: org id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: 'true: promo credit entries only; false: real credit entries only'
+      name: promo
+      in: query
+      schema:
+        type: boolean
+    - description: filter by entry type
+      name: type
+      in: query
+      schema:
+        type: string
+    - description: page number (1-based)
+      name: page
+      in: query
+      schema:
+        type: integer
+    - description: rows per page (default 50, max 200)
+      name: page_size
+      in: query
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

@@ -1,0 +1,24 @@
+get:
+  operationId: get-the-running-version
+  security:
+    - BearerAuth: []
+  description: >-
+    The backend build shown in the admin footer: the release version, or dev-<commit> for an untagged build.
+  tags:
+    - admin
+  summary: Get the running version
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties:
+              type: string
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

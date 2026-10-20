@@ -1,0 +1,293 @@
+type: object
+properties:
+  agent_id:
+    description: |-
+      AgentID is the executor that reaches this machine's BMC. Nil = no agent
+      wired up: the box is tracked in inventory like any other, it just has no
+      out-of-band control, so power actions and power-state polling are
+      unavailable until an agent is set.
+    type: string
+  agent_name:
+    type: string
+  anti_spoofing_disabled:
+    description: |-
+      AntiSpoofingDisabled is an admin-only escape hatch that turns off the
+      per-port approved-source enforcement on the switch (mirrors
+      VPSServer.AntiSpoofingDisabled). The port keeps the generic protections
+      (rogue DHCP / RA guard, ARP policing, port-25 policy) but loses the
+      approved-source allow list and the catch-all drop, so the box may send
+      from any address. For customers who legitimately route prefixes we do
+      not track (e.g. tunnels, own BGP not modelled in IPAM).
+    type: boolean
+  bmc_host:
+    type: string
+  bmc_password_set:
+    description: Derived (not stored)
+    type: boolean
+  bmc_port:
+    description: 0 = protocol default (623 ipmi / 443 redfish)
+    type: integer
+  bmc_protocol:
+    description: >-
+      BMC / IPMI (out-of-band management). Secrets follow the codebase
+      convention:
+
+      plaintext column + json:"-" (there is no encryption-at-rest helper).
+    allOf:
+      - $ref: ./dedicated.BMCProtocol.yaml
+  bmc_username:
+    type: string
+  boot_mode:
+    description: |-
+      BootMode is the firmware mode to assert when overriding the boot device:
+      "" leaves the BMC's own setting alone, which is the right default. It
+      matters on the IPMI path, where the boot flags carry the mode alongside
+      the device and a BMC told to PXE boot without it will often flip a
+      UEFI-installed machine to legacy as a side effect.
+    type: string
+  components:
+    description: Installed parts (the source of truth once a platform is set).
+    type: array
+    items:
+      $ref: ./dedicated.ServerComponent.yaml
+  cpu_cores:
+    type: integer
+  cpu_model:
+    description: |-
+      Actual hardware specs. These are a denormalised cache derived from
+      Components (rebuilt by ReplaceServerComponents), never set by hand: they
+      exist because the matcher's coarse prefilter has to run in SQL
+      (see matchAvailableServers) and the parts live in a join table.
+
+      The one exception is legacy inventory recorded before the component
+      catalog: a server with no components keeps whatever was stored, and
+      UpdateServerWithComponents will not zero it.
+    type: string
+  cpu_threads:
+    type: integer
+  created_at:
+    type: string
+  current_service_id:
+    type: string
+  disks:
+    type: array
+    items:
+      $ref: ./dedicated.Disk.yaml
+  id:
+    type: string
+  inventory_status:
+    description: State
+    allOf:
+      - $ref: ./dedicated.InventoryStatus.yaml
+  ipv4_address:
+    type: string
+  ipv4_address_ids:
+    description: |-
+      Network assignments (IPAM record UUIDs), owned by the machine. Present or
+      not regardless of whether anyone is renting it - see the package doc.
+    type: array
+    items:
+      type: string
+  ipv6_address:
+    type: string
+  ipv6_address_ids:
+    type: array
+    items:
+      type: string
+  kvm_console_mode:
+    description: |-
+      KVMConsoleMode is how the kiosk browser presents the vendor console on
+      this machine. Empty inherits the platform's setting, which in turn falls
+      back to the system default - so a fleet is configured once per chassis
+      type and only the odd machine needs an override.
+    allOf:
+      - $ref: ./dedicated.ConsoleMode.yaml
+  kvm_driver:
+    description: |-
+      KVM console. KVMDriver picks how the browser reaches this machine's
+      physical console; "" lets the agent auto-detect. vnc-direct proxies the
+      BMC's own standalone VNC service, which is off by default on Supermicro
+      and carries its own password distinct from BMCPassword - hence the
+      separate fields. It is the cheaper path but framebuffer-only: no virtual
+      media, no boot override, no vendor macro keys, which is why it is opt-in
+      per server rather than the default.
+
+      Every column here is named explicitly. GORM's naming strategy rewrites
+      "VM" as an initialism before it splits the field name, so KVMDriver would
+      otherwise land on "k_vm_driver" - a name no hand-written update or query
+      would ever guess. See BackfillKVMColumns.
+    type: string
+  kvm_probe:
+    description: |-
+      KVMProbe is the last BMCProbeResult seen for this machine (JSON), and
+      KVMProbedAt when. A chassis SKU says nothing about the BMC generation, so
+      this is how an admin learns what a machine actually is.
+    type: string
+  kvm_probed_at:
+    type: string
+  kvm_vnc_password_set:
+    description: KVMVNCPasswordSet mirrors BMCPasswordSet for the console password.
+    type: boolean
+  kvm_vnc_port:
+    description: 0 = 5900
+    type: integer
+  last_power_poll_at:
+    type: string
+  lock_operation:
+    type: string
+  locked:
+    description: |-
+      Locked and LockOperation mirror the service-side fields for a machine
+      looked at as inventory. Without them an admin working on an unassigned
+      box - which is exactly where a spare gets rescue-booted - sees every
+      control enabled and learns about a lock by being refused.
+    type: boolean
+  name:
+    description: Identity / location
+    type: string
+  nic_mac:
+    description: |-
+      NICMAC is the MAC of the interface this machine PXE boots from - the data
+      NIC, not the BMC. It is what the agent's DHCP server matches on, and
+      without it a rescue boot cannot be offered at all: the agent would have
+      no way to tell this machine's broadcast from every other machine's on the
+      same subnet. Entered by an admin, or picked out of the requests the agent
+      recorded and declined.
+    type: string
+  nic_speed_mbps:
+    type: integer
+  node_slot:
+    type: integer
+  notes:
+    type: string
+  plan_id:
+    description: |-
+      PlanID is the model this machine fulfils; drives auto-assign matching and
+      per-plan stock counts. Nil = not assigned to any sellable plan yet.
+    type: string
+  platform_id:
+    description: |-
+      PlatformID is the chassis model this machine is an instance of; it defines
+      the physical limits a configuration is validated against. Nil = unknown /
+      legacy hardware (the validator fails open).
+    type: string
+  platform_name:
+    type: string
+  power_state:
+    description: on | off | unknown
+    type: string
+  power_watts:
+    description: best-effort, populated on live status only
+    type: integer
+  primary_ipv4_id:
+    type: string
+  primary_ipv6_id:
+    type: string
+  rack_face:
+    $ref: ./dedicated.RackFace.yaml
+  rack_height_u:
+    description: |-
+      RackHeightU is how many units this machine's chassis covers, and
+      RackNodesPerChassis how many machines share it, so a caller rendering an
+      elevation or a location does not have to resolve the platform itself.
+    type: integer
+  rack_id:
+    description: >-
+      RackID is the cabinet this machine is bolted into, and RackPosition the
+
+      lowest unit it occupies (units are numbered bottom-up from 1). Both are
+
+      optional and independent: inventory with no rack is still inventory, and a
+
+      machine may be known to be in a cabinet without a recorded unit. How many
+
+      units it covers upward from RackPosition comes from its Platform.
+
+
+      NodeSlot is which sled it is inside a multi-node chassis, numbered 1..N as
+
+      the vendor numbers them; 0 means the machine is the whole chassis, which
+      is
+
+      what every ordinary server is. It is what lets the four nodes of a twin
+
+      share one pair of units without overlapping, so a multi-node platform
+
+      requires it wherever a unit is recorded.
+
+
+      RackFace is which side of the cabinet it is on: full depth for nearly
+
+      everything, front or rear for a half-depth box that leaves the other side
+
+      of its units free.
+
+
+      The four together are unique so two machines cannot be booked into the
+
+      same slot; taller chassis overlapping, and a full-depth box against a
+
+      half-depth one, is caught by ValidateServerPlacement, which the index
+      alone
+
+      cannot see. NodeSlot is a plain int rather than a pointer precisely so it
+
+      can carry that index: NULLs compare distinct, so a nullable column would
+      let
+
+      two unslotted machines sit at the same unit.
+    type: string
+  rack_name:
+    type: string
+  rack_nodes_per_chassis:
+    type: integer
+  rack_position:
+    type: integer
+  ram_gb:
+    type: integer
+  redfish_system_id:
+    description: e.g. "Systems/1", "System.Embedded.1"
+    type: string
+  region_id:
+    type: string
+  region_name:
+    type: string
+  rescue_available:
+    description: |-
+      RescueAvailable says whether this machine could be network-booted into a
+      rescue system right now. Derived on a detail read only: answering it costs
+      several queries and no list needs it.
+    type: boolean
+  rescue_manual_reboot:
+    description: |-
+      RescueManualReboot says a rescue boot can be armed but this machine has
+      no out-of-band way to be restarted into it, so somebody will have to
+      restart it. Said before the button is pressed rather than after, because
+      it changes what the operator has to do next.
+    type: boolean
+  rescue_unavailable_reason:
+    description: |-
+      RescueUnavailableReason says why not, for an admin screen. Empty when it
+      is available.
+    type: string
+  routed_prefix_ids:
+    type: array
+    items:
+      type: string
+  strict_l2_guard:
+    description: >-
+      StrictL2Guard tightens anti-spoofing's layer-2 exemptions on the
+
+      machine's customer ports (see netswitch.Compile): every accepted frame
+
+      must come from NICMAC, ARP only with the box's own IPv4 addresses as
+
+      sender, and link-local IPv6 is limited to neighbour discovery. Off by
+      default because the loose form is what lets
+
+      a customer run VMs with their own MACs and link-local addresses behind
+
+      the box. It has no effect while AntiSpoofingDisabled is set.
+    type: boolean
+  updated_at:
+    type: string

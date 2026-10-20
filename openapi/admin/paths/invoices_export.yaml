@@ -1,0 +1,66 @@
+get:
+  operationId: export-invoices-admin
+  security:
+    - BearerAuth: []
+  description: |-
+    Exports invoices as a CSV file.
+    Takes the same filters as the invoice list; paging is ignored.
+  tags:
+    - invoices
+  summary: Export invoices (admin)
+  parameters:
+    - description: filter by org
+      name: org_id
+      in: query
+      schema:
+        type: string
+    - description: filter by status; comma-separated for several
+      name: status
+      in: query
+      schema:
+        type: string
+    - description: filter by type; comma-separated for several
+      name: type
+      in: query
+      schema:
+        type: string
+    - description: issued on or after (YYYY-MM-DD)
+      name: date_from
+      in: query
+      schema:
+        type: string
+    - description: issued on or before (YYYY-MM-DD)
+      name: date_to
+      in: query
+      schema:
+        type: string
+    - description: search number, billed name, customer or amount
+      name: q
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: CSV export
+      content:
+        text/csv:
+          schema:
+            type: string
+    '400':
+      description: Bad Request
+      content:
+        text/csv:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        text/csv:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        text/csv:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

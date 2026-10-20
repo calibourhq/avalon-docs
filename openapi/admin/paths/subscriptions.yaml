@@ -1,0 +1,35 @@
+get:
+  operationId: list-subscriptions-admin
+  security:
+    - BearerAuth: []
+  description: Lists subscriptions, optionally filtered by org.
+  tags:
+    - subscriptions
+  summary: List subscriptions (admin)
+  parameters:
+    - description: filter by org
+      name: org_id
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/billing.Subscription.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

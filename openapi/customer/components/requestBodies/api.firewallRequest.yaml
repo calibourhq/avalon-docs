@@ -1,0 +1,6 @@
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/api.firewallRequest.yaml
+description: Firewall
+required: true

@@ -1,0 +1,41 @@
+post:
+  operationId: verify-an-organisations-vat-number
+  security:
+    - BearerAuth: []
+  description: >-
+    Checks the stored VAT number against VIES again, records the outcome and applies the reverse charge rule to charge_vat.
+  tags:
+    - orgs
+  summary: Verify an organisation's VAT number
+  parameters:
+    - description: organisation id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/orgs.Org.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

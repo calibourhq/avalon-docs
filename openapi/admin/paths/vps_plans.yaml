@@ -1,0 +1,73 @@
+get:
+  operationId: list-vps-plans
+  security:
+    - BearerAuth: []
+  description: >-
+    Returns the active VPS plans with their name (used to order) and available_regions (region names).
+
+    all=1 returns the full catalog, including retired plans.
+  tags:
+    - vps
+  summary: List VPS plans
+  parameters:
+    - description: 1 = full admin catalog
+      name: all
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/api.vpsUserPlan.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: create-vps-plan
+  security:
+    - BearerAuth: []
+  description: Create a VPS plan from the given specification.
+  tags:
+    - vps
+  summary: Create VPS plan
+  requestBody:
+    $ref: ../components/requestBodies/vps.VPSPlanInput.yaml
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/vps.VPSPlan.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

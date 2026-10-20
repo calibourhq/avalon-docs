@@ -1,0 +1,23 @@
+type: object
+properties:
+  allow_backorder:
+    type: boolean
+  available:
+    description: matching stock in the region (nil if no region given)
+    type: integer
+  backorder_lead_days:
+    description: advertised delivery time for a backorder
+    type: integer
+  ok:
+    description: does the build fit the platform + selection rules
+    type: boolean
+  reason:
+    description: why not, in the caller's language (see Localize)
+    type: string
+  recurring_cents:
+    type: integer
+  setup_cents:
+    type: integer
+  storage:
+    description: human storage summary of the effective build
+    type: string

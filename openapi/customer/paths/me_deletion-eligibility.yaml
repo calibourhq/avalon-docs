@@ -1,0 +1,34 @@
+get:
+  operationId: account-deletion-eligibility
+  security:
+    - BearerAuth: []
+  description: >-
+    Report whether the current user account can be deleted: which organisations would be deleted (sole-owned) or left, and every resource that still blocks deletion.
+  tags:
+    - self
+  summary: Account deletion eligibility
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/accountdeletion.Eligibility.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

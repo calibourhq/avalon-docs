@@ -1,0 +1,26 @@
+get:
+  operationId: dedicated-service-traffic
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Dedicated service traffic
+  parameters:
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: 24h|7d|30d|12m
+      name: period
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/netswitch.MetricsSummary.yaml

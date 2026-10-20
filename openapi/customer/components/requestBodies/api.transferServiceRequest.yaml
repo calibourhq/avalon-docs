@@ -1,0 +1,6 @@
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/api.transferServiceRequest.yaml
+description: Transfer target
+required: true

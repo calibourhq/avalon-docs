@@ -1,0 +1,70 @@
+get:
+  operationId: get-the-customer-telegram-bot-config
+  security:
+    - BearerAuth: []
+  description: Returns the Telegram bot config used for customer notifications.
+  tags:
+    - settings
+  summary: Get the customer Telegram bot config
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+put:
+  operationId: update-the-customer-telegram-bot-config
+  security:
+    - BearerAuth: []
+  description: >-
+    Sets the Telegram bot token and auto-delete window used for customer notifications.
+  tags:
+    - settings
+  summary: Update the customer Telegram bot config
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/api.updateTelegramReq.yaml
+    description: Telegram config
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

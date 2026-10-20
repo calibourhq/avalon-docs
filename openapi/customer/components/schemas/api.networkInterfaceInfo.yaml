@@ -1,0 +1,30 @@
+type: object
+properties:
+  address:
+    type: string
+  dns_servers:
+    type: array
+    items:
+      type: string
+  gateway:
+    type: string
+  id:
+    type: string
+  netmask:
+    description: IPv4 only
+    type: string
+  prefix:
+    type: string
+  prefix_len:
+    type: integer
+  primary:
+    type: boolean
+  ptr:
+    type: string
+  subnet_mask:
+    description: |-
+      SubnetMask is the "/N" CIDR prefix length the customer should configure on
+      the interface. For IPv4 it is the prefix length of the address's subnet;
+      for IPv6 it is the full prefix when the gateway is on-link within it, or
+      /128 when it is not.
+    type: string

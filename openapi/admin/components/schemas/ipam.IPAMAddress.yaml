@@ -1,0 +1,41 @@
+type: object
+properties:
+  address:
+    description: |-
+      The composite unique index leads with prefix_id, so a bare address lookup
+      (global search) needs its own index.
+    type: string
+  created_at:
+    type: string
+  description:
+    type: string
+  family:
+    type: integer
+  id:
+    type: string
+  prefix_id:
+    type: string
+  ptr_hostname:
+    description: PTR record tracking
+    type: string
+  ptr_record_id:
+    type: integer
+  ptr_zone_pdns_id:
+    type: integer
+  reserved_reason:
+    description: |-
+      ReservedReason explains why status="reserved" for system-managed entries.
+      Values: "network", "gateway", "broadcast", "manual".
+    type: string
+  service_id:
+    type: string
+  service_name:
+    description: ServiceName is a display name resolved by the API layer; not stored.
+    type: string
+  service_type:
+    description: Service assignment
+    type: string
+  status:
+    $ref: ./ipam.AddressStatus.yaml
+  updated_at:
+    type: string

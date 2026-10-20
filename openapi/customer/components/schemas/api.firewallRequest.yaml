@@ -1,0 +1,16 @@
+type: object
+required:
+  - name
+properties:
+  description:
+    type: string
+    maxLength: 500
+  name:
+    type: string
+    maxLength: 100
+  org_id:
+    type: string
+  policy_in:
+    type: string
+  policy_out:
+    type: string

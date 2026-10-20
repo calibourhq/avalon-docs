@@ -1,0 +1,69 @@
+type: object
+properties:
+  address:
+    description: host:port of EdgeDragon API
+    type: string
+  api_cert_fingerprint:
+    description: sha256:hexdigest
+    type: string
+  country:
+    description: |-
+      Country is the node's ISO 3166-1 alpha-2 country code. Customer-facing
+      attack status is grouped by it, so nodes without one fall into a generic
+      "other locations" bucket there.
+    type: string
+  created_at:
+    type: string
+  enabled:
+    description: |-
+      Enabled is admin intent: a disabled node is excluded from DNS routing and
+      receives no zone pushes, regardless of its health. It is deliberately
+      separate from Status so an admin can pull a node that health checks report
+      as online (e.g. serving wrong content) out of rotation.
+    type: boolean
+  go_version:
+    type: string
+  id:
+    type: string
+  ipv4:
+    type: string
+  ipv4_last_error:
+    type: string
+  ipv4_status:
+    description: |-
+      Per-family reachability, machine-owned like Status: unknown, online,
+      offline. A configured family that is offline pulls the node out of DNS
+      routing entirely (both A and AAAA), because a node that lost one address
+      family cannot proxy clients arriving on the other family to
+      single-stack origins. An empty IPv4/IPv6 column leaves its family at
+      "unknown" and it is not judged.
+    type: string
+  ipv6:
+    type: string
+  ipv6_last_error:
+    type: string
+  ipv6_status:
+    type: string
+  last_checked_at:
+    type: string
+  last_error:
+    type: string
+  location:
+    type: string
+  name:
+    type: string
+  prometheus_port:
+    type: integer
+  status:
+    description: |-
+      Status is machine-owned health only: unknown, online, offline. The monitor
+      probes every node (including disabled ones) so its health stays visible.
+    type: string
+  updated_at:
+    type: string
+  version:
+    description: |-
+      Version and GoVersion are the EdgeDragon build the node last reported
+      via edgedragon_build_info on its metrics endpoint; machine-owned,
+      refreshed by the metrics collector.
+    type: string

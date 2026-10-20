@@ -1,0 +1,44 @@
+get:
+  operationId: download-ticket-attachment
+  security:
+    - BearerAuth: []
+  description: >-
+    Streams an attachment of a non-internal message on a ticket of the active organisation.
+
+    any attachment, internal notes included.
+  tags:
+    - support
+  summary: Download ticket attachment
+  parameters:
+    - description: attachment id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/octet-stream:
+          schema:
+            type: string
+            format: binary
+    '401':
+      description: Unauthorized
+      content:
+        application/octet-stream:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/octet-stream:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/octet-stream:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

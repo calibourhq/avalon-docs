@@ -1,0 +1,6 @@
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/dns.SmartRecordInput.yaml
+description: smart record
+required: true

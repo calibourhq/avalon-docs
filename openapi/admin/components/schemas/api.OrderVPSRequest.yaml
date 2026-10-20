@@ -1,0 +1,89 @@
+type: object
+required:
+  - billing_cycle
+  - org_id
+  - os
+  - region
+properties:
+  bandwidth_exceeded_action:
+    type: string
+  bandwidth_exceeded_speed_mbps:
+    type: integer
+  bandwidth_tb:
+    type: integer
+  billing_cycle:
+    type: string
+  bios_type:
+    type: string
+  cpu:
+    description: Custom spec fields - only accepted when PlanID is empty, admin-only.
+    type: integer
+  cpu_limit:
+    type: integer
+  disk_bus:
+    type: string
+  disk_gb:
+    type: integer
+  ephemeral:
+    description: |-
+      Ephemeral (hourly only): the server is terminated automatically once it is
+      stopped, or when the optional max age (minutes from activation) passes.
+    type: boolean
+  ephemeral_max_age_minutes:
+    type: integer
+  hostname:
+    type: string
+    maxLength: 253
+  ipv4:
+    description: Network selection
+    type: boolean
+  ipv6:
+    description: default true
+    type: boolean
+  max_user_backups:
+    type: integer
+  network_speed_mbps:
+    type: integer
+  nic_model:
+    type: string
+  org_id:
+    type: string
+  os:
+    description: OS is the OS version's name, e.g. "debian-13".
+    type: string
+  plan:
+    description: >-
+      Plan is the plan's name, e.g. "vps-s". Staff may leave it empty for a
+      custom spec.
+    type: string
+  price_micros:
+    description: >-
+      PriceMicros is the admin's per-cycle price in micro-euros
+      (billing.MicrosPerEuro per
+
+      euro, so an hourly rate keeps its sub-cent precision). It is the whole
+      price for a
+
+      custom-spec order, and overrides the plan's computed price on a plan
+      order. Zero is a
+
+      price like any other: the server provisions immediately and is never
+      invoiced, and it
+
+      can be given a price later from the server's detail page. Admin-only.
+    type: integer
+  primary_private_network_id:
+    type: string
+  private_ip_config:
+    $ref: ./api.privateIPConfigIn.yaml
+  promo_code:
+    type: string
+  ram:
+    type: integer
+  region:
+    description: Region is the region's name, e.g. "ams1".
+    type: string
+  ssh_key_ids:
+    type: array
+    items:
+      type: string

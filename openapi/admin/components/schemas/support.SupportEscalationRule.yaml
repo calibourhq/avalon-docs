@@ -1,0 +1,33 @@
+type: object
+properties:
+  action:
+    description: reassign, notify
+    type: string
+  assign_group:
+    $ref: ./admins.AdminGroup.yaml
+  assign_group_id:
+    type: string
+  created_at:
+    type: string
+  enabled:
+    type: boolean
+  id:
+    type: string
+  name:
+    type: string
+  notify_group:
+    $ref: ./admins.AdminGroup.yaml
+  notify_group_id:
+    type: string
+  priority:
+    description: nil = all priorities
+    type: string
+  sort_order:
+    type: integer
+  trigger_type:
+    description: breach, idle, age
+    type: string
+  trigger_value_hours:
+    type: integer
+  updated_at:
+    type: string

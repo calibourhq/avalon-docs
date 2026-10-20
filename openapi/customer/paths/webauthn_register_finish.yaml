@@ -1,0 +1,33 @@
+post:
+  operationId: finish-passkey-registration
+  security:
+    - BearerAuth: []
+  description: Completes a passkey enrollment ceremony and saves the credential.
+  tags:
+    - passkeys
+  summary: Finish passkey registration
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.PasskeyResponse.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

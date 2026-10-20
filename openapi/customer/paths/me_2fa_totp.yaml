@@ -1,0 +1,29 @@
+delete:
+  operationId: disable-totp
+  security:
+    - BearerAuth: []
+  description: Verify a TOTP code and disable TOTP for the authenticated account.
+  tags:
+    - two-factor
+  summary: Disable TOTP
+  responses:
+    '204':
+      description: No Content
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

@@ -1,0 +1,16 @@
+type: object
+properties:
+  nodes:
+    type: array
+    items:
+      $ref: ./api.clusterOverviewNode.yaml
+  storage:
+    type: array
+    items:
+      $ref: ./api.clusterOverviewStorage.yaml
+  totals:
+    $ref: ./api.clusterOverviewTotals.yaml
+  vms:
+    type: array
+    items:
+      $ref: ./api.clusterOverviewVM.yaml

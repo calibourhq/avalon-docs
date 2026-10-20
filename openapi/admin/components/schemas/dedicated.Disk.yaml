@@ -1,0 +1,9 @@
+type: object
+properties:
+  model:
+    type: string
+  size_gb:
+    type: integer
+  type:
+    description: nvme | ssd | hdd
+    type: string

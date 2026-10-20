@@ -1,0 +1,30 @@
+type: object
+properties:
+  cpu:
+    type: number
+  disk:
+    type: integer
+  known:
+    type: boolean
+  max_cpu:
+    type: integer
+  max_disk:
+    type: integer
+  max_mem:
+    type: integer
+  mem:
+    type: integer
+  name:
+    type: string
+  node:
+    type: string
+  server_id:
+    type: string
+  status:
+    type: string
+  template:
+    type: boolean
+  uptime:
+    type: integer
+  vmid:
+    type: integer

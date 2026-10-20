@@ -1,0 +1,42 @@
+put:
+  operationId: block-or-unblock-a-customer-account
+  security:
+    - BearerAuth: []
+  description: >-
+    Blocks an account from signing in (ending its sessions) or lifts the block (admin only).
+  tags:
+    - customer-accounts
+  summary: Block or unblock a customer account
+  parameters:
+    - description: Account (user) ID
+      name: uid
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/api.AdminSetBlockedRequest.yaml
+    description: Blocked state
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/users.User.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

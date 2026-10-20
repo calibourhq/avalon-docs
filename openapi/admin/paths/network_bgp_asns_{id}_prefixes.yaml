@@ -1,0 +1,40 @@
+post:
+  operationId: add-manual-asn-prefix-admin
+  security:
+    - BearerAuth: []
+  description: Add a manual prefix to a BGP ASN and trigger reconcile.
+  tags:
+    - network-bgp
+  summary: Add manual ASN prefix (admin)
+  parameters:
+    - description: asn id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/bgp.ASNPrefix.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

@@ -1,0 +1,17 @@
+type: object
+properties:
+  capacity_gb:
+    description: spec items only
+    type: integer
+  component_id:
+    description: absent on a spec item
+    type: string
+  form_factor:
+    type: string
+  kind:
+    $ref: ./dedicated.ComponentKind.yaml
+  media:
+    description: 'disk spec items: hdd | ssd, "" = either'
+    type: string
+  quantity:
+    type: integer

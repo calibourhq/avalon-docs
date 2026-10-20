@@ -1,0 +1,40 @@
+post:
+  operationId: cancel-a-billable-item
+  security:
+    - BearerAuth: []
+  description: Stops billing for an item immediately. Admin only.
+  tags:
+    - billing
+  summary: Cancel a billable item
+  parameters:
+    - description: item id
+      name: item_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/billableitems.Item.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

@@ -1,0 +1,28 @@
+get:
+  operationId: service-history-admin
+  security:
+    - BearerAuth: []
+  description: Audit entries for the service and every billing subscription it has had.
+  tags:
+    - admin
+  summary: Service history (admin)
+  parameters:
+    - description: service type
+      name: type
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/audit.ListResult.yaml

@@ -1,0 +1,26 @@
+type: object
+properties:
+  autobird_id:
+    type: integer
+  fields:
+    type: array
+    items:
+      $ref: ./bgp.FieldRow.yaml
+  instance:
+    $ref: ./bgp.InstanceState.yaml
+  label:
+    description: human summary ("AS64512 -> 192.0.2.2")
+    type: string
+  live:
+    $ref: ./bgp.SessionStatus.yaml
+  live_error:
+    type: string
+  name:
+    description: the autobird name; the join key
+    type: string
+  prefixes:
+    $ref: ./bgp.PrefixSet.yaml
+  resource:
+    $ref: ./bgp.ResourceRef.yaml
+  state:
+    $ref: ./bgp.DriftState.yaml

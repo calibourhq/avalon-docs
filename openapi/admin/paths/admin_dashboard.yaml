@@ -1,0 +1,52 @@
+get:
+  operationId: get-the-admin-dashboard
+  security:
+    - BearerAuth: []
+  description: >-
+    The widgets this admin may see and their saved layout (null until customized).
+  tags:
+    - admin
+  summary: Get the admin dashboard
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+put:
+  operationId: save-the-admin-dashboard-layout
+  security:
+    - BearerAuth: []
+  description: >-
+    Stores this admin's widget order, widths and heights. A null layout restores the default.
+  tags:
+    - admin
+  summary: Save the admin dashboard layout
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

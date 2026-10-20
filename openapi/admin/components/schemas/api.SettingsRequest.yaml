@@ -1,0 +1,57 @@
+type: object
+properties:
+  customer_locked_fields:
+    type: array
+    items:
+      type: string
+  customer_required_fields:
+    description: |-
+      Customer data policy: org field names a customer must fill in, and
+      those a customer may not change once set.
+    type: array
+    items:
+      type: string
+  dns_ns1:
+    type: string
+    maxLength: 255
+  dns_ns2:
+    type: string
+    maxLength: 255
+  dns_ns3:
+    type: string
+    maxLength: 255
+  dns_soa_email:
+    type: string
+    maxLength: 255
+  dns_soa_nameserver:
+    type: string
+    maxLength: 255
+  domain_dns_plan_id:
+    type: string
+  from_address:
+    type: string
+    maxLength: 255
+  name:
+    type: string
+    maxLength: 100
+  oauth_client_id:
+    type: string
+    maxLength: 255
+  oauth_client_secret:
+    type: string
+    maxLength: 255
+  oauth_enabled:
+    type: boolean
+  oauth_issuer:
+    type: string
+    maxLength: 255
+  oauth_scopes:
+    type: string
+    maxLength: 255
+  registration_enabled:
+    type: boolean
+  two_fa_required:
+    type: boolean
+  vps_hostname_domain:
+    type: string
+    maxLength: 255

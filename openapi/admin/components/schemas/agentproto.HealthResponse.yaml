@@ -1,0 +1,13 @@
+type: object
+properties:
+  features:
+    description: |-
+      Features lists what this agent can do ("power", "switch",
+      "switch:<driver>", ...). Absent on agents before 1.1.0.
+    type: array
+    items:
+      type: string
+  uptime:
+    type: string
+  version:
+    type: string

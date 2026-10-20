@@ -1,0 +1,16 @@
+type: object
+properties:
+  rx_bps:
+    type: integer
+  rx_bytes:
+    type: integer
+  rx_packets:
+    type: integer
+  time:
+    type: string
+  tx_bps:
+    type: integer
+  tx_bytes:
+    type: integer
+  tx_packets:
+    type: integer

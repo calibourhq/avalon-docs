@@ -1,0 +1,40 @@
+get:
+  operationId: get-a-dedicated-server
+  security:
+    - BearerAuth: []
+  description: >-
+    Returns one dedicated-server service with enriched plan/renewal/power details.
+  tags:
+    - dedicated
+  summary: Get a dedicated server
+  parameters:
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.DedicatedService.yaml
+delete:
+  operationId: terminate-a-dedicated-server-now
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Terminate a dedicated server now
+  parameters:
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content

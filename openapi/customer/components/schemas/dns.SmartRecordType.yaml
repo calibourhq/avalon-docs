@@ -1,0 +1,7 @@
+type: string
+enum:
+  - A
+  - AAAA
+x-enum-varnames:
+  - SmartRecordTypeA
+  - SmartRecordTypeAAAA

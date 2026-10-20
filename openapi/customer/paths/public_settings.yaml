@@ -1,0 +1,21 @@
+get:
+  security: []
+  operationId: get-public-instance-settings
+  description: >-
+    Returns the limited instance information the login and registration screens need (no auth required).
+  tags:
+    - settings
+  summary: Get public instance settings
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.PublicSettingsResponse.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

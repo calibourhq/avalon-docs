@@ -1,0 +1,46 @@
+get:
+  operationId: confirm-card-setup
+  security:
+    - BearerAuth: []
+  description: Confirms a completed Stripe setup session and stores the payment method.
+  tags:
+    - billing
+  summary: Confirm card setup
+  parameters:
+    - description: org id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: Stripe setup session id
+      name: session_id
+      in: query
+      required: true
+      schema:
+        type: string
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/billing.PaymentMethod.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

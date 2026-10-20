@@ -1,0 +1,10 @@
+type: object
+properties:
+  code:
+    allOf:
+      - $ref: ./errors.ErrorCode.yaml
+    example: VALIDATION_ERROR
+  message:
+    description: Translated or internal message
+    type: string
+    example: Validation failed

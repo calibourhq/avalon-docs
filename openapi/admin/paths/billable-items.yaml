@@ -1,0 +1,71 @@
+get:
+  operationId: list-billable-items
+  security:
+    - BearerAuth: []
+  description: |-
+    Lists billable items of the caller's active org.
+    lists all orgs; org_id filters by org.
+  tags:
+    - billing
+  summary: List billable items
+  parameters:
+    - description: filter by org
+      name: org_id
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/billableitems.Item.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+post:
+  operationId: create-a-billable-item
+  security:
+    - BearerAuth: []
+  description: >-
+    Creates a custom charge on an org. By default no invoice is issued now and the first renewal is due at next_due_at (one billing cycle from now when omitted); with bill_now it is ordered through the regular billing flow. Admin only.
+  tags:
+    - billing
+  summary: Create a billable item
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/billableitems.Item.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

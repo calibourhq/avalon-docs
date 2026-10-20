@@ -1,0 +1,25 @@
+put:
+  operationId: set-a-vps-nodes-category
+  security:
+    - BearerAuth: []
+  description: >-
+    Tags a hypervisor node with the category whose plans it hosts; a nil category_id removes the tag.
+  tags:
+    - vps
+  summary: Set a VPS node's category
+  parameters:
+    - description: cluster id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: node name
+      name: node
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content

@@ -1,0 +1,29 @@
+get:
+  operationId: outstanding-nameserver-migrations
+  security:
+    - BearerAuth: []
+  description: >-
+    Lists every DNS zone and registrar domain still on the previous nameserver addresses (admin only).
+  tags:
+    - dns
+  summary: Outstanding nameserver migrations
+  parameters:
+    - description: restrict to one organisation
+      name: org_id
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

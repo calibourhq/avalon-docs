@@ -1,0 +1,69 @@
+type: object
+required:
+  - name
+  - registry
+properties:
+  asn_count:
+    type: integer
+  created_at:
+    type: string
+  id:
+    type: string
+  last_error:
+    type: string
+  last_synced_at:
+    description: |-
+      Outcome of the last walk. LastError is sticky: a failed walk keeps the
+      prefixes it imported last time (see syncDownstreamSets), so the row has to
+      say that what is in the prefix list may be stale.
+    type: string
+  limit_exceeded:
+    description: |-
+      LimitExceeded separates "the customer's set grew past what you allowed"
+      from "the registry would not answer". Both keep the previous import, but
+      only one of them is the operator's call to make, and it is the reason the
+      admins get told once on the way in rather than every sync.
+    type: boolean
+  max_asns:
+    description: |-
+      Trust limits. Attaching an AS-SET is an act of trust in the customer to
+      curate it; these are the trip wires for the day that trust is misplaced by
+      accident rather than intent - a mistyped members: line that pulls in a
+      transit provider's whole cone, a member AS that turns out to hold a
+      thousand ROAs. Breaching either one refuses the *whole* import and leaves
+      the previous one in place: a limit exists to stop a surprise reaching the
+      route servers, and importing an arbitrary truncated half of a surprise
+      would defeat that. 0 means no limit.
+
+      MaxASNs names its column explicitly: GORM's derived name for this field is
+      "max_as_ns", which nothing else in the codebase would ever guess, and the
+      map-keyed update below writes the column by name.
+    type: integer
+  max_prefixes:
+    type: integer
+  name:
+    description: |-
+      Name is the as-set object name as published, e.g. "AS-EXAMPLE" or the
+      hierarchical "AS64500:AS-CUSTOMERS".
+    type: string
+    maxLength: 100
+  org_asn_id:
+    type: string
+  prefix_count:
+    type: integer
+  registry:
+    description: |-
+      Registry is which IRR to look the object up in - one of the keys in
+      as_set_import.go's catalog. The same set name can exist in several
+      registries with different members, so the lookup is never guessed.
+    type: string
+    maxLength: 20
+  updated_at:
+    type: string
+  warnings:
+    description: >-
+      Warnings holds the non-fatal notes from the last walk, one per line -
+
+      members we could not read, nested sets cut off at the depth limit, caps
+      hit.
+    type: string

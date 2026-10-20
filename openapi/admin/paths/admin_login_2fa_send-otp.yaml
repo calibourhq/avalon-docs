@@ -1,0 +1,34 @@
+post:
+  security: []
+  operationId: send-2fa-otp-to-a-logging-in-admin
+  description: Send a one-time passcode for a pending admin 2FA login session.
+  tags:
+    - two-factor
+  summary: Send 2FA OTP to a logging-in admin
+  responses:
+    '200':
+      description: OK
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

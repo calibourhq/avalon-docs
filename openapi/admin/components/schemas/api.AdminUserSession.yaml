@@ -1,0 +1,10 @@
+type: object
+properties:
+  created_at:
+    type: string
+  expires_at:
+    type: string
+  org_id:
+    type: string
+  user_type:
+    type: string

@@ -1,0 +1,35 @@
+type: object
+properties:
+  created_at:
+    type: string
+  id:
+    type: string
+  instances:
+    type: array
+    items:
+      $ref: ./bgp.FloatingRouteInstance.yaml
+  managed:
+    description: >-
+      Managed marks a route whose lifecycle is owned by a service (e.g. a VPS
+
+      routed-subnet announcement). Managed routes cannot be deleted through the
+
+      floating-route API; they are created and withdrawn by their owning
+      service.
+    type: boolean
+  next_hop:
+    type: string
+  org_id:
+    type: string
+  prefix:
+    type: string
+  region_id:
+    type: string
+  service_id:
+    type: string
+  service_type:
+    type: string
+  status:
+    $ref: ./bgp.FloatingRouteStatus.yaml
+  updated_at:
+    type: string

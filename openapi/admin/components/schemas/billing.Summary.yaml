@@ -1,0 +1,29 @@
+type: object
+properties:
+  credit_balance:
+    type: integer
+  invoice_count:
+    type: integer
+  last_payment_at:
+    type: string
+  last_payment_cents:
+    type: integer
+  outstanding_cents:
+    description: Unpaid documents (pending or overdue invoices and proformas).
+    type: integer
+  outstanding_count:
+    type: integer
+  overdue_cents:
+    type: integer
+  overdue_count:
+    type: integer
+  promo_credit_balance:
+    type: integer
+  received_cents:
+    description: |-
+      Money actually moved over the customer's lifetime: succeeded gateway
+      payments and completed donations in, refunds paid out (not refunds to
+      credit, which never left the house).
+    type: integer
+  refunded_cents:
+    type: integer

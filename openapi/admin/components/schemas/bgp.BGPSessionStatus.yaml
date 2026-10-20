@@ -1,0 +1,13 @@
+type: string
+enum:
+  - creating
+  - active
+  - updating
+  - deleting
+  - error
+x-enum-varnames:
+  - BGPSessionCreating
+  - BGPSessionActive
+  - BGPSessionUpdating
+  - BGPSessionDeleting
+  - BGPSessionError

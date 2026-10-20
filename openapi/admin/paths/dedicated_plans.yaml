@@ -1,0 +1,33 @@
+get:
+  operationId: list-dedicated-plans
+  security:
+    - BearerAuth: []
+  description: |-
+    Lists active plans.
+    retired plans are listed too.
+  tags:
+    - dedicated
+  summary: List dedicated plans
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/dedicated.DedicatedPlan.yaml
+post:
+  operationId: create-dedicated-plan
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Create dedicated plan
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.DedicatedPlan.yaml

@@ -1,0 +1,14 @@
+type: object
+properties:
+  can_order:
+    type: boolean
+  expired:
+    type: integer
+  setup:
+    type: integer
+  suspended:
+    type: integer
+  total:
+    type: integer
+  type:
+    type: string

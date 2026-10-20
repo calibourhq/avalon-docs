@@ -1,0 +1,28 @@
+get:
+  operationId: list-switch-ports-admin
+  security:
+    - BearerAuth: []
+  tags:
+    - network-switches
+  summary: List switch ports (admin)
+  parameters:
+    - description: switch id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: 1 to merge the device's live port table
+      name: live
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/netswitch.SwitchPort.yaml

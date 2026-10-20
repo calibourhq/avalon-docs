@@ -1,0 +1,29 @@
+post:
+  operationId: dismiss-all-failed-notifications
+  security:
+    - BearerAuth: []
+  description: >-
+    Marks every outstanding failed delivery as handled and returns how many were covered.
+  tags:
+    - notifications
+  summary: Dismiss all failed notifications
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

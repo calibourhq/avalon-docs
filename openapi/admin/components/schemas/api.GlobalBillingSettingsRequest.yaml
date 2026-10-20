@@ -1,0 +1,147 @@
+type: object
+properties:
+  acct_bank_manual:
+    type: integer
+    maximum: 999999999
+    minimum: 0
+  acct_bank_nowpayments:
+    type: integer
+    maximum: 999999999
+    minimum: 0
+  acct_bank_paypal:
+    type: integer
+    maximum: 999999999
+    minimum: 0
+  acct_bank_stripe:
+    type: integer
+    maximum: 999999999
+    minimum: 0
+  acct_credit_adjustment:
+    type: integer
+    maximum: 999999999
+    minimum: 0
+  acct_credit_liability:
+    type: integer
+    maximum: 999999999
+    minimum: 0
+  acct_debtor_base:
+    type: integer
+    maximum: 999999999
+    minimum: 0
+  acct_revenue_domestic:
+    type: integer
+    maximum: 999999999
+    minimum: 0
+  acct_revenue_eu_consumer:
+    type: integer
+    maximum: 999999999
+    minimum: 0
+  acct_revenue_non_eu:
+    type: integer
+    maximum: 999999999
+    minimum: 0
+  acct_revenue_reverse_charge:
+    type: integer
+    maximum: 999999999
+    minimum: 0
+  acct_revenue_zero_rated:
+    type: integer
+    maximum: 999999999
+    minimum: 0
+  datev_account_length:
+    type: integer
+    maximum: 8
+    minimum: 4
+  datev_client_number:
+    type: integer
+    maximum: 99999
+    minimum: 0
+  datev_consultant_number:
+    description: >-
+      Accounting: the DATEV header and the chart of accounts the booking batch
+      uses.
+    type: integer
+    maximum: 9999999
+    minimum: 0
+  datev_fiscal_year_start_month:
+    type: integer
+    maximum: 12
+    minimum: 1
+  default_billing_mode:
+    type: string
+    enum:
+      - postpaid
+      - prepaid
+  default_due_days:
+    type: integer
+    maximum: 365
+    minimum: 0
+  default_tax_label:
+    type: string
+    maxLength: 50
+  default_tax_rate:
+    type: number
+  dunning_enabled:
+    type: boolean
+  e_invoice_attach:
+    type: boolean
+  e_invoice_format:
+    type: string
+    enum:
+      - peppol
+      - xrechnung
+  invoice_lead_days:
+    type: integer
+    maximum: 60
+    minimum: 0
+  max_credit_balance:
+    type: integer
+    minimum: 0
+  seller_address:
+    type: string
+    maxLength: 255
+  seller_address2:
+    type: string
+    maxLength: 255
+  seller_city:
+    type: string
+    maxLength: 100
+  seller_contact_name:
+    type: string
+    maxLength: 255
+  seller_country:
+    type: string
+    maxLength: 2
+  seller_email:
+    type: string
+    maxLength: 255
+  seller_iban:
+    type: string
+    maxLength: 34
+  seller_name:
+    type: string
+    maxLength: 255
+  seller_phone:
+    type: string
+    maxLength: 50
+  seller_postal:
+    type: string
+    maxLength: 32
+  seller_registration:
+    type: string
+    maxLength: 50
+  seller_vat:
+    type: string
+    maxLength: 50
+  suspend_after_days:
+    type: integer
+    maximum: 365
+    minimum: 0
+  terminate_after_days:
+    type: integer
+    maximum: 365
+    minimum: 0
+  unpaid_order_expiry_days:
+    type: integer
+    maximum: 365
+    minimum: 0

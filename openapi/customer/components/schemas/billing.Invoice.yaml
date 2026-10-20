@@ -1,0 +1,141 @@
+type: object
+properties:
+  billing_address:
+    type: string
+  billing_address2:
+    type: string
+  billing_buyer_reference:
+    description: >-
+      BillingBuyerReference is the customer's own reference for this invoice
+      (BT-10).
+    type: string
+  billing_city:
+    type: string
+  billing_company:
+    type: string
+  billing_country:
+    type: string
+  billing_customer_id:
+    type: integer
+  billing_email:
+    description: >-
+      BillingEmail and BillingCustomerID identify the buyer in the e-invoice:
+      its electronic
+
+      address (the org's billing email, else its first billing contact) and
+      buyer reference.
+    type: string
+  billing_name:
+    description: Billing address snapshot (captured at finalization)
+    type: string
+  billing_postal:
+    type: string
+  billing_registration:
+    description: >-
+      BillingRegistration is the buyer's company registration number (KvK, CVR,
+      ...), which
+
+      addresses a business without a VAT number in the e-invoice.
+    type: string
+  billing_vat_number:
+    type: string
+  converted_at:
+    description: Proforma conversion tracking
+    type: string
+  converted_to_id:
+    type: string
+  created_at:
+    type: string
+  credit_applied:
+    description: >-
+      CreditApplied tracks how much real credit balance has been applied to this
+      invoice.
+
+      AmountDue = Total - CreditApplied. When CreditApplied >= Total the invoice
+      is paid.
+    type: integer
+  currency:
+    description: Amounts in euro cents
+    type: string
+  discount_amount:
+    type: integer
+  discount_label:
+    type: string
+  due_at:
+    type: string
+  id:
+    type: string
+  is_internal:
+    description: >-
+      IsInternal marks a zero-total invoice that was settled at finalize time
+      without ever
+
+      becoming a bookkeeping document: no number, no notifications, excluded
+      from listings
+
+      and the CSV export. The row is kept only so records referencing it (domain
+      operations,
+
+      usage stamps, subscription items) stay intact.
+    type: boolean
+  is_top_up:
+    type: boolean
+  issued_at:
+    type: string
+  items:
+    description: Preloaded associations
+    type: array
+    items:
+      $ref: ./billing.InvoiceItem.yaml
+  language:
+    type: string
+  notes:
+    type: string
+  number:
+    type: string
+  org_id:
+    type: string
+  paid_at:
+    type: string
+  payments:
+    type: array
+    items:
+      $ref: ./billing.Payment.yaml
+  promo_code_id:
+    type: string
+  promo_credit_applied:
+    description: >-
+      PromoCreditApplied is the amount of gifted promo credit redeemed against
+      this
+
+      invoice. Like a discount it reduces the taxable base (so VAT is only
+      charged on
+
+      what the customer actually pays), but it is tracked separately for
+      accounting.
+    type: integer
+  refunds:
+    type: array
+    items:
+      $ref: ./billing.Refund.yaml
+  related_invoice_id:
+    type: string
+  status:
+    $ref: ./billing.InvoiceStatus.yaml
+  subtotal:
+    type: integer
+  tax_amount:
+    type: integer
+  tax_label:
+    type: string
+  tax_rate:
+    description: percent, two decimals at most
+    type: number
+  taxable_amount:
+    type: integer
+  total:
+    type: integer
+  type:
+    $ref: ./billing.InvoiceType.yaml
+  updated_at:
+    type: string

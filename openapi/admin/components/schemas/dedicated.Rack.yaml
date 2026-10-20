@@ -1,0 +1,57 @@
+type: object
+properties:
+  active:
+    type: boolean
+  created_at:
+    type: string
+  device_count:
+    type: integer
+  end_u:
+    type: integer
+  half_used_u:
+    type: integer
+  height_u:
+    description: |-
+      HeightU is how many mounting units the cabinet has. Units are numbered
+      bottom-up from 1, the way rack rails are labelled.
+    type: integer
+  id:
+    type: string
+  location:
+    description: |-
+      Location is free text for where the cabinet stands (room, suite, row). It
+      is a label for humans; nothing is ever matched against it.
+    type: string
+  name:
+    type: string
+  notes:
+    type: string
+  region_id:
+    description: |-
+      Name is unique within a region: "R12" in AMS1 and "R12" in FRA1 are two
+      different cabinets, and neither should have to be spelled differently to
+      coexist.
+    type: string
+  server_count:
+    description: Derived (not stored, populated by ListRacks)
+    type: integer
+  start_u:
+    description: |-
+      StartU and EndU bound the slice of the cabinet that is ours to manage, so
+      a quarter or half rack can be recorded as what it is: the cabinet is still
+      42U, we just have U1-U10 of it. Either may be left unset - a start with no
+      end runs to the top, an end with no start starts at the bottom - and with
+      neither set the whole cabinet is ours.
+
+      Nothing outside the range can be mounted, and the range itself cannot be
+      moved across something already mounted.
+    type: integer
+  updated_at:
+    type: string
+  used_u:
+    description: |-
+      UsedU counts the units with anything mounted in them, machines and devices
+      alike: a unit filled by a switch is as unavailable as one filled by a
+      server. HalfUsedU is how many of those are taken on one face only, so the
+      other side still has room for something half depth.
+    type: integer

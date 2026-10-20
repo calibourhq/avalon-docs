@@ -1,0 +1,24 @@
+post:
+  operationId: unsuspend-a-service-admin
+  security:
+    - BearerAuth: []
+  description: Lifts the manual/billing hold. An abuse hold stays in place.
+  tags:
+    - admin
+  summary: Unsuspend a service (admin)
+  parameters:
+    - description: service type
+      name: type
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content

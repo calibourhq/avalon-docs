@@ -1,0 +1,46 @@
+get:
+  operationId: get-a-servers-installed-components
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Get a server's installed components
+  parameters:
+    - description: server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/dedicated.ServerComponent.yaml
+put:
+  operationId: replace-a-servers-installed-components
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Replace a server's installed components
+  parameters:
+    - description: server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/dedicated.ServerComponent.yaml

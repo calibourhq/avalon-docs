@@ -1,0 +1,25 @@
+get:
+  operationId: find-a-mac-address-on-the-switch-fabric-admin
+  security:
+    - BearerAuth: []
+  description: >-
+    Looks a MAC or a fragment of one (at least 4 hex digits, any notation) up in every switch's last forwarding-table read.
+  tags:
+    - network-switches
+  summary: Find a MAC address on the switch fabric (admin)
+  parameters:
+    - description: MAC address or fragment
+      name: q
+      in: query
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/netswitch.MACLocation.yaml

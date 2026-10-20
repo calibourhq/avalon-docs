@@ -1,0 +1,30 @@
+get:
+  operationId: list-dedicated-servers-inventory
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: List dedicated servers (inventory)
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/dedicated.DedicatedServer.yaml
+post:
+  operationId: create-dedicated-server-inventory
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Create dedicated server (inventory)
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dedicated.DedicatedServer.yaml

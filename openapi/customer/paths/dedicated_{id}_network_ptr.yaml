@@ -1,0 +1,39 @@
+post:
+  operationId: set-ptr-for-a-dedicated-service-ip
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Set PTR for a dedicated service IP
+  parameters:
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+delete:
+  operationId: delete-ptr-for-a-dedicated-service-ip
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Delete PTR for a dedicated service IP
+  parameters:
+    - description: service id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content

@@ -1,0 +1,35 @@
+get:
+  security: []
+  operationId: list-crypto-currencies-for-a-donation
+  description: >-
+    Returns the crypto currencies accepted by NOWPayments, for the donor-facing picker.
+  tags:
+    - donations
+  summary: List crypto currencies for a donation
+  parameters:
+    - description: donation page slug
+      name: slug
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

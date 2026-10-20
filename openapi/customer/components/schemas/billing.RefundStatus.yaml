@@ -1,0 +1,7 @@
+type: string
+enum:
+  - succeeded
+  - failed
+x-enum-varnames:
+  - RefundStatusSucceeded
+  - RefundStatusFailed

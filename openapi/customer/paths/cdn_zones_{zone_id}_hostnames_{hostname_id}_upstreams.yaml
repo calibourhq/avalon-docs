@@ -1,0 +1,40 @@
+put:
+  security:
+    - BearerAuth: []
+  operationId: replace-a-cdn-hostnames-origins
+  tags:
+    - CDN
+  summary: Replace a CDN hostname's origins
+  parameters:
+    - description: CDN zone ID
+      name: zone_id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: CDN hostname ID
+      name: hostname_id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/api.CDNUpstreamsBody.yaml
+    description: Origin pool, in order; the first entry is the primary
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/cdn.HostnameView.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

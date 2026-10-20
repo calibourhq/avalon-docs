@@ -1,0 +1,64 @@
+type: object
+properties:
+  auto_close_days:
+    type: integer
+  auto_close_enabled:
+    description: 'Auto-close: resolve ticket after N days of inactivity'
+    type: boolean
+  business_hours_days:
+    type: array
+    items:
+      type: integer
+  business_hours_enabled:
+    description: Business hours
+    type: boolean
+  business_hours_end:
+    type: string
+  business_hours_start:
+    type: string
+  business_hours_timezone:
+    type: string
+  created_at:
+    type: string
+  critical_min_monthly_cents:
+    description: |-
+      CriticalMinMonthlyCents gates the critical level behind spend: when > 0,
+      critical is only offered to customers whose estimated monthly expense
+      (billing.EstimateMonthlyExpenseCents) reaches this amount. Customers who
+      fall short simply don't see the option; the gate is never disclosed to
+      them. 0 disables the gate.
+    type: integer
+  customer_priorities:
+    description: |-
+      CustomerPriorities lists the priority levels customers may pick when
+      opening a ticket. Levels left out are hidden from the customer UI and
+      rejected by the API; staff can still set them on any ticket.
+    type: array
+    items:
+      type: string
+  default_priority:
+    description: Prioritization
+    type: string
+  first_response_hours:
+    type: integer
+  id:
+    type: string
+  reopen_window_days:
+    description: >-
+      Reply-to-reopen: how many days after closing a customer reply can reopen
+      the ticket.
+
+      0 = disabled (replies never reopen a closed ticket).
+    type: integer
+  reply_signature:
+    description: |-
+      ReplySignature is appended to every public staff message (see
+      signature.go). Empty = no signature.
+    type: string
+  sla_enabled:
+    description: >-
+      SLA master switch + global first-response default (overridden per priority
+      when SLAEnabled)
+    type: boolean
+  updated_at:
+    type: string

@@ -1,0 +1,35 @@
+type: object
+required:
+  - billing_cycle
+  - description
+  - quantity
+properties:
+  billing_cycle:
+    enum:
+      - one_time
+      - hourly
+      - monthly
+      - quarterly
+      - biannual
+      - yearly
+    allOf:
+      - $ref: ./billing.BillingCycle.yaml
+  description:
+    type: string
+    maxLength: 500
+  is_setup_fee:
+    type: boolean
+  period_end:
+    type: string
+  period_start:
+    type: string
+  quantity:
+    type: integer
+    minimum: 1
+  sort_order:
+    type: integer
+  subscription_id:
+    type: string
+  unit_price:
+    type: integer
+    minimum: 0

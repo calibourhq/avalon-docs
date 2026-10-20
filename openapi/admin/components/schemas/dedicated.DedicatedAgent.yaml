@@ -1,0 +1,37 @@
+type: object
+properties:
+  active:
+    type: boolean
+  created_at:
+    type: string
+  endpoint:
+    description: e.g. https://agent.dc1.internal:9000
+    type: string
+  features:
+    description: |-
+      FeaturesCache is the last feature list this agent advertised, refreshed by
+      the health worker. It is cached rather than read live because console
+      availability is computed per row on list endpoints, and a health round
+      trip per row would make them unusable.
+    type: array
+    items:
+      type: string
+  healthy:
+    description: Derived (not stored, populated by health checks / list)
+    type: boolean
+  id:
+    type: string
+  insecure_tls:
+    type: boolean
+  last_health_at:
+    type: string
+  last_seen_at:
+    type: string
+  name:
+    type: string
+  region_id:
+    type: string
+  updated_at:
+    type: string
+  version:
+    type: string

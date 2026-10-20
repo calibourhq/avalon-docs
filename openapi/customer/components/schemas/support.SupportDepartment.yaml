@@ -1,0 +1,16 @@
+type: object
+properties:
+  created_at:
+    type: string
+  description:
+    type: string
+  id:
+    type: string
+  is_default:
+    type: boolean
+  is_public:
+    type: boolean
+  name:
+    type: string
+  updated_at:
+    type: string

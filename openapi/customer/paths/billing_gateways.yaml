@@ -1,0 +1,22 @@
+get:
+  operationId: get-billing-gateways
+  security:
+    - BearerAuth: []
+  description: Returns which payment gateways are configured on this instance.
+  tags:
+    - billing
+  summary: Get billing gateways
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

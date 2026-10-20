@@ -1,0 +1,22 @@
+put:
+  operationId: toggle-anti-spoofing-for-a-dedicated-server-admin
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated
+  summary: Toggle anti-spoofing for a dedicated server (admin)
+  parameters:
+    - description: server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true

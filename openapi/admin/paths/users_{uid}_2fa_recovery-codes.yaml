@@ -1,0 +1,31 @@
+delete:
+  operationId: delete-a-customers-recovery-codes
+  security:
+    - BearerAuth: []
+  description: >-
+    Invalidates every recovery code on a customer account, e.g. after the customer reports the printed set lost (admin only).
+  tags:
+    - customer-accounts
+  summary: Delete a customer's recovery codes
+  parameters:
+    - description: Account (user) ID
+      name: uid
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

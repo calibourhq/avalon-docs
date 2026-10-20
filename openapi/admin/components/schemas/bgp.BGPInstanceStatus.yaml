@@ -1,0 +1,11 @@
+type: string
+enum:
+  - creating
+  - active
+  - error
+  - deleting
+x-enum-varnames:
+  - BGPInstanceCreating
+  - BGPInstanceActive
+  - BGPInstanceError
+  - BGPInstanceDeleting

@@ -1,0 +1,39 @@
+delete:
+  operationId: remove-a-cdn-record
+  security:
+    - BearerAuth: []
+  description: |-
+    Stops sending the hostname to the CDN edge. The CDN hostname,
+    its origins, rules and certificate are kept, so the record can be
+    added again later without reconfiguring anything.
+  tags:
+    - dns
+  summary: Remove a CDN record
+  parameters:
+    - description: zone id
+      name: zone_id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: cdn hostname id
+      name: cdn_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: No Content
+    '400':
+      description: Bad Request
+      content:
+        '*/*':
+          schema:
+            $ref: ../components/schemas/errors.ValidationErrorResponse.yaml
+    '401':
+      description: Unauthorized
+      content:
+        '*/*':
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

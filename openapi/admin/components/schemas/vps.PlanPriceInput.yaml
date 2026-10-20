@@ -1,0 +1,10 @@
+type: object
+properties:
+  cycle:
+    type: string
+  ipv4_price:
+    type: number
+  ipv6_price:
+    type: number
+  price:
+    type: number

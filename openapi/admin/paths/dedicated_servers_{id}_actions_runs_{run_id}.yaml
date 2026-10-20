@@ -1,0 +1,27 @@
+get:
+  operationId: get-one-action-run-admin
+  security:
+    - BearerAuth: []
+  tags:
+    - dedicated-admin
+  summary: Get one action run (admin)
+  parameters:
+    - description: server id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - description: run id
+      name: run_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/api.actionRunView.yaml

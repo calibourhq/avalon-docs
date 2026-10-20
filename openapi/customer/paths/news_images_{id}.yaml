@@ -1,0 +1,23 @@
+get:
+  security: []
+  operationId: get-a-news-image
+  description: Streams a stored article image.
+  tags:
+    - news
+  summary: Get a news image
+  parameters:
+    - description: image id
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+    '404':
+      description: Not Found
+      content:
+        application/octet-stream:
+          schema:
+            $ref: ../components/schemas/errors.AppError.yaml

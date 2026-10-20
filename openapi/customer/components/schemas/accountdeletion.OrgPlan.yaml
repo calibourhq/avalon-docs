@@ -1,0 +1,15 @@
+type: object
+properties:
+  action:
+    description: '"delete" or "leave"'
+    type: string
+  blockers:
+    type: array
+    items:
+      $ref: ./accountdeletion.Blocker.yaml
+  member_count:
+    type: integer
+  org_id:
+    type: string
+  org_name:
+    type: string

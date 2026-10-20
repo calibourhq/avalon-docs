@@ -1,0 +1,25 @@
+---
+title: Avalon
+description: Avalon documentation and API reference.
+template: splash
+hero:
+  tagline: Hosting and billing platform for VPS, dedicated servers, DNS, CDN, S3 and more.
+  actions:
+    - text: API
+      link: api/
+      icon: right-arrow
+    - text: Docs
+      link: getting-started/introduction/
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid>
+	<Card title="API" icon="seti:json">
+		Manage your servers and services from your own scripts and tools. [API docs](api/).
+	</Card>
+	<Card title="Docs" icon="open-book">
+		Setting up and running Avalon. [Docs](getting-started/introduction/).
+	</Card>
+</CardGrid>

@@ -1,0 +1,73 @@
+type: object
+properties:
+  bandwidth_tb:
+    description: |-
+      BandwidthTB is what a bandwidth choice sets the monthly traffic
+      allowance to (0 = unlimited, as on the plan).
+    type: integer
+  capacity_gb:
+    type: integer
+  component:
+    $ref: ./dedicated.Component.yaml
+  component_id:
+    description: |-
+      ComponentID is the part a CPU, NIC or GPU choice installs. Memory and
+      drive choices name a size instead and leave it NULL (the column carries a
+      foreign key, so it cannot hold a placeholder id): a memory choice is the
+      total in CapacityGB, a drive choice FormFactor bays holding drives of at
+      least CapacityGB.
+    type: string
+  created_at:
+    type: string
+  disabled:
+    description: |-
+      Disabled takes the choice off sale for now. An included drive in a bays
+      option can still be kept: it is part of the base price.
+    type: boolean
+  form_factor:
+    type: string
+  id:
+    type: string
+  included:
+    description: |-
+      Included is how many drives of this size a bays option's base build
+      has: pre-selected, and free while kept. Derived on read.
+    type: integer
+  label:
+    description: |-
+      Label is how the choice reads to a customer ("2× 7.68TB U.2 NVMe").
+      Derived on read.
+    type: string
+  media:
+    description: 'drive choices: hdd | ssd, "" = either'
+    type: string
+  option_id:
+    type: string
+  prices:
+    type: array
+    items:
+      $ref: ./dedicated.DedicatedUpgradeChoicePrice.yaml
+  quantity:
+    description: |-
+      Quantity is how many parts a replace choice installs (2 for "2× 7.68TB").
+      Add choices take their quantity from the customer instead.
+    type: integer
+  range_max:
+    type: integer
+  range_min:
+    description: |-
+      RangeMin, RangeMax and RangeStep bound what a range option's customer
+      can pick, in the option's unit (Mbps for an uplink). The choice's
+      prices are then per unit above what the plan includes.
+    type: integer
+  range_step:
+    type: integer
+  setup_delta_cents:
+    type: integer
+  updated_at:
+    type: string
+  uplink_mbps:
+    description: >-
+      UplinkMbps is the port speed an uplink choice sells (MinUplinkMbps to
+      MaxUplinkMbps).
+    type: integer

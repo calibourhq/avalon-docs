@@ -1,0 +1,22 @@
+type: object
+properties:
+  body:
+    type: string
+  cancelled:
+    type: boolean
+  completed:
+    type: boolean
+  ends_at:
+    type: string
+  impact:
+    type: string
+  published:
+    type: boolean
+  starts_at:
+    type: string
+  targets:
+    type: array
+    items:
+      $ref: ./api.maintenanceTargetRequest.yaml
+  title:
+    type: string

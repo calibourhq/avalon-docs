@@ -1,0 +1,21 @@
+type: object
+properties:
+  avg_celsius:
+    description: |-
+      AvgCelsius is the sample-weighted mean across every socket and PeakCelsius
+      the hottest single bucket any of them recorded.
+    type: number
+  from:
+    type: string
+  interval_seconds:
+    type: integer
+  peak_celsius:
+    type: number
+  period:
+    type: string
+  sockets:
+    type: array
+    items:
+      $ref: ./dedicated.TempSocketSeries.yaml
+  to:
+    type: string
