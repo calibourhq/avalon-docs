@@ -3,7 +3,7 @@ get:
     - BearerAuth: []
   operationId: live-per-node-origin-balancing-state-of-a-cdn-hostname
   tags:
-    - CDN
+    - cdn
   summary: Live per-node origin balancing state of a CDN hostname
   parameters:
     - description: CDN zone ID

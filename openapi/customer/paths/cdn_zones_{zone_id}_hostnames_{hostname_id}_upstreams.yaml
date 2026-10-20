@@ -3,7 +3,7 @@ put:
     - BearerAuth: []
   operationId: replace-a-cdn-hostnames-origins
   tags:
-    - CDN
+    - cdn
   summary: Replace a CDN hostname's origins
   parameters:
     - description: CDN zone ID
